@@ -1,1 +1,1 @@
-
+require './registration/RegistrationApp'

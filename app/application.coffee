@@ -9,6 +9,8 @@
 
 	App.on "start", ->
 
+		App.request "registration:manual", App.mainRegion
+
 		if Backbone.history
 			Backbone.history.start()
 
