@@ -1,0 +1,31 @@
+{
+  "name": "clemble-web",
+  "version": "0.10.0",
+  "main": "public/javascripts/app.js",
+  "dependencies": {
+    "underscore": "~1.6.0",
+    "console-polyfill": "~0.1.0",
+    "jquery": "~2.1.1",
+    "normalize-css": "~2.1.2",
+    "marionette": "~2.0.3",
+    "bootstrap": "~3.1.1",
+    "font-awesome": "~4.1.0",
+    "moment": "~2.5.1",
+    "swag": "~0.6.1"
+  },
+  "overrides": {
+    "underscore": {
+      "main": "underscore.js"
+    },
+    "backbone": {
+      "dependencies": {
+        "jquery": "*",
+        "underscore": "*"
+      },
+      "main": "backbone.js"
+    }
+  },
+  "resolutions": {
+    "jquery": "~2.1.1"
+  }
+}

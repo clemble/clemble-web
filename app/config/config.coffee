@@ -1,0 +1,2 @@
+require './handlebar'
+require './behavior'
