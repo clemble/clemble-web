@@ -1,9 +1,9 @@
 @App.module "LoginApp.Entities", (Entities, App, Backbone, Marionette, $, _) ->
 
 	class Login extends Backbone.Model
-		default:
-			email: null
-			password: null
+		defaults:
+			email: ''
+			password: ''
 
 	API =
 		new: () ->

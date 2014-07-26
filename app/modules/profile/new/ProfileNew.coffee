@@ -12,14 +12,17 @@
 		template: require './templates/profile'
 		behaviors:
 			StickIt: {}
-		bindings:
+		bindings: {
 			'#country'  : 'country'
 			'#nickName' : 'nickName'
-			'#firstName': 'firstName'
-			'#lastName' : 'lastName'
+			'#fullName' :
+				observe : ['firstName', 'lastName'],
+				onGet   : (values) -> if (values[0]?) values[0] + ' ' + values[1] else ''
+				onSet   : (value) -> value.split(' ')
 			'#gender'   : 'gender'
 			'#birthDate': 'birthDate'
 			'#imageUrl' : 'imageUrl'
+		}
 
 
 	App.reqres.setHandler 'profile:new', (region) -> Controller.new(region)
