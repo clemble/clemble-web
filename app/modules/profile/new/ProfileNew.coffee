@@ -6,6 +6,7 @@
 			profileView = new Profile
 				model: profile
 			region.show profileView
+			profile
 
 	class Profile extends Marionette.ItemView
 		template: require './templates/profile'
