@@ -5,8 +5,7 @@
 			layout = new RegistrationLayout()
 			layout.on 'show', () ->
 				App.request 'login:new', layout.login
-				manual = new RegistrationManual()
-				layout.profile.show manual
+				App.request 'profile:new', layout.profile
 			region.show layout
 
 	class RegistrationManual extends Marionette.ItemView
