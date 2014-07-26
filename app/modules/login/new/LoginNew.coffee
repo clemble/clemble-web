@@ -9,8 +9,6 @@
 
 	class Login extends Marionette.ItemView
 		template: require './templates/login'
-		modelEvents:
-			'change' : 'render'
 		bindings:
 			'#email'    : 'email',
 			'#password' : 'password'

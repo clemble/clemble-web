@@ -16,7 +16,10 @@
 		idAttribute: 'player'
 
 	API =
-		new: () -> new Profile()
+		new: () ->
+			profile = new Profile()
+			profile.on "all", (evt) -> console.log("login > #{evt}")
+			profile
 
 	App.reqres.setHandler 'profile:entities:new', () -> API.new()
 

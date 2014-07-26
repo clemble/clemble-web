@@ -9,7 +9,16 @@
 
 	class Profile extends Marionette.ItemView
 		template: require './templates/profile'
-		modelEvents:
-			change : 'render'
+		behaviors:
+			StickIt: {}
+		bindings:
+			'#country'  : 'country'
+			'#nickName' : 'nickName'
+			'#firstName': 'firstName'
+			'#lastName' : 'lastName'
+			'#gender'   : 'gender'
+			'#birthDate': 'birthDate'
+			'#imageUrl' : 'imageUrl'
+
 
 	App.reqres.setHandler 'profile:new', (region) -> Controller.new(region)
