@@ -4,7 +4,8 @@
 		registerManual: (region) ->
 			layout = new RegistrationLayout()
 			layout.on 'show', () ->
-				login = App.request 'login:new', layout.login
+				signIn = App.request 'login:show:signIn', layout.signIn
+				login = App.request 'login:show:new', layout.login
 				profile = App.request 'profile:new', layout.profile
 				manual = new RegistrationManual()
 				layout.control.show manual
@@ -15,7 +16,7 @@
 		modelEvents:
 			'change'  : 'render'
 		events:
-			'click #signIn' : 'singIn'
+			'click #signUp' : 'singUp'
 		singIn: () ->
 			console.log("Sign In")
 
@@ -26,5 +27,6 @@
 			login    : '#login'
 			profile  : '#profile'
 			control  : '#control'
+			signIn   : '#signIn'
 
 	App.reqres.setHandler 'registration:manual', (region) -> Controller.registerManual(region)

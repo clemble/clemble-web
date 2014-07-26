@@ -17,7 +17,11 @@
 			'#nickName' : 'nickName'
 			'#fullName' :
 				observe : ['firstName', 'lastName'],
-				onGet   : (values) -> if (values[0]?) values[0] + ' ' + values[1] else ''
+				onGet   : (values) ->
+					if (values[0]? && values[1])
+						values[0] + ' ' + values[1]
+					else
+						''
 				onSet   : (value) -> value.split(' ')
 			'#gender'   : 'gender'
 			'#birthDate': 'birthDate'

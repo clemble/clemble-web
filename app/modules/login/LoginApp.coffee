@@ -1,5 +1,5 @@
 require './entities/LoginEntities'
-require './new/LoginNew'
+require './show/LoginShow'
 
 @App.module "LoginApp", (LoginApp, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false

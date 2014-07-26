@@ -2,16 +2,13 @@
 
 	class Profile extends Backbone.Model
 		defaults:
-			player    : ''  #TODO check that it can't be assigned manually during creation
-			country   : ''
-			type      : 'free' #TODO check that it can't be assigned manually
-			nickName  : ''
-			firstName : 'A'
-			lastName  : 'B'
-			gender    : ''
-			birthDate : ''
-			category  : 'Novice' #TODO check that it can't be assigned manually
-			socialConnections: [] #TODO check that it can't be assigned manually
+			player            : null #TODO check that it can't be assigned manually during creation
+			nickName          : null
+			firstName         : null
+			lastName          : null
+			gender            : null
+			birthDate         : null
+			socialConnections : []   #TODO check that it can't be assigned manually
 		idAttribute: 'player'
 
 	API =
