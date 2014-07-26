@@ -9,6 +9,8 @@
 
 	App.on "start", ->
 
+		Backbone.on("all", (evt) -> console.log("Event"))
+
 		App.request "registration:manual", App.mainRegion
 
 		if Backbone.history

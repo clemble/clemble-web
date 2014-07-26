@@ -6,6 +6,9 @@
 			password: null
 
 	API =
-		new: () -> new Login()
+		new: () ->
+			login = new Login()
+			login.on "all", (evt) -> console.log(evt) # TODO make a single point to intercept all initiations, and listen for events
+			login
 
 	App.reqres.setHandler 'login:entities:new', () -> API.new()

@@ -11,5 +11,11 @@
 		template: require './templates/login'
 		modelEvents:
 			'change' : 'render'
+		bindings:
+			'#email'    : 'email',
+			'#password' : 'password'
+		behaviors:
+			StickIt:{}
+
 
 	App.reqres.setHandler 'login:new', (region) -> Controller.new(region)
