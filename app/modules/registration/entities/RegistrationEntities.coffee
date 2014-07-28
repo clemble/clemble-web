@@ -7,9 +7,14 @@
 			playerCredential: null
 
 	API =
-		new: () ->
+		new: (login, profile) ->
 			registrationRequest = new PlayerRegistrationRequest()
+			registrationRequest.listenTo login, 'change', (model) ->
+				registrationRequest.set('playerCredential', model.attributes)
+			registrationRequest.listenTo profile, 'change', (model) ->
+				registrationRequest.set('playerProfile', model.attributes)
+			registrationRequest.url = "http://#{App.host}/player/registration/base/signin"
 			registrationRequest.on "all", (evt) -> console.log("registration > #{evt}")
 			registrationRequest
 
-	App.reqres.setHandler 'profile:entities:new', () -> API.new()
+	App.reqres.setHandler 'registration:entities:new', (login, profile) -> API.new(login, profile)

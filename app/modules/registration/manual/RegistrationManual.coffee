@@ -7,18 +7,21 @@
 				signIn = App.request 'login:show:signIn', layout.signIn
 				login = App.request 'login:show:new', layout.login
 				profile = App.request 'profile:new', layout.profile
-				manual = new RegistrationManual()
+
+				registration = App.request 'registration:entities:new', login, profile
+				manual = new RegistrationControl
+					model: registration
 				layout.control.show manual
 			region.show layout
 
-	class RegistrationManual extends Marionette.ItemView
-		template: require './templates/manual'
+	class RegistrationControl extends Marionette.ItemView
+		template: require './templates/control'
 		modelEvents:
 			'change'  : 'render'
 		events:
 			'click #signUp' : 'singUp'
-		singIn: () ->
-			console.log("Sign In")
+		singUp: () ->
+			@model.save()
 
 
 	class RegistrationLayout extends Marionette.LayoutView
