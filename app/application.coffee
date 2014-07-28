@@ -2,6 +2,8 @@
 @App = do(Marionette, Backbone) ->
 	App = new Marionette.Application
 
+	App.host = "localhost:8080"
+
 	App.addRegions
 		mainRegion:   "#main-region"
 

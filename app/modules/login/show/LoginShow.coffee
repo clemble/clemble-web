@@ -24,6 +24,8 @@
 
 	class LoginSignIn extends Login
 		template: require './templates/signIn'
+		events:
+			'click #signIn': () -> @model.save()
 
 
 	App.reqres.setHandler 'login:show:new', (region) -> Controller.new(region)
