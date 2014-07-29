@@ -3,12 +3,12 @@
 	Controller =
 		new: (region) ->
 			profile = App.request('player:profile:entities:new')
-			profileView = new PlayerProfileView
+			profileView = new PlayerProfileNew
 				model: profile
 			region.show profileView
 			profile
 
-	class PlayerProfileView extends Marionette.ItemView
+	class PlayerProfileNew extends Marionette.ItemView
 		template: require './templates/profile'
 		behaviors:
 			StickIt: {}
