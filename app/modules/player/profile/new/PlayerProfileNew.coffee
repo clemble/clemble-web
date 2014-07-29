@@ -1,14 +1,14 @@
-@App.module "ProfileApp.New", (New, App, Backbone, Marionette, $, _) ->
+@App.module "PlayerProfileApp.New", (New, App, Backbone, Marionette, $, _) ->
 
 	Controller =
 		new: (region) ->
-			profile = App.request('profile:entities:new')
-			profileView = new Profile
+			profile = App.request('player:profile:entities:new')
+			profileView = new PlayerProfileView
 				model: profile
 			region.show profileView
 			profile
 
-	class Profile extends Marionette.ItemView
+	class PlayerProfileView extends Marionette.ItemView
 		template: require './templates/profile'
 		behaviors:
 			StickIt: {}
@@ -25,8 +25,7 @@
 				onSet   : (value) -> value.split(' ')
 			'#gender'   : 'gender'
 			'#birthDate': 'birthDate'
-			'#imageUrl' : 'imageUrl'
 		}
 
 
-	App.reqres.setHandler 'profile:new', (region) -> Controller.new(region)
+	App.reqres.setHandler 'player:profile:new', (region) -> Controller.new(region)

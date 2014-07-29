@@ -1,3 +1,3 @@
 require './login/LoginApp'
-require './profile/ProfileApp'
+require './player/PlayerApp'
 require './registration/RegistrationApp'

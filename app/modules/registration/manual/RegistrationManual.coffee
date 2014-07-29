@@ -6,7 +6,7 @@
 			layout.on 'show', () ->
 				signIn = App.request 'login:show:signIn', layout.signIn
 				login = App.request 'login:show:new', layout.login
-				profile = App.request 'profile:new', layout.profile
+				profile = App.request 'player:profile:new', layout.profile
 
 				registration = App.request 'registration:entities:new', login, profile
 				manual = new RegistrationControl
