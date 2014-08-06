@@ -23,5 +23,7 @@
 			profile
 
 	App.reqres.setHandler 'player:profile:entities:new', () -> API.new()
-	App.reqres.setHandler 'player:profile:entities:get', () -> API.get(player)
+
+	App.reqres.setHandler 'player:profile:entities:my', () -> API.get('my')
+	App.reqres.setHandler 'player:profile:entities:get', (player) -> API.get(player)
 

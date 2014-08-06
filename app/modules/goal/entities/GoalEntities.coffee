@@ -38,6 +38,10 @@
 			goals.fetch()
 			goals
 
+	App.reqres.setHandler "goal:track:entities:my", () -> API.all('me')
+	App.reqres.setHandler "goal:track:entities:my:reached", () -> API.reached('me')
+	App.reqres.setHandler "goal:track:entities:my:missed", () -> API.missed('me')
+	App.reqres.setHandler "goal:track:entities:my:pending", () -> API.pending('me')
 
 	App.reqres.setHandler "goal:track:entities:all", (player) -> API.all(player)
 	App.reqres.setHandler "goal:track:entities:reached", (player) -> API.reached(player)

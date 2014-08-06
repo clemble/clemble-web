@@ -15,4 +15,5 @@
 			account.fetch()
 			account
 
+	App.reqres.setHandler "player:connection:entities:my", () -> API.get('me')
 	App.reqres.setHandler "player:connection:entities:get", (player) -> API.get(player)

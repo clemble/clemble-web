@@ -1,4 +1,5 @@
-require './track/GoalTrackApp'
+require './entities/GoalEntities'
+require './show/GoalShow'
 
 
 @App.module "GoalApp", (GoalApp, App, Backbone, Marionette, $, _) ->
