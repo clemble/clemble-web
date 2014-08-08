@@ -18,8 +18,9 @@
 			profile
 		get: (player) ->
 			profile = new PlayerProfile(player: player)
-			profile.urlRoot = "http://#{App.host}/player/profile"
+			profile.url = "/player/profile/#{player}"
 			profile.on "all", (evt) -> console.log("profile > #{evt}")
+			profile.fetch()
 			profile
 
 	App.reqres.setHandler 'player:profile:entities:new', () -> API.new()

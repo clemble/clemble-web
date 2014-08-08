@@ -13,7 +13,7 @@
 				registrationRequest.set('playerCredential', model.attributes)
 			registrationRequest.listenTo profile, 'change', (model) ->
 				registrationRequest.set('playerProfile', model.attributes)
-			registrationRequest.url = "http://#{App.host}/player/registration/base/signin"
+			registrationRequest.url = "/player/registration/base/signin"
 			registrationRequest.on "all", (evt) -> console.log("registration > #{evt}")
 			registrationRequest
 

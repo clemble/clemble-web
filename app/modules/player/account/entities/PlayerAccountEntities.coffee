@@ -10,7 +10,7 @@
 	API =
 		get: (player) ->
 			account = new PlayerAccount(player: player)
-			account.urlRoot = "http://#{App.host}/payment/account/"
+			account.urlRoot = "/payment/account/"
 			account.fetch()
 			account
 

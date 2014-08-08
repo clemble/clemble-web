@@ -11,9 +11,9 @@
 	API =
 		get: (player) ->
 			account = new PlayerConnections()
-			account.url = "http://#{App.host}/player/connection/#{player}"
+			account.url = "/player/connection/#{player}"
 			account.fetch()
 			account
 
-	App.reqres.setHandler "player:connection:entities:my", () -> API.get('me')
+	App.reqres.setHandler "player:connection:entities:my", () -> API.get('my')
 	App.reqres.setHandler "player:connection:entities:get", (player) -> API.get(player)

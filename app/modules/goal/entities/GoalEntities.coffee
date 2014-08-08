@@ -19,22 +19,22 @@
 	API =
 		all: (player) ->
 			goals = new Goals()
-			goals.url = "http://#{App.host}/goal/track/#{player}"
+			goals.url = "/goal/track/#{player}"
 			goals.fetch()
 			goals
 		reached: (player) ->
 			goals = new Goals()
-			goals.url = "http://#{App.host}/goal/track/#{player}/reached"
+			goals.url = "/goal/track/#{player}/reached"
 			goals.fetch()
 			goals
 		missed: (player) ->
 			goals = new Goals()
-			goals.url = "http://#{App.host}/goal/track/#{player}/missed"
+			goals.url = "/goal/track/#{player}/missed"
 			goals.fetch()
 			goals
 		pending: (player) ->
 			goals = new Goals()
-			goals.url = "http://#{App.host}/goal/track/#{player}/pending"
+			goals.url = "/goal/track/#{player}/pending"
 			goals.fetch()
 			goals
 
