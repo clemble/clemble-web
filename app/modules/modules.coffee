@@ -1,4 +1,4 @@
-require './login/LoginApp'
-require './player/PlayerApp'
 require './registration/RegistrationApp'
+require './player/PlayerApp'
 require './goal/GoalApp'
+#require './error/ErrorApp'

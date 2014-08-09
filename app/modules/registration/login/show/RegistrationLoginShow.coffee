@@ -1,14 +1,14 @@
-@App.module "LoginApp.Show", (Show, App, Backbone, Marionette, $, _) ->
+@App.module "RegistrationLoginApp.Show", (Show, App, Backbone, Marionette, $, _) ->
 
 	Controller =
 		new: (region) ->
-			login = App.request "login:entities:new"
+			login = App.request "registration:login:entities:new"
 			newLogin = new Login
 				model: login
 			region.show newLogin
 			login
 		signIn: (region) ->
-			login = App.request "login:entities:new"
+			login = App.request "registration:login:entities:new"
 			loginView = new LoginSignIn
 				model: login
 			region.show loginView
@@ -28,5 +28,5 @@
 			'click #signIn': () -> @model.save()
 
 
-	App.reqres.setHandler 'login:show:new', (region) -> Controller.new(region)
-	App.reqres.setHandler 'login:show:signIn', (region) -> Controller.signIn(region)
+	App.reqres.setHandler 'registration:login:show:new', (region) -> Controller.new(region)
+	App.reqres.setHandler 'registration:login:show:signIn', (region) -> Controller.signIn(region)

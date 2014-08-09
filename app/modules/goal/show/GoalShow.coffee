@@ -1,8 +1,8 @@
 @App.module "GoalTrack.Pending", (Pending, App, Backbone, Marionette, $, _) ->
 
 	Controller =
-		pending: (player, region) ->
-			pendingGoals = App.request("goal:track:entities:pending", player)
+		pending: (region) ->
+			pendingGoals = App.request("goal:entities:my:pending")
 			pendingGoalsView = new Goals
 				collection: pendingGoals
 			region.show pendingGoalsView
@@ -15,5 +15,5 @@
 		childView: Goal
 		childViewContainer: 'div'
 
-	App.reqres.setHandler "goal:track:pending", (player, region) -> Controller.pending(player, region)
+	App.reqres.setHandler "goal:show:my:pending", (region) -> Controller.pending(region)
 

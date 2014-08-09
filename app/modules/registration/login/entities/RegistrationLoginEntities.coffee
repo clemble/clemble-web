@@ -1,4 +1,4 @@
-@App.module "LoginApp.Entities", (Entities, App, Backbone, Marionette, $, _) ->
+@App.module "RegistrationLoginApp.Entities", (Entities, App, Backbone, Marionette, $, _) ->
 
 	class Login extends Backbone.Model
 		defaults:
@@ -12,4 +12,4 @@
 			login.url = "/player/registration/base/login"
 			login
 
-	App.reqres.setHandler 'login:entities:new', () -> API.new()
+	App.reqres.setHandler 'registration:login:entities:new', () -> API.new()

@@ -1,14 +1,14 @@
-@App.module "RegistrationApp.Manual", (Manual, App, Backbone, Marionette, $, _) ->
+@App.module "RegistrationBaseApp.Show", (Show, App, Backbone, Marionette, $, _) ->
 
 	Controller =
 		registerManual: (region) ->
 			layout = new RegistrationLayout()
 			layout.on 'show', () ->
-				signIn = App.request 'login:show:signIn', layout.signIn
-				login = App.request 'login:show:new', layout.login
+				signIn = App.request 'registration:login:show:signIn', layout.signIn
+				login = App.request 'registration:login:show:new', layout.login
 				profile = App.request 'player:profile:new', layout.profile
 
-				registration = App.request 'registration:entities:new', login, profile
+				registration = App.request 'registration:base:entities:new', login, profile
 				manual = new RegistrationControl
 					model: registration
 				layout.control.show manual
@@ -32,4 +32,4 @@
 			control  : '#control'
 			signIn   : '#signIn'
 
-	App.reqres.setHandler 'registration:manual', (region) -> Controller.registerManual(region)
+	App.reqres.setHandler 'registration:base:show', (region) -> Controller.registerManual(region)
