@@ -4,10 +4,8 @@
 		defaults:
 			player      : null
 			goal        : null
-			description : null
 			state       : null
-			bet         : null
-			rate        : null
+			description : null
 			dueDate     : null
 		idAttribute:
 			'goal'
@@ -37,11 +35,17 @@
 			goals.url = "/goal/track/#{player}/pending"
 			goals.fetch()
 			goals
+		new: (player) ->
+			goal = new Goal()
+			goal.url = "/goal/track/#{player}"
+			goal.on "all", (evt) -> console.log("goal > #{evt}")
+			goal
 
 	App.reqres.setHandler "goal:entities:my", () -> API.all('my')
 	App.reqres.setHandler "goal:entities:my:reached", () -> API.reached('my')
 	App.reqres.setHandler "goal:entities:my:missed", () -> API.missed('my')
 	App.reqres.setHandler "goal:entities:my:pending", () -> API.pending('my')
+	App.reqres.setHandler "goal:entities:my:new", () -> API.new('my')
 
 	App.reqres.setHandler "goal:entities:all", (player) -> API.all(player)
 	App.reqres.setHandler "goal:entities:reached", (player) -> API.reached(player)

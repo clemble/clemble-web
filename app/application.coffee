@@ -13,7 +13,7 @@
 
 		Backbone.on("all", (evt) -> console.log("Event"))
 
-		App.request "goal:show:my:pending", App.mainRegion
+		App.request "goal:pending:my", App.mainRegion
 
 		if Backbone.history
 			Backbone.history.start()

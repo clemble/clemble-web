@@ -15,5 +15,5 @@
 		childView: Goal
 		childViewContainer: 'div'
 
-	App.reqres.setHandler "goal:show:my:pending", (region) -> Controller.pending(region)
+	App.reqres.setHandler "goal:pending:my", (region) -> Controller.pending(region)
 
