@@ -38,12 +38,12 @@
 			goals.fetch()
 			goals
 
-	App.reqres.setHandler "goal:track:entities:my", () -> API.all('me')
-	App.reqres.setHandler "goal:track:entities:my:reached", () -> API.reached('me')
-	App.reqres.setHandler "goal:track:entities:my:missed", () -> API.missed('me')
-	App.reqres.setHandler "goal:track:entities:my:pending", () -> API.pending('me')
+	App.reqres.setHandler "goal:entities:my", () -> API.all('my')
+	App.reqres.setHandler "goal:entities:my:reached", () -> API.reached('my')
+	App.reqres.setHandler "goal:entities:my:missed", () -> API.missed('my')
+	App.reqres.setHandler "goal:entities:my:pending", () -> API.pending('my')
 
-	App.reqres.setHandler "goal:track:entities:all", (player) -> API.all(player)
-	App.reqres.setHandler "goal:track:entities:reached", (player) -> API.reached(player)
-	App.reqres.setHandler "goal:track:entities:missed", (player) -> API.missed(player)
-	App.reqres.setHandler "goal:track:entities:pending", (player) -> API.pending(player)
+	App.reqres.setHandler "goal:entities:all", (player) -> API.all(player)
+	App.reqres.setHandler "goal:entities:reached", (player) -> API.reached(player)
+	App.reqres.setHandler "goal:entities:missed", (player) -> API.missed(player)
+	App.reqres.setHandler "goal:entities:pending", (player) -> API.pending(player)
