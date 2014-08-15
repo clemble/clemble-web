@@ -15,6 +15,12 @@
 
 	class Goal extends Marionette.ItemView
 		template: require './templates/goal'
+		onShow: () ->
+			$('#dueDate').FlipClock((@model.get("dueDate") - new Date().getTime()) / 1000, {
+				clockFace: 'DailyCounter',
+				countdown: true,
+				showSeconds: false
+			});
 
 	class Goals extends Marionette.CompositeView
 		template: require './templates/goals'

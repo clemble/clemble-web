@@ -12,7 +12,8 @@
     "font-awesome": "~4.1.0",
     "moment": "~2.5.1",
     "swag": "~0.6.1",
-    "backbone.stickit": "~0.8.0"
+    "backbone.stickit": "~0.8.0",
+    "FlipClock": "~0.6.1"
   },
   "overrides": {
     "underscore": {
