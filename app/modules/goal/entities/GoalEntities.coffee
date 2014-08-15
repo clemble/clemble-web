@@ -3,10 +3,11 @@
 	class Goal extends Backbone.Model
 		defaults:
 			player      : null
-			goal        : null
+			goalKey     : null
 			state       : null
 			description : null
 			dueDate     : null
+			statuses    : []
 		idAttribute:
 			'goal'
 

@@ -3,9 +3,15 @@
 	Controller =
 		pending: (region) ->
 			pendingGoals = App.request("goal:entities:my:pending")
-			pendingGoalsView = new Goals
-				collection: pendingGoals
-			region.show pendingGoalsView
+			pendingGoals.on("sync", (collections) ->
+				if (collections.length == 0)
+					console.log("Collection #{JSON.stringify(collections)}")
+					App.request "goal:new:my", region
+				else
+					pendingGoalsView = new Goals
+						collection: pendingGoals
+					region.show pendingGoalsView
+			)
 
 	class Goal extends Marionette.ItemView
 		template: require './templates/goal'

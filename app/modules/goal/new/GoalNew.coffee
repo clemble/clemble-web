@@ -1,4 +1,4 @@
-@App.module "GoalTrack.Pending", (Pending, App, Backbone, Marionette, $, _) ->
+@App.module "GoalTrack.New", (New, App, Backbone, Marionette, $, _) ->
 
 	Controller =
 		new: (region) ->
@@ -21,6 +21,7 @@
 		events:
 			'click #save' : 'save'
 		save: () ->
+			@model.set("dueDate", moment().add('days', 7).toISOString())
 			@model.save()
 
 
