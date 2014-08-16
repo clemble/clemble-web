@@ -1,19 +1,9 @@
 <div class="col-md-8">
 	<div class="row">
-		<h2><small>Your Goal</small></h2>
 		<h1>{{description}}</h1>
 	</div>
 	<div class="row">
 		<h2><small>Time Left</small></h2>
-		<br/>
 		<h2><div id="dueDate" class="clock"></div></h2>
-	</div>
-	<div class="row">
-		{{#if statuses}}
-			<h1><small>Progress</small></h1>
-			{{#each statuses}}
-				{{status}}
-			{{/each}}
-		{{/if}}
 	</div>
 </div>

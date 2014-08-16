@@ -3,11 +3,11 @@
 	Controller =
 		new: (goal, region) ->
 			newGoalStatus = App.request("goal:status:entities:new", goal)
-			newGoalStatusView = new Goal
+			newGoalStatusView = new GoalStatus
 				model: newGoalStatus
 			region.show newGoalStatusView
 
-	class Goal extends Marionette.ItemView
+	class GoalStatus extends Marionette.ItemView
 		template: require './templates/new'
 		behaviors:
 			StickIt: {}

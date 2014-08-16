@@ -15,6 +15,7 @@
 								model: goal
 							goalLayout.detailsRegion.show goalView
 							App.request("goal:status:new", goal, goalLayout.statusRegion)
+							App.request("goal:status:list", goal, goalLayout.previousStatusesRegion)
 						region.show goalLayout
 					)
 			)
@@ -25,14 +26,15 @@
 			$('#dueDate').FlipClock((@model.get("dueDate") - new Date().getTime()) / 1000, {
 				clockFace: 'DailyCounter',
 				countdown: true,
-				showSeconds: false
+				showSeconds: true
 			});
 
 	class GoalLayout extends  Marionette.LayoutView
 		template: require './templates/layout'
 		regions:
-			detailsRegion : '#detailsRegion'
-			statusRegion  : '#statusRegion'
+			detailsRegion           : '#detailsRegion'
+			statusRegion            : '#statusRegion'
+			previousStatusesRegion  : '#previousStatusesRegion'
 
 
 	class Goals extends Marionette.CompositeView
