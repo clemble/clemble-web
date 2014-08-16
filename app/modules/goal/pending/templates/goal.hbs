@@ -9,15 +9,6 @@
 		<h2><div id="dueDate" class="clock"></div></h2>
 	</div>
 	<div class="row">
-		<h1><small>What's your status?</small></h1>
-		<div class="col-md-8">
-			<input id="status" class="form-control" type="text">
-		</div>
-		<div class="col-md-2">
-			<button class="btn btn-success">Update</button>
-		</div>
-	</div>
-	<div class="row">
 		{{#if statuses}}
 			<h1><small>Progress</small></h1>
 			{{#each statuses}}
@@ -25,5 +16,4 @@
 			{{/each}}
 		{{/if}}
 	</div>
-
 </div>

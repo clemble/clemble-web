@@ -8,9 +8,15 @@
 					console.log("Collection #{JSON.stringify(collections)}")
 					App.request "goal:new:my", region
 				else
-					pendingGoalsView = new Goals
-						collection: pendingGoals
-					region.show pendingGoalsView
+					pendingGoals.forEach( (goal) ->
+						goalLayout = new GoalLayout
+						goalLayout.on "show", () ->
+							goalView = new Goal
+								model: goal
+							goalLayout.detailsRegion.show goalView
+							App.request("goal:status:new", goal, goalLayout.statusRegion)
+						region.show goalLayout
+					)
 			)
 
 	class Goal extends Marionette.ItemView
@@ -21,6 +27,13 @@
 				countdown: true,
 				showSeconds: false
 			});
+
+	class GoalLayout extends  Marionette.LayoutView
+		template: require './templates/layout'
+		regions:
+			detailsRegion : '#detailsRegion'
+			statusRegion  : '#statusRegion'
+
 
 	class Goals extends Marionette.CompositeView
 		template: require './templates/goals'
