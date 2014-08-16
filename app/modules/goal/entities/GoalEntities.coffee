@@ -6,8 +6,9 @@
 			goalKey     : null
 			state       : null
 			description : null
+			startDate   : null
 			dueDate     : null
-			statuses    : []
+			status      : null
 		idAttribute:
 			'goal'
 

@@ -21,7 +21,12 @@
 		events:
 			'click #signUp' : 'singUp'
 		singUp: () ->
-			@model.save()
+			@model.save(@model.toJSON(), {
+				success: () ->
+					window.location.replace('./')
+				error: () ->
+					console.log("NO Error Processing for signUp failure")
+			})
 
 
 	class RegistrationLayout extends Marionette.LayoutView

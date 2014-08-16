@@ -22,7 +22,12 @@
 			'click #save' : 'save'
 		save: () ->
 			@model.set("dueDate", moment().add('days', 7).toISOString())
-			@model.save()
+			@model.save(@model.toJSON(), {
+				success: () ->
+					window.location.replace('./')
+				error: () ->
+					console.log("NO Error Processing for signUp failure")
+			})
 
 
 	App.reqres.setHandler "goal:new:my", (region) -> Controller.new(region)
