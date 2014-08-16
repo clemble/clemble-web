@@ -10,12 +10,8 @@
 			GoalStatus
 
 	API =
-		all: (goal) ->
-			goalStatuses = new GoalStatuses(goal.get('statuses'))
-			goalStatuses.url = "/goal/track/#{goal.get("goalKey")['player']}/#{goal.get("goalKey")['goal']}/status"
-			goalStatuses
 		new: (goal) ->
-			goalStatus = new GoalStatus()
+			goalStatus = new GoalStatus(goal.get("status"))
 			goalStatus.url = "/goal/track/my/#{goal.get("goalKey")['goal']}/status"
 			goalStatus
 

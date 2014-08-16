@@ -11,6 +11,7 @@ require './show/ErrorShow'
 		appRoutes:
 			#TODO this does not work as expected
 			'*path': 'error'
+			'error': 'error'
 
 
 	App.addInitializer ->

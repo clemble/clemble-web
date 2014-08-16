@@ -5,7 +5,6 @@
 			pendingGoals = App.request("goal:entities:my:pending")
 			pendingGoals.on("sync", (collections) ->
 				if (collections.length == 0)
-					console.log("Collection #{JSON.stringify(collections)}")
 					App.request "goal:new:my", region
 				else
 					pendingGoals.forEach( (goal) ->
@@ -14,8 +13,7 @@
 							goalView = new Goal
 								model: goal
 							goalLayout.detailsRegion.show goalView
-							App.request("goal:status:new", goal, goalLayout.statusRegion)
-							App.request("goal:status:list", goal, goalLayout.previousStatusesRegion)
+							App.request("goal:status:show", goal, goalLayout.statusRegion)
 						region.show goalLayout
 					)
 			)
@@ -23,9 +21,15 @@
 	class Goal extends Marionette.ItemView
 		template: require './templates/goal'
 		onShow: () ->
-			$('#dueDate').FlipClock((@model.get("dueDate") - new Date().getTime()) / 1000, {
+			timeSpent = (new Date().getTime() - @model.get("startDate")) / 1000
+			timeLeft = (@model.get("dueDate") - new Date().getTime()) / 1000
+			$('#timeLeft').FlipClock(timeLeft, {
 				clockFace: 'DailyCounter',
 				countdown: true,
+				showSeconds: true
+			});
+			$('#timeSpent').FlipClock(timeSpent, {
+				clockFace: 'DailyCounter',
 				showSeconds: true
 			});
 

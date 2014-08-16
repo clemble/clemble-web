@@ -1,20 +1,20 @@
 @App.module "GoalStatusApp.New", (Entities, App, Backbone, Marionette, $, _) ->
 
 	Controller =
-		new: (goal, region) ->
+		show: (goal, region) ->
 			newGoalStatus = App.request("goal:status:entities:new", goal)
 			newGoalStatusView = new GoalStatus
 				model: newGoalStatus
 			region.show newGoalStatusView
 
 	class GoalStatus extends Marionette.ItemView
-		template: require './templates/new'
+		template: require './templates/show'
 		behaviors:
 			StickIt: {}
 		bindings: {
 			'#status'  : 'status'
 		}
 		events:
-			'click #save' : () -> @model.save()
+			'change #status' : () -> @model.save()
 
-	App.reqres.setHandler "goal:status:new", (goal, region) -> Controller.new(goal, region)
+	App.reqres.setHandler "goal:status:show", (goal, region) -> Controller.show(goal, region)

@@ -1,5 +1,5 @@
 require './entities/GoalStatusEntities'
-require './new/GoalStatusNew'
+require './show/GoalStatusShow'
 require './list/GoalStatusList'
 
 @App.module "GoalStatusApp", (GoalStatusApp, App, Backbone, Marionette, $, _) ->
