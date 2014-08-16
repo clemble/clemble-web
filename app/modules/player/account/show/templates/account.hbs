@@ -1,3 +1,5 @@
-{{#each money}}
-	{{@key}} {{this.amount}}
-{{/each}}
+<div class="center-block">
+	{{#each money}}
+		{{#is @key "FakeMoney"}}<label class="label label-success">Wallet <span class="fa fa-usd"></span> {{this.amount}}</label>{{else}}{{@key}} {{this.amount}}{{/is}}
+	{{/each}}
+</div>

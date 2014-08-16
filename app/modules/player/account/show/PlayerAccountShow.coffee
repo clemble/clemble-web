@@ -13,3 +13,4 @@
 			sync: 'render'
 
 	App.reqres.setHandler "player:account:show", (player, region) -> Controller.get(player, region)
+	App.reqres.setHandler "player:account:show:my", (region) -> Controller.get('my', region)
