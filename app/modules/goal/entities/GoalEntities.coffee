@@ -16,6 +16,13 @@
 		model:
 			Goal
 
+	class GoalRequest extends Backbone.Model
+		defaults:
+			player        : null
+			goal          : null
+			timeInDays    : 1
+			amount        : {currency: "FakeMoney", amount: 50}
+
 	API =
 		all: (player) ->
 			goals = new Goals()
@@ -38,7 +45,7 @@
 			goals.fetch()
 			goals
 		new: (player) ->
-			goal = new Goal()
+			goal = new GoalRequest()
 			goal.url = "/goal/track/#{player}"
 			goal.on "all", (evt) -> console.log("goal > #{evt}")
 			goal

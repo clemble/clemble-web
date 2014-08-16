@@ -9,7 +9,8 @@ $ ->
 		statusCode: {
 			401: -> window.location.replace('#login')
 			403: -> window.location.replace('#denied')
-			404: -> window.location.replace('#error')
+			404: -> window.location.replace('#error/404')
+			500: -> window.location.replace('#error/500')
 		}
 	}
 

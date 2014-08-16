@@ -5,7 +5,8 @@
 	App.host = "localhost:8080"
 
 	App.addRegions
-		mainRegion:   "#main-region"
+		headerRegion: '#headerRegion'
+		mainRegion:   "#mainRegion"
 
 	App.addInitializer ->
 

@@ -14,6 +14,7 @@
 								model: goal
 							goalLayout.detailsRegion.show goalView
 							App.request("goal:status:show", goal, goalLayout.statusRegion)
+							App.request("goal:bid:show", goal, goalLayout.bidRegion)
 						region.show goalLayout
 					)
 			)
@@ -38,7 +39,7 @@
 		regions:
 			detailsRegion           : '#detailsRegion'
 			statusRegion            : '#statusRegion'
-			previousStatusesRegion  : '#previousStatusesRegion'
+			bidRegion               : '#bidRegion'
 
 
 	class Goals extends Marionette.CompositeView

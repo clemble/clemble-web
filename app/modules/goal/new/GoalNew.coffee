@@ -12,7 +12,7 @@
 		behaviors:
 			StickIt: {}
 		bindings: {
-			'#description'  : 'description'
+			'#goal'  : 'goal'
 			'#dueDate'      : {
 				observe: 'dueDate'
 				onSet: (value) -> Number(value)
@@ -21,12 +21,12 @@
 		events:
 			'click #save' : 'save'
 		save: () ->
-			@model.set("dueDate", moment().add('days', 7).toISOString())
+			console.log("Saving #{JSON.stringify(@model.toJSON())}")
 			@model.save(@model.toJSON(), {
 				success: () ->
 					window.location.replace('./')
 				error: () ->
-					console.log("NO Error Processing for signUp failure")
+					console.log("NO Error Processing for signUp failure #{@model.toJSON()}")
 			})
 
 

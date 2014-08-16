@@ -4,14 +4,15 @@ require './show/ErrorShow'
 	@startWithParent = false
 
 	API =
-		error: (path) ->
-			App.request "error:show", path, App.mainRegion
+		error404: (path) ->
+			App.request "error:show:404", path, App.mainRegion
+		error500: (path) ->
+			App.request "error:show:500", path, App.mainRegion
 
 	class ErrorApp.Router extends Marionette.AppRouter
 		appRoutes:
-			#TODO this does not work as expected
-			'*path': 'error'
-			'error': 'error'
+			'error/404': 'error404'
+			'error/500': 'error500'
 
 
 	App.addInitializer ->
