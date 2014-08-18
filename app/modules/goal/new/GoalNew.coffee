@@ -12,8 +12,9 @@
 		behaviors:
 			StickIt: {}
 		bindings: {
-			'#goal'  : 'goal'
-			'#dueDate'      : {
+			'#goal'       : 'goal'
+			'#judge'      : 'judge'
+			'#dueDate'    : {
 				observe: 'dueDate'
 				onSet: (value) -> Number(value)
 			}

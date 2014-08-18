@@ -16,6 +16,7 @@
 							App.request("goal:status:show", goal, goalLayout.statusRegion)
 							App.request("goal:bid:show", goal, goalLayout.bidRegion)
 							App.request("player:profile:show:my", goalLayout.profileRegion)
+							App.request("goal:judge:invitation:list:my", goalLayout.invitationRegion)
 						region.show goalLayout
 					)
 			)
@@ -38,10 +39,11 @@
 	class GoalLayout extends  Marionette.LayoutView
 		template: require './templates/layout'
 		regions:
-			detailsRegion   : '#detailsRegion'
-			statusRegion    : '#statusRegion'
-			bidRegion       : '#bidRegion'
-			profileRegion   : '#profileRegion'
+			detailsRegion     : '#detailsRegion'
+			statusRegion      : '#statusRegion'
+			bidRegion         : '#bidRegion'
+			profileRegion     : '#profileRegion'
+			invitationRegion  : '#invitationRegion'
 
 
 	class Goals extends Marionette.CompositeView

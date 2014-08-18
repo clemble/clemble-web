@@ -18,8 +18,8 @@
 
 	class GoalRequest extends Backbone.Model
 		defaults:
-			player        : null
 			goal          : null
+			judge         : null
 			timeInDays    : 1
 			amount        : {currency: "FakeMoney", amount: 50}
 

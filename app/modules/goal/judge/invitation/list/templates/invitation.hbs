@@ -1,0 +1,7 @@
+<div class="thumbnail">
+	<image src="/player/profile/{{player}}/image" class="img-circle" style="width: 80px; height: 80px;"></image>
+	<h4>{{goal.goal}}</h4>
+	{{#is status "pending"}}<span class="label label-default">Pending</span>{{/is}}
+	{{#is status "accepted"}}<span class="label label-success">Accepted</span>{{/is}}
+	{{#is status "declined"}}<span class="label label-danger">Declined</span>{{/is}}
+</div>
