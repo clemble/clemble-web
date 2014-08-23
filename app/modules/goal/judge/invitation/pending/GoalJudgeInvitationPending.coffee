@@ -11,8 +11,12 @@
 	class PendingGoalJudgeInvitation extends Marionette.ItemView
 		template: require './templates/pending_invitation'
 		events:
-			'click #accept': () -> @model.set('status', 'accept')
-			'click #decline': () -> @model.set('status', 'decline')
+			'click #accepted': () ->
+				@model.set('status', 'accepted')
+				@model.save()
+			'click #declined': () ->
+				@model.set('status', 'declined')
+				@model.save()
 
 	class PendingGoalJudgeInvitations extends Marionette.CompositeView
 		template: require './templates/pending_invitations'

@@ -1,7 +1,12 @@
-<div class="thumbnail">
-	<image src="/player/profile/{{player}}/image/small" class="img-thumbnail" style="width: 48px; height: 48px;"></image>
-	{{goal}}
-	{{#is status "pending"}}<span class="label label-default">Pending</span>{{/is}}
-	{{#is status "accepted"}}<span class="label label-success">Accepted</span>{{/is}}
-	{{#is status "declined"}}<span class="label label-danger">Declined</span>{{/is}}
+<div>
+	<div class="row">
+		<image src="/player/profile/{{player}}/image/small" class="img-thumbnail pull-left" style="width: 48px; height: 48px;"></image>
+		{{goal}}
+	</div>
+	<div class="row">
+		<div class="btn-group btn-group-xs">
+			<button class="btn btn-primary" id="accepted">Accept</button>
+			<button class="btn btn-default" id="declined">Decline</button>
+		</div>
+	</div>
 </div>

@@ -7,6 +7,8 @@
 			judge   : null
 			goal    : null
 			status  : null
+		idAttribute:
+			'goalKey'
 
 	class GoalJudgeInvitations extends Backbone.Collection
 		model: GoalJudgeInvitation
