@@ -12,11 +12,22 @@
 		model: GoalJudgeInvitation
 
 	API =
-		all: (player) ->
-			invitations = new GoalJudgeInvitations()
-			invitations.url = "/goal/judge/invitations/my/"
-			invitations.fetch()
-			invitations
+		pending: (player) ->
+			pending = new GoalJudgeInvitations()
+			pending.url = "/goal/judge/invitations/#{player}/pending"
+			pending.fetch()
+			pending
+		accepted: (player) ->
+			accepted = new GoalJudgeInvitations()
+			accepted.url = "/goal/judge/invitations/#{player}/accepted"
+			accepted.fetch()
+			accepted
+		declined: (player) ->
+			declined = new GoalJudgeInvitations()
+			declined.url = "/goal/judge/invitations/#{player}/declined"
+			declined.fetch()
+			declined
 
-	App.reqres.setHandler "goal:judge:invitation:entities:all", (player) -> API.all(player)
-	App.reqres.setHandler "goal:judge:invitation:entities:my:all", () -> API.all('my')
+	App.reqres.setHandler "goal:judge:invitation:entities:pending", (player) -> API.pending(player)
+	App.reqres.setHandler "goal:judge:invitation:entities:accepted", (player) -> API.accepted(player)
+	App.reqres.setHandler "goal:judge:invitation:entities:declined", (player) -> API.declined(player)

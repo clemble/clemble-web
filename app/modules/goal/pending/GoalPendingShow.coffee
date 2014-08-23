@@ -17,6 +17,7 @@
 							App.request("goal:bid:show", goal, goalLayout.bidRegion)
 							App.request("player:profile:show:my", goalLayout.profileRegion)
 							App.request("goal:judge:invitation:list:my", goalLayout.invitationRegion)
+							App.request("goal:judge:invitation:pending:my", goalLayout.pendingRegion)
 						region.show goalLayout
 					)
 			)
@@ -43,6 +44,7 @@
 			statusRegion      : '#statusRegion'
 			bidRegion         : '#bidRegion'
 			profileRegion     : '#profileRegion'
+			pendingRegion      : '#pendingRegion'
 			invitationRegion  : '#invitationRegion'
 
 
