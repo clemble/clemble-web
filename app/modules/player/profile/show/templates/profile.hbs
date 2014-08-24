@@ -1,3 +1,13 @@
-<div class="pull-left">
-	<image src="/player/profile/my/image" class="img-circle" style="width: 80px; height: 80px;"></image>
+<div class="row">
+	<h2>{{nickName}}</h2>
+	<div class="col-md-2">
+		<image src="/player/profile/my/image" class="img-thumbnail"></image>
+	</div>
+	<div class="col-md-6">
+		{{#if nickName}}<h4><small>Nick</small> {{nickName}}</h4>{{/if}}
+		{{#if firstName}}<h4><small>First Name</small> {{firstName}}</h4>{{/if}}
+		{{#if lastName}}<h4><small>Last Name</small> {{lastName}}</h4>{{/if}}
+		{{#if gender}}<h4><small>Gender</small> {{#gender gender}}{{/gender}}</h4>{{/if}}
+	</div>
+
 </div>

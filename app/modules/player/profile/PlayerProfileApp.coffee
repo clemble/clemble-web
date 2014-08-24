@@ -4,3 +4,15 @@ require './show/PlayerProfileShow'
 
 @App.module "PlayerProfileApp", (PlayerProfileApp, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
+
+	API =
+		showMy: ->
+			App.request "player:profile:show:my", App.mainRegion
+
+	class Router extends Marionette.AppRouter
+		appRoutes:
+			'player/profile': 'showMy'
+
+	App.addInitializer ->
+		new Router
+			controller: API

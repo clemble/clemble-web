@@ -14,10 +14,6 @@
 								model: goal
 							goalLayout.detailsRegion.show goalView
 							App.request("goal:status:show", goal, goalLayout.statusRegion)
-							App.request("goal:bid:show", goal, goalLayout.bidRegion)
-							App.request("player:profile:show:my", goalLayout.profileRegion)
-							App.request("goal:judge:invitation:pending:my", goalLayout.pendingRegion)
-							App.request("goal:judge:duty:pending:my", goalLayout.dutiesRegion)
 						region.show goalLayout
 					)
 			)
@@ -25,13 +21,15 @@
 	class Goal extends Marionette.ItemView
 		template: require './templates/goal'
 		onShow: () ->
-			timeSpent = (new Date().getTime() - @model.get("startDate")) / 1000
-			timeLeft = (@model.get("dueDate") - new Date().getTime()) / 1000
-			$('#timeLeft').FlipClock(timeLeft, {
-				clockFace: 'DailyCounter',
-				countdown: true,
-				showSeconds: true
-			});
+			now = new Date().getTime()
+			timeSpent = (now - @model.get("startDate")) / 1000
+			timeLeft = (@model.get("dueDate") - now) / 1000
+			if (timeLeft > 0)
+				$('#timeLeft').FlipClock(timeLeft, {
+					clockFace: 'DailyCounter',
+					countdown: true,
+					showSeconds: true
+				});
 			$('#timeSpent').FlipClock(timeSpent, {
 				clockFace: 'DailyCounter',
 				showSeconds: true
@@ -42,10 +40,6 @@
 		regions:
 			detailsRegion     : '#detailsRegion'
 			statusRegion      : '#statusRegion'
-			bidRegion         : '#bidRegion'
-			profileRegion     : '#profileRegion'
-			pendingRegion     : '#pendingRegion'
-			dutiesRegion      : '#dutiesRegion'
 
 
 	class Goals extends Marionette.CompositeView

@@ -2,21 +2,10 @@
 
 	Controller =
 		show: (player, region) ->
-			playerLayout = new Layout()
-			playerLayout.on "show", () ->
-				player = App.request "player:profile:entities:get", player
-				playerView = new Player
-					model: player
-				playerLayout.profileRegion.show playerView
-				App.request "player:account:show:my", playerLayout.accountRegion
-			region.show playerLayout
-
-	class Layout extends Marionette.LayoutView
-		template: require './templates/layout'
-		regions:
-			profileRegion   : '#profileRegion'
-			accountRegion   : '#accountRegion'
-
+			player = App.request "player:profile:entities:get", player
+			playerView = new Player
+				model: player
+			region.show playerView
 
 	class Player extends Marionette.ItemView
 		template: require "./templates/profile"
