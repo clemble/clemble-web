@@ -3,7 +3,7 @@
   "version": "0.10.0",
   "main": "public/javascripts/app.js",
   "dependencies": {
-    "underscore": "~1.6.0",
+    "underscore": "~1.7.0",
     "underscore.string": "~2.3.3",
     "console-polyfill": "~0.1.0",
     "jquery": "~2.1.1",

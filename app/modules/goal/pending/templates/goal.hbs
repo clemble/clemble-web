@@ -1,6 +1,16 @@
-<div class="row">
-	<h1 class="text-center">{{goal}}</h1>
-</div>
-<div class="row">
-	<h2 class="container hinge-nav"><div id="timeLeft" class="flip-counter clock flip-clock-wrapper"></div></h2>
-</div>
+	<div class="row">
+		<div class="col-md-offset-1 col-md-7">
+			<h1>{{goal}}</h1>
+		</div>
+		<div class="col-md-3">
+			<h4>Bid {{#money bid.amount.currency bid.amount}}{{/money}}</h4>
+			<h4>Win {{#money bid.interest.currency bid.interest}}{{/money}}</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-1 col-md-10">
+			<h2 class="container hinge-nav"><div id="timeLeft" class="flip-counter clock flip-clock-wrapper"></div></h2>
+			<h1><small>What's your status?</small></h1>
+			<input id="status.status" class="form-control" type="text" value="{{status.status}}">
+		</div>
+	</div>

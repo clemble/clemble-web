@@ -7,12 +7,14 @@ require './bid/GoalBidApp'
 
 require './judge/GoalJudgeApp'
 
+require './timeline/GoalTimeline'
+
 @App.module "GoalApp", (GoalApp, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
 
 	API =
 		showMy: ->
-			App.request "goal:pending:my", App.mainRegion
+			App.request "goal:timeline:my", App.mainRegion
 
 	class Router extends Marionette.AppRouter
 		appRoutes:

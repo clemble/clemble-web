@@ -17,6 +17,12 @@
 						region.show goalLayout
 					)
 			)
+		myPending: (region) ->
+			myGoals = App.request("goal:entities:my:pending")
+			myGoalsView = new Goals
+				collection: myGoals
+			region.show myGoalsView
+
 
 	class Goal extends Marionette.ItemView
 		template: require './templates/goal'
@@ -48,4 +54,5 @@
 		childViewContainer: 'div'
 
 	App.reqres.setHandler "goal:pending:my", (region) -> Controller.pending(region)
+	App.reqres.setHandler "goal:pending:list:my", (region) -> Controller.myPending(region)
 
