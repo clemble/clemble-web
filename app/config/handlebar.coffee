@@ -1,6 +1,9 @@
 do(Handlebars, Swag, _) ->
 	Swag.registerHelpers(Handlebars);
 
+	Handlebars.registerHelper 'toJSON', ->
+		new Handlebars.SafeString(JSON.stringify(this, undefined, 2))
+
 	Handlebars.registerHelper 'gender', (g) ->
 		if (g == "M")
 			new Handlebars.SafeString("<span class='fa fa-male'></span>")

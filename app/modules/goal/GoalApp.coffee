@@ -7,6 +7,7 @@ require './bid/GoalBidApp'
 
 require './judge/GoalJudgeApp'
 
+require './configuration/GoalConfigurationApp'
 require './timeline/GoalTimeline'
 
 @App.module "GoalApp", (GoalApp, App, Backbone, Marionette, $, _) ->
@@ -14,7 +15,8 @@ require './timeline/GoalTimeline'
 
 	API =
 		showMy: ->
-			App.request "goal:timeline:my", App.mainRegion
+			configurations = App.request("goal:configuration:entities:get")
+			App.request "goal:configuration:list", configurations, App.mainRegion
 
 	class Router extends Marionette.AppRouter
 		appRoutes:
