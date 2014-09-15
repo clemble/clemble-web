@@ -19,4 +19,4 @@
 			configurations.fetch()
 			configurations
 
-	App.reqres.setHandler "goal:configuration:entities:get", () -> API.getConfigurations()
+	App.reqres.setHandler "goal:configuration:entities:all", () -> API.getConfigurations()
