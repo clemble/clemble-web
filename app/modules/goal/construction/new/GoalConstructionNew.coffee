@@ -2,10 +2,11 @@
 
 	Controller =
 		new: (configurations, region) ->
+			constructionRequest = App.request "goal:construction:entities:new", configurations
 			layout = new GoalConstructionNewLayout
+				model: constructionRequest
 			layout.on "show", () ->
 				App.request "goal:configuration:list", configurations, layout.configurationRegion
-				constructionRequest = App.request "goal:construction:entities:new", configurations
 				constructionRequestView = new GoalConstructionNew
 					model: constructionRequest
 				layout.goalRegion.show constructionRequestView
@@ -16,6 +17,8 @@
 		regions:
 			goalRegion          : "#goalRegion",
 			configurationRegion : "#configurationRegion"
+		events:
+			'click #save'       : () -> @model.save()
 
 	class GoalConstructionNew extends Marionette.ItemView
 		template: require './templates/goal_construction_new'
@@ -23,8 +26,6 @@
 			StickIt: {}
 		bindings:
 			'#goal'       : 'goal'
-
-
 
 
 	App.reqres.setHandler "goal:construction:new", (configurations, region) -> Controller.new(configurations, region)

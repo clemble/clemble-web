@@ -9,8 +9,10 @@
 	API=
 		new: (configurations) ->
 			constructionRequest = new GoalConstructionRequest()
-			constructionRequest.listenTo configurations, "select", (model) ->
+			constructionRequest.set("configuration", configurations.getSelected())
+			constructionRequest.listenTo configurations, "selected", (model) ->
 				constructionRequest.set('configuration', model.attributes)
+			constructionRequest.url = "/goal/construction/"
 			constructionRequest.on("all", (event) -> console.log("construction request #{event}"))
 			constructionRequest
 
