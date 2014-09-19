@@ -22,10 +22,15 @@
 
 	class GoalConstructionNew extends Marionette.ItemView
 		template: require './templates/goal_construction_new'
+		modelEvents:
+			'invalid': (model, error) ->
+				@$("#error").show()
+				@$("#error").text(error)
 		behaviors:
 			StickIt: {}
-		bindings:
-			'#goal'       : 'goal'
+		bindings: {
+			'#goal': 'goal'
+		}
 
 
 	App.reqres.setHandler "goal:construction:new", (configurations, region) -> Controller.new(configurations, region)

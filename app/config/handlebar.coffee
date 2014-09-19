@@ -10,11 +10,11 @@ do(Handlebars, Swag, _) ->
 		else
 			new Handlebars.SafeString("<span class='fa fa-female'></span>")
 
-	Handlebars.registerHelper 'money', (currency, money) ->
-		if (currency == "FakeMoney")
-			new Handlebars.SafeString("<label class='label label-success'><span class='fa fa-usd'></span> #{money.amount}</label>")
+	Handlebars.registerHelper 'money', () ->
+		if (@currency == "FakeMoney")
+			new Handlebars.SafeString("<label class='label label-success'><span class='fa fa-usd'></span> #{@amount}</label>")
 		else
-			new Handlebars.SafeString("<label class='label label-default'><span class='fa fa-euro'></span> #{money.amount}</label>")
+			new Handlebars.SafeString("<label class='label label-success'><span class='fa fa-eur'></span> #{@amount}</label>")
 
-		Handlebars.registerHelper 'profileImage', (player) ->
-			new Handlebars.SafeString("<image src='/player/profile/#{player}/image' class='img-thumbnail'></image>")
+	Handlebars.registerHelper 'profileImage', (player) ->
+		new Handlebars.SafeString("<image src='/player/profile/#{player}/image' class='img-thumbnail'></image>")

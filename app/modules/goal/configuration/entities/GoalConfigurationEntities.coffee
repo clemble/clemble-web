@@ -14,9 +14,14 @@
 	class GoalConfigurations extends Backbone.Collection
 		model: GoalConfiguration
 		setSelected: (model) =>
+			# Notifying of changed selection
 			if (@selected?)
+				@trigger("unselected:#{@selected.get('configurationKey')}", @selected)
 				@trigger("unselected", @selected)
+
+			# Specifying new selection
 			@selected = model
+			@trigger("selected:#{@selected.get('configurationKey')}", @selected)
 			@trigger("selected", @selected)
 		getSelected: () =>
 			@selected

@@ -10,7 +10,7 @@
 	class PlayerAccountShow extends Marionette.ItemView
 		template: require './templates/account'
 		modelEvents:
-			sync: 'render'
+			'sync': 'render'
 
 	App.reqres.setHandler "player:account:show", (player, region) -> Controller.get(player, region)
 	App.reqres.setHandler "player:account:show:my", (region) -> Controller.get('my', region)

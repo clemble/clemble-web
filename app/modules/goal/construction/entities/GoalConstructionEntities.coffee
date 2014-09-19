@@ -5,6 +5,9 @@
 		default:
 			goal: null
 			configuration: null
+		validate: (attributes, options) ->
+			if (attributes.goal == undefined)
+				"Goal must be specified" #TODO use generic error code base with multi language support
 
 	API=
 		new: (configurations) ->

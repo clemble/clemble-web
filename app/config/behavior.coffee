@@ -2,7 +2,7 @@ do (Marionette) ->
 
 	Behaviors =
 		StickIt: Marionette.Behavior.extend
-			onShow: () ->
+			onRender: () ->
 				@view.stickit()
 			onDestroy: () ->
 				@view.unstickit()
