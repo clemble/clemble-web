@@ -10,6 +10,7 @@
 
 	class GoalInitiations extends Backbone.Collection
 		model: GoalInitiation
+		comparator: 'startDate'
 
 	API =
 		listMy: () ->

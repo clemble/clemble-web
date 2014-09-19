@@ -10,6 +10,8 @@
 
 	class GoalInitiation extends Marionette.ItemView
 		template: require './templates/goal_initiation'
+		behaviors:
+			FlowClock: {}
 
 	class GoalInitiations extends Marionette.CompositeView
 		template: require './templates/goal_initiations'
