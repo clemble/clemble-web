@@ -10,6 +10,7 @@ require './judge/GoalJudgeApp'
 require './configuration/GoalConfigurationApp'
 require './construction/GoalConstructionApp'
 require './initiation/GoalInitiationApp'
+require './record/GoalRecordApp'
 
 require './timeline/GoalTimeline'
 
