@@ -10,11 +10,14 @@ do (Marionette) ->
 			onShow: () ->
 				@$('.time-left').each((timeLeft) ->
 					timeLeftSec = (parseInt($(this).attr("time")) - new Date().getTime()) / 1000
-					$(this).FlipClock(timeLeftSec, {
-						clockFace: 'DailyCounter',
-						countdown: false,
-						showSeconds: true
-					})
+					if (timeLeftSec > 0)
+						$(this).FlipClock(timeLeftSec, {
+							clockFace: 'DailyCounter',
+							countdown: false,
+							showSeconds: true
+						})
+					else
+						$(this).text("It's time")
 				)
 
 	Marionette.Behaviors.behaviorsLookup = () -> Behaviors
