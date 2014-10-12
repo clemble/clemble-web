@@ -1,15 +1,9 @@
-require './entities/GoalEntities'
-require './pending/GoalPendingShow'
-
-require './status/GoalStatusApp'
-require './bid/GoalBidApp'
-
-require './judge/GoalJudgeApp'
-
 require './configuration/GoalConfigurationApp'
 require './construction/GoalConstructionApp'
 require './initiation/GoalInitiationApp'
 require './record/GoalRecordApp'
+
+require './active/GoalActive'
 
 require './timeline/GoalTimeline'
 

@@ -1,5 +1,5 @@
 <div class="container-fluid">
-	{{goal}}
+	<h5><small>Starts on</small> {{formatDate startDate "%d/%m %H:%M:%S"}}</h5>
+	{{goal}}<br/>
 	{{money configuration.bid.amount}} {{money configuration.bid.interest}}
-	<h5><small>Starts in</small> {{formatDate startDate "%d/%m %H:%M:%S"}}</h5>
 </div>

@@ -1,5 +1,5 @@
 require './entities/GoalConfigurationEntities'
 require './list/GoalConfigurationList'
 
-@App.module "GoalConfigurationApp", (GoalApp, App, Backbone, Marionette, $, _) ->
+@App.module "GoalConfigurationApp", (GoalConfigurationApp, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
