@@ -16,6 +16,6 @@
 	class GoalInitiations extends Marionette.CompositeView
 		template: require './templates/goal_initiations'
 		childView: GoalInitiation
-		childViewContainer: "div"
+		childViewContainer: "#content"
 
 	App.reqres.setHandler "goal:initiation:list:my", (region) -> Controller.listMy(region)

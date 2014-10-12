@@ -7,8 +7,10 @@
 	App.addRegions
 		headerRegion  : "#headerRegion"
 		mainRegion    : "#mainRegion"
+		initiationApp : "#initiationApp"
 		profileApp    : "#profileApp"
 		accountApp    : "#accountApp"
+
 		modal         : Marionette.ModalRegion
 
 	App.addInitializer ->
@@ -21,6 +23,7 @@
 		App.request "player:profile:show:my", App.profileApp
 		App.request "player:account:show:my", App.accountApp
 		App.request "goal:pending:list:my", App.mainRegion
+		App.request "goal:initiation:list:my", App.initiationApp
 
 		if Backbone.history
 			Backbone.history.start()
