@@ -11,9 +11,7 @@
 			Header
 
 	headers = new HeaderCollection([
-		{name: 'Goals', icon: 'fa fa-bullseye', url: 'goal', active: true}
-		{name: 'Profile', icon: 'fa fa-user', url: 'player/profile', active: false}
-		{name: 'Account', icon: 'fa fa-credit-card', url: 'player/account', active: false}
+		{name: 'Home', icon: 'fa fa-home', url: 'goal', active: true}
 	])
 
 	API =

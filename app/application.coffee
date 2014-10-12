@@ -7,7 +7,8 @@
 	App.addRegions
 		headerRegion  : "#headerRegion"
 		mainRegion    : "#mainRegion"
-		moneyRegion   : "#moneyRegion"
+		profileApp    : "#profileApp"
+		accountApp    : "#accountApp"
 
 	App.addInitializer ->
 
@@ -15,9 +16,10 @@
 
 		Backbone.on("all", (evt) -> console.log("Event"))
 
-#		App.request "goal:pending:my", App.mainRegion
 		App.request "header:list", App.headerRegion
-#		App.request "player:account:show:my", App.moneyRegion
+		App.request "player:profile:show:my", App.profileApp
+		App.request "player:account:show:my", App.accountApp
+		App.request "goal:pending:list:my", App.mainRegion
 
 		if Backbone.history
 			Backbone.history.start()
