@@ -44,5 +44,7 @@
 
 	class NavigationControl extends Marionette.ItemView
 		template : require "./templates/navigation_control"
+		events:
+			"click #add": () -> App.request "goal:construction:my:new:modal"
 
 	App.reqres.setHandler "header:list", (region) -> Controller.list(region)

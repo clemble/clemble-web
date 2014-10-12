@@ -9,6 +9,7 @@
 		mainRegion    : "#mainRegion"
 		profileApp    : "#profileApp"
 		accountApp    : "#accountApp"
+		modal         : Marionette.ModalRegion
 
 	App.addInitializer ->
 

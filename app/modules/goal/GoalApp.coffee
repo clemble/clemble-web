@@ -1,6 +1,5 @@
 require './entities/GoalEntities'
 require './pending/GoalPendingShow'
-require './new/GoalNew'
 
 require './status/GoalStatusApp'
 require './bid/GoalBidApp'
