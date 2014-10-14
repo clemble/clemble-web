@@ -6,10 +6,7 @@
 
 	App.addRegions
 		headerRegion  : "#headerRegion"
-		mainRegion    : "#mainRegion"
-		initiationApp : "#initiationApp"
-		profileApp    : "#profileApp"
-		accountApp    : "#accountApp"
+		contentRegion : "#contentRegion"
 
 		modal         : Marionette.ModalRegion
 
@@ -20,10 +17,7 @@
 		Backbone.on("all", (evt) -> console.log("Event"))
 
 		App.request "header:list", App.headerRegion
-		App.request "player:profile:show:my", App.profileApp
-		App.request "player:account:show:my", App.accountApp
-		App.request "goal:active:list:my", App.mainRegion
-		App.request "goal:initiation:list:my", App.initiationApp
+		App.request "goal:show:my", App.contentRegion
 
 		if Backbone.history
 			Backbone.history.start()

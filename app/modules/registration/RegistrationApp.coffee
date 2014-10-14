@@ -6,7 +6,7 @@ require './base/RegistrationBaseApp'
 
 	API =
 		login: ->
-			App.request 'registration:base:show', App.mainRegion
+			App.request 'registration:base:show', App.contentRegion
 
 	class RegistrationApp.Router extends Marionette.AppRouter
 		appRoutes:

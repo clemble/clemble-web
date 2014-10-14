@@ -5,6 +5,8 @@ require './record/GoalRecordApp'
 
 require './active/GoalActive'
 
+require './show/GoalShow'
+
 require './timeline/GoalTimeline'
 
 @App.module "GoalApp", (GoalApp, App, Backbone, Marionette, $, _) ->
