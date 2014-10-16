@@ -14,9 +14,7 @@ require './timeline/GoalTimeline'
 
 	API =
 		showMy: ->
-#			configurations = App.request("goal:configuration:entities:all")
-#			App.request "goal:construction:new", configurations, App.mainRegion
-			App.request "goal:initiation:list:my", App.mainRegion
+			App.request "goal:show:my", App.mainRegion
 
 	class Router extends Marionette.AppRouter
 		appRoutes:

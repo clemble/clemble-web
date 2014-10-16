@@ -5,9 +5,9 @@ require './show/ErrorShow'
 
 	API =
 		error404: (path) ->
-			App.request "error:show:404", path, App.mainRegion
+			App.request "error:show:404", path, App.contentRegion
 		error500: (path) ->
-			App.request "error:show:500", path, App.mainRegion
+			App.request "error:show:500", path, App.contentRegion
 
 	class ErrorApp.Router extends Marionette.AppRouter
 		appRoutes:
