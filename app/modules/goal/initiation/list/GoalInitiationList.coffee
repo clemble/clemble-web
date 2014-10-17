@@ -13,8 +13,8 @@
 		behaviors:
 			FlowClock: {}
 
-	class GoalInitiations extends Marionette.CollectionView
-		className: () -> if !@collection.isEmpty 'thumbnail' else ''
+	class GoalInitiations extends Marionette.CompositeView
+		template: require './templates/goal_initiations'
 		childView: GoalInitiation
 		childViewContainer: "#content"
 		emptyView: GoalInitiationsEmpty

@@ -9,7 +9,7 @@
 	class GoalRecords extends Marionette.CompositeView
 		template : require './templates/goal_records'
 		childView : GoalRecord
-		childViewContainer : "div"
+		childViewContainer : "#caption"
 
 	Controller=
 		listMy: (region) ->

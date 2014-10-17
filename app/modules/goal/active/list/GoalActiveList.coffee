@@ -11,8 +11,8 @@
 	class GoalActive extends Marionette.ItemView
 		template: require './templates/goal_active'
 
-	class GoalActives extends Marionette.CollectionView
-		className: () -> if !@collection.isEmpty 'thumbnail' else ''
+	class GoalActives extends Marionette.CompositeView
+		template : require './templates/goal_actives'
 		modelEvents:
 			"sync" : "render"
 		childView: GoalActive
