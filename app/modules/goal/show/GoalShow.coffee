@@ -8,7 +8,7 @@
 				App.request "player:account:show:my", layout.accountApp
 				App.request "goal:active:list:my", layout.mainRegion
 				App.request "goal:initiation:list:my", layout.initiationApp
-				App.request "goal:record:list:my", layout.recordApp
+				App.request "goal:record:list:my:state", "finished", layout.recordApp
 			region.show layout
 
 

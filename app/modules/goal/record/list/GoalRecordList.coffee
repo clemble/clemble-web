@@ -17,5 +17,11 @@
 			recordsView = new GoalRecords
 				collection: records
 			region.show recordsView
+		listMyWithSource: (state, region) ->
+			records = App.request("goal:record:entities:my:state", state)
+			recordsView = new GoalRecords
+				collection: records
+			region.show recordsView
 
 	App.reqres.setHandler "goal:record:list:my", (region) -> Controller.listMy(region)
+	App.reqres.setHandler "goal:record:list:my:state", (state, region) -> Controller.listMyWithSource(state, region)

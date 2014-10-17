@@ -21,6 +21,12 @@
 			records.url = "/goal/management/record/my"
 			records.fetch()
 			records
+		listMyWithState: (state) ->
+			records = new GoalRecords()
+			records.url = "/goal/management/record/my/#{state}"
+			records.fetch()
+			records
 
 	App.reqres.setHandler "goal:record:entities:my", () -> API.listMy()
+	App.reqres.setHandler "goal:record:entities:my:state", (state) -> API.listMyWithState(state)
 
