@@ -8,6 +8,7 @@
 				App.request "player:account:show:my", layout.accountApp
 				App.request "goal:active:list:my", layout.mainRegion
 				App.request "goal:initiation:list:my", layout.initiationApp
+				App.request "goal:record:list:my", layout.recordApp
 			region.show layout
 
 
@@ -18,5 +19,6 @@
 			initiationApp : "#initiationApp"
 			profileApp    : "#profileApp"
 			accountApp    : "#accountApp"
+			recordApp     : "#recordApp"
 
 	App.reqres.setHandler "goal:show:my", (region) -> Controller.showMy(region)

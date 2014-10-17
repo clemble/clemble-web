@@ -11,11 +11,15 @@
 	class GoalActive extends Marionette.ItemView
 		template: require './templates/goal_active'
 
-	class GoalActives extends Marionette.CompositeView
-		template: require './templates/goal_actives'
+	class GoalActives extends Marionette.CollectionView
+		className: () -> if !@collection.isEmpty 'thumbnail' else ''
 		modelEvents:
 			"sync" : "render"
 		childView: GoalActive
 		childViewContainer: "#content"
+		emptyView: GoalActiveEmpty
+
+	class GoalActiveEmpty extends Marionette.ItemView
+		template: require "./templates/goal_active_empty"
 
 	App.reqres.setHandler "goal:active:list:my", (region) -> Controller.listMy(region)

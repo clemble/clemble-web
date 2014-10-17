@@ -4,6 +4,7 @@
 	class GoalRecord extends Backbone.Model
 		default:
 			goalKey         : null
+			state           : null
 			player          : null
 			goal            : null
 			judge           : null

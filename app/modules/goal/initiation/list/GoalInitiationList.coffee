@@ -13,9 +13,15 @@
 		behaviors:
 			FlowClock: {}
 
-	class GoalInitiations extends Marionette.CompositeView
-		template: require './templates/goal_initiations'
+	class GoalInitiations extends Marionette.CollectionView
+		className: () -> if !@collection.isEmpty 'thumbnail' else ''
 		childView: GoalInitiation
 		childViewContainer: "#content"
+		emptyView: GoalInitiationsEmpty
+		modelEvents:
+			"sync" : "render"
+
+	class GoalInitiationsEmpty extends Marionette.ItemView
+		template: require './templates/goal_initiation_empty'
 
 	App.reqres.setHandler "goal:initiation:list:my", (region) -> Controller.listMy(region)
