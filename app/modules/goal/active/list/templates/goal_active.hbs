@@ -1,6 +1,7 @@
 <div class="container-fluid">
 	<h4>{{goal}}</h4>
-	{{#if status}}<h4><small>Status</small>{{status}}</h4>{{/if}}
+	{{#if status}}<h4><small>Status</small>{{status}} </h4>{{/if}}
+    <button id="update" class="btn btn-sm btn-success">Update</button><br/>
     {{#each context.playerContexts}}
         {{formatDate clock.moveStart "%d/%m %H:%M:%S"}} or {{clock.punishment.breach}}</br>
     {{/each}}

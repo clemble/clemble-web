@@ -10,6 +10,8 @@
 		template : require './templates/goal_records'
 		childView : GoalRecord
 		childViewContainer : "#caption"
+		modelEvents:
+			"sync" : "render"
 
 	Controller=
 		listMy: (region) ->

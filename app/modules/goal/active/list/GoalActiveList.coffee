@@ -7,9 +7,11 @@
 				collection: active
 			region.show activeView
 
-
 	class GoalActive extends Marionette.ItemView
 		template: require './templates/goal_active'
+		events:
+			"click #update" : "update"
+		update: () -> App.request "goal:active:action:new:modal", @model.url()
 
 	class GoalActives extends Marionette.CompositeView
 		template : require './templates/goal_actives'

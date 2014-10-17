@@ -10,6 +10,7 @@
 			parts         : 0
 			progress      : 0
 			context       : null
+		idAttribute: 'goalKey'
 
 	class GoalStates extends Backbone.Collection
 		model: GoalState

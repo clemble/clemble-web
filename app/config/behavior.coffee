@@ -30,6 +30,19 @@ do (Marionette) ->
 					else
 						$(this).text("It's time")
 				)
-
+		MarionetteModal: Marionette.Behavior.extend
+			events:
+				'click #save'       : "save"
+				'click #cancel'     : "cancel"
+			save: () ->
+				view = @view
+				model = view.model
+				model.save(model.toJSON(), {
+					success: () ->
+						#TODO really ugly shit
+						view.$el.parent().parent().parent().parent().modal("hide")
+				})
+			cancel: () ->
+				@$el.parent().parent().parent().parent().modal("hide")
 
 	Marionette.Behaviors.behaviorsLookup = () -> Behaviors

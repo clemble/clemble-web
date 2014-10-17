@@ -53,18 +53,9 @@
 		regions:
 			goalRegion          : "#goalRegion",
 			configurationRegion : "#configurationRegion"
-		events:
-			'click #save'       : "save"
-			'click #cancel'     : "cancel"
-		save: () ->
-			view = @
-			@model.save(@model.toJSON(), {
-					success: () ->
-						#TODO really ugly shit
-						view.$el.parent().parent().parent().parent().modal("hide")
-				})
-		cancel: () ->
-			@$el.parent().parent().parent().parent().modal("hide")
+		behaviors: {
+			MarionetteModal: {}
+		}
 
 	class GoalConstructionNew extends Marionette.ItemView
 		template: require './templates/goal_construction_new'
