@@ -11,7 +11,8 @@ before_script:
   - mkdir -p shippable/codecoverage
   - npm install -g brunch
   - npm install -g bower
-  - bower install
+  # Force bower resort to the latest version
+  - bower -F install
 
 # Running the brunch build with shippable
 script:
