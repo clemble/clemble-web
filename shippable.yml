@@ -5,18 +5,14 @@ language: node_js
 node_js:
   - 0.10.25
 
-# The path for Xunit to output test reports
-env:
-  - XUNIT_FILE=shippable/testresults/result.xml
-
 # Create directories for test and coverage reports
 before_script:
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
   - npm install -g brunch
   - npm install -g bower
-
-# Running the tests with grunt
-script:
   - bower install
+
+# Running the brunch build with shippable
+script:
   - brunch build --production
