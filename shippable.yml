@@ -1,6 +1,14 @@
 # Language setting
 language: node_js
 
+env:
+  global:
+    - AWS_DEFAULT_REGION=us-east-1 AWS_STACK=fa8a954a-fc24-41bb-8c16-45b345934386 AWS_APP_ID=0cab8a17-17c9-42de-b002-8b2a7f042561
+    # AWS_ACCESS_KEY_ID
+    - secure: JJcW5jsdzeF5LwuZWXoCdXINYeZS2hBkflGwYshVsMtodYkN3UeoAug17w90UE1VvoAXdALeklLWa0TVngw68wVGZuO5ZxjCRyPnNhqjYGlToiS2NI/Iv8fVGg9f3zdKp5OtUYytKml60mIbluVgeaBekDArfjGv3R5rV7Ykmc1f++jYuiu4rfGKVswr1OIqvtXEe8a+gOKUZ8gAdSH9iDf8JTf/DMrLPMpVXMxkeAAbvcgVTNI2SMjO5TSVeTnBHOYU3kebAVa8aVcsmyqsu9OaamgmuxBeFc9lSWmW/5brfZIYLIawaiD2t5wWRz+cbNhP2uuBH4vbsYP7rI/bGA==
+    # AWS_SECRET_ACCESS_KEY
+    - secure: LS/X2viomQ6NRRpniUmJF2T9MuHt0laBsj4PYooZ7pQfalXr0DqdMUU3IRaOKD6+pb5v1KfkiQi/ZmmQkPbSSJeBjqQgQmy3eT1ItH4o+d5Mcp3bNJqUvR1CxCU5lEDKHt0qLCFThjz9ZrisDo0WYNMcnPT7XCAah26lCXxYbKZn3mMFdFa0L4s+p2L2hFACeJfvo+MOPZRDJehz7JU48FdtIP/UyDFdBkao4OYNlolChSw3vyPmbBTX4Xi0hMCXRnuOGYBHpNQzVOgCp8bsLpTsMoqiAGB87st2xphn8wN+reIP+dpW4C3UmWilZWySJn9FKEhcMfvOL0MuvxlUow==
+
 # Version number
 node_js:
   - 0.10.25
@@ -17,3 +25,9 @@ before_script:
 # Running the brunch build with shippable
 script:
   - brunch build --production
+
+after_success:
+  - cd public/ && tar -czvf ../clemble-web.tar.gz . && cd ..
+  - virtualenv ve && source ve/bin/activate && pip install awscli
+  - aws s3 cp ./clemble-web.tar.gz s3://clemble/production/web/clemble-web.tar.gz
+  - aws opsworks create-deployment --stack-id $AWS_STACK --app-id $AWS_APP_ID --command '{"Name":"deploy"}'

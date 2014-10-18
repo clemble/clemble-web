@@ -12,6 +12,9 @@
 *.idea
 *.iml
 *.out
+*.tar
+*.gz
+
 
 # OS or Editor folders
 .idea
