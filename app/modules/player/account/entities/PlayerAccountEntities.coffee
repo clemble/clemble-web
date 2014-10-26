@@ -10,7 +10,7 @@
 	API =
 		get: (player) ->
 			account = new PlayerAccount(player: player)
-			account.urlRoot = "/payment/account/"
+			account.urlRoot = App.Utils.toUrl("/payment/account/")
 			account.fetch()
 			account
 

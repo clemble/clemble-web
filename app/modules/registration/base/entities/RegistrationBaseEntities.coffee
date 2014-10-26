@@ -15,7 +15,7 @@
 			registrationRequest.listenTo profile, 'change', (model) ->
 				registrationRequest.set('playerProfile', model.attributes)
 
-			registrationRequest.url = "/player/registration/base/signin"
+			registrationRequest.url = App.Utils.toUrl("/registration/base/signin")
 			registrationRequest.on "all", (evt) -> console.log("registration > #{evt}")
 			registrationRequest
 

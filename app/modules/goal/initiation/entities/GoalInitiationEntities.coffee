@@ -15,7 +15,7 @@
 	API =
 		listMy: () ->
 			initiations = new GoalInitiations()
-			initiations.url = "/goal/construction/initiation/my"
+			initiations.url = App.Utils.toUrl("/construction/initiation/my")
 			initiations.fetch()
 			initiations
 

@@ -5,3 +5,13 @@ Web based client for Clemble
 
 Brunch based static file generator.
 
+
+
+If developing locally add
+
+127.0.0.1       api.localhost
+
+to /etc/hosts
+
+
+

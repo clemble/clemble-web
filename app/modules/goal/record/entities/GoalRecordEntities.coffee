@@ -18,12 +18,12 @@
 	API =
 		listMy: () ->
 			records = new GoalRecords()
-			records.url = "/goal/management/record/my"
+			records.url = App.Utils.toUrl("/management/record/my")
 			records.fetch()
 			records
 		listMyWithState: (state) ->
 			records = new GoalRecords()
-			records.url = "/goal/management/record/my/#{state}"
+			records.url = App.Utils.toUrl("/management/record/my/#{state}")
 			records.fetch()
 			records
 

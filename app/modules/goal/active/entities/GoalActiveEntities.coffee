@@ -18,7 +18,7 @@
 	API=
 		myActive: () ->
 			active = new GoalStates()
-			active.url = '/goal/management/active/my'
+			active.url  = App.Utils.toUrl('/management/active/my')
 			active.fetch()
 			active
 

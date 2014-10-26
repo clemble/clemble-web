@@ -29,7 +29,7 @@
 	API =
 		getConfigurations: () ->
 			configurations = new GoalConfigurations()
-			configurations.url = '/goal/configuration/my'
+			configurations = App.Utils.toUrl('/configuration/my')
 			configurations.once "sync", () -> configurations.setSelected(configurations.find())
 			configurations.fetch()
 			configurations

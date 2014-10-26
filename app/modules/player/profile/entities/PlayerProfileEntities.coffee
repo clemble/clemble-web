@@ -18,7 +18,7 @@
 			profile
 		get: (player) ->
 			profile = new PlayerProfile(player: player)
-			profile.url = "/player/profile/#{player}"
+			profile.url = App.Utils.toUrl("/profile/#{player}")
 			profile.on "all", (evt) -> console.log("profile > #{evt}")
 			profile.fetch()
 			profile

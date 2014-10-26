@@ -9,7 +9,7 @@
 		new: () ->
 			login = new Login()
 			login.on "all", (evt) -> console.log("login > #{evt}") # TODO make a single point to intercept all initiations, and listen for events
-			login.url = "/player/registration/base/login"
+			login.url = App.Utils.toUrl "/registration/base/login"
 			login
 
 	App.reqres.setHandler 'registration:login:entities:new', () -> API.new()

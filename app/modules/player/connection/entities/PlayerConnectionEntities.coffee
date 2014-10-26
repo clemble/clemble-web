@@ -11,7 +11,7 @@
 	API =
 		get: (player) ->
 			account = new PlayerConnections()
-			account.url = "/player/connection/#{player}"
+			account.url = App.Utils.toUrl("/connection/#{player}")
 			account.fetch()
 			account
 

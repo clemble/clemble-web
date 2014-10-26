@@ -21,9 +21,11 @@
 		events:
 			'click #signUp' : 'singUp'
 		singUp: () ->
+			view = @
 			@model.save(@model.toJSON(), {
 				success: () ->
-					window.location.replace('./')
+					view.remove()
+					Backbone.history.navigate("/", { trigger: true })
 				error: () ->
 					console.log("NO Error Processing for signUp failure")
 			})

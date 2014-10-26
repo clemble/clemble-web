@@ -2,7 +2,8 @@
 @App = do(Marionette, Backbone) ->
 	App = new Marionette.Application
 
-	App.host = "localhost:8080"
+	App.Utils =
+		toUrl: (url) -> "http://api.#{window.location.host}#{url}"
 
 	App.addRegions
 		headerRegion  : "#headerRegion"
@@ -21,5 +22,6 @@
 
 		if Backbone.history
 			Backbone.history.start()
+
 
 	App
