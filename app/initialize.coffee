@@ -12,6 +12,9 @@ $ ->
 			404: -> window.location.replace('#error/404')
 			500: -> window.location.replace('#error/500')
 		}
+		xhrFields: {
+			withCredentials: true
+		}
 	}
 
 	# This is hack to be able to run components, there must be a nicer way to do this
