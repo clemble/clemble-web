@@ -1,5 +1,6 @@
 require './login/RegistrationLoginApp'
 require './base/RegistrationBaseApp'
+require './social/RegistrationSocialApp'
 
 @App.module "RegistrationApp", (RegistrationApp, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false

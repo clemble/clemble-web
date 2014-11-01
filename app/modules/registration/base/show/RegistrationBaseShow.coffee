@@ -8,6 +8,8 @@
 				login = App.request 'registration:login:show:new', layout.login
 				profile = App.request 'player:profile:new', layout.profile
 
+				App.request "registration:social:facebook", layout.social
+
 				registration = App.request 'registration:base:entities:new', login, profile
 				manual = new RegistrationControl
 					model: registration
@@ -38,5 +40,6 @@
 			profile  : '#profile'
 			control  : '#control'
 			signIn   : '#signIn'
+			social   : '#social'
 
 	App.reqres.setHandler 'registration:base:show', (region) -> Controller.registerManual(region)

@@ -1,7 +1,7 @@
 require './entities/GoalRecordEntities'
 require './list/GoalRecordList'
 
-@App.module "GoalRecordApp", (GoalRecordApp, App, Backbone, Marionette, $, _) ->
+@App.module "GoalApp.GoalRecordApp", (GoalRecordApp, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
 
 	API =
