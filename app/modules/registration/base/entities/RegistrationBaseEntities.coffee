@@ -5,13 +5,22 @@
 		default:
 			playerProfile: null
 			playerCredential: null
+		setPlayerCredential: (playerCredential) ->
+			self = @
+			self.set('playerCredential', playerCredential.attributes)
+			@playerCredential = playerCredential
+			@listenTo playerCredential, 'change', (model) ->
+				self.set('playerCredential', model.attributes)
+		validate: (attrs) ->
+			@playerCredential.isValid(true)
+
 
 	API =
 		new: (login, profile) ->
 			registrationRequest = new PlayerBaseRegistrationRequest()
 
-			registrationRequest.listenTo login, 'change', (model) ->
-				registrationRequest.set('playerCredential', model.attributes)
+			registrationRequest.setPlayerCredential login
+
 			registrationRequest.listenTo profile, 'change', (model) ->
 				registrationRequest.set('playerProfile', model.attributes)
 
