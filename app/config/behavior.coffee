@@ -6,6 +6,11 @@ do (Marionette) ->
 				@view.stickit()
 			onDestroy: () ->
 				@view.unstickit()
+		StickValidation: Marionette.Behavior.extend
+			onRender: () ->
+				Backbone.Validation.bind(@view);
+			onDestroy: () ->
+				Backbone.Validation.unbind(@view);
 		FlowClock: Marionette.Behavior.extend
 			onShow: () ->
 				@$('.time-left').each((timeLeft) ->
@@ -44,5 +49,11 @@ do (Marionette) ->
 				})
 			cancel: () ->
 				@$el.parent().parent().parent().parent().modal("hide")
+		DisplayError: Marionette.Behavior.extend
+			modelEvents:
+				'error'             : "showError"
+			showError: (model, resp, options) ->
+				#TODO make this more sophisticated
+				@view.$('.help-block:first').html(resp.responseJSON[0].error.description).removeClass('hidden')
 
 	Marionette.Behaviors.behaviorsLookup = () -> Behaviors

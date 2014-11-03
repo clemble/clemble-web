@@ -17,10 +17,12 @@
 	class Login extends Marionette.ItemView
 		template: require './templates/login'
 		bindings:
-			'#email'    : 'email',
-			'#password' : 'password'
+			'#email'        : 'email',
+			'#password'     : 'password'
 		behaviors:
-			StickIt:{}
+			StickIt         : {}
+			StickValidation : {}
+			DisplayError    : {}
 
 	class LoginSignIn extends Login
 		template: require './templates/signIn'

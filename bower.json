@@ -14,7 +14,9 @@
     "moment": "~2.6.0",
     "swag": "~0.7.0",
     "backbone.stickit": "~0.8.0",
-    "FlipClock": "~0.6.1"
+    "FlipClock": "~0.6.1",
+    "bootstrap-social": "~4.8.0",
+    "backbone-validation": "~0.9.1"
   },
   "overrides": {
     "underscore": {
@@ -35,6 +37,13 @@
         "underscore": "*"
       },
       "main": "backbone.js"
+    },
+    "backbone-validation": {
+      "dependencies": {
+        "underscore": "*",
+        "backbone": "*"
+      },
+      "main": "dist/backbone-validation.js"
     }
   },
   "resolutions": {

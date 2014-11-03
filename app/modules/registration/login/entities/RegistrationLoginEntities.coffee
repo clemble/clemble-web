@@ -4,6 +4,14 @@
 		defaults:
 			email: ''
 			password: ''
+		validation:
+			password: {
+				required: true
+			},
+			email: {
+				required: true,
+				pattern: 'email'
+			}
 
 	API =
 		new: () ->
