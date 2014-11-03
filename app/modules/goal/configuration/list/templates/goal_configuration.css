@@ -8,7 +8,7 @@
 
 .plans {
   margin: 40px auto;
-  width: 660px;
+  width: 570px;
   zoom: 1;
 }
 .plans:before, .plans:after {
@@ -21,7 +21,7 @@
 
 .plan {
   float: left;
-  width: 220px;
+  width: 190px;
   margin: 10px 0;
   padding: 20px;
   text-align: center;

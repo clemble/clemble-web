@@ -18,10 +18,10 @@
 			'click': () -> @model.collection.setSelected(@model)
 
 
-	class GoalConfigurations extends Marionette.CollectionView
+	class GoalConfigurations extends Marionette.CompositeView
 		template: require './templates/goal_configurations'
 		childView: GoalConfiguration
-		childViewContainer: "tbody"
+		childViewContainer: "div"
 
 	Controller =
 		listConfigurations: (configurations, region) ->
