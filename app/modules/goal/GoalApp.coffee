@@ -14,7 +14,7 @@ require './timeline/GoalTimeline'
 
 	API =
 		showMy: ->
-			App.request "goal:show:my", App.mainRegion
+			App.request "goal:show:my", App.contentRegion
 
 	class Router extends Marionette.AppRouter
 		appRoutes:

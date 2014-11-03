@@ -7,7 +7,7 @@ require './new/GoalConstructionNew'
 	API =
 		constructNew: ->
 			configurations = App.request("goal:configuration:entities:all")
-			App.request "goal:construction:new", configurations, App.mainRegion
+			App.request "goal:construction:new", configurations, App.contentRegion
 
 	class Router extends Marionette.AppRouter
 		appRoutes:

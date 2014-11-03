@@ -6,7 +6,7 @@ require './list/GoalInitiationList'
 
 	API =
 		listMy: () ->
-			App.request "goal:initiation:list:my", App.mainRegion
+			App.request "goal:initiation:list:my", App.contentRegion
 
 	class Router extends Marionette.AppRouter
 		appRoutes:

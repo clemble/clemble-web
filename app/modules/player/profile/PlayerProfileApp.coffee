@@ -7,7 +7,7 @@ require './show/PlayerProfileShow'
 
 	API =
 		showMy: ->
-			App.request "player:profile:show:my", App.mainRegion
+			App.request "player:profile:show:my", App.contentRegion
 
 	class Router extends Marionette.AppRouter
 		appRoutes:
