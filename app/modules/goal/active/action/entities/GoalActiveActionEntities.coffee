@@ -10,7 +10,7 @@
 	API=
 		newAction: (url) ->
 			newAction = new GoalStatusUpdateAction()
-			newAction.url = App.Utils.toUrl("#{url}/action")
+			newAction.url = "#{url}/action"
 			newAction
 
 	App.reqres.setHandler "goal:active:action:entities:new", (url) -> API.newAction(url)
