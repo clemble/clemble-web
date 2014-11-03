@@ -7,6 +7,7 @@
 		validation:
 			password: {
 				required: true
+				rangeLength: [6, 64]
 			},
 			email: {
 				required: true,

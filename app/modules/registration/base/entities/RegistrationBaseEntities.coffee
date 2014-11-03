@@ -11,21 +11,31 @@
 			@playerCredential = playerCredential
 			@listenTo playerCredential, 'change', (model) ->
 				self.set('playerCredential', model.attributes)
-		validate: (attrs) ->
-			@playerCredential.isValid(true)
+		setPlayerProfile: (playerProfile) ->
+			self = @
+			self.set('playerProfile', playerProfile.attributes)
+			@playerProfile = playerProfile
+			@listenTo playerProfile, 'change', (model) ->
+				self.set('playerProfile', model.attributes)
+		validate: () ->
+			if (@playerCredential.isValid(true) && @playerProfile.isValid(true))
+				undefined
+			else
+				"Request invalid"
 
 
 	API =
-		new: (login, profile) ->
+		new: () ->
+			login = App.request 'registration:login:entities:new'
+			profile = App.request 'player:profile:entities:new'
+
 			registrationRequest = new PlayerBaseRegistrationRequest()
 
 			registrationRequest.setPlayerCredential login
-
-			registrationRequest.listenTo profile, 'change', (model) ->
-				registrationRequest.set('playerProfile', model.attributes)
+			registrationRequest.setPlayerProfile profile
 
 			registrationRequest.url = App.Utils.toUrl("/registration/base/signin")
 			registrationRequest.on "all", (evt) -> console.log("registration > #{evt}")
 			registrationRequest
 
-	App.reqres.setHandler 'registration:base:entities:new', (login, profile) -> API.new(login, profile)
+	App.reqres.setHandler 'registration:base:entities:new', () -> API.new()

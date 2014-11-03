@@ -1,8 +1,7 @@
 @App.module "PlayerProfileApp.New", (New, App, Backbone, Marionette, $, _) ->
 
 	Controller =
-		new: (region) ->
-			profile = App.request('player:profile:entities:new')
+		new: (region, profile) ->
 			profileView = new PlayerProfileNew
 				model: profile
 			region.show profileView
@@ -12,6 +11,7 @@
 		template: require './templates/profile'
 		behaviors:
 			StickIt: {}
+			StickValidation: {}
 		bindings: {
 			'#country'  : 'country'
 			'#nickName' : 'nickName'
@@ -28,4 +28,4 @@
 		}
 
 
-	App.reqres.setHandler 'player:profile:new', (region) -> Controller.new(region)
+	App.reqres.setHandler 'player:profile:new', (region, profile) -> Controller.new(region, profile)

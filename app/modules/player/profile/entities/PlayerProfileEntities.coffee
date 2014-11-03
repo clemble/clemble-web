@@ -2,14 +2,28 @@
 
 	class PlayerProfile extends Backbone.Model
 		defaults:
-			player            : null #TODO check that it can't be assigned manually during creation
-			nickName          : null
-			firstName         : null
-			lastName          : null
+			player            : '' #TODO check that it can't be assigned manually during creation
+			nickName          : ''
+			firstName         : ''
+			lastName          : ''
 			gender            : null
-			birthDate         : null
+			birthDate         : ''
 			socialConnections : []   #TODO check that it can't be assigned manually
 		idAttribute: 'player'
+		validation: {
+			nickName: {
+				maxLength: 64
+			}
+			firstName: {
+				maxLength: 64
+			}
+			lastName: {
+				maxLength: 64
+			}
+			gender: {
+				oneOf: [null, 'M', 'W']
+			}
+		}
 
 	API =
 		new: () ->

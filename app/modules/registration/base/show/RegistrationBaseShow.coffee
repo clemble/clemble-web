@@ -2,15 +2,18 @@
 
 	Controller =
 		registerManual: (region) ->
-			layout = new RegistrationLayout()
+			registration = App.request 'registration:base:entities:new'
+			layout = new RegistrationLayout
+				model: registration
+
 			layout.on 'show', () ->
 				signIn = App.request 'registration:login:show:signIn', layout.signIn
-				login = App.request 'registration:login:show:new', layout.login
-				profile = App.request 'player:profile:new', layout.profile
+
+				login = App.request 'registration:login:show:new', layout.login, registration.playerCredential
+				profile = App.request 'player:profile:new', layout.profile, registration.playerProfile
 
 				App.request "registration:social:facebook", layout.social
 
-				registration = App.request 'registration:base:entities:new', login, profile
 				manual = new RegistrationControl
 					model: registration
 				layout.control.show manual
@@ -22,12 +25,11 @@
 			'change'  : 'render'
 		events:
 			'click #signUp' : 'singUp'
-		singUp: () ->
+		singUp: () =>
 			view = @
 			@model.save(@model.toJSON(), {
 				success: () ->
-					view.remove()
-					Backbone.history.navigate("/", { trigger: true })
+					Backbone.history.navigate("goal", { trigger: true })
 				error: () ->
 					console.log("NO Error Processing for signUp failure")
 			})
@@ -35,6 +37,8 @@
 
 	class RegistrationLayout extends Marionette.LayoutView
 		template: require "./templates/layout"
+		behaviors:
+			DisplayError: {}
 		regions:
 			login    : '#login'
 			profile  : '#profile'
