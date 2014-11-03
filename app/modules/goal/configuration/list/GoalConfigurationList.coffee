@@ -1,25 +1,24 @@
 @App.module "GoalConfigurationApp.List", (List, App, Backbone, Marionette, $, _) ->
 
 	class GoalConfiguration extends Marionette.ItemView
+		# Markup copied from http://www.cssflow.com/snippets/pricing-table :)
 		template: require './templates/goal_configuration'
-		tagName  : 'span'
-		className: () => 'label label-info'
+		tagName  : 'div'
+		className: () => 'plan'
 		initialize: () ->
 			# In case this model was selected add active class
 			@listenTo @model.collection, "selected:#{@model.get('configurationKey')}", () ->
-				@$el.removeClass("label-info")
-				@$el.addClass("label-success")
+				@$el.addClass("plan-tall")
 			# In case this model was unselected remove active class
 			@listenTo @model.collection, "unselected:#{@model.get('configurationKey')}", () ->
-				@$el.removeClass("label-success")
-				@$el.addClass("label-info")
+				@$el.removeClass("plan-tall")
 		modelEvents:
 			'sync' : 'render'
 		events:
 			'click': () -> @model.collection.setSelected(@model)
 
 
-	class GoalConfigurations extends Marionette.CompositeView
+	class GoalConfigurations extends Marionette.CollectionView
 		template: require './templates/goal_configurations'
 		childView: GoalConfiguration
 		childViewContainer: "tbody"
