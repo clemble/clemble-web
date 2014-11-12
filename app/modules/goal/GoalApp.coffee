@@ -2,12 +2,10 @@ require './configuration/GoalConfigurationApp'
 require './construction/GoalConstructionApp'
 require './initiation/GoalInitiationApp'
 require './record/GoalRecordApp'
+require './timeline/GoalTimelineApp'
 
 require './active/GoalActive'
-
 require './show/GoalShow'
-
-require './timeline/GoalTimeline'
 
 @App.module "GoalApp", (GoalApp, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false

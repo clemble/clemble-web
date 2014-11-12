@@ -9,7 +9,7 @@
 			region.show layout
 
 	class TimelineLayout extends  Marionette.LayoutView
-		template: require './templates/layout'
+		template: require './modules/goal/timeline/list/templates/layout'
 		regions:
 			goalsRegion       : '#goalsRegion'
 			dutiesRegion      : '#dutiesRegion'

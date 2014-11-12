@@ -16,17 +16,19 @@
 		model: GoalRecord
 
 	API =
-		listMy: () ->
+		list: (player) ->
 			records = new GoalRecords()
-			records.url = App.Utils.toUrl("/management/record/my")
+			records.url = App.Utils.toUrl("/management/record/#{player}")
 			records.fetch()
 			records
-		listMyWithState: (state) ->
+		listWithState: (player, state) ->
 			records = new GoalRecords()
-			records.url = App.Utils.toUrl("/management/record/my/#{state}")
+			records.url = App.Utils.toUrl("/management/record/#{player}/#{state}")
 			records.fetch()
 			records
 
-	App.reqres.setHandler "goal:record:entities:my", () -> API.listMy()
-	App.reqres.setHandler "goal:record:entities:my:state", (state) -> API.listMyWithState(state)
+	App.reqres.setHandler "goal:record:entities", (player) -> API.list(player)
+	App.reqres.setHandler "goal:record:entities:my", () -> API.list("my")
+	App.reqres.setHandler "goal:record:entities:state", (player, state) -> API.listWithState(player, state)
+	App.reqres.setHandler "goal:record:entities:my:state", (state) -> API.listWithState("my", state)
 
