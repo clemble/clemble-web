@@ -46,5 +46,6 @@
 		template : require "./templates/navigation_control"
 		events:
 			"click #add": () -> App.request "goal:construction:my:new:modal"
+			"click #connect": () -> App.request "player:connection:invitation:new:modal"
 
 	App.reqres.setHandler "header:list", (region) -> Controller.list(region)
