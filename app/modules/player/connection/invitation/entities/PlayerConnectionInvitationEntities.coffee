@@ -4,7 +4,7 @@
 	class Invitation extends Backbone.Model
 		defaults:
 			player: null
-		idAttribute: 'player'
+#		idAttribute: 'player'
 		validation: {
 			player: {
 				required: true
