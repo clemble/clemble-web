@@ -2,17 +2,21 @@
 
 	Controller =
 		myTimeline: (region) ->
-			layout = new TimelineLayout
-			layout.on "show", () ->
-				App.request "goal:pending:list:my", layout.goalsRegion
-				App.request "goal:duty:list:my", layout.goalsRegion
-			region.show layout
+			timeline = App.request("goal:timeline:entities:my")
+			timelineView = new Timeline
+				collection: timeline
+			region.show timelineView
 
-	class TimelineLayout extends  Marionette.LayoutView
-		template: require './modules/goal/timeline/list/templates/layout'
-		regions:
-			goalsRegion       : '#goalsRegion'
-			dutiesRegion      : '#dutiesRegion'
+	class Goal extends Marionette.ItemView
+		template: require './templates/goal_timeline'
 
-	App.reqres.setHandler "goal:timeline:my", (region) -> Controller.myTimeline(region)
+	class Timeline extends Marionette.CompositeView
+		template : require './templates/goal_timelines'
+		modelEvents:
+			"sync" : "render"
+		childView: Goal
+		childViewContainer: "#content"
+
+
+	App.reqres.setHandler "goal:timeline:list:my", (region) -> Controller.myTimeline(region)
 
