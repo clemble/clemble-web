@@ -19,6 +19,7 @@
 		myActive: () ->
 			active = new GoalStates()
 			active.url  = App.Utils.toUrl('/management/active/my')
+			App.on "goal:management:started", () -> active.fetch()
 			active.fetch()
 			active
 

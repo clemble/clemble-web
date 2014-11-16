@@ -11,6 +11,7 @@
 		get: (player) ->
 			account = new PlayerAccount(player: player)
 			account.urlRoot = App.Utils.toUrl("/payment/account/")
+			App.on "payment:complete", () -> account.fetch()
 			account.fetch()
 			account
 

@@ -16,6 +16,7 @@
 		listMy: () ->
 			initiations = new GoalInitiations()
 			initiations.url = App.Utils.toUrl("/construction/initiation/my")
+			App.on "goal:initiation:created", () -> initiations.fetch()
 			initiations.fetch()
 			initiations
 
