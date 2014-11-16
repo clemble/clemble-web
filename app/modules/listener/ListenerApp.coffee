@@ -25,4 +25,4 @@
 		on_error = () ->
 			console.log('error')
 
-		client.connect('guest', 'guest', on_connect, on_error, "/")
+		client.connect('any', 'anypassword', on_connect, on_error, "/")
