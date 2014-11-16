@@ -20,6 +20,7 @@
 		list: (player) ->
 			timeline = new GoalTimelines()
 			timeline.url = App.Utils.toUrl("/management/connections/timeline/#{player}")
+			App.on "goal:management:friend", () -> timeline.fetch()
 			timeline.fetch()
 			timeline
 

@@ -15,8 +15,11 @@
 			console.log('connected')
 			client.subscribe("/topic/#{player}", (message) ->
 				messageJSON = JSON.parse(message.body);
-				App.trigger "notification", messageJSON
-				App.trigger messageJSON.type, messageJSON
+				channel = messageJSON.type
+				App.trigger channel, messageJSON
+				while channel.lastIndexOf(":") != -1
+					channel = channel.substring(0, channel.lastIndexOf(":"))
+					App.trigger channel, messageJSON
 			)
 
 		on_error = () ->

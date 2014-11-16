@@ -7,6 +7,8 @@ require './timeline/GoalTimelineApp'
 require './active/GoalActive'
 require './show/GoalShow'
 
+require './listener/GoalListenerApp'
+
 @App.module "GoalApp", (GoalApp, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
 

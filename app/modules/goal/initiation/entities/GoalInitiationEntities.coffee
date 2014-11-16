@@ -17,6 +17,7 @@
 			initiations = new GoalInitiations()
 			initiations.url = App.Utils.toUrl("/construction/initiation/my")
 			App.on "goal:initiation:created", () -> initiations.fetch()
+			App.on "goal:initiation:complete", () -> initiations.fetch()
 			initiations.fetch()
 			initiations
 

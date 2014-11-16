@@ -23,5 +23,4 @@
 		if Backbone.history
 			Backbone.history.start()
 
-
 	App
