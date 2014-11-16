@@ -12,6 +12,7 @@
 			account = new PlayerAccount(player: player)
 			account.urlRoot = App.Utils.toUrl("/payment/account/")
 			App.on "payment:complete", () -> account.fetch()
+			App.on "payment:freeze", () -> account.fetch()
 			account.fetch()
 			account
 

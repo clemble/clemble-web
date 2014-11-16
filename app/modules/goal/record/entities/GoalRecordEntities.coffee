@@ -19,11 +19,13 @@
 		list: (player) ->
 			records = new GoalRecords()
 			records.url = App.Utils.toUrl("/management/record/#{player}")
+			App.on "goal:management:end", () -> records.fetch()
 			records.fetch()
 			records
 		listWithState: (player, state) ->
 			records = new GoalRecords()
 			records.url = App.Utils.toUrl("/management/record/#{player}/#{state}")
+			App.on "goal:management:end", () -> records.fetch()
 			records.fetch()
 			records
 
