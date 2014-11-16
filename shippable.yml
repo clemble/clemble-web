@@ -24,7 +24,9 @@ before_script:
 
 # Running the brunch build with shippable
 script:
-  - brunch build --production
+#  Remove production build for now
+#  - brunch build --production
+  - brunch build
 
 after_success:
   - cd public/ && tar -czvf ../clemble-web.tar.gz . && cd ..
