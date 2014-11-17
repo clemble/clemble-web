@@ -1,10 +1,14 @@
 <div class="container-fluid">
-	<h4>{{goal}}</h4>
-	{{#if status}}<h4><small>Status</small>{{status}} </h4>{{/if}}
-    <button id="update" class="btn btn-sm btn-success">Update</button><br/>
-    {{#each context.playerContexts}}
-        {{formatDate clock.moveStart "%d/%m %H:%M:%S"}} or {{clock.punishment.breach}}</br>
-    {{/each}}
-	{{progress}} of {{parts}} <br/>
-	{{money configuration.bid.amount}} {{money configuration.bid.interest}} <br/>
+	<div class="row">
+	<div class="col-md-3">
+		<button id="update" class="btn btn-sm btn-success">Update</button><br/>
+	</div>
+	<div class="col-md-9">
+		<h4>{{goal}} {{money configuration.bid.amount}}/<small>{{money configuration.bid.interest}}</small></h4>
+		{{#if status}}<h4 class="info">{{status}}</h4>{{/if}}
+		{{#each context.playerContexts}}
+			Ends: {{formatDate clock.moveStart "%d/%m %H:%M:%S"}}
+		{{/each}}
+	</div>
+	</div>
 </div>

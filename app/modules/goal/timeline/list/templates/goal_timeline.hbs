@@ -1,4 +1,14 @@
-{{profileImage player}}
-<h4>{{goal}}</h4>
-{{#if status}}<h4><small>Status</small>{{status}} </h4>{{/if}}
-{{money configuration.bid.amount}} {{money configuration.bid.interest}} <br/>
+<div class="container-fluid">
+	<div class="row">
+	<div class="col-md-3">
+		{{profileImage player}}
+	</div>
+	<div class="col-md-9">
+		<h4>{{goal}} {{money configuration.bid.amount}}/<small>{{money configuration.bid.interest}}</small></h4>
+		{{#if status}}<h4 class="info">{{status}}</h4>{{/if}}
+		{{#each context.playerContexts}}
+			Ends: {{formatDate clock.moveStart "%d/%m %H:%M:%S"}}
+		{{/each}}
+	</div>
+	</div>
+</div>
