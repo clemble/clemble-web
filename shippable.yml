@@ -29,9 +29,9 @@ script:
   - brunch build
 
 after_success:
-  # Adding sleep - for some reason, upload is not always successful, this might solve this
-  - sleep 3m
+  # For some reason sometimes packages do not contain
   - cd public/ && tar -czvf ../clemble-web.tar.gz . && cd ..
   - virtualenv ve && source ve/bin/activate && pip install awscli
+  - aws s3 rm s3://clemble/production/web --recursive
   - aws s3 cp ./clemble-web.tar.gz s3://clemble/production/web/clemble-web.tar.gz
   - aws opsworks create-deployment --stack-id $AWS_STACK --app-id $AWS_APP_ID --command '{"Name":"deploy"}'
