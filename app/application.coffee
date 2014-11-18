@@ -23,4 +23,6 @@
 		if Backbone.history
 			Backbone.history.start()
 
+		App.on "all", (event) -> console.log("#{event}")
+
 	App

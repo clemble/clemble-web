@@ -12,6 +12,10 @@
 			parts           : 0
 			progress        : 0
 		idAttribute       : "goalKey"
+		parse: (res) ->
+			self = @
+			App.on "goal:management:#{res.goalKey}", () -> self.fetch()
+			res
 
 	class GoalTimelines extends Backbone.Collection
 		model: GoalTimeline

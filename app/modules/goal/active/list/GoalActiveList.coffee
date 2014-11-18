@@ -12,6 +12,8 @@
 		events:
 			"click #update" : "update"
 		update: () -> App.request "goal:active:action:new:modal", @model.url()
+		modelEvents:
+			"change" : "render"
 
 	class GoalActives extends Marionette.CompositeView
 		template : require './templates/goal_actives'

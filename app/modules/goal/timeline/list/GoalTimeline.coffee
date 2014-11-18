@@ -9,6 +9,8 @@
 
 	class Goal extends Marionette.ItemView
 		template: require './templates/goal_timeline'
+		modelEvents:
+			"change" : "render"
 
 	class Timeline extends Marionette.CompositeView
 		template : require './templates/goal_timelines'
