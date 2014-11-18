@@ -1,9 +1,8 @@
 @App.module "PlayerConnectionApp.Entities", (Entities, App, Backbone, Marionette, $, _) ->
 
 	class PlayerConnection extends Backbone.Model
-		defaults:
-			providerId: null,
-			providerUserId: null
+		parse: (res) ->
+			{ player : res }
 
 	class PlayerConnections extends Backbone.Collection
 		model: PlayerConnection

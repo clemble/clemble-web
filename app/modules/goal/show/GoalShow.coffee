@@ -10,6 +10,7 @@
 				App.request "goal:initiation:list:my", layout.initiationApp
 				App.request "goal:record:list:my:state", "finished", layout.recordApp
 				App.request "goal:timeline:list:my", layout.timelineApp
+				App.request "player:connection:show:my", layout.connectionApp
 			region.show layout
 
 
@@ -22,5 +23,6 @@
 			accountApp    : "#accountApp"
 			recordApp     : "#recordApp"
 			timelineApp   : "#timelineApp"
+			connectionApp : "#connectionApp"
 
 	App.reqres.setHandler "goal:show:my", (region) -> Controller.showMy(region)
