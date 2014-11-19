@@ -1,14 +1,19 @@
 <div class="container-fluid">
-	<div class="row">
 	<div class="col-md-3">
-		{{profileImage player}}
+		<div>
+			{{smallProfileImage player}}
+		</div>
+		<div>
+			<!--<button id="bet" class="btn btn-sm">Bet</button>-->
+			<span class="fa fa-credit-card"></span> {{money configuration.bid.amount}}/<small>{{money configuration.bid.interest}}</small>
+		</div>
 	</div>
 	<div class="col-md-9">
-		<h4>{{goal}} {{money configuration.bid.amount}}/<small>{{money configuration.bid.interest}}</small></h4>
+		<h4>{{goal}}</h4>
 		{{#if status}}<h4 class="info">{{status}}</h4>{{/if}}
 		{{#each context.playerContexts}}
-			Ends: {{formatDate clock.moveStart "%d/%m %H:%M:%S"}}
+			<button id="bet" class="btn btn-circle btn-info"><span class="fa fa-credit-card"></span></button> {{formatDate clock.breachTime "%d/%m %H:%M"}}
 		{{/each}}
 	</div>
-	</div>
 </div>
+<hr/>

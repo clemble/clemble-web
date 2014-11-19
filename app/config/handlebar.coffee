@@ -64,7 +64,7 @@ do(Handlebars, Swag, _) ->
 
 	Handlebars.registerHelper "betRule", (rule) ->
 		if (rule.betType == "fixed")
-			new Handlebars.SafeString("<span class='fa fa-circle-thin'></span> Fixed")
+			new Handlebars.SafeString("<span class='fa fa-circle-thin'></span> #{rule.bets[0]}")
 		else if (rule.betType == "limited")
 			new Handlebars.SafeString("<span class='fa fa-circle-thin'></span> #{rule.minBet} to #{rule.maxBet}")
 		else if (rule.betType == "unlimited")

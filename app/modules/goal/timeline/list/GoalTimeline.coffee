@@ -11,6 +11,10 @@
 		template: require './templates/goal_timeline'
 		modelEvents:
 			"change" : "render"
+		events:
+			"click #bet": "bet"
+		bet: () ->
+			console.log("Bet")
 
 	class Timeline extends Marionette.CompositeView
 		template : require './templates/goal_timelines'
