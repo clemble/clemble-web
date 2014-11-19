@@ -11,6 +11,7 @@
 				App.request "goal:record:list:my:state", "finished", layout.recordApp
 				App.request "goal:timeline:list:my", layout.timelineApp
 				App.request "player:connection:show:my", layout.connectionApp
+				App.request "goal:initiation:list:my:friend", layout.challengesApp
 			region.show layout
 
 
@@ -18,6 +19,7 @@
 		template: require './templates/goal_layout'
 		regions:
 			mainApp       : "#mainApp"
+			challengesApp : "#challengesApp"
 			initiationApp : "#initiationApp"
 			profileApp    : "#profileApp"
 			accountApp    : "#accountApp"

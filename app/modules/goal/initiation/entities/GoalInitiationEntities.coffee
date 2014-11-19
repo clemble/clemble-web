@@ -20,5 +20,13 @@
 			App.on "goal:initiation:complete", () -> initiations.fetch()
 			initiations.fetch()
 			initiations
+		listMyFriend: () ->
+			initiations = new GoalInitiations()
+			initiations.url = App.Utils.toUrl("/construction/initiation/timeline/my")
+			App.on "goal:initiation:created", () -> initiations.fetch()
+			App.on "goal:initiation:complete", () -> initiations.fetch()
+			initiations.fetch()
+			initiations
 
 	App.reqres.setHandler "goal:initiation:entities:my", () -> API.listMy()
+	App.reqres.setHandler "goal:initiation:entities:my:friend", () -> API.listMyFriend()
