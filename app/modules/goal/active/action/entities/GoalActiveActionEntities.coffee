@@ -4,12 +4,23 @@
 	class GoalStatusUpdateAction extends Backbone.Model
 		defaults:
 			status    : null
-			type      : "goal:management:status:update:action"
+		toJSON: () ->
+			json = super
+			json.type = "goal:management:status:update:action"
+			json
 
 	class GoalReachedAction extends Backbone.Model
 		defaults:
 			status    : null
-			type      : "goal:management:reached"
+		toJSON: () ->
+			json = super
+			json.type = "goal:management:reached"
+			json
+
+	class BidAction extends Backbone.Model
+		defaults:
+			amount    : {}
+			interest  : {}
 
 	API=
 		newAction: (url) ->
@@ -18,7 +29,13 @@
 			newAction
 		newReached: (url) ->
 			newReached = new GoalReachedAction()
-			newReached.url = "#{url}/action"
+			newReached.url = url
 			newReached
+		newBid: (url) ->
+			newBid = new BidAction()
+			newBid.url = url
+			newBid
 
 	App.reqres.setHandler "goal:active:action:entities:new", (url) -> API.newAction(url)
+	App.reqres.setHandler "goal:active:action:entities:bid", (url) -> API.newBid(url)
+	App.reqres.setHandler "goal:active:action:entities:reached", (url) -> API.newReached(url)

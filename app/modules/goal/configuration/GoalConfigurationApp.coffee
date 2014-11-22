@@ -6,7 +6,6 @@ require './list/GoalConfigurationList'
 
 	API =
 		showMy: ->
-			console.log("wtk786")
 			configurations = App.request "goal:configuration:entities:all"
 			App.request "goal:configuration:list", configurations, App.contentRegion
 

@@ -7,6 +7,17 @@
 			player        : null
 			startDate     : null
 			configuration : null
+		idAttribute     : 'goalKey'
+		urlRoot         : App.Utils.toUrl("/construction/initiation/")
+		parse: (initiation) ->
+			player = App.player
+			if(initiation.player == player)
+				initiation.myBet = true
+			for bid in initiation.bids
+				if(bid.player == player)
+					initiation.myBet = true
+			initiation
+
 
 	class GoalInitiations extends Backbone.Collection
 		model: GoalInitiation

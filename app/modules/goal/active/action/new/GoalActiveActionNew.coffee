@@ -18,9 +18,8 @@
 			'click #reached'       : "reached"
 		reached: () ->
 			view = @
-			model = @model
-			model.set("type", "goal:management:reached")
-			model.save(model.toJSON(), {
+			reached = App.request "goal:active:action:entities:reached", @model.url
+			reached.save(reached.toJSON(), {
 				success: () ->
 					#TODO really ugly shit
 					view.$el.parent().parent().parent().parent().modal("hide")

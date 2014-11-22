@@ -1,3 +1,4 @@
+require './bid/GoalActiveActionBid'
 require "./new/GoalActiveActionNew"
 require "./entities/GoalActiveActionEntities"
 

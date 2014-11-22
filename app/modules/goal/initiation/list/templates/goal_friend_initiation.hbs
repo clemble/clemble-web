@@ -9,6 +9,6 @@
 	</div>
 	<div class="col-md-9">
 		<h4><small>{{formatDate startDate "%d/%m"}}</small> {{goal}}</h4>
-		<button id="bet" class="btn btn-circle btn-info"><span class="fa fa-credit-card"></span></button>
+		<button id="bet" class="btn btn-circle btn-info" {{#if myBet}}disabled{{/if}}><span class="fa fa-credit-card"></span></button>
 	</div>
 </div>

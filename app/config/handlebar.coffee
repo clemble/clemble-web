@@ -71,3 +71,5 @@ do(Handlebars, Swag, _) ->
 			new Handlebars.SafeString("<span class='fa fa-circle-thin'></span> Unlimited")
 		else if (rule.betType == "forbidden")
 			new Handlebars.SafeString("<span class='fa fa-ban'></span> Forbidden")
+		else if (rule.betType == "rule:bet:bid:mono")
+			new Handlebars.SafeString("<span class='fa fa-circle-thin'></span> #{rule.bid.amount.amount}/#{rule.bid.interest.amount}")

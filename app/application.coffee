@@ -2,6 +2,8 @@
 @App = do(Marionette, Backbone) ->
 	App = new Marionette.Application
 
+	App.player = $.cookie("player")
+
 	App.Utils =
 		toUrl: (url) -> "http://api.#{window.location.host}#{url}"
 

@@ -14,8 +14,6 @@
 
 	class GoalInitiation extends Marionette.ItemView
 		template: require './templates/goal_initiation'
-		behaviors:
-			FlowClock: {}
 
 	class GoalInitiations extends Marionette.CompositeView
 		template: require './templates/goal_initiations'
@@ -30,8 +28,10 @@
 
 	class GoalFriendInitiation extends Marionette.ItemView
 		template: require './templates/goal_friend_initiation'
-		behaviors:
-			FlowClock: {}
+		events:
+			'click #bet' : "bet"
+		bet: () ->
+			App.request "goal:active:action:bid:modal", @model.url(), @model.get("configuration")['betRule']
 
 	class GoalFriendInitiations extends Marionette.CompositeView
 		template: require './templates/goal_friend_initiations'
