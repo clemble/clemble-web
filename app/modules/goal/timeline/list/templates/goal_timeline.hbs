@@ -4,7 +4,7 @@
 			{{smallProfileImage player}}
 		</div>
 		<div>
-			<span class="fa fa-credit-card"></span> {{money configuration.bid.amount}}/<small>{{money configuration.bid.interest}}</small>
+			{{bid bank.total}}
 		</div>
 	</div>
 	<div class="col-md-9">
@@ -15,5 +15,6 @@
 				{{/each}}
 			</small>{{goal}}</h4>
 		{{#if status}}<h4 class="info">{{status}}</h4>{{/if}}
+		{{total}}
 	</div>
 </div>

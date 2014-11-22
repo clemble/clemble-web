@@ -13,7 +13,7 @@
 			player = App.player
 			if(initiation.player == player)
 				initiation.myBet = true
-			for bid in initiation.bids
+			for bid in initiation.bank.bids
 				if(bid.player == player)
 					initiation.myBet = true
 			initiation

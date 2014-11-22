@@ -1,6 +1,15 @@
 do(Handlebars, Swag, _) ->
 	Swag.registerHelpers(Handlebars);
 
+	Utils =
+		toMoney: (money) ->
+			if (!money?)
+				"--"
+			else if (money.currency == "FakeMoney")
+				"<span class='fa fa-usd'></span>#{money.amount}"
+			else
+				"<span class='fa fa-eur'></span>#{money.amount}"
+
 	Handlebars.registerHelper 'toJSON', (obj) ->
 		new Handlebars.SafeString(JSON.stringify(obj, undefined, 2))
 
@@ -11,10 +20,10 @@ do(Handlebars, Swag, _) ->
 			new Handlebars.SafeString("<span class='fa fa-female'></span>")
 
 	Handlebars.registerHelper 'money', (money) ->
-		if (money.currency == "FakeMoney")
-			new Handlebars.SafeString("<span class='fa fa-usd'></span>#{money.amount}")
-		else
-			new Handlebars.SafeString("<span class='fa fa-eur'></span>#{money.amount}")
+		new Handlebars.SafeString(Utils.toMoney(money))
+
+	Handlebars.registerHelper 'bid', (bid) ->
+		new Handlebars.SafeString("<span class='fa fa-credit-card'></span> #{Utils.toMoney(bid.amount)}/<small>#{Utils.toMoney(bid.interest)}</small>")
 
 	Handlebars.registerHelper 'outcome', (outcome) ->
 		if (outcome.outcome == "lost")

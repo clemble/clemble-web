@@ -18,7 +18,7 @@
 	class GoalActives extends Marionette.CompositeView
 		template : require './templates/goal_actives'
 		modelEvents:
-			"sync" : "render"
+			"sync"    : "render"
 		childView: GoalActive
 		childViewContainer: "#content"
 		emptyView: GoalActiveEmpty
