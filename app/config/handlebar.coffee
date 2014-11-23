@@ -10,6 +10,24 @@ do(Handlebars, Swag, _) ->
 			else
 				"<span class='fa fa-eur'></span>#{money.amount}"
 
+	SECOND = 1000
+	MINUTE = 60 * SECOND
+	HOUR = 60 * MINUTE
+	DAY = 24 * HOUR
+	WEEK = 7 * DAY
+
+	Handlebars.registerHelper 'humanTime', (obj) ->
+		if(obj % WEEK == 0)
+			new Handlebars.SafeString("#{obj/WEEK} weeks")
+		else if(obj % DAY == 0)
+			new Handlebars.SafeString("#{obj/DAY} days")
+		else if(obj % HOUR == 0)
+			new Handlebars.SafeString("#{obj/HOUR} hours")
+		else if(obj % MINUTE == 0)
+			new Handlebars.SafeString("#{obj/MINUTE} minutes")
+		else
+			new Handlebars.SafeString("#{obj/SECOND} seconds")
+
 	Handlebars.registerHelper 'toJSON', (obj) ->
 		new Handlebars.SafeString(JSON.stringify(obj, undefined, 2))
 
@@ -54,22 +72,22 @@ do(Handlebars, Swag, _) ->
 			new Handlebars.SafeString("<span class='fa fa-users'></span> friends")
 
 	Handlebars.registerHelper "moveTimeRule", (rule) ->
-		days = rule.limit / 86400000
-		if (days = 1)
+		ruleDay = rule.limit / DAY
+		if (ruleDay = 1)
 			"Daily"
 		else
-			"Every #{days} days"
+			"Every #{ruleDay} days"
 
 	Handlebars.registerHelper "totalTimeRule", (rule) ->
-		days = rule.limit / 86400000
-		if (days == 1)
+		ruleDay = rule.limit / DAY
+		if (ruleDay == 1)
 			"1 Day"
-		else if (days == 7)
+		else if (ruleDay == 7)
 			"Week"
-		else if (days == 30)
+		else if (ruleDay == 30)
 			"Month"
 		else
-			"#{days} Days"
+			"#{ruleDay} Days"
 
 	Handlebars.registerHelper "betRule", (rule) ->
 		if (rule.betType == "fixed")
