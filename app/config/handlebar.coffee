@@ -1,14 +1,20 @@
 do(Handlebars, Swag, _) ->
 	Swag.registerHelpers(Handlebars);
 
-	Utils =
-		toMoney: (money) ->
+	Utils = {
+		unitToString:(num, unit) ->
+			if (num == 1)
+				"1 #{unit}"
+			else
+				"#{num} #{unit}s"
+		toMoney:(money) ->
 			if (!money?)
 				"--"
 			else if (money.currency == "FakeMoney")
 				"<span class='fa fa-usd'></span>#{money.amount}"
 			else
 				"<span class='fa fa-eur'></span>#{money.amount}"
+	}
 
 	SECOND = 1000
 	MINUTE = 60 * SECOND
@@ -18,15 +24,15 @@ do(Handlebars, Swag, _) ->
 
 	Handlebars.registerHelper 'humanTime', (obj) ->
 		if(obj % WEEK == 0)
-			new Handlebars.SafeString("#{obj/WEEK} weeks")
+			new Handlebars.SafeString(Utils.unitToString(obj / WEEK, "week"))
 		else if(obj % DAY == 0)
-			new Handlebars.SafeString("#{obj/DAY} days")
+			new Handlebars.SafeString(Utils.unitToString(obj / DAY, "day"))
 		else if(obj % HOUR == 0)
-			new Handlebars.SafeString("#{obj/HOUR} hours")
+			new Handlebars.SafeString(Utils.unitToString(obj / HOUR, "hour"))
 		else if(obj % MINUTE == 0)
-			new Handlebars.SafeString("#{obj/MINUTE} minutes")
+			new Handlebars.SafeString(Utils.unitToString(obj / MINUTE, "minute"))
 		else
-			new Handlebars.SafeString("#{obj/SECOND} seconds")
+			new Handlebars.SafeString(Utils.unitToString(obj / SECOND, "second"))
 
 	Handlebars.registerHelper 'toJSON', (obj) ->
 		new Handlebars.SafeString(JSON.stringify(obj, undefined, 2))
