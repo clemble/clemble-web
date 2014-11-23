@@ -14,6 +14,11 @@
 
 	class GoalInitiation extends Marionette.ItemView
 		template: require './templates/goal_initiation'
+		events:
+			"click #confirm" : "confirm"
+		confirm: () ->
+			console.log("confirm pressed")
+			$.post(@model.url() + "/confirm", {})
 
 	class GoalInitiations extends Marionette.CompositeView
 		template: require './templates/goal_initiations'
