@@ -10,8 +10,6 @@
 			context         : null
 			status          : null
 			bids            : []
-			parts           : 0
-			progress        : 0
 		idAttribute       : "goalKey"
 
 	class GoalTimelines extends Backbone.Collection
@@ -21,7 +19,7 @@
 		list: (player) ->
 			timeline = new GoalTimelines()
 			timeline.url = App.Utils.toUrl("/management/connections/timeline/#{player}")
-			App.on "goal:management:friend", () -> timeline.fetch()
+			App.request("listener:subscribe", "goal:management", timeline, (body) -> new GoalTimeline(body))
 			timeline.fetch()
 			timeline
 

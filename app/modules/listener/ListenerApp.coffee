@@ -33,3 +33,26 @@
 			console.log('error')
 
 		client.connect('any', 'anypassword', on_connect, on_error, "/")
+
+	API =
+		subscribe: (channel, postfix, collection, constuctor) ->
+			App.on "#{channel}:created#{postfix}", (event) ->
+				console.log("Adding #{JSON.stringify(event)}")
+				collection.add(constuctor(event.body))
+
+			App.on "#{channel}:changed#{postfix}", (event) ->
+				console.log("Updating #{JSON.stringify(event)}")
+				model = constuctor(event.body)
+				existingModel = collection.get(model.id)
+				if (model?)
+					existingModel.set(model.attributes)
+				else
+					collection.add(model)
+
+			App.on "#{channel}:complete#{postfix}", (event) ->
+				console.log("Removing #{JSON.stringify(event)}")
+				model = constuctor(event.body)
+				collection.remove(model)
+
+	App.reqres.setHandler "listener:subscribe", (channel, collection, constuctor) -> API.subscribe(channel, "", collection, constuctor)
+	App.reqres.setHandler "listener:subscribe:my", (channel, collection, constuctor) -> API.subscribe(channel, ":my", collection, constuctor)

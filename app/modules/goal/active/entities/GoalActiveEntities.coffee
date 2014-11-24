@@ -7,8 +7,6 @@
 			player        : null
 			configuration : null
 			status        : null
-			parts         : 0
-			progress      : 0
 			context       : null
 		idAttribute: 'goalKey'
 
@@ -19,7 +17,7 @@
 		myActive: () ->
 			active = new GoalStates()
 			active.url  = App.Utils.toUrl('/management/active/my')
-			App.on "goal:management:my", () -> active.fetch()
+			App.request("listener:subscribe:my", "goal:management", active, (body) -> new GoalState(body))
 			active.fetch()
 			active
 
