@@ -28,12 +28,12 @@
 	API =
 		new: () ->
 			profile = new PlayerProfile()
-			profile.on "all", (evt) -> console.log("profile > #{evt}")
+			profile.on "all", (evt, descr) -> console.log("profile > #{evt} > #{JSON.stringify(descr)}")
 			profile
 		get: (player) ->
 			profile = new PlayerProfile(player: player)
 			profile.url = App.Utils.toUrl("/profile/#{player}")
-			profile.on "all", (evt) -> console.log("profile > #{evt}")
+			profile.on "all", (evt, descr) -> console.log("profile > #{evt} > #{JSON.stringify(descr)}")
 			profile.fetch()
 			profile
 

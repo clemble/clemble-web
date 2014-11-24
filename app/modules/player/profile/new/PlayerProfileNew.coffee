@@ -23,7 +23,7 @@
 					else
 						''
 				onSet   : (value) -> value.split(' ')
-			'#gender'   : 'gender'
+			'[name="gender"]'   : 'gender'
 			'#birthDate': 'birthDate'
 		}
 
