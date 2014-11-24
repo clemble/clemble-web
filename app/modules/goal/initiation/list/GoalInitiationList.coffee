@@ -17,8 +17,9 @@
 		events:
 			"click #confirm" : "confirm"
 		confirm: () ->
-			console.log("confirm pressed")
 			$.post(@model.url() + "/confirm", {})
+		modelEvents:
+			"change": "render"
 
 	class GoalInitiations extends Marionette.CompositeView
 		template: require './templates/goal_initiations'
@@ -26,10 +27,13 @@
 		childViewContainer: "#content"
 		emptyView: GoalInitiationsEmpty
 		modelEvents:
-			"sync" : "render"
+			"sync"  : "render"
+			"change": "render"
 
 	class GoalInitiationsEmpty extends Marionette.ItemView
 		template: require './templates/goal_initiation_empty'
+		modelEvents:
+			"change": "render"
 
 	class GoalFriendInitiation extends Marionette.ItemView
 		template: require './templates/goal_friend_initiation'
@@ -37,6 +41,8 @@
 			'click #bet' : "bet"
 		bet: () ->
 			App.request "goal:active:action:bid:modal", @model.url(), @model.get("configuration")['betRule']
+		modelEvents:
+			"change": "render"
 
 	class GoalFriendInitiations extends Marionette.CompositeView
 		template: require './templates/goal_friend_initiations'
