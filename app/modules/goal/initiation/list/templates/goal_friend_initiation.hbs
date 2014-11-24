@@ -1,21 +1,21 @@
 <div class="container-fluid">
-	<div class="col-md-3">
-		<div>
-			{{smallProfileImage player}}
-		</div>
-		<div>
-			<small>
-				{{formatDate startDate "%d/%m %H:%M"}} <br/>
+	<div class="row">
+		<div class="col-md-3">
+			<div>
+				{{smallProfileImage player}}
+			</div>
+			<div>
+				<div data-countdown="{{startDate}}"></div>
 				{{bid bank.total}}
-			</small>
+			</div>
 		</div>
-	</div>
-	<div class="col-md-9">
-		<h4><small>{{formatDate startDate "%d/%m"}}</small> {{goal}}</h4>
-		{{#if my}}
-			Interest {{bid my}}
-		{{else}}
-			<button id="bet" class="btn btn-circle btn-info"><span class="fa fa-credit-card"></span></button>
-		{{/if}}
+		<div class="col-md-9">
+			<h4><small>{{formatDate startDate "%d/%m"}}</small> {{goal}}</h4>
+			{{#if my}}
+				Interest {{bid my}}
+			{{else}}
+				<button id="bet" class="btn btn-circle btn-info"><span class="fa fa-credit-card"></span></button>
+			{{/if}}
+		</div>
 	</div>
 </div>

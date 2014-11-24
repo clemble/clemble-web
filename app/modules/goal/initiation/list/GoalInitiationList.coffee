@@ -18,6 +18,8 @@
 			"click #confirm" : "confirm"
 		confirm: () ->
 			$.post(@model.url() + "/confirm", {})
+		behaviors:
+			Countdown: {}
 		modelEvents:
 			"change": "render"
 
@@ -41,6 +43,8 @@
 			'click #bet' : "bet"
 		bet: () ->
 			App.request "goal:active:action:bid:modal", @model.url(), @model.get("configuration")['betRule']
+		behaviors:
+			Countdown: {}
 		modelEvents:
 			"change": "render"
 

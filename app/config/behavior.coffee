@@ -11,29 +11,29 @@ do (Marionette) ->
 				Backbone.Validation.bind(@view);
 			onDestroy: () ->
 				Backbone.Validation.unbind(@view);
-		FlowClock: Marionette.Behavior.extend
-			onShow: () ->
-				@$('.time-left').each((timeLeft) ->
-					timeLeftSec = (parseInt($(this).attr("time")) - new Date().getTime()) / 1000
-					if (timeLeftSec > 0)
-						$(this).FlipClock(timeLeftSec, {
-							clockFace: 'DailyCounter',
-							countdown: true,
-							showSeconds: true
-						})
-					else
-						$(this).text("It's time")
-				)
-				@$('.time-spent').each((timeLeft) ->
-					timeLeftSec = (parseInt($(this).attr("time")) - new Date().getTime()) / 1000
-					if (timeLeftSec > 0)
-						$(this).FlipClock(timeLeftSec, {
-							clockFace: 'DailyCounter',
-							countdown: false,
-							showSeconds: true
-						})
-					else
-						$(this).text("It's time")
+		Countdown: Marionette.Behavior.extend
+			modelEvents:
+				'change': 'updateDate'
+				'sync': 'updateDate'
+			onRender: () -> @updateDate()
+			onShow: () -> @updateDate()
+			updateDate: () ->
+				console.log("countdown")
+				@view.$('[data-countdown]').each(() ->
+					$this = $(this)
+					finalDate = $(this).data('countdown');
+					$this.countdown(finalDate, (event) ->
+						days = parseInt(event.strftime('%d'))
+						if (days > 1)
+							hourMinutes = event.strftime('%H:%M')
+							$this.html("#{days} days #{hourMinutes}");
+						else if (days == 1)
+							hourMinutes = event.strftime('%H:%M')
+							$this.html("1 day #{hourMinutes}");
+						else
+							hourMinutes = event.strftime('%H:%M:%S')
+							$this.html("#{hourMinutes}");
+					)
 				)
 		MarionetteModal: Marionette.Behavior.extend
 			events:

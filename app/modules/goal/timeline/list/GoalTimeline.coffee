@@ -11,6 +11,8 @@
 		template: require './templates/goal_timeline'
 		modelEvents:
 			"change" : "render"
+		behaviors:
+			Countdown: {}
 
 	class Timeline extends Marionette.CompositeView
 		template : require './templates/goal_timelines'

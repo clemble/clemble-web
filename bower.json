@@ -14,12 +14,12 @@
     "moment": "~2.6.0",
     "swag": "~0.7.0",
     "backbone.stickit": "~0.8.0",
-    "FlipClock": "~0.6.1",
     "bootstrap-social": "~4.8.0",
     "backbone-validation": "~0.9.1",
     "sockjs-client": "~0.3.4",
     "stomp-websocket": "~2.3.3",
-    "jquery.cookie": "~1.4.1"
+    "jquery.cookie": "~1.4.1",
+    "jquery.countdown": "~2.0.4"
   },
   "overrides": {
     "underscore": {

@@ -1,25 +1,25 @@
 <div class="container-fluid">
-	<div class="col-md-3">
-		<div>
-			{{smallProfileImage player}}
-		</div>
-		<div>
-			<small>
+	<div class="row">
+		<div class="col-md-3">
+			<div>
+				{{smallProfileImage player}}
+			</div>
+			<div>
 				{{#each context.playerContexts}}
-					{{formatDate clock.breachTime "%d/%m %H:%M"}}<br/>
+					<div data-countdown="{{clock.breachTime}}"></div>
 				{{/each}}
 				{{bid bank.total}}
-			</small>
+			</div>
 		</div>
-	</div>
-	<div class="col-md-9">
-		<h4>
-			<small>
-			</small>{{goal}}</h4>
-		{{#if status}}<h4 class="info">{{status}}</h4>{{/if}}
-		{{total}}
-		{{#if my}}
-			Interest {{bid my}}
-		{{/if}}
+		<div class="col-md-9">
+			<h4>
+				<small>
+				</small>{{goal}}</h4>
+			{{#if status}}<h4 class="info">{{status}}</h4>{{/if}}
+			{{total}}
+			{{#if my}}
+				Interest {{bid my}}
+			{{/if}}
+		</div>
 	</div>
 </div>

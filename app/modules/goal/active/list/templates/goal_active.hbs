@@ -2,14 +2,14 @@
 	<div class="row">
 		<div class="col-md-3">
 			<button id="update" class="btn btn-sm btn-success btn-circle">U</button><br/>
+			{{#each context.playerContexts}}
+				<div data-countdown="{{clock.breachTime}}"></div>
+			{{/each}}
 			{{bid bank.total}}
 		</div>
 		<div class="col-md-9">
 			<h4>{{goal}}</h4>
 			{{#if status}}<h4 class="info">{{status}}</h4>{{/if}}
-			{{#each context.playerContexts}}
-				Ends: {{formatDate clock.moveStart "%d/%m %H:%M:%S"}}
-			{{/each}}
 		</div>
 	</div>
 </div>
