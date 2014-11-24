@@ -1,6 +1,8 @@
 @App.module "GoalInitiationApp.Entities", (Entities, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
 
+	player = App.player
+
 	class GoalInitiation extends Backbone.Model
 		default:
 			goalKey       : null
@@ -11,15 +13,15 @@
 		urlRoot         : App.Utils.toUrl("/construction/initiation/")
 		initialize      : () ->
 			self = @
-			player = App.player
-			@on "all", (evt) -> console.log("Initiation #{evt}")
-			@on "change:bank", () ->
-				for bid in self.get("bank").bids
-					if (bid.player == player)
-						self.set('myBet', true)
-			@on "change:player", () ->
-				if(self.get("player") == player)
-					self.set('myBet', true)
+			@on "change:bank", @checkMy
+			@on "change:player", @checkMy
+			@checkMy()
+		checkMy  : () =>
+			if(@get("player") == player)
+				@set('my', @get("configuration").bid)
+			for playerBid in @get("bank").bids
+				if (playerBid.player == player)
+					@set('my', playerBid.bid)
 
 	class GoalInitiations extends Backbone.Collection
 		model: GoalInitiation

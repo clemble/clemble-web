@@ -11,6 +11,10 @@
 			status          : null
 			bids            : []
 		idAttribute       : "goalKey"
+		initialize: () ->
+			for playerBid in @get("bank").bids
+				if (playerBid.player == App.player)
+					@set('my', playerBid.bid)
 
 	class GoalTimelines extends Backbone.Collection
 		model: GoalTimeline

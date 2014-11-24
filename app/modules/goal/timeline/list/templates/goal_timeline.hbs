@@ -4,7 +4,7 @@
 			{{smallProfileImage player}}
 		</div>
 		<div>
-			{{bid bank.total}}
+			<small>{{bid bank.total}}</small>
 		</div>
 	</div>
 	<div class="col-md-9">
@@ -16,5 +16,8 @@
 			</small>{{goal}}</h4>
 		{{#if status}}<h4 class="info">{{status}}</h4>{{/if}}
 		{{total}}
+		{{#if my}}
+			Interest {{bid my}}
+		{{/if}}
 	</div>
 </div>
