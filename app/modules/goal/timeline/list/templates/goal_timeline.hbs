@@ -4,15 +4,17 @@
 			{{smallProfileImage player}}
 		</div>
 		<div>
-			<small>{{bid bank.total}}</small>
+			<small>
+				{{#each context.playerContexts}}
+					{{formatDate clock.breachTime "%d/%m %H:%M"}}<br/>
+				{{/each}}
+				{{bid bank.total}}
+			</small>
 		</div>
 	</div>
 	<div class="col-md-9">
 		<h4>
 			<small>
-				{{#each context.playerContexts}}
-					{{formatDate clock.breachTime "%d/%m"}}
-				{{/each}}
 			</small>{{goal}}</h4>
 		{{#if status}}<h4 class="info">{{status}}</h4>{{/if}}
 		{{total}}

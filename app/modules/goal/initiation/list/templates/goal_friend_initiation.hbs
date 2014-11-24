@@ -4,7 +4,10 @@
 			{{smallProfileImage player}}
 		</div>
 		<div>
-			<small>{{bid bank.total}}</small>
+			<small>
+				{{formatDate startDate "%d/%m %H:%M"}} <br/>
+				{{bid bank.total}}
+			</small>
 		</div>
 	</div>
 	<div class="col-md-9">
