@@ -10,6 +10,7 @@
 			judge           : null
 			configuration   : null
 			eventRecords    : null
+		idAttribute: 'goalKey'
 
 
 	class GoalRecords extends Backbone.Collection
@@ -19,13 +20,12 @@
 		list: (player) ->
 			records = new GoalRecords()
 			records.url = App.Utils.toUrl("/management/record/#{player}")
-			App.on "goal:management:end", () -> records.fetch()
 			records.fetch()
 			records
 		listWithState: (player, state) ->
 			records = new GoalRecords()
 			records.url = App.Utils.toUrl("/management/record/#{player}/#{state}")
-			App.on "goal:management:end", () -> records.fetch()
+			App.request("listener:subscribe:my", "goal:record", records, (body) -> new GoalRecord(body))
 			records.fetch()
 			records
 
