@@ -12,7 +12,7 @@
 				login = App.request 'registration:login:show:new', layout.login, registration.playerCredential
 				profile = App.request 'player:profile:new', layout.profile, registration.playerProfile
 
-				App.request "registration:social:facebook", layout.social
+				App.request "registration:social:show", layout.social
 
 				manual = new RegistrationControl
 					model: registration
@@ -33,7 +33,6 @@
 				error: () ->
 					console.log("NO Error Processing for signUp failure")
 			})
-
 
 	class RegistrationLayout extends Marionette.LayoutView
 		template: require "./templates/layout"
