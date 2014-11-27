@@ -1,25 +1,19 @@
+<hr/>
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-3">
+		<div class="col-md-2">
 			<div>
 				{{smallProfileImage player}}
 			</div>
-			<div>
-				{{#each context.playerContexts}}
-					<div data-countdown="{{clock.breachTime}}"></div>
-				{{/each}}
-				{{bid bank.total}}
-			</div>
+			{{#each context.playerContexts}}
+				<label class="label label-success"><b data-countdown="{{clock.breachTime}}"></b></label><br/>
+			{{/each}}
 		</div>
-		<div class="col-md-9">
-			<h4>
-				<small>
-				</small>{{goal}}</h4>
-			{{#if status}}<h4 class="info">{{status}}</h4>{{/if}}
+		<div class="col-md-10">
+			<h4>{{goal}}</h4>
+			<h5>{{status}}</h5>
 			{{total}}
-			{{#if my}}
-				Interest {{bid my}}
-			{{/if}}
+			My: {{bid my}} Total: {{bid bank.total}}
 		</div>
 	</div>
 </div>

@@ -1,15 +1,18 @@
+<hr/>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-3">
-			<button id="update" class="btn btn-sm btn-success btn-circle">U</button><br/>
+			Next status in<br/>
 			{{#each context.playerContexts}}
-				<div data-countdown="{{clock.breachTime}}"></div>
+				<h4><span class="label label-success label-lg"><b data-countdown="{{clock.breachTime}}"></b></span></h4>
 			{{/each}}
+			Total<br/>
 			{{bid bank.total}}
 		</div>
 		<div class="col-md-9">
 			<h4>{{goal}}</h4>
-			{{#if status}}<h4 class="info">{{status}}</h4>{{/if}}
+			<h5> {{status}}</h5>
+			<button id="update" class="btn btn-sm btn-success"><span class="fa fa-circle-thin"></span> Update</button>
 		</div>
 	</div>
 </div>
