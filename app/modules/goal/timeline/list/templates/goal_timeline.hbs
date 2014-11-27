@@ -13,7 +13,7 @@
 			<h4>{{goal}}</h4>
 			<h5>{{status}}</h5>
 			{{total}}
-			My: {{bid my}} Total: {{bid bank.total}}
+			{{#if my}}My: {{bid my}}{{/if}} Total: {{bid bank.total}}
 		</div>
 	</div>
 </div>

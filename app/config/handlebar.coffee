@@ -47,7 +47,11 @@ do(Handlebars, Swag, _) ->
 		new Handlebars.SafeString(Utils.toMoney(money))
 
 	Handlebars.registerHelper 'bid', (bid) ->
-		new Handlebars.SafeString("<span class='fa fa-credit-card'></span> #{Utils.toMoney(bid.amount)}/<small>#{Utils.toMoney(bid.interest)}</small>")
+		if(bid?)
+			new Handlebars.SafeString("<span class='fa fa-credit-card'></span> #{Utils.toMoney(bid.amount)}/<small>#{Utils.toMoney(bid.interest)}</small>")
+		else
+			console.log("!!!ERROR!!! Trying to log empty bid")
+			new Handlebars.SafeString("")
 
 	Handlebars.registerHelper 'outcome', (outcome) ->
 		if (outcome.outcome == "lost")
