@@ -26,10 +26,10 @@ do (Marionette) ->
 						days = parseInt(event.strftime('%d'))
 						if (days > 1)
 							hourMinutes = event.strftime('%H:%M')
-							$this.html("#{days} days #{hourMinutes}");
+							$this.html("#{days} / #{hourMinutes}");
 						else if (days == 1)
-							hourMinutes = event.strftime('%H:%M')
-							$this.html("1 day #{hourMinutes}");
+							hourMinutes = event.strftime('%H:%M:%S')
+							$this.html("1 / #{hourMinutes}");
 						else
 							hourMinutes = event.strftime('%H:%M:%S')
 							$this.html("#{hourMinutes}");
