@@ -18,10 +18,10 @@
 
 		Backbone.on("all", (evt) -> console.log("Event"))
 
-		App.request "goal:show:my", App.contentRegion
-
 		if Backbone.history
 			Backbone.history.start()
+
+		Backbone.history.navigate("goal", {trigger: true})
 
 		App.on "all", (event) -> console.log("#{event}")
 

@@ -11,6 +11,7 @@
 				App.request "goal:record:list:my:state", "finished", layout.recordApp
 				App.request "goal:timeline:list:my", layout.timelineApp
 				App.request "player:connection:show:my", layout.connectionApp
+				App.request "notification:list:my", layout.notificationApp
 				App.request "goal:initiation:list:my:friend", layout.challengesApp
 			region.show layout
 
@@ -18,13 +19,14 @@
 	class GoalLayout extends Marionette.LayoutView
 		template: require './templates/goal_layout'
 		regions:
-			mainApp       : "#mainApp"
-			challengesApp : "#challengesApp"
-			initiationApp : "#initiationApp"
-			profileApp    : "#profileApp"
-			accountApp    : "#accountApp"
-			recordApp     : "#recordApp"
-			timelineApp   : "#timelineApp"
-			connectionApp : "#connectionApp"
+			mainApp         : "#mainApp"
+			challengesApp   : "#challengesApp"
+			initiationApp   : "#initiationApp"
+			profileApp      : "#profileApp"
+			accountApp      : "#accountApp"
+			recordApp       : "#recordApp"
+			timelineApp     : "#timelineApp"
+			notificationApp : '#notificationApp'
+			connectionApp   : "#connectionApp"
 
 	App.reqres.setHandler "goal:show:my", (region) -> Controller.showMy(region)
