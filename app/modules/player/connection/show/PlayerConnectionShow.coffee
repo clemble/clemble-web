@@ -16,5 +16,7 @@
 		template: require './templates/connections'
 		childView: PlayerConnection
 		childViewContainer: "#content"
+		events:
+			"click #connect": () -> App.request "player:connection:invitation:new:modal"
 
 	App.reqres.setHandler "player:connection:show:my", (region) -> Controller.showMy(region)

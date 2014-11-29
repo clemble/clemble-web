@@ -1,4 +1,4 @@
-@App.module "RegistrationBaseApp.Entities", (Entities, App, Backbone, Marionette, $, _) ->
+@App.module "RegistrationSignUpApp.Entities", (Entities, App, Backbone, Marionette, $, _) ->
 
 
 	class PlayerBaseRegistrationRequest extends Backbone.Model

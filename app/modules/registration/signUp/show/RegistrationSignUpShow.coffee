@@ -1,4 +1,4 @@
-@App.module "RegistrationBaseApp.Show", (Show, App, Backbone, Marionette, $, _) ->
+@App.module "RegistrationSignUpApp.Show", (Show, App, Backbone, Marionette, $, _) ->
 
 	Controller =
 		registerManual: (region) ->
@@ -7,13 +7,13 @@
 				model: registration
 
 			layout.on 'show', () ->
+
+				App.request "registration:social:show", layout.social
+
 				signIn = App.request 'registration:login:show:signIn', layout.signIn
 
 				login = App.request 'registration:login:show:new', layout.login, registration.playerCredential
 				profile = App.request 'player:profile:new', layout.profile, registration.playerProfile
-
-				App.request "registration:social:show", layout.social
-
 				manual = new RegistrationControl
 					model: registration
 				layout.control.show manual
@@ -45,4 +45,4 @@
 			signIn   : '#signIn'
 			social   : '#social'
 
-	App.reqres.setHandler 'registration:base:show', (region) -> Controller.registerManual(region)
+	App.reqres.setHandler 'registration:signUp:show', (region) -> Controller.registerManual(region)

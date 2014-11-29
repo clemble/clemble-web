@@ -8,7 +8,6 @@
 		toUrl: (url) -> "http://api.#{window.location.host}#{url}"
 
 	App.addRegions
-		headerRegion  : "#headerRegion"
 		contentRegion : "#contentRegion"
 
 		modal         : Marionette.ModalRegion
@@ -19,7 +18,6 @@
 
 		Backbone.on("all", (evt) -> console.log("Event"))
 
-		App.request "header:list", App.headerRegion
 		App.request "goal:show:my", App.contentRegion
 
 		if Backbone.history

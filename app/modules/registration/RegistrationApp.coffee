@@ -1,17 +1,21 @@
 require './login/RegistrationLoginApp'
-require './base/RegistrationBaseApp'
+require './signUp/RegistrationSignUpApp'
 require './social/RegistrationSocialApp'
+require './show/RegistrationShow'
 
 @App.module "RegistrationApp", (RegistrationApp, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
 
 	API =
-		login: ->
-			App.request 'registration:base:show', App.contentRegion
+		registration: ->
+			App.request 'registration:show', App.contentRegion
+		signUp: ->
+			App.request 'registration:signUp:show', App.contentRegion
 
 	class RegistrationApp.Router extends Marionette.AppRouter
 		appRoutes:
-			'login' : 'login'
+			'registration'  : 'registration'
+			'signUp'        : 'signUp'
 
 	App.addInitializer ->
 		new RegistrationApp.Router
