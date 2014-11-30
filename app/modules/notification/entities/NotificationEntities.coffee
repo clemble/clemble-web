@@ -26,6 +26,10 @@
 		listMy: () ->
 			notifications = new Notifications()
 			notifications.url = App.Utils.toUrl("/notification/my")
+			App.on "notification", (t) ->
+				notifications.add(new Notification(t), {at : 0})
+			App.on "notification:my", (t) ->
+				notifications.add(new Notification(t), {at : 0})
 			notifications.fetch()
 			notifications
 
