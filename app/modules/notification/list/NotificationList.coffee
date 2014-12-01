@@ -10,6 +10,9 @@
 	class PlayerConnectedNotification extends Marionette.ItemView
 		template: require './templates/player_connected'
 
+	class PlayerDiscoveredNotification extends Marionette.ItemView
+		template: require './templates/player_discovered'
+
 	class Notifications extends Marionette.CompositeView
 		template: require './templates/player_notifications'
 		childView : Notification
@@ -21,6 +24,8 @@
 				PaymentNotification
 			else if (item.get('type') == "notification:player:connected")
 				PlayerConnectedNotification
+			else if (item.get('type') == "notification:player:discovered")
+				PlayerDiscoveredNotification
 			else
 				Notification
 
