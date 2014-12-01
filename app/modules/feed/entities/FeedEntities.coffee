@@ -7,21 +7,23 @@
 		defaults:
 			player : null
 		parse: (res) ->
-			if (res.goalKey?)
-				res.id = res.goalKey
-			res
+			API.getId(res)
 
 	class Posts extends Backbone.Collection
 		model: Post
 
 	API=
+		getId: (res) ->
+			if (res.goalKey?)
+				res.id = res.goalKey
+			res
 		listMy: () ->
 			feed = new Posts()
 			feed.url = App.Utils.toUrl("/feed/my")
-			App.on "post", (t) ->
-				feed.add(new Post(t), {at : 0})
-			App.on "post:my", (t) ->
-				feed.add(new Post(t), {at : 0})
+			App.on "post post:my", (t) ->
+				post = new Post(API.getId(t))
+				feed.remove(post.get("id"))
+				feed.add(post, {at : 0})
 			feed.fetch()
 			feed
 
