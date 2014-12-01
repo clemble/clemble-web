@@ -16,6 +16,10 @@ do(Handlebars, Swag, _) ->
 				"<span class='fa fa-eur'></span>#{money.amount}"
 	}
 
+	Handlebars.registerHelper 'toURL', (url) ->
+			new Handlebars.SafeString("http://api.#{window.location.host}#{url}")
+
+
 	SECOND = 1000
 	MINUTE = 60 * SECOND
 	HOUR = 60 * MINUTE
