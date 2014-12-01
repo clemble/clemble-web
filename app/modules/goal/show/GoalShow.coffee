@@ -12,6 +12,7 @@
 				App.request "goal:timeline:list:my", layout.timelineApp
 				App.request "player:connection:show:my", layout.connectionApp
 				App.request "notification:list:my", layout.notificationApp
+				App.request "feed:list:my", layout.feedApp
 				App.request "goal:initiation:list:my:friend", layout.challengesApp
 			region.show layout
 
@@ -26,6 +27,7 @@
 			accountApp      : "#accountApp"
 			recordApp       : "#recordApp"
 			timelineApp     : "#timelineApp"
+			feedApp         : "#feedApp"
 			notificationApp : '#notificationApp'
 			connectionApp   : "#connectionApp"
 
