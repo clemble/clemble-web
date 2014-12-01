@@ -110,3 +110,14 @@ do(Handlebars, Swag, _) ->
 			new Handlebars.SafeString("<span class='fa fa-ban'></span> Forbidden")
 		else if (rule.betType == "rule:bet:bid:mono")
 			new Handlebars.SafeString("<span class='fa fa-circle-thin'></span> #{rule.bid.amount.amount}/#{rule.bid.interest.amount}")
+
+	Handlebars.registerHelper "socialIcon", (social) ->
+		if(social == "facebook")
+			new Handlebars.SafeString('fa fa-facebook')
+		else if(social == "twitter")
+			new Handlebars.SafeString('fa fa-twitter')
+		else if(social == "vkontakte")
+			new Handlebars.SafeString('fa fa-vk')
+		else if(social == "google")
+			new Handlebars.SafeString('fa fa-google-plus-square')
+

@@ -12,7 +12,7 @@
 		<h4>{{#is operation "Credit"}}-{{else}}+{{/is}}{{money amount}}</h4>
 		{{#is source.type "payment:bonus:registration"}}registration{{/is}}
 		{{#is source.type "payment:bonus:daily"}}daily{{/is}}
-		{{#is source.type "payment:bonus:social:add"}}connected to {{social.provider}}{{/is}}
+		{{#is source.type "payment:bonus:social:add"}}connected to {{socialIcon source.provider}}{{/is}}
 		{{#is source.type "payment:bonus:social:discovery"}} joined Clemble{{/is}}
 		{{#is source.type "payment:goal"}}{{outcome source.outcome}} goal{{/is}}
 		{{#is source.type "payment:game"}}{{outcome source.outcome}} game{{/is}}
