@@ -2,9 +2,9 @@
 	@startWithParent = false
 
 	Controller =
-		newBid: (url, betRule) ->
+		newBid: (goalKey, betRule) ->
 			if (betRule.betType == "rule:bet:bid:mono")
-				monoBid = App.request "goal:active:action:entities:bid", "#{url}/bid"
+				monoBid = App.request "goal:active:action:entities:bid", "#{App.Utils.toUrl("/construction/initiation/#{goalKey}/bid")}"
 				monoBid.set(betRule.bid)
 				newMonoBid = new MonoBid
 					model: monoBid
@@ -23,6 +23,6 @@
 		close: () ->
 			@$el.parent().parent().parent().parent().modal("hide")
 
-	App.reqres.setHandler "goal:active:action:bid:modal", (url, betRule) -> Controller.newBid(url, betRule)
+	App.reqres.setHandler "goal:active:action:bid:modal", (goalKey, betRule) -> Controller.newBid(goalKey, betRule)
 
 

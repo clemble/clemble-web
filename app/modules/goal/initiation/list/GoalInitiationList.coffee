@@ -42,7 +42,7 @@
 		events:
 			'click #bet' : "bet"
 		bet: () ->
-			App.request "goal:active:action:bid:modal", @model.url(), @model.get("configuration")['betRule']
+			App.request "goal:active:action:bid:modal", @model.get('goalKey'), @model.get("configuration")['betRule']
 		behaviors:
 			Countdown: {}
 		modelEvents:

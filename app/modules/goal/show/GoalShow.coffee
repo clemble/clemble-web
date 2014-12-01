@@ -8,8 +8,6 @@
 				App.request "player:account:show:my", layout.accountApp
 				App.request "goal:active:list:my", layout.mainApp
 				App.request "goal:initiation:list:my", layout.initiationApp
-				App.request "goal:record:list:my:state", "finished", layout.recordApp
-				App.request "goal:timeline:list:my", layout.timelineApp
 				App.request "player:connection:show:my", layout.connectionApp
 				App.request "notification:list:my", layout.notificationApp
 				App.request "feed:list:my", layout.feedApp
@@ -25,8 +23,6 @@
 			initiationApp   : "#initiationApp"
 			profileApp      : "#profileApp"
 			accountApp      : "#accountApp"
-			recordApp       : "#recordApp"
-			timelineApp     : "#timelineApp"
 			feedApp         : "#feedApp"
 			notificationApp : '#notificationApp'
 			connectionApp   : "#connectionApp"

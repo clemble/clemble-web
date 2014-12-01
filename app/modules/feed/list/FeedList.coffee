@@ -9,9 +9,17 @@
 
 	class GoalCreatedPost extends Marionette.ItemView
 		template: require './templates/goal_created'
+		events:
+			'click #bet' : "bet"
+		bet: () ->
+			App.request "goal:active:action:bid:modal", @model.get('goalKey'), @model.get("configuration")['betRule']
 
 	class GoalBidPost extends Marionette.ItemView
 		template: require './templates/goal_bid'
+		events:
+			'click #bet' : "bet"
+		bet: () ->
+			App.request "goal:active:action:bid:modal", @model.get('goalKey'), @model.get("configuration")['betRule']
 
 	class GoalUpdatedPost extends Marionette.ItemView
 		template: require './templates/goal_update'

@@ -10,12 +10,11 @@
 		<div class="col-md-10">
 			<h5>Created</h5>
 			<h4>{{goal}}</h4>
-			{{#unless my}}
-				{{#if myBid}}
-					My: {{bid myBid}}
-				{{else}}
-				{{/if}}
-			{{/unless}} Total: {{bid bank.total}}
+			{{#if my}}
+				My: {{bid my}}
+			{{else}}
+				<button id="bet" class="btn btn-info btn-sm"><span class="fa fa-credit-card"></span> Bet</button>
+			{{/if}} Total: {{bid bank.total}}
 		</div>
 	</div>
 </div>
