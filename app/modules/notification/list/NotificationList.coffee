@@ -4,8 +4,8 @@
 	class Notification extends Marionette.ItemView
 		template: require './templates/player_notification'
 
-	class PaymentBonusNotification extends Marionette.ItemView
-		template: require './templates/payment_bonus'
+	class PaymentNotification extends Marionette.ItemView
+		template: require './templates/payment_notification'
 
 	class PlayerConnectedNotification extends Marionette.ItemView
 		template: require './templates/player_connected'
@@ -17,8 +17,8 @@
 		modelEvents:
 			"sync" : "render"
 		getChildView: (item) ->
-			if (item.get('type') == "notification:payment:bonus")
-				PaymentBonusNotification
+			if (item.get('type') == "notification:payment")
+				PaymentNotification
 			else if (item.get('type') == "notification:player:connected")
 				PlayerConnectedNotification
 			else
