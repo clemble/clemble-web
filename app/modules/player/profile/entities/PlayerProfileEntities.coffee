@@ -36,7 +36,7 @@
 			}
 			res.socialConnections.forEach((connection) ->
 				connected[connection.providerId] = connection.providerUserId
-				delete missing connection.providerId
+				delete missing[connection.providerId]
 			)
 			res.connected = connected
 			res.missing = missing
