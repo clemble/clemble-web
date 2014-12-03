@@ -24,6 +24,23 @@
 				oneOf: [null, 'M', 'W']
 			}
 		}
+		parse: (res) ->
+			connected = {
+
+			}
+			missing = {
+				"facebook"  : ""
+				"twitter"   : ""
+				"vkontakte" : ""
+				"google"    : ""
+			}
+			res.socialConnections.forEach((connection) ->
+				connected[connection.providerId] = connection.providerUserId
+				delete missing connection.providerId
+			)
+			res.connected = connected
+			res.missing = missing
+			res
 
 	API =
 		new: () ->

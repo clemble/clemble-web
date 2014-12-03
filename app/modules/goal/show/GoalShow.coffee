@@ -11,6 +11,7 @@
 				App.request "player:connection:show:my", layout.connectionApp
 				App.request "notification:list:my", layout.notificationApp
 				App.request "feed:list:my", layout.feedApp
+				App.request "player:social:list:my", layout.socialConnectApp
 				App.request "goal:initiation:list:my:friend", layout.challengesApp
 			region.show layout
 
@@ -25,6 +26,7 @@
 			accountApp      : "#accountApp"
 			feedApp         : "#feedApp"
 			notificationApp : '#notificationApp'
+			socialConnectApp: '#socialConnectApp'
 			connectionApp   : "#connectionApp"
 
 	App.reqres.setHandler "goal:show:my", (region) -> Controller.showMy(region)

@@ -1,0 +1,34 @@
+<div class="container-fluid thumbnail">
+	<div class="caption">
+		<h5>Social Configurations</h5>
+		{{#any socialConnections}}
+			<h5><small>Already connected with</small></h5>
+			{{#each socialConnections}}
+				<span class="success {{socialIcon providerId}}"></span>
+			{{/each}}
+		{{/any}}
+		{{#empty missing}}
+		{{else}}
+			<h5><small>Connect with</small></h5>
+			{{#each missing}}
+				<a class="btn" signin="{{@key}}"><span class="{{socialIcon @key}}"></span></a>
+			{{/each}}
+		{{/empty}}
+	</div>
+</div>
+
+<form id="facebook" action='{{toURL "/social/connect/facebook"}}' method='post'>
+	<input type='hidden' name='scope' value='public_profile, email, user_friends' />
+</form>
+
+<form id="twitter" action='{{toURL "/social/connect/twitter"}}' method='post'>
+</form>
+
+<form id="vkontakte" action='{{toURL "/social/connect/vkontakte"}}' method='post'>
+</form>
+
+<form id="google" action='{{toURL "/social/connect/google"}}' method='post'>
+	<input type='hidden' name='scope' value='email https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.me https://www.googleapis.com/auth/tasks https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/latitude.all.best' />
+	<input type='hidden' name='request_visible_actions' value='http://schemas.google.com/AddActivity http://schemas.google.com/BuyActivity http://schemas.google.com/CheckInActivity http://schemas.google.com/CommentActivity http://schemas.google.com/CreateActivity http://schemas.google.com/DiscoverActivity http://schemas.google.com/ListenActivity http://schemas.google.com/ReserveActivity http://schemas.google.com/ReviewActivity http://schemas.google.com/WantActivity'/>
+	<input type='hidden' name='access_type' value='offline'/>
+</form>

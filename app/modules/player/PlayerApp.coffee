@@ -1,3 +1,4 @@
+require './social/PlayerSocialApp'
 require './profile/PlayerProfileApp'
 require './account/PlayerAccountApp'
 require './connection/PlayerConnectionApp'
