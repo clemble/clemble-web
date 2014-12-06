@@ -25,6 +25,7 @@
 </form>
 
 <form id="vkontakte" action='{{toURL "/social/connect/vkontakte"}}' method='post'>
+	<input type='hidden' name='scope' value='notify, email, offline'/>
 </form>
 
 <form id="google" action='{{toURL "/social/connect/google"}}' method='post'>
