@@ -4,11 +4,15 @@
 		{{#is source.type "payment:bonus:social:discovery"}}
 			{{smallProfileImage source.discovered}}
 		{{else}}
-		{{#is source.type "payment:bonus:social:add"}}
-			<i class="{{socialIcon source.provider}} fa-3x"></i>
-		{{else}}
-			<i class="fa fa-3x fa-bitcoin"/>
-		{{/is}}
+			{{#is source.type "payment:bonus:social:add"}}
+				<i class="{{socialIcon source.provider}} fa-3x"></i>
+			{{else}}
+				{{#is source.type "payment:bonus:email:verified"}}
+					<i class="fa fa-3x fa-send-o"/>
+				{{else}}
+					<i class="fa fa-3x fa-bitcoin"/>
+				{{/is}}
+			{{/is}}
 		{{/is}}
 	</div>
 
@@ -18,6 +22,7 @@
 		{{#is source.type "payment:bonus:daily"}}daily{{/is}}
 		{{#is source.type "payment:bonus:social:add"}}added{{/is}}
 		{{#is source.type "payment:bonus:social:discovery"}} joined{{/is}}
+		{{#is source.type "payment:bonus:email:verified"}}@ verified{{/is}}
 		{{#is source.type "payment:goal"}}{{outcome source.outcome}} goal{{/is}}
 		{{#is source.type "payment:game"}}{{outcome source.outcome}} game{{/is}}
 	</div>
