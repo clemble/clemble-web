@@ -4,14 +4,14 @@
   "main": "public/javascripts/app.js",
   "dependencies": {
     "underscore": "~1.7.0",
-    "underscore.string": "~2.3.3",
+    "underscore.string": "~2.4.0",
     "console-polyfill": "~0.1.0",
     "jquery": "~2.1.1",
     "normalize-css": "~3.0.1",
     "marionette": "~2.2.0",
     "bootstrap": "~3.2.0",
     "font-awesome": "~4.2.0",
-    "moment": "~2.6.0",
+    "moment": "~2.7.0",
     "swag": "~0.7.0",
     "backbone.stickit": "~0.8.0",
     "bootstrap-social": "~4.8.0",
@@ -20,7 +20,8 @@
     "stomp-websocket": "~2.3.3",
     "jquery.cookie": "~1.4.1",
     "jquery.countdown": "~2.0.4",
-    "intl-tel-input": "~3.7.1"
+    "intl-tel-input": "~3.7.1",
+    "fuelux": "~3.4.0"
   },
   "overrides": {
     "underscore": {
@@ -51,6 +52,20 @@
     },
     "stomp-websocket": {
       "main": "lib/stomp.min.js"
+    },
+    "fuelux" : {
+      "dependencies": {
+        "bootstrap": "~3.2.0",
+        "moment": "2.7.0"
+      },
+      "main": [
+        "dist/css/fuelux.css",
+        "dist/js/fuelux.js",
+        "dist/fonts/fuelux.eot",
+        "dist/fonts/fuelux.svg",
+        "dist/fonts/fuelux.ttf",
+        "dist/fonts/fuelux.woff"
+      ]
     }
   },
   "resolutions": {

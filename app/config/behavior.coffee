@@ -39,15 +39,20 @@ do (Marionette) ->
 			events:
 				'click #save'       : "save"
 				'click #cancel'     : "cancel"
+			initialize: () ->
+				self = @
+				@view.on 'modal:close', () ->
+					self.closeModal()
 			save: () ->
-				view = @view
-				model = view.model
+				self = @
 				model.save(model.toJSON(), {
 					success: () ->
 						#TODO really ugly shit
-						view.$el.parent().parent().parent().parent().modal("hide")
+						@closeModal()
 				})
 			cancel: () ->
+				@closeModal()
+			closeModal: () ->
 				@$el.parent().parent().parent().parent().modal("hide")
 		DisplayError: Marionette.Behavior.extend
 			modelEvents:

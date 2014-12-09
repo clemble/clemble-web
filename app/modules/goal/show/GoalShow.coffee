@@ -12,7 +12,6 @@
 				App.request "notification:list:my", layout.notificationApp
 				App.request "feed:list:my", layout.feedApp
 				App.request "player:social:list:my", layout.socialConnectApp
-				App.request "player:phone:new", layout.phoneApp
 				App.request "goal:initiation:list:my:friend", layout.challengesApp
 			region.show layout
 
@@ -25,7 +24,6 @@
 			initiationApp   : "#initiationApp"
 			profileApp      : "#profileApp"
 			accountApp      : "#accountApp"
-			phoneApp        : "#phoneApp"
 			feedApp         : "#feedApp"
 			notificationApp : '#notificationApp'
 			socialConnectApp: '#socialConnectApp'

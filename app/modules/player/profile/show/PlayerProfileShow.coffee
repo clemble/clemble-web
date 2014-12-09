@@ -13,6 +13,8 @@
 			'sync' : 'render'
 		events:
 			"click #add": () -> App.request "goal:construction:my:new:modal"
+			'click #phone' : () -> App.request "player:phone:new:modal"
+			'click #email' : () -> App.request "player:email:new:modal"
 
 
 	App.reqres.setHandler "player:profile:show", (player, region) -> Controller.show(player, region)
