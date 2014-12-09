@@ -3,6 +3,7 @@
 	<button type="button" class="btn btn-lg btn-primary" signin="twitter"><i class="fa fa-2x fa-twitter"></i></button>
 	<button type="button" class="btn btn-lg btn-primary" signin="vkontakte"><i class="fa fa-2x fa-vk"></i></button>
 	<button type="button" class="btn btn-lg btn-primary" signin="google"><i class="fa fa-2x fa-google-plus-square"></i></button>
+</div>
 
 	<form id="facebook" action='{{toURL "/social/signin/facebook"}}' method='post'>
 		<input type='hidden' name='scope' value='public_profile, email, user_friends' />
@@ -20,5 +21,4 @@
 		<input type='hidden' name='request_visible_actions' value='http://schemas.google.com/AddActivity http://schemas.google.com/BuyActivity http://schemas.google.com/CheckInActivity http://schemas.google.com/CommentActivity http://schemas.google.com/CreateActivity http://schemas.google.com/DiscoverActivity http://schemas.google.com/ListenActivity http://schemas.google.com/ReserveActivity http://schemas.google.com/ReviewActivity http://schemas.google.com/WantActivity'/>
 		<input type='hidden' name='access_type' value='offline'/>
 	</form>
-</div>
 <h4>Social Sign In</h4>

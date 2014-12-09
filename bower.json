@@ -19,7 +19,8 @@
     "sockjs-client": "~0.3.4",
     "stomp-websocket": "~2.3.3",
     "jquery.cookie": "~1.4.1",
-    "jquery.countdown": "~2.0.4"
+    "jquery.countdown": "~2.0.4",
+    "intl-tel-input": "~3.7.1"
   },
   "overrides": {
     "underscore": {

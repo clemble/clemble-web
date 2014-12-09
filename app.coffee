@@ -19,6 +19,7 @@ proxy.on 'error', (err, req, res) ->
 
 app.use('/fonts/', express.static __dirname + '/public/fonts')
 app.use('/images/', express.static __dirname + '/public/images')
+app.use('/img/', express.static __dirname + '/public/img')
 app.use('/javascripts/', express.static __dirname + '/public/javascripts')
 app.use('/stylesheets/', express.static __dirname + '/public/stylesheets')
 
