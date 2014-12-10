@@ -1,8 +1,11 @@
 <h2 class="plan-title">{{configurationKey}}</h2>
-	<p class="plan-price">{{money bid.amount}}<span>/{{money bid.interest}}</span></p>
+	<h2>{{money bid.amount}}/<small>{{money bid.interest}}</small></h2>
 
 	<strong>Starts in:</strong> {{humanTime startRule.timeout}}<br/>
 	<strong>Duration:</strong> {{totalTimeRule totalTimeRule}}<br/>
 	<strong>Status Update:</strong> {{moveTimeRule moveTimeRule}}<br/>
 	<strong>Privacy:</strong> {{privacyRule privacyRule}}<br/>
-	<strong>Bet:</strong> {{betRule betRule}}
+	<strong>Bet:</strong> {{betRule betRule}}<br/>
+	<h4>Reminders</h4>
+	<strong><span class="fa fa-send-o"></span> email:</strong> {{humanTime emailReminderRule.reminder}}<br/>
+	<strong><span class="fa fa-phone-square"></span> phone:</strong> {{humanTime phoneReminderRule.reminder}}

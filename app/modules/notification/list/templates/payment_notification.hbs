@@ -10,7 +10,11 @@
 				{{#is source.type "payment:bonus:email:verified"}}
 					<i class="fa fa-3x fa-send-o"/>
 				{{else}}
-					<i class="fa fa-3x fa-bitcoin"/>
+					{{#is source.type "payment:bonus:phone:verified"}}
+						<i class="fa fa-3x fa-phone-square"/>
+					{{else}}
+						<i class="fa fa-3x fa-bitcoin"/>
+					{{/is}}
 				{{/is}}
 			{{/is}}
 		{{/is}}
@@ -22,7 +26,8 @@
 		{{#is source.type "payment:bonus:daily"}}daily{{/is}}
 		{{#is source.type "payment:bonus:social:add"}}added{{/is}}
 		{{#is source.type "payment:bonus:social:discovery"}} joined{{/is}}
-		{{#is source.type "payment:bonus:email:verified"}}@ verified{{/is}}
+		{{#is source.type "payment:bonus:email:verified"}}em@il verified{{/is}}
+		{{#is source.type "payment:bonus:phone:verified"}}phone verified{{/is}}
 		{{#is source.type "payment:goal"}}{{outcome source.outcome}} goal{{/is}}
 		{{#is source.type "payment:game"}}{{outcome source.outcome}} game{{/is}}
 	</div>
