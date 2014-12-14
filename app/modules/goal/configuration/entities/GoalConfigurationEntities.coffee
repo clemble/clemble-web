@@ -5,7 +5,6 @@
 			configurationKey: null
 			bid: null
 			betRule: null
-			judgeRule: null
 			privacyRule: null
 			moveTimeRule: null
 			totalTimeRule: null
