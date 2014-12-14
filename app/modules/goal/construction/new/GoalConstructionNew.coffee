@@ -72,6 +72,11 @@
 		bindings: {
 			'#goal': 'goal'
 		}
+#		onShow: () ->
+#			$('#startDate').datepicker({
+#				allowPastDates: true
+#			});
+
 
 
 	App.reqres.setHandler "goal:construction:new", (configurations, region) -> Controller.new(configurations, region)

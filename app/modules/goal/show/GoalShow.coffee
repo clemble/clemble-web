@@ -12,7 +12,6 @@
 				App.request "notification:list:my", layout.notificationApp
 				App.request "feed:list:my", layout.feedApp
 				App.request "player:social:list:my", layout.socialConnectApp
-				App.request "goal:initiation:list:my:friend", layout.challengesApp
 			region.show layout
 
 
@@ -20,7 +19,6 @@
 		template: require './templates/goal_layout'
 		regions:
 			mainApp         : "#mainApp"
-			challengesApp   : "#challengesApp"
 			initiationApp   : "#initiationApp"
 			profileApp      : "#profileApp"
 			accountApp      : "#accountApp"

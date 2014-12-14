@@ -44,7 +44,7 @@ do (Marionette) ->
 				@view.on 'modal:close', () ->
 					self.closeModal()
 			save: () ->
-				self = @
+				model = @view.model
 				model.save(model.toJSON(), {
 					success: () ->
 						#TODO really ugly shit
