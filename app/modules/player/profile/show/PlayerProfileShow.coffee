@@ -10,7 +10,8 @@
 	class Player extends Marionette.ItemView
 		template: require "./templates/profile"
 		modelEvents:
-			'sync' : 'render'
+			'sync'   : 'render'
+			'change' : 'render'
 		events:
 			"click #add": () -> App.request "goal:construction:my:new:modal"
 			'click #phone' : () -> App.request "player:phone:new:modal"
