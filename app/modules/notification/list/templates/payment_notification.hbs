@@ -8,10 +8,10 @@
 				<i class="{{socialIcon source.provider}} fa-3x"></i>
 			{{else}}
 				{{#is source.type "payment:bonus:email:verified"}}
-					<i class="fa fa-3x fa-send-o"/>
+					<i class="{{socialIcon "email"}} fa-3x"></i>
 				{{else}}
 					{{#is source.type "payment:bonus:phone:verified"}}
-						<i class="fa fa-3x fa-phone-square"/>
+						<i class="{{socialIcon "phone"}} fa-3x"/>
 					{{else}}
 						<i class="fa fa-3x fa-bitcoin"/>
 					{{/is}}

@@ -14,6 +14,14 @@
 				<a class="btn" signin="{{@key}}"><span class="{{socialIcon @key}}"></span></a>
 			{{/each}}
 		{{/empty}}
+		<h4>
+			{{#unless connected.phone}}
+				<button id="phone" type="button" class="btn btn-success btn-sm"><span class="fa fa-plus-circle"/> <span class="{{socialIcon "phone"}}"/> phone</button>
+			{{/unless}}
+			{{#unless connected.email}}
+				<button id="email" type="button" class="btn btn-success btn-sm"><span class="fa fa-plus-circle"/> <span class="{{socialIcon "email"}}"/> email</button>
+			{{/unless}}
+		</h4>
 	</div>
 </div>
 

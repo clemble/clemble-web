@@ -7,6 +7,8 @@
 			"change" : "render"
 		events:
 			"click .btn" : "socialLogin"
+			'click #phone' : () -> App.request "player:phone:new:modal"
+			'click #email' : () -> App.request "player:email:new:modal"
 		socialLogin: (evt) =>
 			signin = evt.currentTarget.getAttribute("signin")
 			@$("##{signin}").submit()

@@ -6,16 +6,9 @@
 			{{#if nickName}}<h4><small>@{{nickName}}</small></h4>{{/if}}
 			{{#if firstName}}<h4>{{firstName}} {{lastName}}</h4>{{/if}}
 		</p>
-		<!--<hr/>-->
-		<!--<button class="btn btn-circle btn-default"><span class="fa fa-facebook"/></button>-->
-		<!--<button class="btn btn-circle btn-default"><span class="fa fa-vk"/></button>-->
-		<!--<button class="btn btn-circle btn-default"><span class="fa fa-twitter"/></button>-->
-		<!--<button class="btn btn-circle btn-default" disabled><span class="fa fa-google-plus"/></button>-->
-		<!--<hr/>-->
-		<h4>
-			<button id="phone" type="button" class="btn btn-success btn-sm"><span class="fa fa-plus-circle"/> <span class="fa fa-phone-square"/> phone</button>
-			<button id="email" type="button" class="btn btn-success btn-sm"><span class="fa fa-plus-circle"/> <span class="fa fa-send"/> email</button>
-		</h4>
+		{{#each socialConnections}}
+			<span class="success {{socialIcon providerId}}"></span>
+		{{/each}}
 		<h4>
 			<button id="add" type="button" class="btn btn-success btn-sm"><span class="fa fa-plus-circle"/> <span class="fa fa-bullseye"/> goal</button>
 		</h4>

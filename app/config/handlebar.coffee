@@ -124,4 +124,9 @@ do(Handlebars, Swag, _) ->
 			new Handlebars.SafeString('fa fa-vk')
 		else if(social == "google")
 			new Handlebars.SafeString('fa fa-google-plus-square')
-
+		else if(social == "phone")
+			new Handlebars.SafeString('fa fa-phone-square')
+		else if(social == "email")
+			new Handlebars.SafeString('fa fa-send-o')
+		else
+			console.error("Unknown social reference #{social}")
