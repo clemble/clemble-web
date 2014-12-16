@@ -4,6 +4,7 @@
 	class GoalConstructionRequest extends Backbone.Model
 		default:
 			goal: null
+			startDate: null
 			configuration: null
 		validate: (attributes, options) ->
 			if (attributes.goal == undefined)
@@ -12,6 +13,8 @@
 	API=
 		new: (configurations) ->
 			constructionRequest = new GoalConstructionRequest()
+			tomorrow = moment().add('days', 1).toDate().toJSON().slice(0,10)
+			constructionRequest.set('startDate', tomorrow)
 			constructionRequest.set("configuration", configurations.getSelected())
 			constructionRequest.listenTo configurations, "selected", (model) ->
 				constructionRequest.set('configuration', model.attributes)

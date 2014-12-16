@@ -70,14 +70,14 @@
 		behaviors:
 			StickIt: {}
 		bindings: {
-			'#goal': 'goal'
+			'#goal'       : 'goal'
+			'#startDate'  : {
+				observe   : 'startDate'
+				onSet     : (val) ->
+					valDate = new Date(val)
+					valDate
+			}
 		}
-#		onShow: () ->
-#			$('#startDate').datepicker({
-#				allowPastDates: true
-#			});
-
-
 
 	App.reqres.setHandler "goal:construction:new", (configurations, region) -> Controller.new(configurations, region)
 	App.reqres.setHandler "goal:construction:new:modal", (configurations) -> Controller.new(configurations, App.modal)
