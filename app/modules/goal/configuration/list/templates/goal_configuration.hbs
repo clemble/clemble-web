@@ -5,6 +5,9 @@
 	<strong>Status Update:</strong> {{moveTimeRule moveTimeRule}}<br/>
 	<strong>Privacy:</strong> {{privacyRule privacyRule}}<br/>
 	<strong>Bet:</strong> {{betRule betRule}}<br/>
-	<h4>Reminders</h4>
-	<strong><span class="fa fa-send-o"></span> email:</strong> {{humanTime emailReminderRule.reminder}}<br/>
-	<strong><span class="fa fa-phone-square"></span> phone:</strong> {{humanTime phoneReminderRule.reminder}}
+	{{#each roleConfigurations}}
+		<h4>{{role}}</h4>
+		<h5>Reminders</h5>
+		<strong><span class="fa fa-send-o"></span> email:</strong> {{humanTime emailReminderRule.reminder}}<br/>
+		<strong><span class="fa fa-phone-square"></span> phone:</strong> {{humanTime phoneReminderRule.reminder}}
+	{{/each}}
