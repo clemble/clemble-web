@@ -13,14 +13,35 @@
 	class PlayerDiscoveredNotification extends Marionette.ItemView
 		template: require './templates/player_discovered'
 
+	class PlayerInvitedNotification extends Marionette.ItemView
+		template: require './templates/player_invited'
+		events:
+			'click #accept'  : 'accept'
+			'click #decline' : 'decline'
+		accept: () ->
+			@process(true)
+		decline: () ->
+			@process(false)
+		process: (accept) ->
+			$.ajax({
+				type: 'POST',
+				url: "/connection/my/invitations/#{@model.get('connection')}",
+				data: JSON.stringify(accept),
+				contentType: "application/json",
+				dataType: 'json'
+			})
+
 	class Notifications extends Marionette.CompositeView
 		template: require './templates/player_notifications'
 		childView : Notification
 		childViewContainer : "#caption"
 		modelEvents:
-			"sync" : "render"
+			"sync"    : "render"
+			"change"  : "render"
 		getChildView: (item) ->
-			if (item.get('type') == "notification:payment")
+			if (item.get('type') == "notification:player:invited")
+				PlayerInvitedNotification
+			else if (item.get('type') == "notification:payment")
 				PaymentNotification
 			else if (item.get('type') == "notification:player:connected")
 				PlayerConnectedNotification

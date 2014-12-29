@@ -6,6 +6,7 @@
 	class Notification extends Backbone.Model
 		defaults:
 			player : null
+		idAttribute: 'key'
 		initialize      : () ->
 			self = @
 			@on "change:bank", @checkMy
@@ -27,8 +28,10 @@
 			notifications = new Notifications()
 			notifications.url = App.Utils.toUrl("/notification/my")
 			App.on "notification", (t) ->
+#				notifications.remove(t.key)
 				notifications.add(new Notification(t), {at : 0})
 			App.on "notification:my", (t) ->
+#				notifications.remove(t.key)
 				notifications.add(new Notification(t), {at : 0})
 			notifications.fetch()
 			notifications
