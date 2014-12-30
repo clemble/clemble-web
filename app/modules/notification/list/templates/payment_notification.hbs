@@ -1,6 +1,6 @@
 <hr/>
 <div class="container-fluid">
-	<div class="col-md-4">
+	<div class="col-md-6">
 		{{#is source.type "payment:bonus:social:discovery"}}
 			{{smallProfileImage source.discovered}}
 		{{else}}
@@ -13,14 +13,14 @@
 					{{#is source.type "payment:bonus:phone:verified"}}
 						<i class="{{socialIcon "phone"}} fa-3x"/>
 					{{else}}
-						<i class="fa fa-3x fa-bitcoin"/>
+						<i class="fa fa-5x fa-bitcoin"/>
 					{{/is}}
 				{{/is}}
 			{{/is}}
 		{{/is}}
 	</div>
 
-	<div class="col-md-8">
+	<div class="col-md-6">
 		<h4>{{#is operation "Credit"}}-{{else}}+{{/is}}{{money amount}}</h4>
 		{{#is source.type "payment:bonus:registration"}}registration{{/is}}
 		{{#is source.type "payment:bonus:daily"}}daily{{/is}}

@@ -16,10 +16,10 @@
 		getId: (res) ->
 			if (res.goalKey?)
 				res.id = res.goalKey
-			if (res.player == PLAYER)
-				res.my = true
+			if (res.bank?)
 				myBid = _.find(res.bank.bids, (bid) -> bid.player == PLAYER)
 				if (myBid?)
+					res.my = true
 					res.myBid = myBid.bid
 			res
 		listMy: () ->
