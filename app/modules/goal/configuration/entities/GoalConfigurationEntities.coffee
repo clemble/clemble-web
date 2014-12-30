@@ -3,8 +3,6 @@
 	class GoalConfiguration extends Backbone.Model
 		defaults:
 			configurationKey: null
-			bid: null
-			betRule: null
 			privacyRule: null
 			moveTimeRule: null
 			totalTimeRule: null

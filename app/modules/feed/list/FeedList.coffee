@@ -12,14 +12,14 @@
 		events:
 			'click #bet' : "bet"
 		bet: () ->
-			App.request "goal:active:action:bid:modal", @model.get('goalKey'), @model.get("configuration")['betRule']
+			App.request "goal:active:action:bid:modal", @model.get('goalKey'), @model.get("configuration")
 
 	class GoalBidPost extends Marionette.ItemView
 		template: require './templates/goal_bid'
 		events:
 			'click #bet' : "bet"
 		bet: () ->
-			App.request "goal:active:action:bid:modal", @model.get('goalKey'), @model.get("configuration")['betRule']
+			App.request "goal:active:action:bid:modal", @model.get('goalKey'), @model.get("configuration")
 
 	class GoalUpdatedPost extends Marionette.ItemView
 		template: require './templates/goal_update'
