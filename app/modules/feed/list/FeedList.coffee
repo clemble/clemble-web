@@ -13,17 +13,29 @@
 		template: require './templates/goal_created'
 		className: 'row'
 		events:
-			'click #bet' : "bet"
+			'click #bet'    : "bet"
+			'click #support': 'support'
+			'click #observe': 'observe'
 		bet: () ->
 			App.request "goal:active:action:bid:modal", @model.get('goalKey'), @model.get("configuration")
+		support: () ->
+			App.request "goal:active:action:support:modal", @model
+		observe: () ->
+			App.request "goal:active:action:observe:modal", @model
 
 	class GoalBidPost extends Marionette.ItemView
 		template: require './templates/goal_bid'
 		className: 'row'
 		events:
 			'click #bet' : "bet"
+			'click #support': 'support'
+			'click #observe': 'observe'
 		bet: () ->
 			App.request "goal:active:action:bid:modal", @model.get('goalKey'), @model.get("configuration")
+		support: () ->
+			App.request "goal:active:action:support:modal", @model
+		observe: () ->
+			App.request "goal:active:action:observe:modal", @model
 
 	class GoalUpdatedPost extends Marionette.ItemView
 		template: require './templates/goal_update'
