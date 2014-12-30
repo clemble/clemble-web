@@ -2,11 +2,11 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-3">
+			{{bid bank.total}}
 			{{#each context.playerContexts}}
 				<h4><small>Deadline</small> <span class="label label-warning">{{formatDate clock.deadline "%d/%m %H:%M"}}</span></h4>
-				<h4><small>Next status in</small> <span class="label label-success label-lg"><b data-countdown="{{clock.breachTime}}"></b></span></h4>
+				<h4><small>Next</small> <span class="label label-success label-lg"><b data-countdown="{{clock.breachTime}}"></b></span></h4>
 			{{/each}}
-			{{bid bank.total}}
 		</div>
 		<div class="col-md-9">
 			<h4>{{goal}}</h4>

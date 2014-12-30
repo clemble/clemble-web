@@ -17,7 +17,19 @@ do(Handlebars, Swag, _) ->
 	}
 
 	Handlebars.registerHelper 'toURL', (url) ->
-			new Handlebars.SafeString("http://api.#{window.location.host}#{url}")
+		new Handlebars.SafeString("http://api.#{window.location.host}#{url}")
+
+	Handlebars.registerHelper 'showReminders', (o) ->
+		reminder = ""
+		reminder += if (o.emailReminderRule? && o.emailReminderRule.type != 'no')
+			"<span class='fa fa-send-o text-success'></span>"
+		else
+			"<span class='fa fa-send-o'></span>"
+		reminder += if (o.phoneReminderRule? && o.phoneReminderRule.type != 'no')
+			"<span class='fa fa-phone-square text-success'></span>"
+		else
+			"<span class='fa fa-phone-square'></span>"
+		new Handlebars.SafeString(reminder)
 
 
 	SECOND = 1000
