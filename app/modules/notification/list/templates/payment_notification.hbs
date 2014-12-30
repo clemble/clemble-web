@@ -1,35 +1,34 @@
+<hr/>
 <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-4">
-			{{#is source.type "payment:bonus:social:discovery"}}
-				{{smallProfileImage source.discovered}}
+	<div class="col-md-4">
+		{{#is source.type "payment:bonus:social:discovery"}}
+			{{smallProfileImage source.discovered}}
+		{{else}}
+			{{#is source.type "payment:bonus:social:add"}}
+				<i class="{{socialIcon source.provider}} fa-3x"></i>
 			{{else}}
-				{{#is source.type "payment:bonus:social:add"}}
-					<i class="{{socialIcon source.provider}} fa-3x"></i>
+				{{#is source.type "payment:bonus:email:verified"}}
+					<i class="{{socialIcon "email"}} fa-3x"></i>
 				{{else}}
-					{{#is source.type "payment:bonus:email:verified"}}
-						<i class="{{socialIcon "email"}} fa-3x"></i>
+					{{#is source.type "payment:bonus:phone:verified"}}
+						<i class="{{socialIcon "phone"}} fa-3x"/>
 					{{else}}
-						{{#is source.type "payment:bonus:phone:verified"}}
-							<i class="{{socialIcon "phone"}} fa-3x"/>
-						{{else}}
-							<i class="fa fa-3x fa-bitcoin"/>
-						{{/is}}
+						<i class="fa fa-3x fa-bitcoin"/>
 					{{/is}}
 				{{/is}}
 			{{/is}}
-		</div>
+		{{/is}}
+	</div>
 
-		<div class="col-md-8">
-			<h4>{{#is operation "Credit"}}-{{else}}+{{/is}}{{money amount}}</h4>
-			{{#is source.type "payment:bonus:registration"}}registration{{/is}}
-			{{#is source.type "payment:bonus:daily"}}daily{{/is}}
-			{{#is source.type "payment:bonus:social:add"}}added{{/is}}
-			{{#is source.type "payment:bonus:social:discovery"}} joined{{/is}}
-			{{#is source.type "payment:bonus:email:verified"}}em@il verified{{/is}}
-			{{#is source.type "payment:bonus:phone:verified"}}phone verified{{/is}}
-			{{#is source.type "payment:goal"}}{{outcome source.outcome}} goal{{/is}}
-			{{#is source.type "payment:game"}}{{outcome source.outcome}} game{{/is}}
-		</div>
+	<div class="col-md-8">
+		<h4>{{#is operation "Credit"}}-{{else}}+{{/is}}{{money amount}}</h4>
+		{{#is source.type "payment:bonus:registration"}}registration{{/is}}
+		{{#is source.type "payment:bonus:daily"}}daily{{/is}}
+		{{#is source.type "payment:bonus:social:add"}}added{{/is}}
+		{{#is source.type "payment:bonus:social:discovery"}} joined{{/is}}
+		{{#is source.type "payment:bonus:email:verified"}}em@il verified{{/is}}
+		{{#is source.type "payment:bonus:phone:verified"}}phone verified{{/is}}
+		{{#is source.type "payment:goal"}}{{outcome source.outcome}} goal{{/is}}
+		{{#is source.type "payment:game"}}{{outcome source.outcome}} game{{/is}}
 	</div>
 </div>

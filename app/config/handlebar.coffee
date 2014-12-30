@@ -81,13 +81,13 @@ do(Handlebars, Swag, _) ->
 
 
 	Handlebars.registerHelper 'profileImage', (player) ->
-		new Handlebars.SafeString("<image src='http://api.#{window.location.host}/profile/#{player}/image' class='img-thumbnail'></image>")
+		new Handlebars.SafeString("<image src='http://api.#{window.location.host}/profile/#{player}/image'></image>")
 
 	Handlebars.registerHelper 'smallProfileImage', (player) ->
-		new Handlebars.SafeString("<image src='http://api.#{window.location.host}/profile/#{player}/image/small' class='img-thumbnail'></image>")
+		new Handlebars.SafeString("<image src='http://api.#{window.location.host}/profile/#{player}/image/small'></image>")
 
 	Handlebars.registerHelper 'myImage', (player) ->
-		new Handlebars.SafeString("<image src='http://api.#{window.location.host}/profile/my/image' class='img-thumbnail'></image>")
+		new Handlebars.SafeString("<image src='http://api.#{window.location.host}/profile/my/image'></image>")
 
 	Handlebars.registerHelper 'privacyRule', (rule) ->
 		if (rule == "me")

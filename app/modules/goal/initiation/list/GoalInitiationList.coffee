@@ -14,6 +14,7 @@
 
 	class GoalInitiation extends Marionette.ItemView
 		template: require './templates/goal_initiation'
+		className: 'row'
 		events:
 			"click #confirm" : "confirm"
 		confirm: () ->
@@ -34,11 +35,13 @@
 
 	class GoalInitiationsEmpty extends Marionette.ItemView
 		template: require './templates/goal_initiation_empty'
+		className: 'row'
 		modelEvents:
 			"change": "render"
 
 	class GoalFriendInitiation extends Marionette.ItemView
 		template: require './templates/goal_friend_initiation'
+		className: 'row'
 		events:
 			'click #bet' : "bet"
 		bet: () ->
@@ -58,6 +61,7 @@
 
 	class GoalFriendInitiationsEmpty extends Marionette.ItemView
 		template: require './templates/goal_friend_initiation_empty'
+		className: 'row'
 
 
 	App.reqres.setHandler "goal:initiation:list:my", (region) -> Controller.listMy(region)

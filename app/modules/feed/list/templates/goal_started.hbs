@@ -1,21 +1,19 @@
 <hr/>
 <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-2">
-			<div>
-				{{smallProfileImage player}}
-			</div>
-			<h4><label class="label label-warning">{{formatDate deadline "%d/%m"}}</label></h4>
+	<div class="col-md-2">
+		<div>
+			{{smallProfileImage player}}
 		</div>
-		<div class="col-md-10">
-			<h5>Started</h5>
-			<h4>{{goal}}</h4>
-			{{#unless my}}
-				{{#if myBid}}
-					My: {{bid myBid}}
-				{{/if}}
-			{{/unless}} Total: {{bid bank.total}}
-		</div>
+		<h4><label class="label label-warning">{{formatDate deadline "%d/%m"}}</label></h4>
+	</div>
+	<div class="col-md-10">
+		<h5>Started</h5>
+		<h4>{{goal}}</h4>
+		{{#unless my}}
+			{{#if myBid}}
+				My: {{bid myBid}}
+			{{/if}}
+		{{/unless}} Total: {{bid bank.total}}
 	</div>
 </div>
 

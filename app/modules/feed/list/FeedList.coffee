@@ -3,12 +3,15 @@
 
 	class Post extends Marionette.ItemView
 		template: require './templates/player_post'
+		className: 'row'
 
 	class GoalStartedPost extends Marionette.ItemView
 		template: require './templates/goal_started'
+		className: 'row'
 
 	class GoalCreatedPost extends Marionette.ItemView
 		template: require './templates/goal_created'
+		className: 'row'
 		events:
 			'click #bet' : "bet"
 		bet: () ->
@@ -16,6 +19,7 @@
 
 	class GoalBidPost extends Marionette.ItemView
 		template: require './templates/goal_bid'
+		className: 'row'
 		events:
 			'click #bet' : "bet"
 		bet: () ->
@@ -23,12 +27,15 @@
 
 	class GoalUpdatedPost extends Marionette.ItemView
 		template: require './templates/goal_update'
+		className: 'row'
 
 	class GoalReachedPost extends Marionette.ItemView
 		template: require './templates/goal_reached'
+		className: 'row'
 
 	class GoalMissedPost extends Marionette.ItemView
 		template: require './templates/goal_missed'
+		className: 'row'
 
 	class Notifications extends Marionette.CompositeView
 		template: require './templates/player_posts'
