@@ -1,10 +1,15 @@
 <h2 class="plan-title">{{configurationKey}}</h2>
-	<h4>{{money bid.amount}}/<small>{{money bid.interest}}</small></h4>
-	{{privacyRule privacyRule}}<br/>
-	<strong>Update:</strong> {{totalTimeRule totalTimeRule}} / {{moveTimeRule moveTimeRule}}<br/>
+<h4>{{money bid.amount}}/<small>{{money bid.interest}}</small></h4>
+{{privacyRule privacyRule}}<br/>
+<strong>Update:</strong> {{totalTimeRule totalTimeRule}} / {{moveTimeRule moveTimeRule}}<br/>
+{{showReminders this}}
+{{#supporterConfiguration}}
+	<h4>Supporter</h4>
+	<h5>{{money bid.amount}}/<small>{{money bid.interest}}</small></h5>
 	{{showReminders this}}
-	{{#each roleConfigurations}}
-		<h4>{{role}}</h4>
-		<h5>{{money bid.amount}}/<small>{{money bid.interest}}</small></h5>
-		{{showReminders this}}
-	{{/each}}
+{{/supporterConfiguration}}
+{{#observerConfiguration}}
+	<h4>Observer</h4>
+	<h5>{{money bid.amount}}/<small>{{money bid.interest}}</small></h5>
+	{{showReminders this}}
+{{/observerConfiguration}}

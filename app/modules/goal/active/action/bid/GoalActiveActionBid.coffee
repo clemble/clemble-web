@@ -3,9 +3,15 @@
 
 	Controller =
 		newBid: (goalKey, configuration) ->
-			roleConfigurations = _.clone(configuration.roleConfigurations)
-			roleConfigurations.forEach((c) -> c.goalKey = goalKey)
-			configurations = new GoalRoleConfigurations(roleConfigurations)
+			supporterConfiguration = _.clone(configuration.supporterConfiguration)
+			supporterConfiguration.goalKey = goalKey
+			supporterConfiguration.role = "supporter"
+
+			observerConfiguration = _.clone(configuration.observerConfiguration)
+			observerConfiguration.goalKey = goalKey
+			observerConfiguration.role = "observer"
+
+			configurations = new GoalRoleConfigurations([supporterConfiguration, observerConfiguration])
 
 			roleModal = new RoleModal
 				collection: configurations
