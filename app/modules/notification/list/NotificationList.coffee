@@ -4,18 +4,26 @@
 	class Notification extends Marionette.ItemView
 		template: require './templates/player_notification'
 		className: 'row'
+		behaviors:
+			Delete: {}
 
 	class PaymentNotification extends Marionette.ItemView
 		template: require './templates/payment_notification'
 		className: 'row'
+		behaviors:
+			Delete: {}
 
 	class PlayerConnectedNotification extends Marionette.ItemView
 		template: require './templates/player_connected'
 		className: 'row'
+		behaviors:
+			Delete: {}
 
 	class PlayerDiscoveredNotification extends Marionette.ItemView
 		template: require './templates/player_discovered'
 		className: 'row'
+		behaviors:
+			Delete: {}
 
 	class PlayerInvitedNotification extends Marionette.ItemView
 		template: require './templates/player_invited'

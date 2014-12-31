@@ -14,6 +14,11 @@ do (Marionette) ->
 		BootstrapTooltip: Marionette.Behavior.extend
 			onRender: () ->
 				@$('[data-toggle="tooltip"]').tooltip()
+		Delete: Marionette.Behavior.extend
+			events:
+				'click #delete' : 'delete'
+			delete: () ->
+				@view.model.destroy()
 		Countdown: Marionette.Behavior.extend
 			modelEvents:
 				'change': 'updateDate'
