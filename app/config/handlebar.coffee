@@ -62,9 +62,12 @@ do(Handlebars, Swag, _) ->
 	Handlebars.registerHelper 'money', (money) ->
 		new Handlebars.SafeString(Utils.toMoney(money))
 
-	Handlebars.registerHelper 'bid', (bid) ->
+	Handlebars.registerHelper 'bid', (bid, icon) ->
 		if(bid?)
-			new Handlebars.SafeString("<span class='fa fa-credit-card'></span> #{Utils.toMoney(bid.amount)}/<small>#{Utils.toMoney(bid.interest)}</small>")
+			if (icon? && icon)
+				new Handlebars.SafeString("<span class='fa fa-credit-card'></span> #{Utils.toMoney(bid.amount)}/<small>#{Utils.toMoney(bid.interest)}</small>")
+			else
+				new Handlebars.SafeString("#{Utils.toMoney(bid.amount)}/<small>#{Utils.toMoney(bid.interest)}</small>")
 		else
 			console.log("!!!ERROR!!! Trying to log empty bid")
 			new Handlebars.SafeString("")

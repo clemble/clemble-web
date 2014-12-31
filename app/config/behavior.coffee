@@ -11,6 +11,9 @@ do (Marionette) ->
 				Backbone.Validation.bind(@view);
 			onDestroy: () ->
 				Backbone.Validation.unbind(@view);
+		BootstrapTooltip: Marionette.Behavior.extend
+			onRender: () ->
+				@$('[data-toggle="tooltip"]').tooltip()
 		Countdown: Marionette.Behavior.extend
 			modelEvents:
 				'change': 'updateDate'

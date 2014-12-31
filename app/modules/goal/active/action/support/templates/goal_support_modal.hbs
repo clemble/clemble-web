@@ -1,9 +1,13 @@
 <div class="modal-body">
 	<div class="container-fluid">
 		<div class="row">
-			You are going to be an SUPPORTER for
-			<h4>{{goal}}</h4>
-			<h4>Reminders {{showReminders configuration.supporterConfiguration}}</h4>
+			<h5>You are going to be an SUPPORTER for</h5>
+			{{profileImage player}}
+			<h3>{{goal}}</h3>
+			<h5>Bid</h5>
+			<h3>{{bid configuration.supporterConfiguration.bid}}</h3>
+			<h5>Reminders</h5>
+			<h3>{{showReminders configuration.supporterConfiguration}}</h3>
 		</div>
 		<div class="pull-right">
 			<button class="btn btn-default" id="cancel">Cancel</button>

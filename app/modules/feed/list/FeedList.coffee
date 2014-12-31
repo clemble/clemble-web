@@ -16,6 +16,8 @@
 			'click #bet'    : "bet"
 			'click #support': 'support'
 			'click #observe': 'observe'
+		behaviors:
+			BootstrapTooltip: {}
 		bet: () ->
 			App.request "goal:active:action:bid:modal", @model.get('goalKey'), @model.get("configuration")
 		support: () ->
