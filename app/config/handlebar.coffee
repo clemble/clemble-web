@@ -1,6 +1,12 @@
 do(Handlebars, Swag, _) ->
 	Swag.registerHelpers(Handlebars);
 
+	SECOND = 1000
+	MINUTE = 60 * SECOND
+	HOUR = 60 * MINUTE
+	DAY = 24 * HOUR
+	WEEK = 7 * DAY
+
 	Utils = {
 		unitToString:(num, unit) ->
 			if (num == 1)
@@ -14,6 +20,17 @@ do(Handlebars, Swag, _) ->
 				"<span class='fa fa-usd'></span>#{money.amount}"
 			else
 				"<span class='fa fa-eur'></span>#{money.amount}"
+		humanTime: (obj) ->
+			if(obj % WEEK == 0)
+				Utils.unitToString(obj / WEEK, "week")
+			else if(obj % DAY == 0)
+				Utils.unitToString(obj / DAY, "day")
+			else if(obj % HOUR == 0)
+				Utils.unitToString(obj / HOUR, "hour")
+			else if(obj % MINUTE == 0)
+				Utils.unitToString(obj / MINUTE, "minute")
+			else
+				Utils.unitToString(obj / SECOND, "second")
 	}
 
 	Handlebars.registerHelper 'toURL', (url) ->
@@ -22,33 +39,19 @@ do(Handlebars, Swag, _) ->
 	Handlebars.registerHelper 'showReminders', (o) ->
 		reminder = ""
 		reminder += if (o.emailReminderRule? && o.emailReminderRule.type != 'no')
-			"<span class='fa fa-send-o text-success'></span>"
+			"<span class='fa fa-send-o text-success'/> #{Utils.humanTime(o.emailReminderRule.reminder)}<br/>"
 		else
-			"<span class='fa fa-send-o'></span>"
+			"No <span class='fa fa-send-o'></span><br/>"
 		reminder += if (o.phoneReminderRule? && o.phoneReminderRule.type != 'no')
-			"<span class='fa fa-phone-square text-success'></span>"
+			"<span class='fa fa-phone-square text-success'/> #{Utils.humanTime(o.phoneReminderRule.reminder)}"
 		else
-			"<span class='fa fa-phone-square'></span>"
+			"No <span class='fa fa-phone-square'></span>"
 		new Handlebars.SafeString(reminder)
 
 
-	SECOND = 1000
-	MINUTE = 60 * SECOND
-	HOUR = 60 * MINUTE
-	DAY = 24 * HOUR
-	WEEK = 7 * DAY
 
 	Handlebars.registerHelper 'humanTime', (obj) ->
-		if(obj % WEEK == 0)
-			new Handlebars.SafeString(Utils.unitToString(obj / WEEK, "week"))
-		else if(obj % DAY == 0)
-			new Handlebars.SafeString(Utils.unitToString(obj / DAY, "day"))
-		else if(obj % HOUR == 0)
-			new Handlebars.SafeString(Utils.unitToString(obj / HOUR, "hour"))
-		else if(obj % MINUTE == 0)
-			new Handlebars.SafeString(Utils.unitToString(obj / MINUTE, "minute"))
-		else
-			new Handlebars.SafeString(Utils.unitToString(obj / SECOND, "second"))
+		new Handlebars.SafeString(Utils.humanTime(obj))
 
 	Handlebars.registerHelper 'toJSON', (obj) ->
 		new Handlebars.SafeString(JSON.stringify(obj, undefined, 2))
