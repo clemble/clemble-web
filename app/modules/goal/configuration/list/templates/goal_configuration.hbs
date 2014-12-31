@@ -1,15 +1,22 @@
-<h2 class="plan-title">{{configurationKey}}</h2>
-<h4>{{money bid.amount}}/<small>{{money bid.interest}}</small></h4>
-{{privacyRule privacyRule}}<br/>
-<strong>Update:</strong> {{totalTimeRule totalTimeRule}} / {{moveTimeRule moveTimeRule}}<br/>
+<h2 class="plan-title">
+	{{name}}
+</h2>
+<h3>Win: {{money bid.interest}}</h3>
+<h4>Bet: {{money bid.amount}}</h4>
+<strong>Duration:</strong> {{totalTimeRule totalTimeRule}} <br/>
+<strong>Update:</strong> {{moveTimeRule moveTimeRule}}<br/>
 {{showReminders this}}
+<hr/>
 {{#supporterConfiguration}}
 	<h4>Supporter</h4>
-	<h5>{{money bid.amount}}/<small>{{money bid.interest}}</small></h5>
+	<h4>Win: {{money bid.interest}}</h4>
+	<h5>Bet: {{money bid.amount}}</h5>
 	{{showReminders this}}
 {{/supporterConfiguration}}
+<hr/>
 {{#observerConfiguration}}
 	<h4>Observer</h4>
-	<h5>{{money bid.amount}}/<small>{{money bid.interest}}</small></h5>
+	<h4>Win: {{money bid.interest}}</h4>
+	<h5>Bet: {{money bid.amount}}</h5>
 	{{showReminders this}}
 {{/observerConfiguration}}
