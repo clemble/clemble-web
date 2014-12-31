@@ -1,0 +1,34 @@
+<div class="modal-header">
+	<h4>Supporter</h4>
+</div>
+<div class="modal-body">
+	<div class="container-fluid">
+		<div class="col-md-12">
+			<h4>Goal</h4>
+			<div class="col-md-2">
+				{{smallProfileImage player}}
+			</div>
+			<div class="col-md-10 pull-right">
+				<h3>{{goal}}</h3>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<h4>Win / Bet</h4>
+			<div class="col-md-10 pull-right">
+				{{#configuration.supporterConfiguration}}
+					<h3>{{money bid.interest}} / {{money bid.amount}}</h3>
+				{{/configuration.supporterConfiguration}}
+			</div>
+		</div>
+		<div class="col-md-12">
+			<h4>Reminders email/phone</h4>
+			<div class="col-md-10 pull-right">
+				<h3>{{showReminders configuration.supporterConfiguration}}</h3>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-default" id="cancel">Cancel</button>
+	<button class="btn btn-primary" id="go">Go <span class="fa fa-play"/></button>
+</div>
