@@ -9,6 +9,7 @@
 
 	class PlayerConnection extends Marionette.ItemView
 		template: require './templates/connection'
+		className: 'row'
 		modelEvents:
 			sync: 'render'
 
