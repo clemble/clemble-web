@@ -12,6 +12,7 @@
 				constructionRequestView = new GoalConstructionNew
 					model: constructionRequest
 
+				layout.helpRegion.show new GoalConstuctionHelp()
 				layout.goalRegion.show constructionRequestView
 
 			region.show layout
@@ -26,15 +27,20 @@
 				constructionRequestView = new GoalConstructionNew
 					model: constructionRequest
 
+				layout.helpRegion.show new GoalConstuctionHelp()
 				layout.goalRegion.show constructionRequestView
 
 			App.modal.show layout
 
 
+	class GoalConstuctionHelp extends Marionette.ItemView
+		template: require './templates/goal_construction_help'
+
 	class GoalConstructionNewLayout extends Marionette.LayoutView
 		template: require "./templates/goal_construction_new_layout"
 		regions:
-			goalRegion          : "#goalRegion",
+			goalRegion          : "#goalRegion"
+			helpRegion          : "#helpRegion"
 			configurationRegion : "#configurationRegion"
 		events:
 			'click #save'       : "save"
@@ -51,7 +57,8 @@
 	class GoalConstructionNewModal extends Marionette.LayoutView
 		template: require "./templates/goal_construction_new_modal"
 		regions:
-			goalRegion          : "#goalRegion",
+			goalRegion          : "#goalRegion"
+			helpRegion          : "#helpRegion"
 			configurationRegion : "#configurationRegion"
 		behaviors: {
 			MarionetteModal: {}
