@@ -1,4 +1,4 @@
-@App.module "GoalSuggestApp.New", (New, App, Backbone, Marionette, $, _) ->
+@App.module "GoalSuggestionApp.New", (New, App, Backbone, Marionette, $, _) ->
 
 	Controller =
 		newModal: (url) ->
@@ -11,14 +11,14 @@
 			layout.on "show", () ->
 				App.request "goal:configuration:list", configurations, layout.configurationRegion
 
-				goal = new GoalSuggestion
+				goal = new GoalSuggestionNew
 					model: suggestionRequest
 
 				layout.goalRegion.show goal
 
 			App.modal.show layout
 
-	class GoalSuggestion extends Marionette.ItemView
+	class GoalSuggestionNew extends Marionette.ItemView
 		template: require './templates/goal_suggestion'
 		behaviors:
 			StickIt: {}

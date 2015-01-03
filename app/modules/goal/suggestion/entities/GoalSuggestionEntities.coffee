@@ -9,6 +9,11 @@
 			if (attributes.goal == undefined)
 				"Goal must be specified" #TODO use generic error code base with multi language support
 
+	class GoalSuggestion extends Backbone.Model
+
+	class GoalSuggestions extends Backbone.Collection
+		model: GoalSuggestion
+
 	API=
 		new: (url, configurations) ->
 			suggestionRequest = new GoalSuggestionRequest()
@@ -18,5 +23,11 @@
 			suggestionRequest.url = url
 			suggestionRequest.on("all", (event) -> console.log("Suggestion request #{event}"))
 			suggestionRequest
+		listMy : () ->
+			suggestions = new GoalSuggestions()
+			suggestions.url = App.Utils.toUrl("/suggestion/player/my")
+			suggestions.fetch()
+			suggestions
 
 	App.reqres.setHandler "goal:suggestion:entities:new", (url, configurations) -> API.new(url, configurations)
+	App.reqres.setHandler "goal:suggestion:entities:list:my", () -> API.listMy()

@@ -6,7 +6,7 @@ require './timeline/GoalTimelineApp'
 
 require './active/GoalActive'
 require './show/GoalShow'
-require './suggestion/GoalSuggestApp'
+require './suggestion/GoalSuggestionApp'
 
 require './listener/GoalListenerApp'
 
