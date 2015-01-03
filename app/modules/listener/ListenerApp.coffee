@@ -54,5 +54,19 @@
 				model = constuctor(event.body)
 				collection.remove(model)
 
+		subscribeReply: (channel, postfix, collection, constuctor) ->
+			App.on "#{channel}:created#{postfix}", (event) ->
+				console.log("Adding #{JSON.stringify(event)}")
+				collection.add(constuctor(event.body))
+
+			remove = (event) ->
+				console.log("Removing #{JSON.stringify(event)}")
+				model = constuctor(event.body)
+				collection.remove(model)
+
+			App.on "#{channel}:accepted#{postfix}", remove
+			App.on "#{channel}:declined#{postfix}", remove
+
 	App.reqres.setHandler "listener:subscribe", (channel, collection, constuctor) -> API.subscribe(channel, "", collection, constuctor)
 	App.reqres.setHandler "listener:subscribe:my", (channel, collection, constuctor) -> API.subscribe(channel, ":my", collection, constuctor)
+	App.reqres.setHandler "listener:subscribe:reply:my", (channel, collection, constuctor) -> API.subscribeReply(channel, ":my", collection, constuctor)

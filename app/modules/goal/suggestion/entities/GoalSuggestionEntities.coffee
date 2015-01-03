@@ -10,6 +10,7 @@
 				"Goal must be specified" #TODO use generic error code base with multi language support
 
 	class GoalSuggestion extends Backbone.Model
+		idAttribute     : 'goalKey'
 
 	class GoalSuggestions extends Backbone.Collection
 		model: GoalSuggestion
@@ -26,6 +27,7 @@
 		listMy : () ->
 			suggestions = new GoalSuggestions()
 			suggestions.url = App.Utils.toUrl("/suggestion/player/my")
+			App.request("listener:subscribe:reply:my", "goal:suggestion", suggestions, (body) -> new GoalSuggestion(body))
 			suggestions.fetch()
 			suggestions
 

@@ -17,13 +17,15 @@
 				contentType: "application/json",
 				dataType: 'json'
 			})
-			@model.destroy()
 
 
 	class Suggestions extends Marionette.CompositeView
 		template: require './templates/goal_suggestions'
 		childView : Suggestion
 		childViewContainer : "#caption"
+		modelEvents:
+			"sync"  : "render"
+			"change": "render"
 
 	Controller =
 		listMy: (region) ->
