@@ -9,9 +9,16 @@
 
 	class PlayerConnection extends Marionette.ItemView
 		template: require './templates/connection'
-		className: 'row'
+		className : 'row'
 		modelEvents:
-			sync: 'render'
+			sync    : 'render'
+		behaviors:
+			BootstrapTooltip: {}
+		events    :
+			'click #suggest' : 'suggest'
+		suggest: () ->
+			url = App.Utils.toUrl("/suggestion/player/#{@model.get('player')}")
+			App.request "goal:suggestion:new:modal", url
 
 	class PlayerConnections extends Marionette.CompositeView
 		template: require './templates/connections'

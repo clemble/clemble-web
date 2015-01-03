@@ -12,7 +12,7 @@
 				constructionRequestView = new GoalConstructionNew
 					model: constructionRequest
 
-				layout.helpRegion.show new GoalConstuctionHelp()
+				layout.helpRegion.show new GoalConstructionHelp()
 				layout.goalRegion.show constructionRequestView
 
 			region.show layout
@@ -27,13 +27,13 @@
 				constructionRequestView = new GoalConstructionNew
 					model: constructionRequest
 
-				layout.helpRegion.show new GoalConstuctionHelp()
+				layout.helpRegion.show new GoalConstructionHelp()
 				layout.goalRegion.show constructionRequestView
 
 			App.modal.show layout
 
 
-	class GoalConstuctionHelp extends Marionette.ItemView
+	class GoalConstructionHelp extends Marionette.ItemView
 		template: require './templates/goal_construction_help'
 
 	class GoalConstructionNewLayout extends Marionette.LayoutView
