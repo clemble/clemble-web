@@ -6,8 +6,11 @@
 		</div>
 	</div>
 	<div class="col-md-10">
-		<b>{{humanTime configuration.totalTimeRule.limit}}</b><br/>
-		{{goal}}<br/>
-		{{bid configuration.bid}}<br/>
+		<b>{{humanTime configuration.totalTimeRule.limit}}</b> {{bid configuration.bid}}<br/>
+		<h5>{{goal}}</h5>
+		<div class="btn-group">
+			<button class="btn btn-success" id="accept"><span class="fa fa-check-circle-o"></span> Accept</button>
+			<button class="btn btn-info" id="decline"><span class="fa fa-circle-o"></span> Decline</button>
+		</div>
 	</div>
 </div>

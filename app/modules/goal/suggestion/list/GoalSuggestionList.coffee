@@ -2,6 +2,23 @@
 
 	class Suggestion extends Marionette.ItemView
 		template: require './templates/goal_suggestion'
+		events:
+			'click #accept'  : 'accept'
+			'click #decline' : 'decline'
+		accept: () ->
+			@process(true)
+		decline: () ->
+			@process(false)
+		process: (accept) ->
+			$.ajax({
+				type: 'POST',
+				url: "/suggestion/player/my/#{@model.get('goalKey')}",
+				data: JSON.stringify(accept),
+				contentType: "application/json",
+				dataType: 'json'
+			})
+			@model.destroy()
+
 
 	class Suggestions extends Marionette.CompositeView
 		template: require './templates/goal_suggestions'
