@@ -103,6 +103,20 @@ do(Handlebars, Swag, _) ->
 		else if (rule == "friends")
 			new Handlebars.SafeString("<span class='fa fa-users'></span> friends")
 
+	Handlebars.registerHelper "timeoutRule", (rule) ->
+		if (rule.timeoutCalculator.type == "eod")
+			ruleDay = rule.timeoutCalculator.days
+			if (ruleDay == 1)
+				"1 Day"
+			else if (ruleDay == 7)
+				"Week"
+			else if (ruleDay == 30)
+				"Month"
+			else
+				"#{ruleDay} Days"
+		else
+			new Handlebars.SafeString("Timeout rule")
+
 	Handlebars.registerHelper "moveTimeRule", (rule) ->
 		ruleDay = rule.limit / DAY
 		if (ruleDay = 1)
