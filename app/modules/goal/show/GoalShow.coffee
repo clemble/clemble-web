@@ -13,6 +13,7 @@
 				App.request "notification:list:my", layout.notificationApp
 				App.request "feed:list:my", layout.feedApp
 				App.request "player:social:list:my", layout.socialConnectApp
+				App.request "help:show", layout.helpApp
 			region.show layout
 
 
@@ -24,6 +25,7 @@
 			profileApp      : "#profileApp"
 			accountApp      : "#accountApp"
 			feedApp         : "#feedApp"
+			helpApp         : "#helpApp"
 			notificationApp : '#notificationApp'
 			socialConnectApp: '#socialConnectApp'
 			suggestionApp   : '#suggestionApp'
