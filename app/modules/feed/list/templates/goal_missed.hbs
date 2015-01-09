@@ -9,8 +9,12 @@
 	<div class="col-md-10">
 		<h5>Missed</h5>
 		<h4>{{goal}}</h4>
-		{{bid bank.total}}<br/>
+		{{#if myBid}}My: {{bid myBid}}{{/if}} Total: {{bid bank.total}}
 		<h5>{{status}}</h5>
+	</div>
+	<div class="col-md-12">
+		{{#each supporters}}{{microProfileImage this}}{{/each}}
+		{{#each observers}}{{microProfileImage this}}{{/each}}
 	</div>
 </div>
 

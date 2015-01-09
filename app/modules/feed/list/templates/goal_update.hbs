@@ -10,11 +10,11 @@
 		<h5>Updated</h5>
 		{{status}}
 		<h4>{{goal}}</h4>
-		{{#unless my}}
-			{{#if myBid}}
-				My: {{bid myBid}}
-			{{/if}}
-		{{/unless}} Total: {{bid bank.total}}
+		{{#if myBid}}My: {{bid myBid}}{{/if}} Total: {{bid bank.total}}
+	</div>
+	<div class="col-md-12">
+		{{#each supporters}}{{microProfileImage this}}{{/each}}
+		{{#each observers}}{{microProfileImage this}}{{/each}}
 	</div>
 </div>
 

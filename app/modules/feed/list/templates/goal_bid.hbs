@@ -11,7 +11,11 @@
 	<div class="col-md-8">
 		<h5>Bid</h5>
 		<h4><small>{{formatDate deadline "%d/%m"}}</small> {{goal}}</h4>
-		{{bid playerBid.bid}} Total: {{bid bank.total}}
+		{{#if myBid}}My: {{bid myBid}}{{/if}} Total: {{bid bank.total}}
+	</div>
+	<div class="col-md-12">
+		{{#each supporters}}{{microProfileImage this}}{{/each}}
+		{{#each observers}}{{microProfileImage this}}{{/each}}
 	</div>
 	{{#unless my}}
 		<div class="col-md-12">

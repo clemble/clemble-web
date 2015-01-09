@@ -92,6 +92,9 @@ do(Handlebars, Swag, _) ->
 	Handlebars.registerHelper 'smallProfileImage', (player) ->
 		new Handlebars.SafeString("<image src='http://api.#{window.location.host}/profile/#{player}/image/small' class='img-circle' height='50' width='50'></image>")
 
+	Handlebars.registerHelper 'microProfileImage', (player) ->
+		new Handlebars.SafeString("<image src='http://api.#{window.location.host}/profile/#{player}/image/small' class='img-circle' height='30' width='30'></image>")
+
 	Handlebars.registerHelper 'myImage', (player) ->
 		new Handlebars.SafeString("<image src='http://api.#{window.location.host}/profile/my/image' class='img-circle' height='100' width='100'></image>")
 

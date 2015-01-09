@@ -1,3 +1,4 @@
+
 @App.module "GoalActiveApp.Entities", (Entities, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
 
@@ -9,6 +10,13 @@
 			status        : null
 			context       : null
 		idAttribute: 'goalKey'
+		parse: (res) ->
+			if (res.bank?)
+				myBid = _.find(res.bank.bids, (bid) -> bid.player == App.player)
+				if (myBid?)
+					res.myBid = myBid.bid
+			res
+
 
 	class GoalStates extends Backbone.Collection
 		model: GoalState

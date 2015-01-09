@@ -1,15 +1,21 @@
 <hr/>
 <div class="container-fluid">
-	<div class="col-md-3">
-		{{bid bank.total}}
+	<h4>{{goal}}</h4>
+	<div class="col-md-2">
 		{{#each context.playerContexts}}
-			<h4><small>Next</small> <span class="label label-success label-lg"><b data-countdown="{{clock.breachTime}}"></b></span></h4>
-			<h4><small>Deadline</small> <span class="label label-warning">{{formatDate clock.deadline "%d/%m %H:%M"}}</span></h4>
+			<h4><span class="label label-success label-lg">{{formatDate clock.breachTime "%d/%m"}}</span></h4>
+			<h4><span class="label label-warning">{{formatDate clock.deadline "%d/%m"}}</span></h4>
 		{{/each}}
 	</div>
-	<div class="col-md-9">
-		<h4>{{goal}}</h4>
-		<h5> {{status}}</h5>
-		<button id="update" class="btn btn-sm btn-success"><span class="fa fa-circle-thin"></span> Update</button>
+	<div class="col-md-10">
+		<div class="col-md-12">
+			My: {{bid myBid}} <small>Total: {{bid bank.total}}</small><br/>
+			<h5>{{status}}</h5>
+			<button id="update" class="btn btn-xs btn-success"><span class="fa fa-circle-thin"></span> Update</button>
+		</div>
+	</div>
+	<div class="col-md-12">
+		{{#each supporters}}{{microProfileImage this}}{{/each}}
+		{{#each observers}}{{microProfileImage this}}{{/each}}
 	</div>
 </div>
