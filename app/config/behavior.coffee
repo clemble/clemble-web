@@ -74,7 +74,7 @@ do (Marionette) ->
 				'click [share]'  : "share"
 			share: (evt) ->
 				provider = evt.currentTarget.getAttribute("share")
-				url = @view.model.url() + "/share"
+				url = App.Utils.toUrl(@view.model.url() + "/share")
 				$.ajax({
 					type: 'POST',
 					url: url,

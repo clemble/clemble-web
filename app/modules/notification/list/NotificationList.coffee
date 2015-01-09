@@ -36,9 +36,10 @@
 		decline: () ->
 			@process(false)
 		process: (accept) ->
+			url = App.Utils.toUrl("/connection/my/invitations/#{@model.get('connection')}")
 			$.ajax({
 				type: 'POST',
-				url: "/connection/my/invitations/#{@model.get('connection')}",
+				url: url,
 				data: JSON.stringify(accept),
 				contentType: "application/json",
 				dataType: 'json'

@@ -10,9 +10,10 @@
 		decline: () ->
 			@process(false)
 		process: (accept) ->
+			url = App.Utils.toUrl("/suggestion/player/my/#{@model.get('goalKey')}")
 			$.ajax({
 				type: 'POST',
-				url: "/suggestion/player/my/#{@model.get('goalKey')}",
+				url: url,
 				data: JSON.stringify(accept),
 				contentType: "application/json",
 				dataType: 'json'
