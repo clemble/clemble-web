@@ -6,7 +6,7 @@
 		modelEvents:
 			"change" : "render"
 		events:
-			"click .btn" : "socialLogin"
+			"click [signin]" : "socialLogin"
 			'click #phone' : () -> App.request "player:phone:new:modal"
 			'click #email' : () -> App.request "player:email:new:modal"
 		socialLogin: (evt) =>

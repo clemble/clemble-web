@@ -4,17 +4,17 @@
 		{{#any socialConnections}}
 			<h5><small>Already connected with</small></h5>
 			{{#each socialConnections}}
-				<span class="success {{socialIcon providerId}}"></span>
+				<span class="success fa-2x {{socialIcon providerId}}"></span>
 			{{/each}}
 		{{/any}}
 		{{#empty missing}}
 		{{else}}
 			<h5><small>Connect with</small></h5>
 			{{#unless connected.phone}}
-				<a id="phone" class="btn"><span class="{{socialIcon "phone"}}"/></a>
+				<a id="phone"><span class="fa-2x {{socialIcon "phone"}}"/></a>
 			{{/unless}}
 			{{#each missing}}
-				<a class="btn" signin="{{@key}}"><span class="{{socialIcon @key}}"></span></a>
+				<a signin="{{@key}}"><span class="fa-2x {{socialIcon @key}}"></span></a>
 			{{/each}}
 		{{/empty}}
 	</div>
