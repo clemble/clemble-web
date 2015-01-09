@@ -1,17 +1,18 @@
 <hr/>
 <div class="container-fluid">
 	<div class="col-md-2">
+		<small>Bid</small>
 		{{smallProfileImage playerBid.player}}
 		<h4><label class="label label-warning">Bid</label></h4>
 	</div>
 	<div class="col-md-2">
+		<small>on</small>
 		{{smallProfileImage player}}
 		<h4><label class="label label-success">{{formatDate startDate "%d/%m"}}</label></h4>
 	</div>
 	<div class="col-md-8">
-		<h5>Bid</h5>
-		<h4><small>{{formatDate deadline "%d/%m"}}</small> {{goal}}</h4>
 		{{#if myBid}}My: {{bid myBid}}{{/if}} Total: {{bid bank.total}}
+		<h4><small>{{formatDate deadline "%d/%m"}}</small> {{goal}}</h4>
 	</div>
 	<div class="col-md-12">
 		{{#each supporters}}{{microProfileImage this}}{{/each}}

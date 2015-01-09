@@ -1,15 +1,15 @@
 <hr/>
 <div class="container-fluid">
 	<div class="col-md-2">
+		<small>Created</small>
 		<div>
 			{{smallProfileImage player}}
 		</div>
 		<h4><label class="label label-success">{{formatDate startDate "%d/%m"}}</label></h4>
 	</div>
 	<div class="col-md-10">
-		<h5>Created</h5>
-		<h4>{{goal}}</h4>
 		{{#if myBid}}My: {{bid myBid}}{{/if}} Total: {{bid bank.total}}
+		<h4>{{goal}}</h4>
 	</div>
 	<div class="col-md-12">
 		{{#each supporters}}{{microProfileImage this}}{{/each}}

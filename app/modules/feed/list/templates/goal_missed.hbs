@@ -1,15 +1,15 @@
 <hr/>
 <div class="container-fluid">
 	<div class="col-md-2">
+		<small>Missed</small>
 		<div>
 			{{smallProfileImage player}}
 		</div>
 		<label class="label label-danger">LOST</label>
 	</div>
 	<div class="col-md-10">
-		<h5>Missed</h5>
-		<h4>{{goal}}</h4>
 		{{#if myBid}}My: {{bid myBid}}{{/if}} Total: {{bid bank.total}}
+		<h4>{{goal}}</h4>
 		<h5>{{status}}</h5>
 	</div>
 	<div class="col-md-12">
