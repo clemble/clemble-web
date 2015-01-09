@@ -4,6 +4,8 @@
 	class Post extends Marionette.ItemView
 		template: require './templates/player_post'
 		className: 'row'
+		behaviors:
+			SocialShare: {}
 
 	class GoalStartedPost extends Marionette.ItemView
 		template: require './templates/goal_started'
@@ -20,6 +22,7 @@
 			'click #observe': 'observe'
 		behaviors:
 			BootstrapTooltip: {}
+			SocialShare: {}
 		bet: () ->
 			App.request "goal:active:action:bid:modal", @model.get('goalKey'), @model.get("configuration")
 		support: () ->
@@ -34,6 +37,8 @@
 			'click #bet' : "bet"
 			'click #support': 'support'
 			'click #observe': 'observe'
+		behaviors:
+			SocialShare: {}
 		bet: () ->
 			App.request "goal:active:action:bid:modal", @model.get('goalKey'), @model.get("configuration")
 		support: () ->
@@ -44,14 +49,20 @@
 	class GoalUpdatedPost extends Marionette.ItemView
 		template: require './templates/goal_update'
 		className: 'row'
+		behaviors:
+			SocialShare: {}
 
 	class GoalReachedPost extends Marionette.ItemView
 		template: require './templates/goal_reached'
 		className: 'row'
+		behaviors:
+			SocialShare: {}
 
 	class GoalMissedPost extends Marionette.ItemView
 		template: require './templates/goal_missed'
 		className: 'row'
+		behaviors:
+			SocialShare: {}
 
 	class Notifications extends Marionette.CompositeView
 		template: require './templates/player_posts'

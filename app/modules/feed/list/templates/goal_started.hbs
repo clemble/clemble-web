@@ -10,7 +10,7 @@
 	<div class="col-md-10">
 		{{#if myBid}} My: {{bid myBid}}{{/if}} Total: {{bid bank.total}}
 		<h4>{{goal}}</h4>
-		<div share="facebook">facebook</div>
+		{{socialShare}}
 	</div>
 	<div class="col-md-12">
 		{{#each supporters}}{{microProfileImage this}}{{/each}}

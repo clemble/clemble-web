@@ -6,6 +6,10 @@
 	class Post extends Backbone.Model
 		defaults:
 			player : null
+		idAttribute:
+			'key'
+		urlRoot:
+			'/feed/post/'
 		parse: (res) ->
 			API.getId(res)
 

@@ -152,11 +152,11 @@ do(Handlebars, Swag, _) ->
 
 	Handlebars.registerHelper "socialIcon", (social) ->
 		if(social == "facebook")
-			new Handlebars.SafeString('fa fa-facebook')
+			new Handlebars.SafeString('fa fa-facebook-square')
 		else if(social == "twitter")
-			new Handlebars.SafeString('fa fa-twitter')
+			new Handlebars.SafeString('fa fa-twitter-square')
 		else if(social == "vkontakte")
-			new Handlebars.SafeString('fa fa-vk')
+			new Handlebars.SafeString('fa fa-vk-square')
 		else if(social == "google")
 			new Handlebars.SafeString('fa fa-google-plus-square')
 		else if(social == "phone")
@@ -165,3 +165,9 @@ do(Handlebars, Swag, _) ->
 			new Handlebars.SafeString('fa fa-send-o')
 		else
 			console.error("Unknown social reference #{social}")
+
+	Handlebars.registerHelper "socialShare", () ->
+		new Handlebars.SafeString("<div class='pull-rigth'>
+			<a share='facebook'><span class='fa fa-2x fa-facebook-square'></span></a>
+			<a share='twitter'><span class='fa fa-2x fa-twitter-square'></span></a>
+		</div>")

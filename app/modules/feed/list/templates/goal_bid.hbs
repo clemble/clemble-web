@@ -13,6 +13,7 @@
 	<div class="col-md-8">
 		{{#if myBid}}My: {{bid myBid}}{{/if}} Total: {{bid bank.total}}
 		<h4><small>{{formatDate deadline "%d/%m"}}</small> {{goal}}</h4>
+		{{socialShare}}
 	</div>
 	<div class="col-md-12">
 		{{#each supporters}}{{microProfileImage this}}{{/each}}
