@@ -8,6 +8,8 @@
 	class GoalStartedPost extends Marionette.ItemView
 		template: require './templates/goal_started'
 		className: 'row'
+		behaviors:
+			SocialShare: {}
 
 	class GoalCreatedPost extends Marionette.ItemView
 		template: require './templates/goal_created'

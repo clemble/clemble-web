@@ -63,6 +63,5 @@
 		template: require './templates/goal_friend_initiation_empty'
 		className: 'row'
 
-
 	App.reqres.setHandler "goal:initiation:list:my", (region) -> Controller.listMy(region)
 	App.reqres.setHandler "goal:initiation:list:my:friend", (region) -> Controller.listMyFriend(region)

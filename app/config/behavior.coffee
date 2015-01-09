@@ -69,5 +69,18 @@ do (Marionette) ->
 			showError: (model, resp, options) ->
 				#TODO make this more sophisticated
 				@view.$('.help-block:first').html(resp.responseJSON[0].error.description).removeClass('hidden')
+		SocialShare: Marionette.Behavior.extend
+			events:
+				'click [share]'  : "share"
+			share: (evt) ->
+				provider = evt.currentTarget.getAttribute("share")
+				url = @view.model.url() + "/share"
+				$.ajax({
+					type: 'POST',
+					url: url,
+					data: JSON.stringify(provider),
+					contentType: "application/json",
+					dataType: 'json'
+				})
 
 	Marionette.Behaviors.behaviorsLookup = () -> Behaviors
