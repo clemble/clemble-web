@@ -6,6 +6,8 @@
 			goal: null
 			startDate: null
 			configuration: null
+		url:
+			App.Utils.toUrl("/construction/")
 		validate: (attributes, options) ->
 			if (attributes.goal == undefined)
 				"Goal must be specified" #TODO use generic error code base with multi language support
@@ -15,11 +17,22 @@
 			constructionRequest = new GoalConstructionRequest()
 			tomorrow = moment().add('days', 1).toDate().toJSON().slice(0,10)
 			constructionRequest.set('startDate', tomorrow)
+
 			constructionRequest.set("configuration", configurations.getSelected())
 			constructionRequest.listenTo configurations, "selected", (model) ->
 				constructionRequest.set('configuration', model.attributes)
-			constructionRequest.url = App.Utils.toUrl("/construction/")
-			constructionRequest.on("all", (event) -> console.log("construction request #{event}"))
+
+			constructionRequest
+		newByChoice: (choice) ->
+			constructionRequest = new GoalConstructionRequest()
+			tomorrow = moment().add('days', 1).toDate().toJSON().slice(0,10)
+			constructionRequest.set('startDate', tomorrow)
+
+			constructionRequest.set("configuration", choice.getSelected())
+			constructionRequest.listenTo choice, "selected", (model) ->
+				constructionRequest.set('configuration', model.attributes)
+
 			constructionRequest
 
 	App.reqres.setHandler "goal:construction:entities:new", (configurations) -> API.new(configurations)
+	App.reqres.setHandler "goal:construction:entities:new:choice", (choice) -> API.newByChoice(choice)
