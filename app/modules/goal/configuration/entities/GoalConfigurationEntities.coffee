@@ -49,7 +49,7 @@
 			link = (name) ->
 				self[name] = new Values()
 				self[name].on "selected", (model) ->
-					self.configuration.set(name, model.attributes)
+					self.configuration.set(name, model.attributes.rule)
 					self.configuration.set('bid', self.calculateBid())
 				self.once 'sync', () ->
 					self[name].add(self.get(name))
