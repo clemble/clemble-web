@@ -31,6 +31,21 @@
 				layout.goalRegion.show constructionRequestView
 
 			App.modal.show layout
+		newChoiceModal: (choice) ->
+			constructionRequest = App.request "goal:construction:entities:new:choice", choice
+			layout = new GoalConstructionNewModal
+				model: constructionRequest
+
+			layout.on "show", () ->
+				App.request "goal:configuration:choice", choice, layout.configurationRegion
+
+				constructionRequestView = new GoalConstructionNew
+					model: constructionRequest
+
+				layout.helpRegion.show new GoalConstructionHelp()
+				layout.goalRegion.show constructionRequestView
+
+			App.modal.show layout
 
 
 	class GoalConstructionHelp extends Marionette.ItemView
@@ -72,7 +87,6 @@
 				@$("#error").text(error)
 			'error' :  (model, response) ->
 				@$("#error").show()
-				#TODO show all the errors not only the first one
 				@$("#error").text(response.responseJSON[0].error.description)
 		behaviors:
 			StickIt: {}
@@ -86,13 +100,15 @@
 			}
 		}
 
-	App.reqres.setHandler "goal:construction:new", (configurations, region) -> Controller.new(configurations, region)
-	App.reqres.setHandler "goal:construction:new:modal", (configurations) -> Controller.new(configurations, App.modal)
+	App.reqres.setHandler "goal:construction:new", (configurations, region) ->
+		Controller.new(configurations, region)
+	App.reqres.setHandler "goal:construction:new:modal", (configurations) ->
+		Controller.new(configurations, App.modal)
 
 	App.reqres.setHandler "goal:construction:my:new", (region) ->
 		configurations = App.request("goal:configuration:entities:list")
 		Controller.new(configurations, region)
 	App.reqres.setHandler "goal:construction:my:new:modal", () ->
-		configurations = App.request("goal:configuration:entities:list")
-		Controller.newModal(configurations)
+		choice = App.request("goal:configuration:entities:choice")
+		Controller.newChoiceModal(choice)
 

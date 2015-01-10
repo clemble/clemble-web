@@ -28,8 +28,8 @@
 			tomorrow = moment().add('days', 1).toDate().toJSON().slice(0,10)
 			constructionRequest.set('startDate', tomorrow)
 
-			constructionRequest.set("configuration", choice.getSelected())
-			constructionRequest.listenTo choice, "selected", (model) ->
+			constructionRequest.set("configuration", choice.configuration.attributes)
+			constructionRequest.listenTo choice.configuration, "change", (model) ->
 				constructionRequest.set('configuration', model.attributes)
 
 			constructionRequest

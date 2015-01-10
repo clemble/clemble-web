@@ -17,6 +17,5 @@
 			'click #phone' : () -> App.request "player:phone:new:modal"
 			'click #email' : () -> App.request "player:email:new:modal"
 
-
 	App.reqres.setHandler "player:profile:show", (player, region) -> Controller.show(player, region)
 	App.reqres.setHandler "player:profile:show:my", (region) -> Controller.show('my', region)

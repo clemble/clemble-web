@@ -3,11 +3,7 @@
 
 	class GoalConfiguration extends Backbone.Model
 		defaults:
-			configurationKey: null
 			privacyRule: null
-			moveTimeRule: null
-			totalTimeRule: null
-		idAttribute: "configurationKey"
 
 	class Value extends Backbone.Model
 		default:
@@ -48,9 +44,13 @@
 		initialize: () =>
 			self = @
 
+			@configuration = new GoalConfiguration()
+
 			link = (name) ->
 				self[name] = new Values()
-				self[name].on "selected", () -> self.toConfiguration()
+				self[name].on "selected", (model) ->
+					self.configuration.set(name, model.attributes)
+					self.configuration.set('bid', self.calculateBid())
 				self.once 'sync', () ->
 					self[name].add(self.get(name))
 					self[name].trigger("sync")
@@ -65,7 +65,7 @@
 			link('observerConfiguration', @)
 			link('shareRule', @)
 
-		toConfiguration: () =>
+		calculateBid: () =>
 			if (@totalTimeoutRule.getSelected()? &&
 					@emailReminderRule.getSelected()? &&
 					@phoneReminderRule.getSelected()? &&
@@ -95,36 +95,10 @@
 				interest.amount = (interest.amount * (100 + percentage)) / 100
 
 				# Step 3. Calculate selected configuration
-				selected = {
-					bid: {
-						amount: bid
-						interest: interest
-					}
-					totalTimeoutRule: @totalTimeoutRule.getSelected().attributes
-					emailReminderRule: @emailReminderRule.getSelected().attributes
-					phoneReminderRule: @phoneReminderRule.getSelected().attributes
-					privacyRule:  @privacyRule.getSelected().attributes
-					moveTimeoutRule: @moveTimeoutRule.getSelected().attributes
-					supporterConfiguration: @supporterConfiguration.getSelected().attributes
-					observerConfiguration: @observerConfiguration.getSelected().attributes
-					shareRule: @shareRule.getSelected().attributes
-				}
+				{ amount: bid, interest: interest }
+			else
+				{ amount: 0, interest: 0 }
 
-				# Step 4. Set selected configuration
-				@setSelected(new GoalConfiguration(selected))
-
-				console.log("Selected #{JSON.stringify(selected)}")
-
-		setSelected: (model) =>
-			# Notifying of changed selection
-			if (@selected?)
-				@trigger("unselected", @selected)
-
-			# Specifying new selection
-			@selected = model
-			@trigger("selected", @selected)
-		getSelected: () =>
-			@selected
 
 
 	class GoalConfigurations extends Backbone.Collection
