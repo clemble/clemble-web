@@ -16,9 +16,10 @@
 
 	class Values extends Backbone.Collection
 		model: Value
-		initialize: (collection) ->
-			selected = new Value(collection[0])
-			@setSelected(selected)
+		initialize: () ->
+			self = @
+			@once "sync", () ->
+				@setSelected(self.find(() -> true))
 		setSelected: (model) =>
 			# Notifying of changed selection
 			if (@selected?)
@@ -44,44 +45,35 @@
 			shareRule: []
 		url:
 			App.Utils.toUrl('/configuration/my/choice')
-		initialize: () ->
+		initialize: () =>
 			self = @
-			@once "sync", () ->
-				bidModel = _.map(self.get("bid"), (bid) ->
-					{
-						rule: bid,
-						percentage: 0
-					}
-				)
 
-				self.bid = new Values(bidModel)
-				self.bid.on "selected", () -> self.toConfiguration()
+			link = (name) ->
+				self[name] = new Values()
+				self[name].on "selected", () -> self.toConfiguration()
+				self.once 'sync', () ->
+					options = _.map(self.get(name), (option) ->
+						if (option.rule?)
+							option
+						else
+							{
+								rule: option
+								percentage: 0
+							}
+					)
+					self[name].add(options)
+					self[name].trigger("sync")
+					self.toConfiguration()
 
-				self.totalTimeoutRule = new Values(self.get("totalTimeoutRule"))
-				self.totalTimeoutRule.on "selected", () -> self.toConfiguration()
-
-				self.emailReminderRule = new Values(self.get("emailReminderRule"))
-				self.emailReminderRule.on "selected", () -> self.toConfiguration()
-
-				self.phoneReminderRule = new Values(self.get("phoneReminderRule"))
-				self.phoneReminderRule.on "selected", () -> self.toConfiguration()
-
-				self.privacyRule = new Values(self.get("privacyRule"))
-				self.privacyRule.on "selected", () -> self.toConfiguration()
-
-				self.moveTimeoutRule = new Values(self.get("moveTimeoutRule"))
-				self.moveTimeoutRule.on "selected", () -> self.toConfiguration()
-
-				self.supporterConfiguration = new Values(self.get("supporterConfiguration"))
-				self.supporterConfiguration.on "selected", () -> self.toConfiguration()
-
-				self.observerConfiguration = new Values(self.get("observerConfiguration"))
-				self.observerConfiguration.on "selected", () -> self.toConfiguration()
-
-				self.shareRule = new Values(self.get("shareRule"))
-				self.shareRule.on "selected", () -> self.toConfiguration()
-
-				self.toConfiguration()
+			link('bid', @)
+			link('totalTimeoutRule', @)
+			link('emailReminderRule', @)
+			link('phoneReminderRule', @)
+			link('privacyRule', @)
+			link('moveTimeoutRule', @)
+			link('supporterConfiguration', @)
+			link('observerConfiguration', @)
+			link('shareRule', @)
 
 		toConfiguration: () =>
 			# Step 1. Calculate percentage

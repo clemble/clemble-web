@@ -24,9 +24,5 @@
 			"sync"    : "render"
 		childView: GoalActive
 		childViewContainer: "#content"
-		emptyView: GoalActiveEmpty
-
-	class GoalActiveEmpty extends Marionette.ItemView
-		template: require "./templates/goal_active_empty"
 
 	App.reqres.setHandler "goal:active:list:my", (region) -> Controller.listMy(region)
