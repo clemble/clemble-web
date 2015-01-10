@@ -52,18 +52,8 @@
 				self[name] = new Values()
 				self[name].on "selected", () -> self.toConfiguration()
 				self.once 'sync', () ->
-					options = _.map(self.get(name), (option) ->
-						if (option.rule?)
-							option
-						else
-							{
-								rule: option
-								percentage: 0
-							}
-					)
-					self[name].add(options)
+					self[name].add(self.get(name))
 					self[name].trigger("sync")
-					self.toConfiguration()
 
 			link('bid', @)
 			link('totalTimeoutRule', @)
@@ -76,43 +66,54 @@
 			link('shareRule', @)
 
 		toConfiguration: () =>
-			# Step 1. Calculate percentage
-			percentage = 0
-			percentage += @totalTimeoutRule.getSelected().get('percentage')
-			percentage += @emailReminderRule.getSelected().get('percentage')
-			percentage += @phoneReminderRule.getSelected().get('percentage')
-			percentage += @privacyRule.getSelected().get('percentage')
-			percentage += @moveTimeoutRule.getSelected().get('percentage')
-			percentage += @supporterConfiguration.getSelected().get('percentage')
-			percentage += @observerConfiguration.getSelected().get('percentage')
-			percentage += @shareRule.getSelected().get('percentage')
+			if (@totalTimeoutRule.getSelected()? &&
+					@emailReminderRule.getSelected()? &&
+					@phoneReminderRule.getSelected()? &&
+					@privacyRule.getSelected()? &&
+					@moveTimeoutRule.getSelected()? &&
+					@supporterConfiguration.getSelected()? &&
+					@observerConfiguration.getSelected()? &&
+					@shareRule.getSelected()? &&
+					@bid.getSelected()?
+			)
+				# Step 1. Calculate percentage
+				percentage = 0
+				percentage += @totalTimeoutRule.getSelected().get('percentage')
+				percentage += @emailReminderRule.getSelected().get('percentage')
+				percentage += @phoneReminderRule.getSelected().get('percentage')
+				percentage += @privacyRule.getSelected().get('percentage')
+				percentage += @moveTimeoutRule.getSelected().get('percentage')
+				percentage += @supporterConfiguration.getSelected().get('percentage')
+				percentage += @observerConfiguration.getSelected().get('percentage')
+				percentage += @shareRule.getSelected().get('percentage')
 
-			@set("percentage", percentage)
+				@set("percentage", percentage)
 
-			# Step 2. Calculate bid
-			bid = @bid.getSelected().get("rule")
-			interest = _.clone(bid)
-			interest.amount = (interest.amount * (100 + percentage)) / 100
-			bid = {
-				amount: bid
-				interest: interest
-			}
+				# Step 2. Calculate bid
+				bid = @bid.getSelected().attributes
+				interest = _.clone(bid)
+				interest.amount = (interest.amount * (100 + percentage)) / 100
 
-			# Step 3. Calculate selected configuration
-			selected = {
-				bid: bid
-				totalTimeoutRule: @totalTimeoutRule.getSelected().attributes
-				emailReminderRule: @emailReminderRule.getSelected().attributes
-				phoneReminderRule: @phoneReminderRule.getSelected().attributes
-				privacyRule:  @privacyRule.getSelected().attributes
-				moveTimeoutRule: @moveTimeoutRule.getSelected().attributes
-				supporterConfiguration: @supporterConfiguration.getSelected().attributes
-				observerConfiguration: @observerConfiguration.getSelected().attributes
-				shareRule: @shareRule.getSelected().attributes
-			}
+				# Step 3. Calculate selected configuration
+				selected = {
+					bid: {
+						amount: bid
+						interest: interest
+					}
+					totalTimeoutRule: @totalTimeoutRule.getSelected().attributes
+					emailReminderRule: @emailReminderRule.getSelected().attributes
+					phoneReminderRule: @phoneReminderRule.getSelected().attributes
+					privacyRule:  @privacyRule.getSelected().attributes
+					moveTimeoutRule: @moveTimeoutRule.getSelected().attributes
+					supporterConfiguration: @supporterConfiguration.getSelected().attributes
+					observerConfiguration: @observerConfiguration.getSelected().attributes
+					shareRule: @shareRule.getSelected().attributes
+				}
 
-			# Step 4. Set selected configuration
-			@setSelected(new GoalConfiguration(selected))
+				# Step 4. Set selected configuration
+				@setSelected(new GoalConfiguration(selected))
+
+				console.log("Selected #{JSON.stringify(selected)}")
 
 		setSelected: (model) =>
 			# Notifying of changed selection
