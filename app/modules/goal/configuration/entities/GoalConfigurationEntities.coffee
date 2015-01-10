@@ -8,6 +8,18 @@
 			totalTimeRule: null
 		idAttribute: "configurationKey"
 
+	class GoalConfigurationChoise extends Backbone.Model
+		defaults:
+			bid : []
+			totalTimeoutRule: []
+			emailReminderRule: []
+			phoneReminderRule: []
+			privacyRule: []
+			moveTimeoutRule: []
+			supporterConfiguration: []
+			observerConfiguration: []
+			shareRule: []
+
 	class GoalConfigurations extends Backbone.Collection
 		model: GoalConfiguration
 		setSelected: (model) =>
@@ -31,5 +43,11 @@
 				configurations.setSelected(configurations.find((el) -> true))
 			configurations.fetch()
 			configurations
+		getChoices: () ->
+			choices = new GoalConfigurationChoise()
+			choices.url = App.Utils.toUrl('/configuration/my/choice')
+			choices.fetch()
+			choices
 
-	App.reqres.setHandler 'goal:configuration:entities:all', () -> API.getConfigurations()
+	App.reqres.setHandler 'goal:configuration:entities:list', () -> API.getConfigurations()
+	App.reqres.setHandler 'goal:configuration:entities:choice', () -> API.getChoices()

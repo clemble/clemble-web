@@ -90,9 +90,9 @@
 	App.reqres.setHandler "goal:construction:new:modal", (configurations) -> Controller.new(configurations, App.modal)
 
 	App.reqres.setHandler "goal:construction:my:new", (region) ->
-		configurations = App.request("goal:configuration:entities:all")
+		configurations = App.request("goal:configuration:entities:list")
 		Controller.new(configurations, region)
 	App.reqres.setHandler "goal:construction:my:new:modal", () ->
-		configurations = App.request("goal:configuration:entities:all")
+		configurations = App.request("goal:configuration:entities:list")
 		Controller.newModal(configurations)
 

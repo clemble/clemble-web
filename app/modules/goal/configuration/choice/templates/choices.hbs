@@ -1,0 +1,36 @@
+<h4>Bid Rule</h4>
+{{#each bid}}
+	{{money this}}
+{{/each}}
+<h4>Deadline Rule</h4>
+{{#each totalTimeoutRule.values}}
+	{{timeoutRule rule}} / <small>{{percentage}}%</small>
+{{/each}}
+<h4>Update Rule</h4>
+{{#each moveTimeoutRule.values}}
+	{{timeoutRule rule}} / <small>{{percentage}}%</small>
+{{/each}}
+<h4>Email Reminder Rule</h4>
+{{#each emailReminderRule.values}}
+	<span class="fa {{socialIcon "email"}}"/> {{reminderRule rule}} / <small>{{percentage}}%</small>
+{{/each}}
+<h4>Phone Reminder Rule</h4>
+{{#each phoneReminderRule.values}}
+	<span class="fa {{socialIcon "phone"}}"/> {{reminderRule rule}} / <small>{{percentage}}%</small>
+{{/each}}
+<h4>Supporter Rule</h4>
+{{#each supporterConfiguration.values}} {{bid rule.bid}}
+	<span class="fa {{socialIcon "email"}}"/> {{reminderRule rule.emailReminderRule}} <span class="fa {{socialIcon "phone"}}"/> {{reminderRule rule.phoneReminderRule}} / <small>{{percentage}}%</small>
+{{/each}}
+<h4>Observer Rule</h4>
+{{#each observerConfiguration.values}} {{bid rule.bid}}
+	<span class="fa {{socialIcon "email"}}"/> {{reminderRule rule.emailReminderRule}} <span class="fa {{socialIcon "phone"}}"/> {{reminderRule rule.phoneReminderRule}} / <small>{{percentage}}%</small>
+{{/each}}
+<h4>Privacy Rule</h4>
+{{#each privacyRule.values}}
+	{{privacyRule rule}} / <small>{{percentage}}%</small>
+{{/each}}
+<h4>Share Rule</h4>
+{{#each shareRule.values}}
+	<span class="fa-2x {{socialIcon rule}}"></span> / <small>{{percentage}}%</small>
+{{/each}}

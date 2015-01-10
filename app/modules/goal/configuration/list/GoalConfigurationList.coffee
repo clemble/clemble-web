@@ -24,9 +24,9 @@
 		childViewContainer: "div"
 
 	Controller =
-		listConfigurations: (configurations, region) ->
+		listChoices: (configurations, region) ->
 			configurationsView = new GoalConfigurations
 				collection: configurations
 			region.show configurationsView
 
-	App.reqres.setHandler "goal:configuration:list", (configurations, region) -> Controller.listConfigurations(configurations, region)
+	App.reqres.setHandler "goal:configuration:list", (configurations, region) -> Controller.listChoices(configurations, region)

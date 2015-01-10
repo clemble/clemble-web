@@ -38,17 +38,21 @@ do(Handlebars, Swag, _) ->
 
 	Handlebars.registerHelper 'showReminders', (o) ->
 		reminder = ""
-		reminder += if (o.emailReminderRule? && o.emailReminderRule.type != 'no')
+		reminder += if (o.emailReminderRule? && o.emailReminderRule.type != 'rule:reminder:no')
 			"<span class='fa fa-send-o text-success'/> #{Utils.humanTime(o.emailReminderRule.reminder)}<br/>"
 		else
 			"No <span class='fa fa-send-o'></span><br/>"
-		reminder += if (o.phoneReminderRule? && o.phoneReminderRule.type != 'no')
+		reminder += if (o.phoneReminderRule? && o.phoneReminderRule.type != 'rule:reminder:no')
 			"<span class='fa fa-phone-square text-success'/> #{Utils.humanTime(o.phoneReminderRule.reminder)}"
 		else
 			"No <span class='fa fa-phone-square'></span>"
 		new Handlebars.SafeString(reminder)
 
-
+	Handlebars.registerHelper 'reminderRule', (o) ->
+		if (o.type == "rule:reminder:no")
+			new Handlebars.SafeString("No")
+		else
+			new Handlebars.SafeString("#{Utils.humanTime(o.reminder)}")
 
 	Handlebars.registerHelper 'humanTime', (obj) ->
 		new Handlebars.SafeString(Utils.humanTime(obj))
@@ -107,45 +111,27 @@ do(Handlebars, Swag, _) ->
 			new Handlebars.SafeString("<span class='fa fa-users'></span> friends")
 
 	Handlebars.registerHelper "timeoutRule", (rule) ->
-		if (rule.timeoutCalculator.type == "eod")
+		if (rule? && rule.timeoutCalculator.type == "eod")
 			ruleDay = rule.timeoutCalculator.days
 			if (ruleDay == 1)
-				"1 Day"
+				new Handlebars.SafeString("1 Day")
 			else if (ruleDay == 7)
-				"Week"
+				new Handlebars.SafeString("Week")
 			else if (ruleDay == 30)
-				"Month"
+				new Handlebars.SafeString("Month")
 			else
-				"#{ruleDay} Days"
+				new Handlebars.SafeString("#{ruleDay} Days")
 		else
 			new Handlebars.SafeString("Timeout rule")
 
-	Handlebars.registerHelper "moveTimeRule", (rule) ->
-		ruleDay = rule.limit / DAY
-		if (ruleDay = 1)
-			"Daily"
-		else
-			"Every #{ruleDay} days"
-
-	Handlebars.registerHelper "totalTimeRule", (rule) ->
-		ruleDay = rule.limit / DAY
-		if (ruleDay == 1)
-			"1 Day"
-		else if (ruleDay == 7)
-			"Week"
-		else if (ruleDay == 30)
-			"Month"
-		else
-			"#{ruleDay} Days"
-
 	Handlebars.registerHelper "betRule", (rule) ->
-		if (rule.betType == "fixed")
+		if (rule.betType == "rule:bet:fixed")
 			new Handlebars.SafeString("<span class='fa fa-circle-thin'></span> #{rule.bets[0]}")
-		else if (rule.betType == "limited")
+		else if (rule.betType == "rule:bet:limited")
 			new Handlebars.SafeString("<span class='fa fa-circle-thin'></span> #{rule.minBet} to #{rule.maxBet}")
-		else if (rule.betType == "unlimited")
+		else if (rule.betType == "rule:bet:unlimited")
 			new Handlebars.SafeString("<span class='fa fa-circle-thin'></span> Unlimited")
-		else if (rule.betType == "forbidden")
+		else if (rule.betType == "rule:bet:forbidden")
 			new Handlebars.SafeString("<span class='fa fa-ban'></span> Forbidden")
 		else if (rule.betType == "rule:bet:bid:mono")
 			new Handlebars.SafeString("<span class='fa fa-circle-thin'></span> #{rule.bid.amount.amount}/#{rule.bid.interest.amount}")
@@ -163,6 +149,8 @@ do(Handlebars, Swag, _) ->
 			new Handlebars.SafeString('fa fa-phone-square')
 		else if(social == "email")
 			new Handlebars.SafeString('fa fa-send-o')
+		else if(social == "none")
+			new Handlebars.SafeString('fa fa-ban')
 		else
 			console.error("Unknown social reference #{social}")
 

@@ -16,13 +16,9 @@
 
 	App.on "start", ->
 
-		Backbone.on("all", (evt) -> console.log("Event"))
-
 		if Backbone.history
 			Backbone.history.start()
 
-		Backbone.history.navigate("goal", {trigger: true})
-
-		App.on "all", (event) -> console.log("#{event}")
+#		Backbone.history.navigate("goal", {trigger: true})
 
 	App

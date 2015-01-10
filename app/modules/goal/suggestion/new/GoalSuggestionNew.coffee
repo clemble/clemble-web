@@ -2,7 +2,7 @@
 
 	Controller =
 		newModal: (url) ->
-			configurations = App.request "goal:configuration:entities:all"
+			configurations = App.request "goal:configuration:entities:list"
 			suggestionRequest = App.request "goal:suggestion:entities:new", url, configurations
 
 			layout = new GoalSuggestionNewModal
