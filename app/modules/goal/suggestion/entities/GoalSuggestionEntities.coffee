@@ -24,6 +24,15 @@
 			suggestionRequest.url = url
 			suggestionRequest.on("all", (event) -> console.log("Suggestion request #{event}"))
 			suggestionRequest
+		newByChoice: (url, choice) ->
+			suggestionRequest = new GoalSuggestionRequest()
+			suggestionRequest.url = url
+
+			suggestionRequest.set("configuration", choice.configuration.attributes)
+			suggestionRequest.listenTo choice.configuration, "change", (model) ->
+				suggestionRequest.set('configuration', model.attributes)
+
+			suggestionRequest
 		listMy : () ->
 			suggestions = new GoalSuggestions()
 			suggestions.url = App.Utils.toUrl("/suggestion/player/my")
@@ -32,4 +41,5 @@
 			suggestions
 
 	App.reqres.setHandler "goal:suggestion:entities:new", (url, configurations) -> API.new(url, configurations)
+	App.reqres.setHandler "goal:suggestion:entities:new:choice", (url, choice) -> API.newByChoice(url, choice)
 	App.reqres.setHandler "goal:suggestion:entities:list:my", () -> API.listMy()
