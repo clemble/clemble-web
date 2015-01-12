@@ -5,6 +5,7 @@
 		<div data-countdown="{{startDate}}"></div>
 		{{goal}}<br/>
 		{{bid bank.total}}<br/>
-		<span class="badge">{{length supporters}}</span> Supporters 
+		<span class="badge">{{length supporters}}</span>
+		{{#each supporters}}{{microProfileImage this}}{{/each}}
 	</div>
 </div>
