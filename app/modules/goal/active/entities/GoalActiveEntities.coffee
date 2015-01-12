@@ -21,11 +21,22 @@
 	class GoalStates extends Backbone.Collection
 		model: GoalState
 
-	API=
+	API =
+		getId: (res) ->
+			if (res.goalKey?)
+				res.id = res.goalKey
+			if (res.bank?)
+				myBid = _.find(res.bank.bids, (bid) -> bid.player == App.player)
+				if (myBid?)
+					res.my = true
+					res.myBid = myBid.bid
+			res
 		myActive: () ->
 			active = new GoalStates()
 			active.url  = App.Utils.toUrl('/management/active/my')
-			App.request("listener:subscribe:my", "goal:management", active, (body) -> new GoalState(body))
+			App.request("listener:subscribe:my", "goal:management", active, (body) ->
+				new GoalState(API.getId(body))
+			)
 			active.fetch()
 			active
 

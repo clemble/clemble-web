@@ -8,7 +8,16 @@
 		<label class="label label-success">WON!</label>
 	</div>
 	<div class="col-md-10">
-		{{#if myBid}}My: {{bid myBid}}{{/if}} Total: {{bid bank.total}}<br/>
+		<div class="col-md-12">
+			<div class="pull-left">
+				{{bid bank.total}}
+			</div>
+			{{#if myBid}}
+				<div class="pull-right" data-toggle="tooltip" data-placement="top" title="Supporter">
+					<button class="btn btn-xs btn-info">My: {{bid myBid}}</button>
+				</div>
+			{{/if}}
+		</div>
 		<h4>{{goal}}</h4>
 		<h5>{{status}}</h5>
 		{{socialShare}}
