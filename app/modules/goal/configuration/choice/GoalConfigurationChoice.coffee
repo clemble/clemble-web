@@ -9,7 +9,6 @@
 			emailReminderRuleRegion : "#emailReminderRuleRegion"
 			phoneReminderRuleRegion : "#phoneReminderRuleRegion"
 			supporterRuleRegion     : "#supporterRuleRegion"
-			observerRuleRegion      : "#observerRuleRegion"
 			privacyRuleRegion       : "#privacyRuleRegion"
 			shareRuleRegion         : "#shareRuleRegion"
 			configurationRegion     : "#configurationRegion"
@@ -130,10 +129,6 @@
 				privacyRuleView = new PrivacyRules
 					collection: choice.privacyRule
 				layout.privacyRuleRegion.show privacyRuleView
-
-				observerRuleView = new RoleRules
-					collection: choice.observerConfiguration
-				layout.observerRuleRegion.show observerRuleView
 
 				supporterRuleView = new RoleRules
 					collection: choice.supporterConfiguration

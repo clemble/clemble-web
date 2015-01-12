@@ -24,10 +24,6 @@
 {{#each supporterConfiguration}} {{bid rule.bid}}
 	<span class="fa {{socialIcon "email"}}"/> {{reminderRule rule.emailReminderRule}} <span class="fa {{socialIcon "phone"}}"/> {{reminderRule rule.phoneReminderRule}} / <small>{{percentage}}%</small>
 {{/each}}
-<h4>Observer Rule</h4>
-{{#each observerConfiguration}} {{bid rule.bid}}
-	<span class="fa {{socialIcon "email"}}"/> {{reminderRule rule.emailReminderRule}} <span class="fa {{socialIcon "phone"}}"/> {{reminderRule rule.phoneReminderRule}} / <small>{{percentage}}%</small>
-{{/each}}
 <h4>Privacy Rule</h4>
 {{#each privacyRule}}
 	{{privacyRule rule.name}} / <small>{{percentage}}%</small>

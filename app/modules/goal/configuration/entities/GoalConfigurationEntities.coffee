@@ -37,7 +37,6 @@
 			privacyRule: []
 			moveTimeoutRule: []
 			supporterConfiguration: []
-			observerConfiguration: []
 			shareRule: []
 		url:
 			App.Utils.toUrl('/configuration/my/choice')
@@ -62,7 +61,6 @@
 			link('privacyRule', @)
 			link('moveTimeoutRule', @)
 			link('supporterConfiguration', @)
-			link('observerConfiguration', @)
 			link('shareRule', @)
 
 		calculateBid: () =>
@@ -72,7 +70,6 @@
 					@privacyRule.getSelected()? &&
 					@moveTimeoutRule.getSelected()? &&
 					@supporterConfiguration.getSelected()? &&
-					@observerConfiguration.getSelected()? &&
 					@shareRule.getSelected()? &&
 					@bid.getSelected()?
 			)
@@ -84,7 +81,6 @@
 				percentage += @privacyRule.getSelected().get('percentage')
 				percentage += @moveTimeoutRule.getSelected().get('percentage')
 				percentage += @supporterConfiguration.getSelected().get('percentage')
-				percentage += @observerConfiguration.getSelected().get('percentage')
 				percentage += @shareRule.getSelected().get('percentage')
 
 				@set("percentage", percentage)

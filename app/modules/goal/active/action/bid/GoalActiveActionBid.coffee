@@ -7,11 +7,7 @@
 			supporterConfiguration.goalKey = goalKey
 			supporterConfiguration.role = "supporter"
 
-			observerConfiguration = _.clone(configuration.observerConfiguration)
-			observerConfiguration.goalKey = goalKey
-			observerConfiguration.role = "observer"
-
-			configurations = new GoalRoleConfigurations([supporterConfiguration, observerConfiguration])
+			configurations = new GoalRoleConfigurations([supporterConfiguration])
 
 			roleModal = new RoleModal
 				collection: configurations

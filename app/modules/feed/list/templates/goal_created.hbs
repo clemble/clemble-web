@@ -14,13 +14,9 @@
 	</div>
 	<div class="col-md-12">
 		{{#each supporters}}{{microProfileImage this}}{{/each}}
-		{{#each observers}}{{microProfileImage this}}{{/each}}
 	</div>
 	{{#unless my}}
 		<div class="col-md-12">
-			<div class="col-md-3" data-toggle="tooltip" data-placement="top" title="Observe">
-				<span id="observe" class="fa fa-eye text-muted"> {{bid configuration.observerConfiguration.bid false}}</span>
-			</div>
 			<div class="col-md-3" data-toggle="tooltip" data-placement="top" title="Supporter">
 				<span id="support" class="fa fa-support text-muted"> {{bid configuration.supporterConfiguration.bid false}}</span>
 			</div>
