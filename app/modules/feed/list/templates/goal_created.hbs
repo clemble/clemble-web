@@ -8,19 +8,23 @@
 		<h4><label class="label label-success">{{formatDate startDate "%d/%m"}}</label></h4>
 	</div>
 	<div class="col-md-10">
-		{{#if myBid}}My: {{bid myBid}}{{/if}} Total: {{bid bank.total}}
+		<div class="col-md-12">
+			<div class="pull-left">
+				{{bid bank.total}}
+			</div>
+			<div class="pull-right" data-toggle="tooltip" data-placement="top" title="Supporter">
+				{{#if myBid}}
+					<button class="btn btn-xs btn-success">My: {{bid myBid}}</button>
+				{{else}}
+					<button id="support" class="btn btn-xs btn-primary">Bet: {{bid configuration.supporterConfiguration.bid}}</button>
+				{{/if}}
+			</div>
+		</div>
 		<h4>{{goal}}</h4>
 		{{socialShare}}
 	</div>
 	<div class="col-md-12">
 		{{#each supporters}}{{microProfileImage this}}{{/each}}
 	</div>
-	{{#unless my}}
-		<div class="col-md-12">
-			<div class="col-md-3" data-toggle="tooltip" data-placement="top" title="Supporter">
-				<span id="support" class="fa fa-support text-muted"> {{bid configuration.supporterConfiguration.bid false}}</span>
-			</div>
-		</div>
-	{{/unless}}
 </div>
 

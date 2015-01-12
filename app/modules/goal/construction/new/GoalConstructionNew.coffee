@@ -42,7 +42,7 @@
 				constructionRequestView = new GoalConstructionNew
 					model: constructionRequest
 
-				layout.helpRegion.show new GoalConstructionHelp()
+#				layout.helpRegion.show new GoalConstructionHelp()
 				layout.goalRegion.show constructionRequestView
 
 			App.modal.show layout

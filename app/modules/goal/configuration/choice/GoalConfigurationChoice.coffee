@@ -110,34 +110,33 @@
 					collection: choice.totalTimeoutRule
 				layout.deadlineRuleRegion.show totalTimeoutRuleView
 
-				moveTimeoutRuleView = new TimeoutRules
-					collection: choice.moveTimeoutRule
-				layout.updateRuleRegion.show moveTimeoutRuleView
-
 				socialRuleView = new SocialRules
 					collection: choice.shareRule
 				layout.shareRuleRegion.show socialRuleView
-
-				emailReminderRuleView = new ReminderRules
-					collection: choice.emailReminderRule
-				layout.emailReminderRuleRegion.show emailReminderRuleView
-
-				phoneReminderRuleView = new ReminderRules
-					collection: choice.phoneReminderRule
-				layout.phoneReminderRuleRegion.show phoneReminderRuleView
 
 				privacyRuleView = new PrivacyRules
 					collection: choice.privacyRule
 				layout.privacyRuleRegion.show privacyRuleView
 
-				supporterRuleView = new RoleRules
-					collection: choice.supporterConfiguration
-				layout.supporterRuleRegion.show supporterRuleView
-
 				configurationRegion = new Configuration
 					model: choice.configuration
 				layout.configurationRegion.show configurationRegion
 
+#				moveTimeoutRuleView = new TimeoutRules
+#					collection: choice.moveTimeoutRule
+#				layout.updateRuleRegion.show moveTimeoutRuleView
+
+#				emailReminderRuleView = new ReminderRules
+#					collection: choice.emailReminderRule
+#				layout.emailReminderRuleRegion.show emailReminderRuleView
+#
+#				phoneReminderRuleView = new ReminderRules
+#					collection: choice.phoneReminderRule
+#				layout.phoneReminderRuleRegion.show phoneReminderRuleView
+
+#				supporterRuleView = new RoleRules
+#					collection: choice.supporterConfiguration
+#				layout.supporterRuleRegion.show supporterRuleView
 			region.show layout
 
 	App.reqres.setHandler "goal:configuration:choice", (choice, region) -> Controller.listChoices(choice, region)
