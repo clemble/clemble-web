@@ -11,7 +11,17 @@
 	</div>
 	<div class="col-md-10">
 		<div class="col-md-12">
-			My: {{bid myBid}} <small>Total: {{bid bank.total}}</small><br/>
+			<div class="col-md-12">
+				<div class="pull-left">
+					{{bid bank.total}}
+				</div>
+				<div class="pull-right" data-toggle="tooltip" data-placement="top" title="Supporter">
+					{{#if myBid}}
+						<button class="btn btn-xs btn-info">My: {{bid myBid}}</button>
+					{{/if}}
+				</div>
+			</div>
+
 			<small>Status</small><br/>
 			{{status}}<br/>
 			<button id="update" class="btn btn-xs btn-success"><span class="fa fa-circle-thin"></span> Update</button>
