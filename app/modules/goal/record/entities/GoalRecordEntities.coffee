@@ -11,6 +11,8 @@
 			configuration   : null
 			eventRecords    : null
 		idAttribute: 'goalKey'
+		urlRoot:
+			App.Utils.toUrl("/management/record/")
 
 
 	class GoalRecords extends Backbone.Collection
@@ -19,12 +21,12 @@
 	API =
 		list: (player) ->
 			records = new GoalRecords()
-			records.url = App.Utils.toUrl("/management/record/#{player}")
+			records.url = App.Utils.toUrl("/management/player/record/#{player}")
 			records.fetch()
 			records
 		listWithState: (player, state) ->
 			records = new GoalRecords()
-			records.url = App.Utils.toUrl("/management/record/#{player}/#{state}")
+			records.url = App.Utils.toUrl("/management/player/record/#{player}/#{state}")
 			App.request("listener:subscribe:my", "goal:record", records, (body) -> new GoalRecord(body))
 			records.fetch()
 			records
