@@ -1,4 +1,4 @@
-@App.module "ListenerApp", (HeaderApp, App, Backbone, Marionette, $, _) ->
+@App.module "ListenerApp", (ListenerApp, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
 
 	PLAYER = $.cookie("player")

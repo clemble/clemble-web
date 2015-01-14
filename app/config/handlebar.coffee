@@ -33,6 +33,11 @@ do(Handlebars, Swag, _) ->
 				Utils.unitToString(obj / SECOND, "second")
 	}
 
+#	TODO remove after proper refactoring
+	Handlebars.registerHelper "hostUrl", (path) ->
+		hostUrl = "http://api.#{window.location.host}#{path}"
+		new Handlebars.SafeString(hostUrl)
+
 	Handlebars.registerHelper 'toURL', (url) ->
 		new Handlebars.SafeString("http://api.#{window.location.host}#{url}")
 
@@ -154,8 +159,10 @@ do(Handlebars, Swag, _) ->
 		else
 			console.error("Unknown social reference #{social}")
 
+
 	Handlebars.registerHelper "socialShare", () ->
 		new Handlebars.SafeString("<div class='pull-rigth'>
 			<a share='facebook'><span class='fa fa-2x fa-facebook-square'></span></a>
 			<a share='twitter'><span class='fa fa-2x fa-twitter-square'></span></a>
 		</div>")
+
