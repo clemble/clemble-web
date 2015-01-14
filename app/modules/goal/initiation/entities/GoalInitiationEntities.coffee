@@ -35,12 +35,4 @@
 			initiations.fetch()
 			initiations
 
-		listMyFriend: () ->
-			initiations = new GoalInitiations()
-			initiations.url = App.Utils.toUrl("/construction/initiation/timeline/my")
-			App.request("listener:subscribe", "goal:initiation", initiations, (body) -> new GoalInitiation(body))
-			initiations.fetch()
-			initiations
-
 	App.reqres.setHandler "goal:initiation:entities:my", () -> API.listMy()
-	App.reqres.setHandler "goal:initiation:entities:my:friend", () -> API.listMyFriend()
