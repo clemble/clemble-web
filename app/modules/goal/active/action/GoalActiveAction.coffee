@@ -1,5 +1,6 @@
 require './new/GoalActiveActionNew'
 require './bid/GoalActiveActionBid'
+require './surrender/GoalActionSurrender'
 require './support/GoalActiveSupport'
 require './entities/GoalActiveActionEntities'
 

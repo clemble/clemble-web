@@ -22,6 +22,10 @@
 			amount    : {}
 			interest  : {}
 
+	class GiveUpAction extends Backbone.Model
+		defaults:
+			type: "player:action:surrender"
+
 	API=
 		newAction: (url) ->
 			newAction = new GoalStatusUpdateAction()
@@ -35,7 +39,13 @@
 			newBid = new BidAction()
 			newBid.url = url
 			newBid
+		newSurrender: (url) ->
+			giveUpAction = new GiveUpAction()
+			giveUpAction.url = "#{url}/action"
+			giveUpAction
+
 
 	App.reqres.setHandler "goal:active:action:entities:new", (url) -> API.newAction(url)
+	App.reqres.setHandler "goal:active:action:entities:surrender", (url) -> API.newSurrender(url)
 	App.reqres.setHandler "goal:active:action:entities:bid", (url) -> API.newBid(url)
 	App.reqres.setHandler "goal:active:action:entities:reached", (url) -> API.newReached(url)

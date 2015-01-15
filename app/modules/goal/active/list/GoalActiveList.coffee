@@ -12,6 +12,7 @@
 		className: 'row'
 		events:
 			"click #update" : "update"
+			"click #surrender": () -> App.request "goal:active:action:surrender", @model.url()
 		update: () -> App.request "goal:active:action:new:modal", @model.url()
 		modelEvents:
 			"change" : "render"
