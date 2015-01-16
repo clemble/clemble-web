@@ -19,7 +19,8 @@
 			account = new PlayerAccount(player: player)
 			account.urlRoot = App.Utils.toUrl("/payment/account/")
 			App.on "payment:complete:my", (t) ->
- 				API.update(account, t.operation, t.amount)
+				# Copying account
+				account.set(t.account)
 			App.on "payment:freeze:my", (t) ->
  				API.update(account, "Credit", t.amount)
 			App.on "payment:bonus:my", (t) ->
