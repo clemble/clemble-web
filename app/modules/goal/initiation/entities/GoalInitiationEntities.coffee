@@ -30,7 +30,7 @@
 	API =
 		listMy: () ->
 			initiations = new GoalInitiations()
-			initiations.url = App.Utils.toUrl("/construction/initiation/my")
+			initiations.url = App.Utils.toUrl("/construction/player/initiation/my")
 			App.request("listener:subscribe:my", "goal:initiation", initiations, (body) -> new GoalInitiation(body))
 			initiations.fetch()
 			initiations
