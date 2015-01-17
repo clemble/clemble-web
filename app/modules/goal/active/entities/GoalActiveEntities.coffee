@@ -14,9 +14,9 @@
 			App.Utils.toUrl('/management/active/')
 		parse: (res) ->
 			if (res.bank?)
-				myBid = _.find(res.bank.bids, (bid) -> bid.player == App.player)
-				if (myBid?)
-					res.myBid = myBid.bid
+				myBet = _.find(res.bank.bets, (bet) -> bet.player == App.player)
+				if (myBet?)
+					res.myBet = myBet.bet
 			res
 
 
@@ -28,10 +28,10 @@
 			if (res.goalKey?)
 				res.id = res.goalKey
 			if (res.bank?)
-				myBid = _.find(res.bank.bids, (bid) -> bid.player == App.player)
-				if (myBid?)
+				myBet = _.find(res.bank.bets, (bet) -> bet.player == App.player)
+				if (myBet?)
 					res.my = true
-					res.myBid = myBid.bid
+					res.myBet = myBet.bet
 			res
 		myActive: () ->
 			active = new GoalStates()

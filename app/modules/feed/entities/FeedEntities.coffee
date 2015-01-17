@@ -21,10 +21,10 @@
 			if (res.goalKey?)
 				res.id = res.goalKey
 			if (res.bank?)
-				myBid = _.find(res.bank.bids, (bid) -> bid.player == PLAYER)
-				if (myBid?)
+				myBet = _.find(res.bank.bets, (bet) -> bet.player == PLAYER)
+				if (myBet?)
 					res.my = true
-					res.myBid = myBid.bid
+					res.myBet = myBet.bet
 			res
 		listMy: () ->
 			feed = new Posts()

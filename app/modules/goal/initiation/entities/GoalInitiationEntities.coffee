@@ -12,16 +12,15 @@
 		idAttribute     : 'goalKey'
 		urlRoot         : App.Utils.toUrl("/construction/initiation/")
 		initialize      : () ->
-			self = @
 			@on "change:bank", @checkMy
 			@on "change:player", @checkMy
 			@checkMy()
 		checkMy  : () =>
 			if(@get("player") == player)
 				@set('my', @get("configuration").bid)
-			for playerBid in @get("bank").bids
-				if (playerBid.player == player)
-					@set('my', playerBid.bid)
+			for playerBet in @get("bank").bets
+				if (playerBet.player == player)
+					@set('my', playerBet.bet)
 
 	class GoalInitiations extends Backbone.Collection
 		model: GoalInitiation

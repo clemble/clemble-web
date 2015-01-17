@@ -16,9 +16,9 @@
 			if(@get("player") == PLAYER)
 				@set('my', true)
 			if(@get("bank")?)
-				for playerBid in @get("bank").bids
-					if (playerBid.player == PLAYER)
-						@set('myBid', playerBid.bid)
+				for playerBet in @get("bank").bets
+					if (playerBet.player == PLAYER)
+						@set('myBet', playerBet.bet)
 
 	class Notifications extends Backbone.Collection
 		model: Notification

@@ -2,7 +2,6 @@ require './configuration/GoalConfigurationApp'
 require './construction/GoalConstructionApp'
 require './initiation/GoalInitiationApp'
 require './record/GoalRecordApp'
-require './timeline/GoalTimelineApp'
 
 require './active/GoalActive'
 require './show/GoalShow'
