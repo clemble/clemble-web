@@ -1,4 +1,4 @@
-do (Marionette) ->
+@App.module 'MarionetteApp', (MarionetteApp, App, Backbone, Marionette, $, _) ->
 
 	Behaviors =
 		StickIt: Marionette.Behavior.extend
@@ -19,6 +19,18 @@ do (Marionette) ->
 				'click #delete' : 'delete'
 			delete: () ->
 				@view.model.destroy()
+		BetBehavior: Marionette.Behavior.extend
+			events:
+				'click #bet'    : "bet"
+				'click #support': 'support'
+				'click #observe': 'observe'
+			bet: () ->
+				App.request "goal:active:action:bid:modal", @view.model.get('goalKey'), @view.model.get("configuration")
+			support: () ->
+				App.request "goal:active:action:support:modal", @view.model
+			observe: () ->
+				App.request "goal:active:action:observe:modal", @view.model
+
 		Countdown: Marionette.Behavior.extend
 			modelEvents:
 				'change': 'updateDate'

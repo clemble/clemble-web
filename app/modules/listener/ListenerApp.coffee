@@ -44,7 +44,7 @@
 				console.log("Updating #{JSON.stringify(event)}")
 				model = constuctor(event.body)
 				existingModel = collection.get(model.id)
-				if (model?)
+				if (existingModel?)
 					existingModel.set(model.attributes)
 				else
 					collection.add(model)

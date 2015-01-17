@@ -1,0 +1,18 @@
+<div class="col-md-12">
+	<div class="pull-left">
+		{{bid bank.total}}
+	</div>
+	<div class="pull-right">
+	{{#if betsAllowed}}
+		{{#if myBid}}
+			<button class="btn btn-xs btn-success">My: {{bid myBid}}</button>
+		{{else}}
+			<button id="support" class="btn btn-xs btn-primary">Bet: {{bid configuration.supporterConfiguration.bid}}</button>
+		{{/if}}
+	{{else}}
+		{{#if myBid}}
+			<button class="btn btn-xs btn-success">My: {{bid myBid}}</button>
+		{{/if}}
+	{{/if}}
+	</div>
+</div>

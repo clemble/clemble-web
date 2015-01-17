@@ -11,25 +11,10 @@
 		<h4><label class="label label-success">{{formatDate startDate "%d/%m"}}</label></h4>
 	</div>
 	<div class="col-md-8">
-		<div class="col-md-12">
-			<div class="pull-left">
-				{{bid bank.total}}
-			</div>
-			<div class="pull-right" data-toggle="tooltip" data-placement="top" title="Supporter">
-				{{#if myBid}}
-					<button class="btn btn-xs btn-success">My: {{bid myBid}}</button>
-				{{else}}
-					<button id="support" class="btn btn-xs btn-primary">Bet: {{bid configuration.supporterConfiguration.bid}}</button>
-				{{/if}}
-			</div>
-		</div>
+		{{template "bets_allowed"}}
 		<h4><small>{{formatDate deadline "%d/%m"}}</small> {{goal}}</h4>
 		{{socialShare}}
 	</div>
-	<div class="col-md-12">
-		{{#each supporters}}{{microProfileImage this}}{{/each}}
-	</div>
-	{{#unless my}}
-	{{/unless}}
+	{{template "supporters"}}
 </div>
 

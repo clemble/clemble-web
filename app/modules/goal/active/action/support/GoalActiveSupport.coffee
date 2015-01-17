@@ -19,11 +19,11 @@
 			'click #go' : 'go'
 		go: () =>
 			self = @
-			url = App.Utils.toUrl("/construction/initiation/#{@model.get('goalKey')}/bid")
+			url = App.Utils.toUrl("/management/active/#{@model.get('goalKey')}/action")
 			$.ajax({
 				type: 'POST',
 				url: url,
-				data: JSON.stringify("supporter"),
+				data: JSON.stringify({ type: "player:bid:action"}),
 				contentType: "application/json",
 				success: () ->
 					self.trigger("modal:close")

@@ -48,7 +48,7 @@
 		go: () =>
 			self = @
 			model = @collection.getSelected()
-			url = App.Utils.toUrl("/construction/initiation/#{model.get('goalKey')}/bid")
+			url = App.Utils.toUrl("/management/active/#{model.get('goalKey')}/bet")
 			role = model.get('role')
 			$.ajax({
 				type: 'POST',

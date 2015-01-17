@@ -8,22 +8,11 @@
 		<h4><label class="label label-warning">{{formatDate deadline "%d/%m"}}</label></h4>
 	</div>
 	<div class="col-md-10">
-		<div class="col-md-12">
-			<div class="pull-left">
-				{{bid bank.total}}
-			</div>
-			{{#if myBid}}
-				<div class="pull-right" data-toggle="tooltip" data-placement="top" title="Supporter">
-					<button class="btn btn-xs btn-info">My: {{bid myBid}}</button>
-				</div>
-			{{/if}}
-		</div>
+		{{template "bets_allowed"}}
 		<h4>{{goal}}</h4>
 		{{status}}
 		{{socialShare}}
 	</div>
-	<div class="col-md-12">
-		{{#each supporters}}{{microProfileImage this}}{{/each}}
-	</div>
+	{{template "supporters"}}
 </div>
 

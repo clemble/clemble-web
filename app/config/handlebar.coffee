@@ -166,3 +166,7 @@ do(Handlebars, Swag, _) ->
 			<a share='twitter'><span class='fa fa-2x fa-twitter-square'></span></a>
 		</div>")
 
+	Handlebars.registerHelper 'template', (t) ->
+		template = require "/templates/#{t}"
+		rendered = template(this)
+		new Handlebars.SafeString(rendered)
