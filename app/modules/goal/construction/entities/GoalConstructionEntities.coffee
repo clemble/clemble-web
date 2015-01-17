@@ -4,10 +4,12 @@
 	class GoalConstructionRequest extends Backbone.Model
 		default:
 			goal: null
-			startDate: null
+			timezone: null
 			configuration: null
 		idAttribute:
 			'goalKey'
+		initialize: () ->
+			@set("timezone", moment().format('Z'))
 		url:
 			App.Utils.toUrl("/construction/construction")
 		validate: (attributes, options) ->
@@ -17,8 +19,6 @@
 	API=
 		new: (configurations) ->
 			constructionRequest = new GoalConstructionRequest()
-			tomorrow = moment().add('days', 1).toDate().toJSON().slice(0,10)
-			constructionRequest.set('startDate', tomorrow)
 
 			constructionRequest.set("configuration", configurations.getSelected())
 			constructionRequest.listenTo configurations, "selected", (model) ->
@@ -27,8 +27,6 @@
 			constructionRequest
 		newByChoice: (choice) ->
 			constructionRequest = new GoalConstructionRequest()
-			tomorrow = moment().add('days', 1).toDate().toJSON().slice(0,10)
-			constructionRequest.set('startDate', tomorrow)
 
 			constructionRequest.set("configuration", choice.configuration.attributes)
 			constructionRequest.listenTo choice.configuration, "change", (model) ->
