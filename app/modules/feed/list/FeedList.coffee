@@ -25,13 +25,13 @@
 			BetBehavior: {}
 			BootstrapTooltip: {}
 
+	class GoalBetOffPost extends Marionette.ItemView
+		template: require './templates/goal_bet_off'
+		className: 'row'
+
 	class GoalBetChangedPost extends Marionette.ItemView
 		template: require './templates/goal_bid'
 		className: 'row'
-		events:
-			'click #bet' : "bet"
-			'click #support': 'support'
-			'click #observe': 'observe'
 		behaviors:
 			SocialShare: {}
 			BetBehavior: {}
@@ -61,7 +61,7 @@
 			BetBehavior: {}
 			BootstrapTooltip: {}
 
-	class Notifications extends Marionette.CompositeView
+	class Posts extends Marionette.CompositeView
 		template: require './templates/player_posts'
 		childView : Post
 		childViewContainer : "#caption"
@@ -80,13 +80,15 @@
 				GoalReachedPost
 			else if (item.get('type') == "post:goal:missed")
 				GoalMissedPost
+			else if (item.get('type') == "post:goal:bet:off")
+				GoalBetOffPost
 			else
 				Post
 
 	Controller =
 		listMy: (region) ->
 			notification = App.request "feed:entities:my"
-			notificationView = new Notifications
+			notificationView = new Posts
 				collection: notification
 			region.show notificationView
 
