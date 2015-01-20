@@ -17,9 +17,13 @@ do(Handlebars, Swag, _) ->
 			if (!money?)
 				"--"
 			else if (money.currency == "FakeMoney")
-				"<span class='fa fa-usd'></span>#{money.amount}"
+				"<span class='fa fa-usd'></span> #{money.amount}"
+			else if (money.currency == "Victory")
+				"<span class='fa fa-trophy'></span> #{money.amount}"
+			else if (money.currency == "Supporter")
+				"<span class='fa fa-support'></span> #{money.amount}"
 			else
-				"<span class='fa fa-eur'></span>#{money.amount}"
+				"<span class='fa fa-euro'></span> #{money.amount}"
 		humanTime: (obj) ->
 			if(obj % WEEK == 0)
 				Utils.unitToString(obj / WEEK, "week")

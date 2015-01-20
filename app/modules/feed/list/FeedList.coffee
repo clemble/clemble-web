@@ -61,6 +61,14 @@
 			BetBehavior: {}
 			BootstrapTooltip: {}
 
+	class GoalUpdateMissed extends Marionette.ItemView
+		template: require './templates/goal_update_missed'
+		className: 'row'
+		behaviors:
+			SocialShare: {}
+			BetBehavior: {}
+			BootstrapTooltip: {}
+
 	class Posts extends Marionette.CompositeView
 		template: require './templates/player_posts'
 		childView : Post
@@ -74,6 +82,8 @@
 				GoalStartedPost
 			else if (item.get('type') == "post:goal:bet:changed")
 				GoalBetChangedPost
+			else if (item.get('type') == "post:goal:updated:missed")
+				GoalUpdateMissed
 			else if (item.get('type') == "post:goal:updated")
 				GoalUpdatedPost
 			else if (item.get('type') == "post:goal:reached")

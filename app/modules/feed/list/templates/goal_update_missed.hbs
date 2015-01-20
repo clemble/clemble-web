@@ -1,0 +1,17 @@
+<hr/>
+<div class="container-fluid">
+	<div class="col-md-2">
+		<small>U missed</small>
+		<div>
+			{{smallProfileImage player}}
+		</div>
+		<h4><label class="label label-warning">{{formatDate deadline "%d/%m"}}</label></h4>
+	</div>
+	<div class="col-md-10">
+		{{template "bets_allowed"}}
+		<h4>{{goal}}</h4>
+		{{socialShare}}
+	</div>
+	{{template "supporters"}}
+</div>
+
