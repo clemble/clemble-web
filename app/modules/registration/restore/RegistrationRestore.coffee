@@ -7,8 +7,8 @@
 				model: m
 			m.on "all", (evt) -> console.log("#{evt}")
 			region.show restoreView
-		showSend: (region) ->
-			restoreSendView = new RegistrationRestoreSendView
+		showSuccess: (region) ->
+			restoreSendView = new RegistrationRestoreSuccessView
 			region.show restoreSendView
 
 	class RegistrationRestore extends Backbone.Model
@@ -28,11 +28,11 @@
 			'click #restore' : () ->
 				@model.save(@model.attributes, {
 					success: () ->
-						Backbone.history.navigate("#registration/restore/send", {trigger: true})
+						Backbone.history.navigate("#registration/restore/success", {trigger: true})
 				})
 
-	class RegistrationRestoreSendView extends Marionette.ItemView
-		template: require './templates/registration_restore_send'
+	class RegistrationRestoreSuccessView extends Marionette.ItemView
+		template: require './templates/registration_restore_success'
 
 	App.reqres.setHandler "registration:restore:show", (region) -> Controller.show(region)
-	App.reqres.setHandler "registration:restore:show:send", (region) -> Controller.showSend(region)
+	App.reqres.setHandler "registration:restore:show:success", (region) -> Controller.showSuccess(region)

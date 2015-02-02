@@ -3,6 +3,7 @@ require './signUp/RegistrationSignUpApp'
 require './social/RegistrationSocialApp'
 require './show/RegistrationShow'
 require './restore/RegistrationRestore'
+require './reset/RegistrationReset'
 
 @App.module "RegistrationApp", (RegistrationApp, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
@@ -14,15 +15,21 @@ require './restore/RegistrationRestore'
 			App.request 'registration:signUp:show', App.contentRegion
 		restore: ->
 			App.request 'registration:restore:show', App.contentRegion
-		restoreSend: ->
-			App.request 'registration:restore:show:send', App.contentRegion
+		restoreSuccess: ->
+			App.request 'registration:restore:show:success', App.contentRegion
+		reset: (token) ->
+			App.request 'registration:reset:show', App.contentRegion, token
+		resetSuccess: () ->
+			App.request 'registration:reset:show:success', App.contentRegion
 
 	class RegistrationApp.Router extends Marionette.AppRouter
 		appRoutes:
 			'registration'                : 'registration'
 			'registration/signUp'         : 'signUp'
 			'registration/restore'        : 'restore'
-			'registration/restore/send'   : 'restoreSend'
+			'registration/restore/success': 'restoreSuccess'
+			'registration/reset/success'  : 'resetSuccess'
+			'registration/reset/:token'   : 'reset'
 
 	App.addInitializer ->
 		new RegistrationApp.Router
