@@ -14,12 +14,15 @@ require './restore/RegistrationRestore'
 			App.request 'registration:signUp:show', App.contentRegion
 		restore: ->
 			App.request 'registration:restore:show', App.contentRegion
+		restoreSend: ->
+			App.request 'registration:restore:show:send', App.contentRegion
 
 	class RegistrationApp.Router extends Marionette.AppRouter
 		appRoutes:
-			'registration'            : 'registration'
-			'registration/signUp'     : 'signUp'
-			'registration/restore'    : 'restore'
+			'registration'                : 'registration'
+			'registration/signUp'         : 'signUp'
+			'registration/restore'        : 'restore'
+			'registration/restore/send'   : 'restoreSend'
 
 	App.addInitializer ->
 		new RegistrationApp.Router

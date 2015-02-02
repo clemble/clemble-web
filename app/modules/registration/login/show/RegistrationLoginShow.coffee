@@ -26,7 +26,7 @@
 	class LoginSignIn extends Login
 		template: require './templates/signIn'
 		events:
-			'click #signIn': () -> @model.save()
+			'click #signIn': () -> @model.save(@model.attributes, { success: () -> Backbone.history.navigate("goal", {trigger: true}) })
 
 
 	App.reqres.setHandler 'registration:login:show:new', (region, login) -> Controller.new(region, login)

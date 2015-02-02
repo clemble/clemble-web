@@ -17,7 +17,6 @@
 	API =
 		new: () ->
 			login = new Login()
-			login.on "all", (evt) -> console.log("login > #{evt}") # TODO make a single point to intercept all initiations, and listen for events
 			login.url = App.Utils.toUrl "/registration/base/login"
 			login
 
