@@ -10,8 +10,6 @@
 
 				App.request "registration:social:show", layout.social
 
-				signIn = App.request 'registration:login:show:signIn', layout.signIn
-
 				login = App.request 'registration:login:show:new', layout.login, registration.playerCredential
 				profile = App.request 'player:profile:new', layout.profile, registration.playerProfile
 				manual = new RegistrationControl
@@ -42,7 +40,6 @@
 			login    : '#login'
 			profile  : '#profile'
 			control  : '#control'
-			signIn   : '#signIn'
 			social   : '#social'
 
 	App.reqres.setHandler 'registration:signUp:show', (region) -> Controller.registerManual(region)

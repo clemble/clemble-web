@@ -19,6 +19,6 @@
 		if Backbone.history
 			Backbone.history.start()
 
-		Backbone.history.navigate("goal", {trigger: true})
+#		Backbone.history.navigate("goal", {trigger: true})
 
 	App
