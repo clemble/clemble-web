@@ -11,6 +11,7 @@
 				App.request "player:connection:show:my", layout.connectionApp
 				App.request "notification:list:my", layout.notificationApp
 				App.request "feed:list:my", layout.feedApp
+				App.request "tag:show:my", layout.tagApp
 				App.request "player:social:list:my", layout.socialConnectApp
 				App.request "help:show", layout.helpApp
 			region.show layout
@@ -20,6 +21,7 @@
 		template: require './templates/goal_layout'
 		regions:
 			mainApp         : "#mainApp"
+			tagApp          : "#tagApp"
 			profileApp      : "#profileApp"
 			accountApp      : "#accountApp"
 			feedApp         : "#feedApp"
