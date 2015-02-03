@@ -15,7 +15,14 @@
 			myTags = new ClembleTags()
 			myTags.url = App.Utils.toUrl("/tag/my")
 			myTags.fetch()
+			App.on "tag:added", (event) ->
+				clembleTag = myTags.get(event.tag)
+				if (clembleTag?)
+					clembleTag.set('power', clembleTag.get('power') + 1)
+				else
+					myTags.add({ tag: event.tag, power: 1 })
 			myTags
+
 		getTags: (player) ->
 			playerTags = new ClembleTags()
 			playerTags.url = App.Utils.toUrl("/tag/#{player}")

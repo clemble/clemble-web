@@ -3,6 +3,9 @@
 	Controller =
 		myTags: (region) ->
 			myTags = App.request "tag:entities:my"
+#			myTagsView = new ClembleTagCloud
+#				model: myTags
+#			region.show myTagsView
 			myTagsView = new ClembleTags
 				collection: myTags
 			region.show myTagsView
@@ -14,13 +17,26 @@
 
 	class ClembleTag extends Marionette.ItemView
 		template: require './templates/tag'
+		modelEvents:
+			"change"  : "render"
 
 	class ClembleTags extends Marionette.CompositeView
 		template: require './templates/tags'
 		childView: ClembleTag
 		childViewContainer : "#caption"
 		modelEvents:
-			"sync"  : "render"
-			"change": "render"
+			"sync"    : "render"
+			"change"  : "render"
+
+	class ClembleTagCloud extends Marionette.ItemView
+		template: require './templates/tag_cloud'
+		modelEvents:
+			"sync"    : "render"
+			"change"  : "render"
+		onRender: () ->
+			tagCloud = @model.map((el) -> { text : el.get('tag'), weight : el.get('power') })
+			@$('#caption').jQCloud(tagCloud, {
+				autoResize: true
+			});
 
 	App.reqres.setHandler "tag:show:my", (region) -> Controller.myTags(region)
