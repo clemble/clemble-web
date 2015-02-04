@@ -92,12 +92,7 @@
 			StickIt: {}
 		bindings: {
 			'#goal'       : 'goal'
-			'#startDate'  : {
-				observe   : 'startDate'
-				onSet     : (val) ->
-					valDate = new Date(val)
-					valDate
-			}
+			'#reward'     : 'reward'
 		}
 
 	App.reqres.setHandler "goal:construction:new", (configurations, region) ->

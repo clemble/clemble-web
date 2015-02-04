@@ -24,7 +24,8 @@
 			StickIt: {}
 		bindings: {
 			'#goal'       : 'goal'
-			}
+			'#reward'     : 'reward'
+		}
 
 	class GoalSuggestionNewModal extends Marionette.LayoutView
 		template: require "./templates/goal_suggest_new_modal"
