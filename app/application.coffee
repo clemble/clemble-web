@@ -9,6 +9,7 @@
 
 	App.addRegions
 		contentRegion : "#contentRegion"
+		navigationRegion : "#navigationRegion"
 
 		modal         : Marionette.ModalRegion
 
@@ -19,6 +20,11 @@
 		if Backbone.history
 			Backbone.history.start()
 
+		App.request "navigation:list", App.navigationRegion
 		Backbone.history.navigate("goal", {trigger: true})
+
+	$(window).bind('hashchange', () ->
+		App.vent.trigger("hash:change", window.location.hash)
+	);
 
 	App

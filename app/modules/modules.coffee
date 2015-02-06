@@ -1,4 +1,5 @@
 require './marionette/MarionetteApp'
+require './navigation/NavigationApp'
 require './registration/RegistrationApp'
 require './player/PlayerApp'
 require './goal/GoalApp'
