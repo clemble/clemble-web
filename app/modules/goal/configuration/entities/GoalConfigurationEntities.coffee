@@ -28,6 +28,17 @@
 			@selected
 
 
+	class IntervalGoalConfigurationBuilder extends Backbone.Model
+		defaults:
+			base            : null
+			basePrice       : 0
+			baseInterval    : 0
+			basePercentage  : 0
+			intervalRules   : []
+		url:
+			App.Utils.toUrl('/configuration/my/interval')
+
+
 	class GoalConfigurationChoice extends Backbone.Model
 		defaults:
 			bid : []
@@ -127,6 +138,11 @@
 			choices = new GoalConfigurationChoice()
 			choices.fetch()
 			choices
+		getInterval: () ->
+			interval = new IntervalGoalConfigurationBuilder()
+			interval.fetch()
+			interval
 
 	App.reqres.setHandler 'goal:configuration:entities:list', () -> API.getConfigurations()
 	App.reqres.setHandler 'goal:configuration:entities:choice', () -> API.getChoices()
+	App.reqres.setHandler 'goal:configuration:entities:interval', () -> API.getInterval()
