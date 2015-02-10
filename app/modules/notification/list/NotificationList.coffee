@@ -66,10 +66,14 @@
 			else
 				Notification
 
+	class NotificationEmpty extends Marionette.ItemView
+		template: require './templates/empty_notification_menu'
+
 	class NotificationDropdown extends Marionette.CompositeView
 		template: require './templates/player_notification_menu'
 		childView : Notification
 		childViewContainer : "#caption"
+		emptyView: NotificationEmpty
 		collectionEvents:
 			"change"  : "render"
 		modelEvents:

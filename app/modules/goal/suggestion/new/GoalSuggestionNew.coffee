@@ -2,14 +2,14 @@
 
 	Controller =
 		newModal: (url) ->
-			configurations = App.request "goal:configuration:entities:choice"
-			suggestionRequest = App.request "goal:suggestion:entities:new:choice", url, configurations
+			configurations = App.request "goal:configuration:entities:interval"
+			suggestionRequest = App.request "goal:suggestion:entities:new:interval", url, configurations
 
 			layout = new GoalSuggestionNewModal
 				model: suggestionRequest
 
 			layout.on "show", () ->
-				App.request "goal:configuration:choice", configurations, layout.configurationRegion
+				App.request "goal:configuration:interval", configurations, layout.configurationRegion
 
 				goal = new GoalSuggestionNew
 					model: suggestionRequest

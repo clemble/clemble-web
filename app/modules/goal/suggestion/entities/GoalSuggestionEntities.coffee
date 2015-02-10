@@ -33,6 +33,16 @@
 				suggestionRequest.set('configuration', model.attributes)
 
 			suggestionRequest
+		newByInterval: (url, interval) ->
+			suggestionRequest = new GoalSuggestionRequest()
+			suggestionRequest.url = url
+
+			suggestionRequest.set("configuration", interval.get('configuration'))
+			suggestionRequest.listenTo interval, "change:configuration", (model) ->
+				suggestionRequest.set('configuration', model.get('configuration'))
+
+
+			suggestionRequest
 		listMy : () ->
 			suggestions = new GoalSuggestions()
 			suggestions.url = App.Utils.toUrl("/suggestion/player/my")
@@ -42,4 +52,5 @@
 
 	App.reqres.setHandler "goal:suggestion:entities:new", (url, configurations) -> API.new(url, configurations)
 	App.reqres.setHandler "goal:suggestion:entities:new:choice", (url, choice) -> API.newByChoice(url, choice)
+	App.reqres.setHandler "goal:suggestion:entities:new:interval", (url, interval) -> API.newByInterval(url, interval)
 	App.reqres.setHandler "goal:suggestion:entities:list:my", () -> API.listMy()
