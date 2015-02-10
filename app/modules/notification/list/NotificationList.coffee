@@ -49,6 +49,29 @@
 		template: require './templates/player_notifications'
 		childView : Notification
 		childViewContainer : "#caption"
+		collectionEvents:
+			"change"  : "render"
+		modelEvents:
+			"sync"    : "render"
+			"change"  : "render"
+		getChildView: (item) ->
+			if (item.get('type') == "notification:player:invited")
+				PlayerInvitedNotification
+			else if (item.get('type') == "notification:payment")
+				PaymentNotification
+			else if (item.get('type') == "notification:player:connected")
+				PlayerConnectedNotification
+			else if (item.get('type') == "notification:player:discovered")
+				PlayerDiscoveredNotification
+			else
+				Notification
+
+	class NotificationDropdown extends Marionette.CompositeView
+		template: require './templates/player_notification_menu'
+		childView : Notification
+		childViewContainer : "#caption"
+		collectionEvents:
+			"change"  : "render"
 		modelEvents:
 			"sync"    : "render"
 			"change"  : "render"
@@ -70,5 +93,11 @@
 			notificationView = new Notifications
 				collection: notification
 			region.show notificationView
+		listMyMenu: (region) ->
+			notification = App.request "notification:entities:my"
+			notificationView = new NotificationDropdown
+				collection: notification
+			region.show notificationView
 
 	App.reqres.setHandler "notification:list:my", (region) -> Controller.listMy(region)
+	App.reqres.setHandler "notification:list:my:menu", (region) -> Controller.listMyMenu(region)

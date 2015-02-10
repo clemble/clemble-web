@@ -18,7 +18,12 @@
 			events:
 				'click #delete' : 'delete'
 			delete: () ->
-				@view.model.destroy()
+				model = @view.model
+				collection = @view.model.collection
+				if (model?)
+					model.destroy()
+				if (collection?)
+					collection.remove(model)
 		BetBehavior: Marionette.Behavior.extend
 			events:
 				'click #bet'    : "bet"

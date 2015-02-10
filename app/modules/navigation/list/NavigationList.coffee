@@ -24,7 +24,9 @@
 			region.show(registrationList)
 
 		listGoal: (region) ->
-			goalList = new GoalNavigation()
+			goalList = new GoalNavigationLayout()
+			goalList.on "show", () ->
+				App.request "notification:list:my:menu", goalList.navigationMenuApp
 			region.show(goalList)
 
 	class RegistrationNavigation extends Marionette.ItemView
@@ -32,5 +34,10 @@
 
 	class GoalNavigation extends Marionette.ItemView
 		template: require './templates/goal_navigation'
+
+	class GoalNavigationLayout extends Marionette.LayoutView
+		template: require './templates/goal_navigation'
+		regions:
+			navigationMenuApp   : "#navigationMenuApp"
 
 	App.reqres.setHandler "navigation:list", (reg) -> Controller.list(reg)
