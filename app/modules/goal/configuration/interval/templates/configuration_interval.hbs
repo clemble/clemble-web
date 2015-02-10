@@ -1,0 +1,16 @@
+<input id="bet" type="range" min="{{basePrice}}" max="{{maxPrice}}"/>
+
+{{#configuration}}
+<div class="col-md-3">
+	<h4>Bet: {{money bet.amount}} / {{money bet.interest}}</h4>
+</div>
+<div class="col-md-3">
+<h4>Privacy: {{privacyRule privacyRule.name}}</h4>
+</div>
+<div class="col-md-3">
+<h4>Update: {{timeoutRule moveTimeoutRule}}</h4>
+</div>
+<div class="col-md-3">
+	<h4>Share: <span class="{{socialIcon shareRule.name}}"></span></h4>
+</div>
+{{/configuration}}

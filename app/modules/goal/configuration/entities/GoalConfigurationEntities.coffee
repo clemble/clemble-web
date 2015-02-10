@@ -37,6 +37,35 @@
 			intervalRules   : []
 		url:
 			App.Utils.toUrl('/configuration/my/interval')
+		initialize: () ->
+			@on "change:bet", (model, value, options) ->
+				bet = model.get('bet') - (model.get('baseInterval') + model.get('basePrice'))
+				intervalRules = model.get('intervalRules')
+				rate = model.get('basePercentage')
+				configuration = _.clone(model.get('base'))
+				for intervalRule in intervalRules
+					if (bet > 0)
+						bet -= intervalRule.interval
+						rate += intervalRule.percentage
+						if (intervalRule.rule.type == "rule:privacy")
+							configuration.privacyRule = intervalRule.rule
+						else if (intervalRule.rule.type == "rule:share")
+							configuration.shareRule = intervalRule.rule
+						else if (intervalRule.rule.type == "rule:timeout")
+							configuration.moveTimeoutRule = intervalRule.rule
+						else
+							throw "unknown rule #{JSON.stringify(intervalRule)} #{intervalRule.rule.type}"
+				configuration.bet.amount.amount = model.get('bet')
+				configuration.bet.interest.amount = (model.get('bet') * (100 + rate)) / 100
+				model.set('configuration', configuration)
+
+		parse: (res) ->
+			maxPrice = res.basePrice + res.baseInterval
+			_.forEach(res.intervalRules, (rule) -> maxPrice += rule.interval)
+			res.bet = res.basePrice
+			res.maxPrice = maxPrice
+			res.configuration = res.base
+			res
 
 
 	class GoalConfigurationChoice extends Backbone.Model
