@@ -1,18 +1,50 @@
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-         <image src='/images/logo.png' class='img-circle' height='25' width='25'></image>
-      </a>
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <div id="navbar" class="collapse navbar-collapse">
-		<a href="{{hostUrl "/registration/signout"}}" class="btn btn-default btn-xs navbar-btn pull-right"><span class="fa fa-sign-out"></span> Sign Out</a>
-    </div>
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">
+				<image src='/images/logo.png' class='img-circle' height='25' width='25'></image>
+			</a>
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+		<div id="navbar" class="collapse navbar-collapse">
+			<div class="container-fluid pull-right">
+
+			<div class="btn-group">
+				<div class="dropdown btn-group-xs">
+					<a role="button" data-toggle="dropdown" data-target="#" class="btn btn-primary btn-xs navbar-btn">
+						<span class="fa fa-bell"></span> <span class="badge">10</span>
+					</a>
+
+					<ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel">
+						<div class="notifications-wrapper">
+							<a class="content" href="#">
+
+								<div class="container-fluid">
+									<div class="col-md-4">
+										<i class="fa fa-3x fa-bitcoin"></i>
+									</div>
+									<div class="col-md-8">
+										<i id="delete" class="fa fa-times-circle-o pull-right"></i>
+										<h4>+<span class="fa fa-usd"></span> 81</h4>
+										<span class="fa fa-check-circle-o"></span> goal
+
+									</div>
+								</div>
+							</a>
+						</div>
+					</ul>
+				</div>
+			</div>
+
+			<div class="btn-group">
+				<a href="{{hostUrl "/registration/signout"}}" class="btn btn-danger btn-xs navbar-btn pull-right"><span class="fa fa-sign-out"></span> Sign Out</a>
+			</div>
+		</div>
+	</div>
   </div>
 </nav>
