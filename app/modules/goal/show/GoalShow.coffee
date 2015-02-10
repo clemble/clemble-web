@@ -9,7 +9,6 @@
 				App.request "goal:active:list:my", layout.mainApp
 				App.request "goal:suggestion:list:my", layout.suggestionApp
 				App.request "player:connection:show:my", layout.connectionApp
-				App.request "notification:list:my", layout.notificationApp
 				App.request "feed:list:my", layout.feedApp
 				App.request "tag:show:my", layout.tagApp
 				App.request "player:social:list:my", layout.socialConnectApp
@@ -26,7 +25,6 @@
 			accountApp      : "#accountApp"
 			feedApp         : "#feedApp"
 			helpApp         : "#helpApp"
-			notificationApp : '#notificationApp'
 			socialConnectApp: '#socialConnectApp'
 			suggestionApp   : '#suggestionApp'
 			connectionApp   : "#connectionApp"
