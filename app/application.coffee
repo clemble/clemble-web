@@ -21,7 +21,7 @@
 			Backbone.history.start()
 
 		App.request "navigation:list", App.navigationRegion
-#		Backbone.history.navigate("goal", {trigger: true})
+		Backbone.history.navigate("goal", {trigger: true})
 
 	$(window).bind('hashchange', () ->
 		App.vent.trigger("hash:change", window.location.hash)
