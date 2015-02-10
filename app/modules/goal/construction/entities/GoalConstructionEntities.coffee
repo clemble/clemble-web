@@ -33,6 +33,15 @@
 				constructionRequest.set('configuration', model.attributes)
 
 			constructionRequest
+		newByInterval: (interval) ->
+			constructionRequest = new GoalConstructionRequest()
+
+			constructionRequest.set("configuration", interval.get('configuration'))
+			constructionRequest.listenTo interval, "change:configuration", (model) ->
+				constructionRequest.set('configuration', model.get('configuration'))
+
+			constructionRequest
 
 	App.reqres.setHandler "goal:construction:entities:new", (configurations) -> API.new(configurations)
 	App.reqres.setHandler "goal:construction:entities:new:choice", (choice) -> API.newByChoice(choice)
+	App.reqres.setHandler "goal:construction:entities:new:interval", (interval) -> API.newByInterval(interval)

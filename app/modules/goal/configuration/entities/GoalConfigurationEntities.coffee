@@ -56,7 +56,7 @@
 						else
 							throw "unknown rule #{JSON.stringify(intervalRule)} #{intervalRule.rule.type}"
 				configuration.bet.amount.amount = model.get('bet')
-				configuration.bet.interest.amount = (model.get('bet') * (100 + rate)) / 100
+				configuration.bet.interest.amount = Math.round((model.get('bet') * (100 + rate)) / 100)
 				model.set('configuration', configuration)
 
 		parse: (res) ->

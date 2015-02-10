@@ -1,16 +1,37 @@
-<input id="bet" type="range" min="{{basePrice}}" max="{{maxPrice}}"/>
+<div class="container-fluid">
 
-{{#configuration}}
-<div class="col-md-3">
-	<h4>Bet: {{money bet.amount}} / {{money bet.interest}}</h4>
+	{{#configuration}}
+		<div class="col-md-4">
+			<h4><small>Bet</small><br/> {{money bet.amount}} / {{money bet.interest}}</h4>
+		</div>
+		<div class="col-md-3">
+		<h4><small>Show to</small><br/> {{privacyRule privacyRule.name}}</h4>
+		</div>
+		<div class="col-md-3">
+		<h4><small>Update every</small><br/> {{timeoutRule moveTimeoutRule}}</h4>
+		</div>
+		<div class="col-md-2">
+			<h4><small>Share on</small><br/> <span class="{{socialIcon shareRule.name}}"></span></h4>
+		</div>
+	{{/configuration}}
+	<input id="bet" type="range" min="{{basePrice}}" max="{{maxPrice}}"/>
+	<div class="col-md-12">
+	{{#each intervalRules}}
+		{{#is rule.type "rule:privacy"}}
+			<div class="col-md-2">
+				{{privacyRuleIcon rule.name}} <br/> <small>+ {{percentage}}% ({{interval}})</small>
+			</div>
+		{{/is}}
+		{{#is rule.type "rule:timeout"}}
+			<div class="col-md-2">
+				{{timeoutRule rule}} <br/> <small>+ {{percentage}}% ({{interval}})</small>
+			</div>
+		{{/is}}
+		{{#is rule.type "rule:share"}}
+			<div class="col-md-2">
+				<span class="fa fa-share-alt"/> on <span class="{{socialIcon rule.name}}"/> <br/> <small>+ {{percentage}}% ({{interval}})</small>
+			</div>
+		{{/is}}
+	{{/each}}
+	</div>
 </div>
-<div class="col-md-3">
-<h4>Privacy: {{privacyRule privacyRule.name}}</h4>
-</div>
-<div class="col-md-3">
-<h4>Update: {{timeoutRule moveTimeoutRule}}</h4>
-</div>
-<div class="col-md-3">
-	<h4>Share: <span class="{{socialIcon shareRule.name}}"></span></h4>
-</div>
-{{/configuration}}

@@ -42,11 +42,23 @@
 				constructionRequestView = new GoalConstructionNew
 					model: constructionRequest
 
-#				layout.helpRegion.show new GoalConstructionHelp()
 				layout.goalRegion.show constructionRequestView
 
 			App.modal.show layout
+		newIntervalModal: (interval) ->
+			constructionRequest = App.request "goal:construction:entities:new:interval", interval
+			layout = new GoalConstructionNewModal
+				model: constructionRequest
 
+			layout.on "show", () ->
+				App.request "goal:configuration:interval", interval, layout.configurationRegion
+
+				constructionRequestView = new GoalConstructionNew
+					model: constructionRequest
+
+				layout.goalRegion.show constructionRequestView
+
+			App.modal.show layout
 
 	class GoalConstructionHelp extends Marionette.ItemView
 		template: require './templates/goal_construction_help'
@@ -104,6 +116,6 @@
 		configurations = App.request("goal:configuration:entities:list")
 		Controller.new(configurations, region)
 	App.reqres.setHandler "goal:construction:my:new:modal", () ->
-		choice = App.request("goal:configuration:entities:choice")
-		Controller.newChoiceModal(choice)
+		interval = App.request("goal:configuration:entities:interval")
+		Controller.newIntervalModal(interval)
 

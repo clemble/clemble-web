@@ -119,11 +119,19 @@ do(Handlebars, Swag, _) ->
 		else if (rule == "friends")
 			new Handlebars.SafeString("<span class='fa fa-users'></span> friends")
 
+	Handlebars.registerHelper 'privacyRuleIcon', (rule) ->
+		if (rule == "me")
+			new Handlebars.SafeString("<span class='fa fa-user'></span>")
+		else if (rule == "world")
+			new Handlebars.SafeString("<span class='fa fa-globe'></span>")
+		else if (rule == "friends")
+			new Handlebars.SafeString("<span class='fa fa-users'></span>")
+
 	Handlebars.registerHelper "timeoutRule", (rule) ->
 		if (rule? && rule.timeoutCalculator.type == "eod")
 			ruleDay = rule.timeoutCalculator.days
 			if (ruleDay == 1)
-				new Handlebars.SafeString("1 Day")
+				new Handlebars.SafeString("Day")
 			else if (ruleDay == 7)
 				new Handlebars.SafeString("Week")
 			else if (ruleDay == 30)
