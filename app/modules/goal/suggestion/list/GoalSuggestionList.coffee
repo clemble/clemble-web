@@ -19,14 +19,17 @@
 				dataType: 'json'
 			})
 
-
 	class Suggestions extends Marionette.CompositeView
 		template: require './templates/goal_suggestions'
 		childView : Suggestion
 		childViewContainer : "#caption"
+		emptyView: SuggestionEmpty
 		modelEvents:
 			"sync"  : "render"
 			"change": "render"
+
+	class SuggestionEmpty extends Marionette.ItemView
+		template: require './templates/empty_suggestions'
 
 	Controller =
 		listMy: (region) ->
