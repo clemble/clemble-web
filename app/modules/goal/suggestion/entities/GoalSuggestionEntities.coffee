@@ -27,6 +27,8 @@
 		SUGGESTIONS.add(new GoalSuggestion(suggestion.body))
 	App.on "goal:suggestion:declined:my", (suggestion) ->
 		SUGGESTIONS.remove(new GoalSuggestion(suggestion.body))
+	App.on "goal:suggestion:accepted:my", (suggestion) ->
+		SUGGESTIONS.remove(new GoalSuggestion(suggestion.body))
 
 	API=
 		new: (url, configurations) ->

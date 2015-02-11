@@ -38,7 +38,8 @@
 		template: require './templates/navigation'
 		tagName: 'li'
 		modelEvents:
-			'change:active': 'applyActive'
+			'change'        : 'render'
+			'change:active' : 'applyActive'
 		events:
 			'click': () -> @model.set('active', true)
 		render: () ->
