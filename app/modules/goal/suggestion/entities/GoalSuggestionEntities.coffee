@@ -5,6 +5,8 @@
 		default:
 			goal          : null
 			configuration : null
+		idAttributes:
+			'goalKey'
 		validate: (attributes, options) ->
 			if (attributes.goal == undefined)
 				"Goal must be specified" #TODO use generic error code base with multi language support
@@ -13,7 +15,18 @@
 		idAttribute     : 'goalKey'
 
 	class GoalSuggestions extends Backbone.Collection
-		model: GoalSuggestion
+		model : GoalSuggestion
+		url   : App.Utils.toUrl("/suggestion/player/my")
+		fetchIfNeeded: () ->
+			if (!@fetched)
+				@fetched = true
+				@fetch()
+
+	SUGGESTIONS = new GoalSuggestions()
+	App.on "goal:suggestion:created:my", (suggestion) ->
+		SUGGESTIONS.add(new GoalSuggestion(suggestion.body))
+	App.on "goal:suggestion:declined:my", (suggestion) ->
+		SUGGESTIONS.remove(new GoalSuggestion(suggestion.body))
 
 	API=
 		new: (url, configurations) ->
@@ -44,11 +57,8 @@
 
 			suggestionRequest
 		listMy : () ->
-			suggestions = new GoalSuggestions()
-			suggestions.url = App.Utils.toUrl("/suggestion/player/my")
-			App.request("listener:subscribe:reply:my", "goal:suggestion", suggestions, (body) -> new GoalSuggestion(body))
-			suggestions.fetch()
-			suggestions
+			SUGGESTIONS.fetchIfNeeded()
+			SUGGESTIONS
 
 	App.reqres.setHandler "goal:suggestion:entities:new", (url, configurations) -> API.new(url, configurations)
 	App.reqres.setHandler "goal:suggestion:entities:new:choice", (url, choice) -> API.newByChoice(url, choice)

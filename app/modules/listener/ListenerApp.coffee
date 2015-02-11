@@ -26,6 +26,7 @@
 					App.trigger channel, messageJSON
 					while channel.lastIndexOf(":") != -1
 						channel = channel.substring(0, channel.lastIndexOf(":"))
+						console.log "Triggering event on #{channel}"
 						App.trigger channel, messageJSON
 			)
 

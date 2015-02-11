@@ -26,7 +26,7 @@
 
 		listGoal: (region) ->
 			navs = App.request "navigation:entities:all"
-			goalList = new Navigations(
+			goalList = new GoalNavigations(
 				collection: navs
 			)
 			region.show goalList
@@ -34,15 +34,7 @@
 	class RegistrationNavigation extends Marionette.ItemView
 		template: require './templates/registration_navigation'
 
-#	class GoalNavigation extends Marionette.ItemView
-#		template: require './templates/goal_navigation'
-#
-#	class GoalNavigationLayout extends Marionette.LayoutView
-#		template: require './templates/goal_navigation'
-#		regions:
-#			suggestionApp       : "#suggestionApp"
-
-	class Navigation extends Marionette.ItemView
+	class GoalNavigation extends Marionette.ItemView
 		template: require './templates/navigation'
 		tagName: 'li'
 		modelEvents:
@@ -55,9 +47,9 @@
 		applyActive:
 			() -> $(this.el).toggleClass('active', @model.get('active'))
 
-	class Navigations extends Marionette.CompositeView
+	class GoalNavigations extends Marionette.CompositeView
 		template: require './templates/goal_navigation'
-		childView: Navigation
+		childView: GoalNavigation
 		childViewContainer: '#menu'
 		collectionEvents:
 			'change:active': (model) ->
