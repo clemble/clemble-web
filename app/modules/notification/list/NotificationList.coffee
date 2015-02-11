@@ -47,6 +47,7 @@
 
 	class Notifications extends Marionette.CompositeView
 		template: require './templates/player_notifications'
+		emptyView: NotificationEmpty
 		childView : Notification
 		childViewContainer : "#caption"
 		collectionEvents:
@@ -90,6 +91,13 @@
 			else
 				Notification
 
+	class NotificationNavigation extends Marionette.ItemView
+		template: require './templates/player_notification_nav'
+		tagName: 'small'
+		behaviors:
+			CollectionCountSpan: {}
+
+
 	Controller =
 		listMy: (region) ->
 			notification = App.request "notification:entities:my"
@@ -101,6 +109,12 @@
 			notificationView = new NotificationDropdown
 				collection: notification
 			region.show notificationView
+		listNavigation: (region) ->
+			notification = App.request "notification:entities:my"
+			notificationView = new NotificationNavigation
+				collection: notification
+			region.show notificationView
 
 	App.reqres.setHandler "notification:list:my", (region) -> Controller.listMy(region)
 	App.reqres.setHandler "notification:list:my:menu", (region) -> Controller.listMyMenu(region)
+	App.reqres.setHandler "notification:list:my:nav", (region) -> Controller.listNavigation(region)

@@ -25,21 +25,43 @@
 			region.show(registrationList)
 
 		listGoal: (region) ->
-			goalList = new GoalNavigationLayout()
-			goalList.on "show", () ->
-#				App.request "notification:list:my:menu", goalList.notificationApp
-				App.request "suggestion:list:my:menu", goalList.suggestionApp
-			region.show(goalList)
+			navs = App.request "navigation:entities:all"
+			goalList = new Navigations(
+				collection: navs
+			)
+			region.show goalList
 
 	class RegistrationNavigation extends Marionette.ItemView
 		template: require './templates/registration_navigation'
 
-	class GoalNavigation extends Marionette.ItemView
-		template: require './templates/goal_navigation'
+#	class GoalNavigation extends Marionette.ItemView
+#		template: require './templates/goal_navigation'
+#
+#	class GoalNavigationLayout extends Marionette.LayoutView
+#		template: require './templates/goal_navigation'
+#		regions:
+#			suggestionApp       : "#suggestionApp"
 
-	class GoalNavigationLayout extends Marionette.LayoutView
+	class Navigation extends Marionette.ItemView
+		template: require './templates/navigation'
+		tagName: 'li'
+		modelEvents:
+			'change:active': 'applyActive'
+		events:
+			'click': () -> @model.set('active', true)
+		render: () ->
+			@applyActive()
+			super
+		applyActive:
+			() -> $(this.el).toggleClass('active', @model.get('active'))
+
+	class Navigations extends Marionette.CompositeView
 		template: require './templates/goal_navigation'
-		regions:
-			suggestionApp       : "#suggestionApp"
+		childView: Navigation
+		childViewContainer: '#menu'
+		collectionEvents:
+			'change:active': (model) ->
+				if (model.get("active"))
+					@collection.forEach((m) -> if (m != model) then m.set("active", false))
 
 	App.reqres.setHandler "navigation:list", (reg) -> Controller.list(reg)
