@@ -7,7 +7,6 @@
 				App.request "player:profile:show:my", layout.profileApp
 				App.request "player:account:show:my", layout.accountApp
 				App.request "goal:active:list:my", layout.mainApp
-				App.request "goal:suggestion:list:my", layout.suggestionApp
 				App.request "player:connection:show:my", layout.connectionApp
 				App.request "feed:list:my", layout.feedApp
 				App.request "tag:show:my", layout.tagApp
@@ -26,7 +25,6 @@
 			feedApp         : "#feedApp"
 			helpApp         : "#helpApp"
 			socialConnectApp: '#socialConnectApp'
-			suggestionApp   : '#suggestionApp'
 			connectionApp   : "#connectionApp"
 
 	App.reqres.setHandler "goal:show:my", (region) -> Controller.showMy(region)

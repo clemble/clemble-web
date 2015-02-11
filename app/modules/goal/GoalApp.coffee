@@ -17,6 +17,7 @@ require './listener/GoalListenerApp'
 
 	class Router extends Marionette.AppRouter
 		appRoutes:
+			'': 'showMy'
 			'goal': 'showMy'
 
 	App.addInitializer ->

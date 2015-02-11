@@ -11,6 +11,7 @@
 		list: (reg) ->
 			region = reg
 			Controller.listWithHash(window.location.hash, region)
+
 		listWithHash: (hash, region) ->
 			if (hash.indexOf("#registration") != -1)
 				console.log("Drawing registration")
@@ -26,7 +27,8 @@
 		listGoal: (region) ->
 			goalList = new GoalNavigationLayout()
 			goalList.on "show", () ->
-				App.request "notification:list:my:menu", goalList.navigationMenuApp
+#				App.request "notification:list:my:menu", goalList.notificationApp
+				App.request "suggestion:list:my:menu", goalList.suggestionApp
 			region.show(goalList)
 
 	class RegistrationNavigation extends Marionette.ItemView
@@ -38,6 +40,6 @@
 	class GoalNavigationLayout extends Marionette.LayoutView
 		template: require './templates/goal_navigation'
 		regions:
-			navigationMenuApp   : "#navigationMenuApp"
+			suggestionApp       : "#suggestionApp"
 
 	App.reqres.setHandler "navigation:list", (reg) -> Controller.list(reg)
