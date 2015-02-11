@@ -1,32 +1,31 @@
 <hr/>
 <div class="container-fluid">
-	<div class="col-md-12">
-		<h4>{{goal}}</h4>
-	</div>
-	<div class="col-md-2">
+	<div class="col-md-12 row">
+		<div class="col-md-4">
+			Win: {{money myBet.interest}}
+		</div>
 		{{#each context.playerContexts}}
-			<h4><span class="label label-success label-lg">{{formatDate clock.breachTime "%d/%m"}}</span></h4>
-			<h4><span class="label label-warning">{{formatDate clock.deadline "%d/%m"}}</span></h4>
+			<div class="col-md-4">
+				Update: <span class="label label-success label-lg">{{formatDate clock.breachTime "%d/%m %H:%M"}}</span>
+			</div>
+			<div class="col-md-4">
+				Deadline: <span class="label label-warning">{{formatDate clock.deadline "%d/%m %H:%M"}}</span>
+			</div>
 		{{/each}}
 	</div>
-	<div class="col-md-10">
-		<div class="col-md-12">
-			<div class="col-md-12">
-				<div class="pull-left">
-					{{bet bank.total}}
-				</div>
-				<div class="pull-right" data-toggle="tooltip" data-placement="top" title="Supporter">
-					{{#if myBid}}
-						<button class="btn btn-xs btn-info">My: {{bet myBet}}</button>
-					{{/if}}
-				</div>
-			</div>
-
-			<small>Status</small><br/>
-			{{status}}<br/>
+	<div class="col-md-12 row">
+		<h4><span class="label label-xs label-material-blue">Goal</span> {{goal}}</h4>
+	</div>
+	<div class="col-md-12 row">
+		<span class="label label-xs label-material-cyan">Status</span> {{status}}<br/>
+		<div class="col-md-9">
 			<button id="update" class="btn btn-xs btn-success"><span class="fa fa-circle-thin"></span> Update</button>
-			<button id="surrender" class="btn btn-xs btn-danger pull-right"><span class="fa fa-remove"></span> Give Up</button>
+		</div>
+		<div class="col-md-3">
+			<button id="surrender" class="btn btn-xs btn-danger"><span class="fa fa-remove"></span> Give Up</button>
 		</div>
 	</div>
-	{{template "supporters"}}
+	<div class="col-md-12 row">
+		{{template "supporters"}}
+	</div>
 </div>

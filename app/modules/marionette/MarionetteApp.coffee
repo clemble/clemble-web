@@ -99,5 +99,14 @@
 					contentType: "application/json",
 					dataType: 'json'
 				})
+		CollectionCountSpan: Marionette.Behavior.extend
+			collectionEvents:
+				'sync'    : 'updateCount'
+				'add'     : 'updateCount'
+				'remove'  : 'updateCount'
+				'reset'   : 'updateCount'
+			updateCount: () ->
+				console.log("Update count")
+				@view.$('.count_span').html(@view.collection.length)
 
 	Marionette.Behaviors.behaviorsLookup = () -> Behaviors

@@ -76,9 +76,8 @@
 		emptyView: NotificationEmpty
 		collectionEvents:
 			"change"  : "render"
-		modelEvents:
-			"sync"    : "render"
-			"change"  : "render"
+		behaviors:
+			CollectionCountSpan: {}
 		getChildView: (item) ->
 			if (item.get('type') == "notification:player:invited")
 				PlayerInvitedNotification
