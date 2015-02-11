@@ -14,10 +14,13 @@ require './listener/GoalListenerApp'
 	API =
 		showMy: ->
 			App.request "goal:show:my", App.contentRegion
+		navigateGoal: ->
+			Backbone.history.navigate("goal", {trigger: true})
 
 	class Router extends Marionette.AppRouter
 		appRoutes:
-			'': 'showMy'
+			'': 'navigateGoal'
+			'_=_': 'navigateGoal'
 			'goal': 'showMy'
 
 	App.addInitializer ->
