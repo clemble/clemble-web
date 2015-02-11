@@ -95,11 +95,44 @@
 			else
 				Post
 
+	class PostsModal extends Marionette.CompositeView
+		template: require './templates/player_posts_modal'
+		childView : Post
+		childViewContainer : "#caption"
+		modelEvents:
+			"sync" : "render"
+		getChildView: (item) ->
+			if (item.get('type') == "post:goal:created")
+				GoalCreatedPost
+			else if (item.get('type') == "post:goal:started")
+				GoalStartedPost
+			else if (item.get('type') == "post:goal:bet:changed")
+				GoalBetChangedPost
+			else if (item.get('type') == "post:goal:updated:missed")
+				GoalUpdateMissed
+			else if (item.get('type') == "post:goal:updated")
+				GoalUpdatedPost
+			else if (item.get('type') == "post:goal:reached")
+				GoalReachedPost
+			else if (item.get('type') == "post:goal:missed")
+				GoalMissedPost
+			else if (item.get('type') == "post:goal:bet:off")
+				GoalBetOffPost
+			else
+				Post
+
 	Controller =
 		listMy: (region) ->
-			notification = App.request "feed:entities:my"
-			notificationView = new Posts
-				collection: notification
-			region.show notificationView
+			myPosts = App.request "feed:entities:my"
+			myPostsView = new Posts
+				collection: myPosts
+			region.show myPostsView
+		listPlayerInModal: (player) ->
+			playerPosts = App.request "feed:entities:player", player
+			playerPostsView = new PostsModal
+				collection: playerPosts
+			App.modal.show playerPostsView
+
 
 	App.reqres.setHandler "feed:list:my", (region) -> Controller.listMy(region)
+	App.reqres.setHandler "feed:list:player:modal", (player) -> Controller.listPlayerInModal(player)

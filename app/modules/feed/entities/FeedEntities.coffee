@@ -35,5 +35,16 @@
 				feed.add(post, {at : 0})
 			feed.fetch()
 			feed
+		listByPlayer: (player) ->
+			feed = new Posts()
+			feed.url = App.Utils.toUrl("/feed/#{player}")
+			App.on "post", (t) ->
+				if (t.player == player)
+					post = new Post(API.getId(t))
+					feed.remove(post.get("id"))
+					feed.add(post, {at : 0})
+			feed.fetch()
+			feed
 
 	App.reqres.setHandler "feed:entities:my", () -> API.listMy()
+	App.reqres.setHandler "feed:entities:player", (player) -> API.listByPlayer(player)
