@@ -11,7 +11,7 @@
 			Navigation
 
 	NAVIGATIONS = new Navigations([
-		{name: 'Home', icon: 'fa fa-home', url: 'goal', active: true}
+		{name: 'Home', icon: 'fa fa-home', url: 'goal', active: false}
 	])
 
 	associateCollection = (collection, nav) ->
@@ -21,7 +21,7 @@
 		nav.listenTo collection, "reset", () -> nav.set('count', collection.length)
 
 	SUGGESTION = new Navigation({
-		name: 'Suggestion',
+		name: 'Suggestions',
 		icon: 'fa fa-lightbulb-o',
 		url: 'suggestion',
 		active: false
@@ -31,7 +31,7 @@
 	associateCollection(SUGGESTIONS, SUGGESTION)
 
 	NOTIFICATION = new Navigation({
-		name: 'Notification',
+		name: 'Notifications',
 		icon: 'fa fa-bell',
 		url: 'notification',
 		active: false
@@ -40,6 +40,8 @@
 	NAVIGATIONS.add(NOTIFICATION)
 	associateCollection(NOTIFICATIONS, NOTIFICATION)
 
+	NAVIGATIONS.add(new Navigation({name: 'Settings', icon: 'fa fa-cogs', url: 'settings', active: false}))
+
 	API =
 		getNavigations: ->
 			NAVIGATIONS
@@ -47,7 +49,9 @@
 			NAVIGATIONS.forEach (header) ->
 				header.set('active', _.str.startsWith(url.substring(1), header.get('url')))
 
-	Backbone.history.bind "all", () ->
+	App.vent.on("hash:change", (location) ->
 		API.updateActive(window.location.hash)
+	)
+	API.updateActive(window.location.hash)
 
 	App.reqres.setHandler "navigation:entities:all", -> API.getNavigations()

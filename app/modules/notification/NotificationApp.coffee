@@ -5,12 +5,12 @@ require './entities/NotificationEntities'
 	@startWithParent = false
 
 	API =
-		listNotifications: ->
+		listSettings: ->
 			App.request "notification:list:my", App.contentRegion
 
 	class GoalNotificationRouter extends Marionette.AppRouter
 		appRoutes:
-			'notification': 'listNotifications'
+			'notification': 'listSettings'
 
 	App.addInitializer ->
 		new GoalNotificationRouter
