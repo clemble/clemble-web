@@ -58,11 +58,21 @@
 
 
 			suggestionRequest
+
 		listMy : () ->
 			SUGGESTIONS.fetchIfNeeded()
 			SUGGESTIONS
+
+		listSuggested: (player) ->
+			playerSuggested = new GoalSuggestions()
+			playerSuggested.url = App.Utils.toUrl("/suggestion/suggested/#{player}")
+			playerSuggested.fetch()
+			playerSuggested
 
 	App.reqres.setHandler "goal:suggestion:entities:new", (url, configurations) -> API.new(url, configurations)
 	App.reqres.setHandler "goal:suggestion:entities:new:choice", (url, choice) -> API.newByChoice(url, choice)
 	App.reqres.setHandler "goal:suggestion:entities:new:interval", (url, interval) -> API.newByInterval(url, interval)
 	App.reqres.setHandler "goal:suggestion:entities:list:my", () -> API.listMy()
+
+	App.reqres.setHandler "goal:suggestion:entities:suggested", (player) -> API.listSuggested(player)
+	App.reqres.setHandler "goal:suggestion:entities:suggested:my", () -> API.listSuggested('my')
