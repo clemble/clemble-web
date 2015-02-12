@@ -41,6 +41,7 @@
 	associateCollection(NOTIFICATIONS, NOTIFICATION)
 
 	NAVIGATIONS.add(new Navigation({name: 'Settings', icon: 'fa fa-cogs', url: 'settings', active: false}))
+	NAVIGATIONS.add(new Navigation({name: 'Help', icon: 'fa fa-question', url: 'help', active: false}))
 
 	API =
 		getNavigations: ->

@@ -9,7 +9,6 @@
 				App.request "goal:active:list:my", layout.mainApp
 				App.request "player:connection:show:my", layout.connectionApp
 				App.request "feed:list:my", layout.feedApp
-				App.request "help:show", layout.helpApp
 			region.show layout
 
 
@@ -20,7 +19,6 @@
 			profileApp      : "#profileApp"
 			accountApp      : "#accountApp"
 			feedApp         : "#feedApp"
-			helpApp         : "#helpApp"
 			connectionApp   : "#connectionApp"
 
 	App.reqres.setHandler "goal:show:my", (region) -> Controller.showMy(region)
