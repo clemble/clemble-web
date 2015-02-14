@@ -11,9 +11,9 @@
 		template: require './templates/goal_active'
 		className: 'row'
 		events:
-			"click #update" : "update"
+			"click #update" : () -> App.request "goal:active:action:new:modal", @model.url()
 			"click #surrender": () -> App.request "goal:active:action:surrender", @model.url()
-		update: () -> App.request "goal:active:action:new:modal", @model.url()
+			"click #reached": () -> App.request "goal:active:action:reached", @model.url()
 		modelEvents:
 			"change" : "render"
 		behaviors:

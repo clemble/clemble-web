@@ -14,16 +14,6 @@
 			MarionetteModal: {}
 		bindings:
 			'#status'  : 'status'
-		events:
-			'click #reached'       : "reached"
-		reached: () ->
-			view = @
-			reached = App.request "goal:active:action:entities:reached", @model.url
-			reached.save(reached.toJSON(), {
-				success: () ->
-					#TODO really ugly shit
-					view.$el.parent().parent().parent().parent().modal("hide")
-			})
 
 	App.reqres.setHandler "goal:active:action:new:modal", (url) -> Controller.newModal(url)
 

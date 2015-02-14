@@ -12,7 +12,7 @@
 
 	NAVIGATIONS = new Navigations([
 		{name: 'Home', icon: 'fa fa-home', url: 'goal', active: false},
-		{name: 'Portfolio', icon: 'fa fa-briefcase', url: 'portfolio', active: false}
+#		{name: 'Portfolio', icon: 'fa fa-briefcase', url: 'portfolio', active: false}
 	])
 
 	associateCollection = (collection, nav) ->

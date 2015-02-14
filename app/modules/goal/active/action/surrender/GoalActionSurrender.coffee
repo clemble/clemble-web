@@ -9,7 +9,7 @@
 			App.modal.show surrenderModal
 
 	class SurrenderModal extends Marionette.ItemView
-		template: require './templates/goal_surrender'
+		template: require './templates/goal_surrender_modal'
 		behaviors:
 			MarionetteModal: {}
 
