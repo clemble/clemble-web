@@ -25,8 +25,10 @@
 			<button id="surrender" class="btn btn-xs btn-danger"><span class="fa fa-remove"></span> Give Up</button>
 		</div>
 	</div>
+	{{#if supporters}}
 	<div class="col-md-12 row">
 		Supporters:
 		{{template "supporters"}}
 	</div>
+	{{/if}}
 </div>
