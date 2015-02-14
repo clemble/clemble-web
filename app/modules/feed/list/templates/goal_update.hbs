@@ -1,5 +1,18 @@
 <hr/>
 <div class="container-fluid">
+	<div class="col-md-12 row">
+		<div class="col-md-4">
+			Win/<small>Bank</small>: {{myBet.interest.amount}} / <small>{{bank.total.interest.amount}}</small>
+		</div>
+		{{#each context.playerContexts}}
+			<div class="col-md-4">
+				Update: <span class="label label-success label-lg">{{formatDate clock.breachTime "%d/%m %H:%M"}}</span>
+			</div>
+			<div class="col-md-4">
+				Deadline: <span class="label label-warning">{{formatDate clock.deadline "%d/%m %H:%M"}}</span>
+			</div>
+		{{/each}}
+	</div>
 	<div class="col-md-2">
 		<small>Updated</small>
 		<div>

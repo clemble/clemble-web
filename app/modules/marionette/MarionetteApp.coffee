@@ -60,14 +60,24 @@
 							$this.html("#{hourMinutes}");
 					)
 				)
+		SaveOnTextEnter: Marionette.Behavior.extend
+			events:
+				'keypress input[type=text]': 'filterOnEnter'
+			filterOnEnter: (e) ->
+				if (e.keyCode == 13)
+					@view.model.save()
 		MarionetteModal: Marionette.Behavior.extend
 			events:
-				'click #save'       : "save"
-				'click #cancel'     : "cancel"
+				'click #save'               : "save"
+				'click #cancel'             : "cancel"
+				'keypress input[type=text]' : 'filterOnEnter'
 			initialize: () ->
 				self = @
 				@view.on 'modal:close', () ->
 					self.closeModal()
+			filterOnEnter: (e) ->
+				if (e.keyCode == 13)
+					@save()
 			save: () ->
 				self = @
 				model = @view.model
