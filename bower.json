@@ -21,7 +21,8 @@
     "jquery.cookie": "~1.4.1",
     "jquery.countdown": "~2.0.4",
     "intl-tel-input": "~3.7.1",
-    "bootstrap-material-design": "~0.2.2"
+    "bootstrap-material-design": "~0.2.2",
+    "bootstrap-tour": "~0.10.2"
   },
   "overrides": {
     "underscore": {
@@ -52,6 +53,12 @@
     },
     "stomp-websocket": {
       "main": "lib/stomp.min.js"
+    },
+    "bootstrap-tour": {
+      "main": [
+        "build/css/bootstrap-tour.min.css",
+        "build/js/bootstrap-tour.min.js"
+      ]
     }
   },
   "resolutions": {
