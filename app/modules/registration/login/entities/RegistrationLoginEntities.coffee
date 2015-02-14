@@ -4,6 +4,8 @@
 		defaults:
 			email: ''
 			password: ''
+		initialize: () ->
+			@listenTo(@, "sync", () -> Backbone.history.navigate("goal", {trigger: true}))
 		validation:
 			password: {
 				required: true

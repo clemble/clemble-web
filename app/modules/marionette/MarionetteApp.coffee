@@ -63,6 +63,7 @@
 		SaveOnTextEnter: Marionette.Behavior.extend
 			events:
 				'keypress input[type=text]': 'filterOnEnter'
+				'keypress input[type=password]': 'filterOnEnter'
 			filterOnEnter: (e) ->
 				if (e.keyCode == 13)
 					@view.model.save()
