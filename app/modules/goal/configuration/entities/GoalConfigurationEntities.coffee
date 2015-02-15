@@ -50,7 +50,9 @@
 						if (intervalRule.rule.type == "rule:privacy")
 							configuration.privacyRule = intervalRule.rule
 						else if (intervalRule.rule.type == "rule:share")
-							configuration.shareRule = intervalRule.rule
+							newShareRule = _.clone(intervalRule.rule)
+							newShareRule.providers = _.uniq(_.union(configuration.shareRule.providers, intervalRule.rule.providers))
+							configuration.shareRule = newShareRule
 						else if (intervalRule.rule.type == "rule:timeout")
 							configuration.moveTimeoutRule = intervalRule.rule
 						else
