@@ -2,44 +2,46 @@
 
 	Controller =
 		registerManual: (region) ->
-			registration = App.request 'registration:base:entities:new'
-			layout = new RegistrationLayout
-				model: registration
 
+			layout = new RegistrationLayout
 			layout.on 'show', () ->
+				registration = App.request 'registration:entities:registration:new'
 
 				App.request "registration:social:show", layout.social
-
-				login = App.request 'registration:login:show:new', layout.login, registration.playerCredential
-				profile = App.request 'player:profile:new', layout.profile, registration.playerProfile
-				manual = new RegistrationControl
+				signupView = new SignupView
 					model: registration
-				layout.control.show manual
+				layout.signup.show signupView
 			region.show layout
 
-	class RegistrationControl extends Marionette.ItemView
-		template: require './templates/control'
-		modelEvents:
-			'change'  : 'render'
+	class SignupView extends Marionette.ItemView
+		template: require './templates/signup'
+		behaviors:
+			StickIt: {}
+			DisplayError: {}
 		events:
-			'click #signUp' : 'singUp'
-		singUp: () =>
-			view = @
-			@model.save(@model.toJSON(), {
-				success: () ->
-					Backbone.history.navigate("goal", { trigger: true })
-				error: () ->
-					console.log("NO Error Processing for signUp failure")
-			})
+			'click #signUp' : () -> @model.save()
+		bindings: {
+			'#email': 'emailOrNickName',
+			'#password': 'password'
+			'#country': 'country'
+			'#nickName': 'nickName'
+			'#fullName':
+				observe: ['firstName', 'lastName'],
+				onGet: (values) ->
+					if (values[0]? && values[1])
+						values[0] + ' ' + values[1]
+					else
+						''
+				onSet: (value) -> value.split(' ')
+			'[name="gender"]': 'gender'
+			'#birthDate': 'birthDate'
+		}
+
 
 	class RegistrationLayout extends Marionette.LayoutView
 		template: require "./templates/layout"
-		behaviors:
-			DisplayError: {}
 		regions:
-			login    : '#login'
-			profile  : '#profile'
-			control  : '#control'
+			signup   : '#signup'
 			social   : '#social'
 
 	App.reqres.setHandler 'registration:signUp:show', (region) -> Controller.registerManual(region)

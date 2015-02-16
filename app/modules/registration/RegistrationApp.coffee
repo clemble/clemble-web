@@ -1,6 +1,6 @@
 require './entities/RegistrationEntities'
 require './login/RegistrationLoginApp'
-require './signUp/RegistrationSignUpApp'
+require './signup/RegistrationSignUpApp'
 require './social/RegistrationSocialApp'
 require './show/RegistrationShow'
 require './restore/RegistrationRestore'
