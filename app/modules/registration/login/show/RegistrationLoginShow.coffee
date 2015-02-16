@@ -16,8 +16,8 @@
 	class Login extends Marionette.ItemView
 		template: require './templates/login'
 		bindings:
-			'#email'        : 'email',
-			'#password'     : 'password'
+			'#emailOrNickName'  : 'emailOrNickName',
+			'#password'         : 'password'
 		behaviors:
 			StickIt         : {}
 			StickValidation : {}

@@ -5,6 +5,13 @@
 		default:
 			playerProfile: null
 			playerCredential: null
+		url:
+			App.Utils.toUrl("/registration/signin")
+		initialize: () ->
+			@listenTo(@, "sync", () ->
+				App.trigger "registered"
+				Backbone.history.navigate("goal", {trigger: true})
+			)
 		setPlayerCredential: (playerCredential) ->
 			self = @
 			self.set('playerCredential', playerCredential.attributes)
@@ -26,7 +33,7 @@
 
 	API =
 		new: () ->
-			login = App.request 'registration:login:entities:new'
+			login = App.request 'registration:entities:credentials:new'
 			profile = App.request 'player:profile:entities:new'
 
 			registrationRequest = new PlayerBaseRegistrationRequest()
@@ -34,7 +41,6 @@
 			registrationRequest.setPlayerCredential login
 			registrationRequest.setPlayerProfile profile
 
-			registrationRequest.url = App.Utils.toUrl("/registration/base/signin")
 			registrationRequest.on "all", (evt) -> console.log("registration > #{evt}")
 			registrationRequest
 

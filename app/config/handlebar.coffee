@@ -108,7 +108,10 @@ do(Handlebars, Swag, _) ->
 	Handlebars.registerHelper 'microProfileImage', (player) ->
 		new Handlebars.SafeString("<image src='http://api.#{window.location.host}/profile/#{player}/image/small' class='img-circle' height='30' width='30'></image>")
 
-	Handlebars.registerHelper 'myImage', (player) ->
+	Handlebars.registerHelper 'profileImageOfSize', (player, size) ->
+		new Handlebars.SafeString("<image src='http://api.#{window.location.host}/profile/#{player}/image' class='img-circle' height='#{size}' width='#{size}'></image>")
+
+	Handlebars.registerHelper 'myImage', () ->
 		new Handlebars.SafeString("<image src='http://api.#{window.location.host}/profile/my/image' class='img-circle' height='100' width='100'></image>")
 
 	Handlebars.registerHelper 'privacyRule', (rule) ->

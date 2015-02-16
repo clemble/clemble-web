@@ -2,24 +2,27 @@
 
 	class Login extends Backbone.Model
 		defaults:
-			email: ''
+			emailOrNickName: ''
 			password: ''
 		initialize: () ->
-			@listenTo(@, "sync", () -> Backbone.history.navigate("goal", {trigger: true}))
+			@listenTo(@, "sync", () ->
+				App.trigger "registered"
+				Backbone.history.navigate("goal", {trigger: true})
+			)
+		url:
+			App.Utils.toUrl "/registration/login"
 		validation:
 			password: {
 				required: true
 				rangeLength: [6, 64]
 			},
-			email: {
-				required: true,
-				pattern: 'email'
+			emailOrNickName: {
+				required: true
 			}
 
 	API =
 		new: () ->
 			login = new Login()
-			login.url = App.Utils.toUrl "/registration/base/login"
 			login
 
 	App.reqres.setHandler 'registration:login:entities:new', () -> API.new()

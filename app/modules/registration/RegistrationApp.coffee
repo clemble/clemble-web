@@ -1,3 +1,4 @@
+require './entities/RegistrationEntities'
 require './login/RegistrationLoginApp'
 require './signUp/RegistrationSignUpApp'
 require './social/RegistrationSocialApp'

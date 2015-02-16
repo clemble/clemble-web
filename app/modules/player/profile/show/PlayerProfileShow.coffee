@@ -13,7 +13,6 @@
 			'sync'   : 'render'
 			'change' : 'render'
 		events:
-			"click #add": () -> App.request "goal:construction:my:new:modal"
 			'click #phone' : () -> App.request "player:phone:new:modal"
 			'click #email' : () -> App.request "player:email:new:modal"
 

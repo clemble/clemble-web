@@ -3,7 +3,9 @@
 .show-on-hover:hover > ul.dropdown-menu {
     display: block;
 }
-
+.img-circle {
+    margin: 0 auto;
+}
 /* CSS used here will be applied after bootstrap.css */
 
 .dropdown {

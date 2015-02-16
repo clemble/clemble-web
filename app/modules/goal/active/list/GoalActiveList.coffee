@@ -25,5 +25,7 @@
 			"sync"    : "render"
 		childView: GoalActive
 		childViewContainer: "#content"
+		events:
+			"click #add": () -> App.request "goal:construction:my:new:modal"
 
 	App.reqres.setHandler "goal:active:list:my", (region) -> Controller.listMy(region)
