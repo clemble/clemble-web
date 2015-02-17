@@ -11,10 +11,10 @@
 		{{else}}
 			<h5><small>Connect with</small></h5>
 			{{#unless connected.phone}}
-				<button class="btn btn-primary" id="phone"><span class="fa-2x {{socialIcon "phone"}}"/></button>
+				<button class="btn btn-lg btn-material-blue" id="phone"><span class="{{socialIcon "phone"}}"/></button>
 			{{/unless}}
 			{{#each missing}}
-				<button class="btn btn-primary" signin="{{@key}}"><span class="fa-2x {{socialIcon @key}}"></span></button>
+				<button class="btn btn-lg btn-material-blue" signin="{{@key}}"><span class="{{socialIcon @key}}"></span></button>
 			{{/each}}
 		{{/empty}}
 	</div>
