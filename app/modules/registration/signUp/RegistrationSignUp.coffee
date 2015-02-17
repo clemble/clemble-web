@@ -1,4 +1,4 @@
-@App.module "RegistrationSignUpApp.Show", (Show, App, Backbone, Marionette, $, _) ->
+@App.module "RegistrationApp.SignUp", (SignUp, App, Backbone, Marionette, $, _) ->
 
 	Controller =
 		registerManual: (region) ->
@@ -21,7 +21,7 @@
 		events:
 			'click #signUp' : () -> @model.save()
 		bindings: {
-			'#email': 'emailOrNickName',
+			'#email': 'email',
 			'#password': 'password'
 			'#country': 'country'
 			'#nickName': 'nickName'
