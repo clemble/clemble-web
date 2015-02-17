@@ -1,4 +1,4 @@
-@App.module "RegistrationLoginApp.Show", (Show, App, Backbone, Marionette, $, _) ->
+@App.module "RegistrationApp.Login", (Login, App, Backbone, Marionette, $, _) ->
 
 	Controller =
 		signIn: (region) ->
@@ -9,7 +9,7 @@
 			login
 
 	class LoginSignIn extends Marionette.ItemView
-		template: require './templates/signIn'
+		template: require './templates/login'
 		bindings:
 			'#emailOrNickName'  : 'emailOrNickName',
 			'#password'         : 'password'

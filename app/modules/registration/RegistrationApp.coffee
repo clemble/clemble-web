@@ -1,5 +1,5 @@
 require './entities/RegistrationEntities'
-require './login/RegistrationLoginApp'
+require './login/RegistrationLogin'
 require './signUp/RegistrationSignUp'
 require './social/RegistrationSocialApp'
 require './show/RegistrationShow'
