@@ -25,11 +25,15 @@
 			region.show(registrationList)
 
 		listGoal: (region) ->
-			navs = App.request "navigation:entities:all"
-			goalList = new GoalNavigations(
-				collection: navs
-			)
-			region.show goalList
+			layout = new NavigationLayout()
+			layout.on "show", () ->
+				navs = App.request "navigation:entities:all"
+				goalList = new GoalNavigations
+					collection: navs
+				layout.menuApp.show goalList
+
+				App.request "player:account:show:my:nav", layout.accountApp
+			region.show layout
 
 	class RegistrationNavigation extends Marionette.ItemView
 		template: require './templates/registration_navigation'
@@ -48,13 +52,19 @@
 		applyActive:
 			() -> $(this.el).toggleClass('active', @model.get('active'))
 
-	class GoalNavigations extends Marionette.CompositeView
-		template: require './templates/goal_navigation'
+	class GoalNavigations extends Marionette.CollectionView
 		childView: GoalNavigation
-		childViewContainer: '#menu'
+		tagName : 'ul'
+		className : 'nav navbar-nav'
 		collectionEvents:
 			'change:active': (model) ->
 				if (model.get("active"))
 					@collection.forEach((m) -> if (m != model) then m.set("active", false))
+
+	class NavigationLayout extends Marionette.LayoutView
+		template: require './templates/navigation_layout'
+		regions:
+			menuApp : '#menuApp'
+			accountApp : '#accountApp'
 
 	App.reqres.setHandler "navigation:list", (reg) -> Controller.list(reg)

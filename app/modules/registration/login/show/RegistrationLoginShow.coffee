@@ -2,7 +2,7 @@
 
 	Controller =
 		signIn: (region) ->
-			login = App.request "registration:login:entities:new"
+			login = App.request "registration:entities:login:new"
 			loginView = new LoginSignIn
 				model: login
 			region.show loginView

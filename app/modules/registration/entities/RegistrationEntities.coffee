@@ -1,14 +1,32 @@
 @App.module "RegistrationApp.Entities", (Entities, App, Backbone, Marionette, $, _) ->
 
-	class PlayerCredentials extends Backbone.Model
+	class RegistrationRequest extends Backbone.Model
+		initialize: () ->
+			@listenTo(@, "sync", () ->
+				console.log("sync triggered redirecting to goal page")
+				App.trigger("registered")
+				Backbone.history.navigate("goal", {trigger: true})
+			)
+
+	class LoginRequest extends RegistrationRequest
+		defaults:
+			emailOrNickName: ''
+			password: ''
+		url:
+			App.Utils.toUrl "/registration/login"
+		validation:
+			password: {
+				required: true
+				rangeLength: [6, 64]
+			},
+			emailOrNickName: {
+				required: true
+			}
+
+	class PlayerCredentials extends RegistrationRequest
 		defaults:
 			email: ''
 			password: ''
-		initialize: () ->
-			@listenTo(@, "sync", () ->
-				App.trigger "registered"
-				Backbone.history.navigate("goal", {trigger: true})
-			)
 		validation:
 			password: {
 				required: true
@@ -19,7 +37,7 @@
 				pattern: 'email'
 			}
 
-	class PlayerRegistrationRequest extends Backbone.Model
+	class PlayerRegistrationRequest extends RegistrationRequest
 		defaults:
 			player            : ''
 			email             : ''
@@ -32,11 +50,6 @@
 			birthDate         : ''
 		url: () ->
 			App.Utils.toUrl "/registration/signin"
-		initialize: () ->
-			@listenTo(@, "sync", () ->
-				App.trigger "registered"
-				Backbone.history.navigate("goal", {trigger: true})
-			)
 		validation:
 			password: {
 				required: true
@@ -60,6 +73,9 @@
 			}
 
 	API =
+		newLogin: () ->
+			login = new LoginRequest()
+			login
 		newCredentials: () ->
 			credentials = new PlayerCredentials()
 			credentials
@@ -67,5 +83,6 @@
 			registration = new PlayerRegistrationRequest()
 			registration
 
+	App.reqres.setHandler 'registration:entities:login:new', () -> API.newLogin()
 	App.reqres.setHandler 'registration:entities:credentials:new', () -> API.newCredentials()
 	App.reqres.setHandler 'registration:entities:registration:new', () -> API.newRegistration()

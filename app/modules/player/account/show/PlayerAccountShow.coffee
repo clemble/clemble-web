@@ -1,9 +1,14 @@
 @App.module "PlayerAccountApp.Show", (Show, App, Backbone, Marionette, $, _) ->
 
 	Controller =
-		get: (player, region) ->
+		show: (player, region) ->
 			account = App.request "player:account:entities:get", player
 			accountShow = new PlayerAccountShow
+				model: account
+			region.show accountShow
+		showNav: (player, region) ->
+			account = App.request "player:account:entities:get", player
+			accountShow = new PlayerAccountShowNavigation
 				model: account
 			region.show accountShow
 
@@ -13,5 +18,12 @@
 			'sync'    : 'render'
 			'change'  : 'render'
 
-	App.reqres.setHandler "player:account:show", (player, region) -> Controller.get(player, region)
-	App.reqres.setHandler "player:account:show:my", (region) -> Controller.get('my', region)
+	class PlayerAccountShowNavigation extends Marionette.ItemView
+		template: require './templates/account_nav'
+		modelEvents:
+			'sync'    : 'render'
+			'change'  : 'render'
+
+	App.reqres.setHandler "player:account:show", (player, region) -> Controller.show(player, region)
+	App.reqres.setHandler "player:account:show:my", (region) -> Controller.show('my', region)
+	App.reqres.setHandler "player:account:show:my:nav", (region) -> Controller.showNav('my', region)

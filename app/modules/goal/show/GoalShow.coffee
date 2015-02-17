@@ -4,8 +4,6 @@
 		showMy: (region) ->
 			layout = new GoalLayout()
 			layout.on "show", () ->
-				App.request "player:profile:show:my", layout.profileApp
-				App.request "player:account:show:my", layout.accountApp
 				App.request "goal:active:list:my", layout.mainApp
 				App.request "player:connection:show:my", layout.connectionApp
 				App.request "feed:list:my", layout.feedApp
