@@ -19,8 +19,8 @@
 		behaviors:
 			Countdown: {}
 
-	class GoalActives extends Marionette.CompositeView
-		template : require './templates/goal_actives'
+	class GoalActives extends Marionette.CollectionView
+#		template : require './templates/goal_actives'
 		modelEvents:
 			"sync"    : "render"
 		childView: GoalActive

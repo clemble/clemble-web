@@ -1,0 +1,43 @@
+<hr/>
+<div class="col-md-12 row">
+{{#state}}
+	<div class="col-md-12">
+		<div class="col-md-2 col-xs-4">
+			{{microProfileImage player}}
+		</div>
+		<div class="col-md-4 col-xs-8">
+		<h4>Bank: {{bank.total.interest.amount}} / {{#if myBet}}<small>{{myBet.interest.amount}}</small></h4>{{else}}{{#is phase "started"}}<a id="bet" >bet</a>{{/is}}{{#is phase "betOff"}}Bets are Off{{/is}}{{#is phase "finished"}}finish{{/is}}{{/if}}
+		</div>
+		<div class="hidden-xs hidden-sm">
+		{{#each context.playerContexts}}
+			<div class="col-md-2">
+				<span class="label label-success label-lg">{{formatDate clock.breachTime "%d/%m %H:%M"}}</span>
+			</div>
+			<div class="col-md-2">
+				<span class="label label-warning">{{formatDate clock.deadline "%d/%m %H:%M"}}</span>
+			</div>
+		{{/each}}
+		</div>
+		<div class="hidden-md hidden-lg">
+		{{#each context.playerContexts}}
+			<div class="col-xs-12">
+				<span class="label label-success label-lg">{{formatDate clock.breachTime "%d/%m %H:%M"}}</span>
+				<span class="label label-warning">{{formatDate clock.deadline "%d/%m %H:%M"}}</span>
+				<br/>
+				<br/>
+			</div>
+		{{/each}}
+		</div>
+	</div>
+	<div class="col-md-12">
+		<h4><span class="label label-xs label-material-blue">Goal</span> {{goal}}</h4>
+		<span class="label label-xs label-material-cyan">Status</span> {{status}}<br/>
+	</div>
+	{{#if supporters}}
+	<div class="col-md-12">
+		<b>Supporters:</b>
+			{{template "supporters"}}
+	</div>
+	{{/if}}
+{{/state}}
+</div>

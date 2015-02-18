@@ -3,7 +3,7 @@
 		{{bet bank.total}}
 	</div>
 	<div class="pull-right">
-	{{#if betsAllowed}}
+	{{#is phase "started"}}
 		{{#if myBet}}
 			<button class="btn btn-xs btn-success">My: {{bet myBet}}</button>
 		{{else}}
@@ -13,6 +13,6 @@
 		{{#if myBet}}
 			<button class="btn btn-xs btn-success">My: {{bet myBet}}</button>
 		{{/if}}
-	{{/if}}
+	{{/is}}
 	</div>
 </div>

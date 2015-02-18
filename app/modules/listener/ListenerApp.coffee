@@ -40,7 +40,7 @@
 		subscribe: (channel, postfix, collection, constuctor) ->
 			App.on "#{channel}:created#{postfix}", (event) ->
 				console.log("Adding #{JSON.stringify(event)}")
-				collection.add(constuctor(event.body))
+				collection.add(constuctor(event.body), {at: 0})
 
 			App.on "#{channel}:changed#{postfix}", (event) ->
 				console.log("Updating #{JSON.stringify(event)}")
@@ -49,7 +49,7 @@
 				if (existingModel?)
 					existingModel.set(model.attributes)
 				else
-					collection.add(model)
+					collection.add(model, {at: 0})
 
 			App.on "#{channel}:complete#{postfix}", (event) ->
 				console.log("Removing #{JSON.stringify(event)}")

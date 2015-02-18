@@ -18,21 +18,20 @@
 
 	API=
 		getId: (res) ->
-			if (res.goalKey?)
-				res.id = res.goalKey
-			if (res.bank?)
-				myBet = _.find(res.bank.bets, (bet) -> bet.player == PLAYER)
+			if (res.state.bank?)
+				myBet = _.find(res.state.bank.bets, (bet) -> bet.player == PLAYER)
 				if (myBet?)
-					res.my = true
-					res.myBet = myBet.bet
+					res.state.myBet = myBet.bet
 			res
 		listMy: () ->
 			feed = new Posts()
 			feed.url = App.Utils.toUrl("/feed/my")
-			App.on "post post:my", (t) ->
+			App.on "post", (t) ->
+				console.log("My feed event POST")
 				post = new Post(API.getId(t))
-				feed.remove(post.get("id"))
+				feed.remove(post.get("key"))
 				feed.add(post, {at : 0})
+			feed.on "all", (event) -> console.log("My feed event #{event}")
 			feed.fetch()
 			feed
 		listByPlayer: (player) ->

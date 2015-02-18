@@ -35,6 +35,13 @@ do(Handlebars, Swag, _) ->
 				Utils.unitToString(obj / MINUTE, "minute")
 			else
 				Utils.unitToString(obj / SECOND, "second")
+		punishment: (obj) ->
+			if (obj.breach == "penalty")
+				- obj.amount.amount
+			else if(obj.breach == "loose")
+				"loose"
+			else
+				"unknown"
 	}
 
 #	TODO remove after proper refactoring
@@ -133,14 +140,17 @@ do(Handlebars, Swag, _) ->
 	Handlebars.registerHelper "timeoutRule", (rule) ->
 		if (rule? && rule.timeoutCalculator.type == "eod")
 			ruleDay = rule.timeoutCalculator.days
-			if (ruleDay == 1)
-				new Handlebars.SafeString("Day")
+			dayPresentation = if (ruleDay == 1)
+				"Daily"
 			else if (ruleDay == 7)
-				new Handlebars.SafeString("Week")
+				"Weekly"
 			else if (ruleDay == 30)
-				new Handlebars.SafeString("Month")
+				"Monthly"
 			else
-				new Handlebars.SafeString("#{ruleDay} Days")
+				"#{ruleDay} Days"
+
+			punishment = Utils.punishment(rule.punishment)
+			new Handlebars.SafeString("#{dayPresentation}<br/> <small>penalty #{punishment}</small>")
 		else
 			new Handlebars.SafeString("Timeout rule")
 

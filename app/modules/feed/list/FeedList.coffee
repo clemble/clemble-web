@@ -69,31 +69,21 @@
 			BetBehavior: {}
 			BootstrapTooltip: {}
 
-	class Posts extends Marionette.CompositeView
-		template: require './templates/player_posts'
+	class GoalPost extends Marionette.ItemView
+		template: require './templates/goal_post'
+		className: 'row'
+		modelEvents:
+			"sync"    : "render"
+		behaviors:
+			SocialShare: {}
+			BetBehavior: {}
+
+	class Posts extends Marionette.CollectionView
 		childView : Post
 		childViewContainer : "#caption"
 		modelEvents:
-			"sync" : "render"
-		getChildView: (item) ->
-			if (item.get('type') == "post:goal:created")
-				GoalCreatedPost
-			else if (item.get('type') == "post:goal:started")
-				GoalStartedPost
-			else if (item.get('type') == "post:goal:bet:changed")
-				GoalBetChangedPost
-			else if (item.get('type') == "post:goal:updated:missed")
-				GoalUpdateMissed
-			else if (item.get('type') == "post:goal:updated")
-				GoalUpdatedPost
-			else if (item.get('type') == "post:goal:reached")
-				GoalReachedPost
-			else if (item.get('type') == "post:goal:missed")
-				GoalMissedPost
-			else if (item.get('type') == "post:goal:bet:off")
-				GoalBetOffPost
-			else
-				Post
+			"sync"  : "render"
+		getChildView: (item) -> childViewToTemplate(item)
 
 	class PostsModal extends Marionette.CompositeView
 		template: require './templates/player_posts_modal'
@@ -101,25 +91,31 @@
 		childViewContainer : "#caption"
 		modelEvents:
 			"sync" : "render"
-		getChildView: (item) ->
-			if (item.get('type') == "post:goal:created")
-				GoalCreatedPost
-			else if (item.get('type') == "post:goal:started")
-				GoalStartedPost
-			else if (item.get('type') == "post:goal:bet:changed")
-				GoalBetChangedPost
-			else if (item.get('type') == "post:goal:updated:missed")
-				GoalUpdateMissed
-			else if (item.get('type') == "post:goal:updated")
-				GoalUpdatedPost
-			else if (item.get('type') == "post:goal:reached")
-				GoalReachedPost
-			else if (item.get('type') == "post:goal:missed")
-				GoalMissedPost
-			else if (item.get('type') == "post:goal:bet:off")
-				GoalBetOffPost
-			else
-				Post
+		getChildView: (item) -> childViewToTemplate(item)
+
+	childViewToTemplate = (item) ->
+		if (item.get("type").indexOf("post:goal") != -1)
+			GoalPost
+		else
+			Post
+#		if (item.get('type') == "post:goal:created")
+#			GoalCreatedPost
+#		else if (item.get('type') == "post:goal:started")
+#			GoalStartedPost
+#		else if (item.get('type') == "post:goal:bet:changed")
+#			GoalBetChangedPost
+#		else if (item.get('type') == "post:goal:updated:missed")
+#			GoalUpdateMissed
+#		else if (item.get('type') == "post:goal:updated")
+#			GoalUpdatedPost
+#		else if (item.get('type') == "post:goal:reached")
+#			GoalReachedPost
+#		else if (item.get('type') == "post:goal:missed")
+#			GoalMissedPost
+#		else if (item.get('type') == "post:goal:bet:off")
+#			GoalBetOffPost
+#		else
+#			Post
 
 	Controller =
 		listMy: (region) ->

@@ -20,6 +20,15 @@
 				roleModal.configurationRegion.show collectionRoles
 
 			App.modal.show roleModal
+		bid: (goalKey) ->
+			url = App.Utils.toUrl("/management/active/#{goalKey}/action")
+			$.ajax({
+				type: 'POST',
+				url: url,
+				data: JSON.stringify({ "type" : "player:bid:action"}),
+				contentType: "application/json",
+				dataType: 'json'
+			})
 
 	class GoalRoleConfigurations extends Backbone.Collection
 		setSelected: (model) =>
@@ -83,6 +92,7 @@
 		childView: RoleConfiguration
 		childViewContainer: "div"
 
+	App.reqres.setHandler "goal:active:action:bid", (goalKey) -> Controller.bid(goalKey)
 	App.reqres.setHandler "goal:active:action:bid:modal", (goalKey, configuration) -> Controller.newBid(goalKey, configuration)
 
 
