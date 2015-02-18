@@ -45,6 +45,21 @@
 				layout.goalRegion.show constructionRequestView
 
 			App.modal.show layout
+		newInterval: (interval, region) ->
+			constructionRequest = App.request "goal:construction:entities:new:interval", interval
+			layout = new GoalConstructionNewLayout(
+				model: constructionRequest
+			)
+			layout.on "show", () ->
+				App.request "goal:configuration:interval:short", interval, layout.configurationRegion
+
+				constructionRequestView = new GoalConstructionNew
+					model: constructionRequest
+
+				layout.goalRegion.show constructionRequestView
+
+			region.show layout
+
 		newIntervalModal: (interval) ->
 			constructionRequest = App.request "goal:construction:entities:new:interval", interval
 			layout = new GoalConstructionNewModal
@@ -72,14 +87,7 @@
 		events:
 			'click #save'       : "save"
 		save: () ->
-			model = @model
-			view = @
-			model.save(model.toJSON(), {
-					success: () ->
-						view.trigger("close")
-					error: (error) ->
-						model.set("error", error)
-				})
+			@model.save()
 
 	class GoalConstructionNewModal extends Marionette.LayoutView
 		template: require "./templates/goal_construction_new_modal"
@@ -113,8 +121,8 @@
 		Controller.new(configurations, App.modal)
 
 	App.reqres.setHandler "goal:construction:my:new", (region) ->
-		configurations = App.request("goal:configuration:entities:list")
-		Controller.new(configurations, region)
+		interval = App.request("goal:configuration:entities:interval")
+		Controller.newInterval(interval, region)
 	App.reqres.setHandler "goal:construction:my:new:modal", () ->
 		interval = App.request("goal:configuration:entities:interval")
 		Controller.newIntervalModal(interval)

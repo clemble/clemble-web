@@ -2,12 +2,27 @@
 
 	Controller =
 		showInterval: (interval, region) ->
-			intervalConfigurationView = new GoalIntervalView
+			intervalConfigurationView = new GoalIntervalFull
+				model: interval
+			region.show intervalConfigurationView
+		showIntervalShort: (interval, region) ->
+			intervalConfigurationView = new GoalIntervalShort
 				model: interval
 			region.show intervalConfigurationView
 
-	class GoalIntervalView extends Marionette.ItemView
+	class GoalIntervalFull extends Marionette.ItemView
 		template: require "./templates/configuration_interval"
+		behaviors:
+			StickIt: {}
+		bindings:
+			'#bet': {
+				observe: 'bet',
+			}
+		modelEvents:
+			'change'  : 'render'
+
+	class GoalIntervalShort extends Marionette.ItemView
+		template: require "./templates/configuration_interval_short"
 		behaviors:
 			StickIt: {}
 		bindings:
@@ -19,3 +34,4 @@
 
 
 	App.reqres.setHandler "goal:configuration:interval", (interval, region) -> Controller.showInterval(interval, region)
+	App.reqres.setHandler "goal:configuration:interval:short", (interval, region) -> Controller.showIntervalShort(interval, region)

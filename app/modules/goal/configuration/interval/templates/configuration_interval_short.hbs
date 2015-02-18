@@ -1,0 +1,17 @@
+{{#configuration}}
+	<div class="col-md-12">
+		<h3>Bet {{money bet.amount}} Win {{money bet.interest}}</h3>
+	</div>
+{{/configuration}}
+<input id="bet" type="range" min="{{basePrice}}" max="{{maxPrice}}"/>
+{{#configuration}}
+	<div class="col-md-3">
+	<h4><small>Show to</small><br/> {{privacyRule privacyRule.name}}</h4>
+	</div>
+	<div class="col-md-3">
+	<h4><small>Update every</small><br/> {{timeoutRule moveTimeoutRule}}</h4>
+	</div>
+	<div class="col-md-2">
+		<h4><small>Share on</small><br/> {{#if shareRule.providers}}{{#each shareRule.providers}}<span class="{{socialIcon this}}"></span>{{/each}}{{else}}<span class="fa fa-ban"></span>{{/if}}</h4>
+	</div>
+{{/configuration}}
