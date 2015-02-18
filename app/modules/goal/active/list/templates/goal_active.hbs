@@ -1,26 +1,23 @@
 <hr/>
 <div class="container-fluid">
 	<div class="col-md-12 row">
-		<small>{{phase}}</small>
-	</div>
-	<div class="col-md-12 row">
-		<div class="col-md-4">
-			Win/<small>Bank</small>: {{myBet.interest.amount}} / <small>{{bank.total.interest.amount}}</small>
+		<div class="col-md-4 col-xs-12">
+			<h4>{{money myBet.interest}}</h4>
 		</div>
 		{{#each context.playerContexts}}
-			<div class="col-md-4">
+			<div class="col-md-4 col-xs-6">
 				Update: <span class="label label-success label-lg">{{formatDate clock.breachTime "%d/%m %H:%M"}}</span>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-4 col-xs-6">
 				Deadline: <span class="label label-warning">{{formatDate clock.deadline "%d/%m %H:%M"}}</span>
 			</div>
 		{{/each}}
 	</div>
 	<div class="col-md-12 row">
 		<h4><span class="label label-xs label-material-blue">Goal</span> {{goal}}</h4>
-	</div>
-	<div class="col-md-12 row">
 		<span class="label label-xs label-material-cyan">Status</span> {{status}}<br/>
+	</div>
+	<div class="col-md-12 row hidden-sm hidden-xs">
 		<div class="col-md-5">
 			<button id="update" class="btn btn-xs btn-material-blue-500"><span class="fa fa-circle-thin"></span> Update</button>
 		</div>
@@ -29,6 +26,13 @@
 				<button class="btn btn-success" id="reached"><span class="fa fa-check-circle-o"></span> Score</button>
 				<button id="surrender" class="btn btn-xs btn-danger"><span class="fa fa-remove"></span> Give Up</button>
 			</div>
+		</div>
+	</div>
+	<div class="col-md-12 row hidden-lg hidden-md">
+		<div class="btn-group-flat ">
+			<button id="update" class="btn btn-xs btn-material-blue-500"><span class="fa fa-circle-thin"></span></button>
+			<button class="btn btn-success" id="reached"><span class="fa fa-check-circle-o"></span> </button>
+			<button id="surrender" class="btn btn-xs btn-danger"><span class="fa fa-remove"></span></button>
 		</div>
 	</div>
 	{{#if supporters}}
