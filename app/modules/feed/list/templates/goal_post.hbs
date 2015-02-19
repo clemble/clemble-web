@@ -1,43 +1,44 @@
 <hr/>
-<div class="col-md-12 row">
+	<!--<div class="col-md-2 col-xs-4">-->
+		<!--{{profileImageOfSize player 40}}-->
+	<!--</div>-->
+	<!--<div class="col-md-4 col-xs-8">-->
+		<!--<h4>Bank: {{bank.total.interest.amount}} / {{#if myBet}}<small><b>my:</b> {{myBet.interest.amount}}</small></h4>{{else}}{{#is phase "started"}}<a id="bet" >bet</a>{{/is}}{{#is phase "betOff"}}Bets are Off{{/is}}{{#is phase "finished"}}finish{{/is}}{{/if}}-->
+	<!--</div>-->
 {{#state}}
-	<div class="col-md-12 row">
-		<div class="col-md-2 col-xs-4">
-			{{profileImageOfSize player 40}}
-		</div>
-		<div class="col-md-4 col-xs-8">
-		<h4>Bank: {{bank.total.interest.amount}} / {{#if myBet}}<small><b>my:</b> {{myBet.interest.amount}}</small></h4>{{else}}{{#is phase "started"}}<a id="bet" >bet</a>{{/is}}{{#is phase "betOff"}}Bets are Off{{/is}}{{#is phase "finished"}}finish{{/is}}{{/if}}
-		</div>
-		<div class="hidden-xs hidden-sm">
-		{{#each context.playerContexts}}
-			<div class="col-md-2">
-				<span class="label label-success label-lg">{{formatDate clock.breachTime "%d/%m %H:%M"}}</span>
-			</div>
-			<div class="col-md-2">
-				<span class="label label-warning">{{formatDate clock.deadline "%d/%m %H:%M"}}</span>
-			</div>
-		{{/each}}
-		</div>
+<div class="col-md-12">
+	<div class="col-md-1 col-xs-2">
+		{{profileImageOfSize player 40}}
+	</div>
+	<div class="col-md-4 col-xs-10">
+		<h4>Bank: {{bank.total.interest.amount}} / {{#if myBet}}my: {{myBet.interest.amount}}{{else}}{{#is phase "started"}}<a id="bet" >bet</a>{{/is}}{{#is phase "betOff"}}Bets are Off{{/is}}{{#is phase "finished"}}finish{{/is}}{{/if}}</h4>
 		<div class="hidden-md hidden-lg">
-		{{#each context.playerContexts}}
-			<div class="col-xs-12">
-				<span class="label label-success label-lg">{{formatDate clock.breachTime "%d/%m %H:%M"}}</span>
+			{{#each context.playerContexts}}
+				<span class="label label-success">{{formatDate clock.breachTime "%d/%m %H:%M"}}</span>
 				<span class="label label-warning">{{formatDate clock.deadline "%d/%m %H:%M"}}</span>
-				<br/>
-				<br/>
-			</div>
-		{{/each}}
+			{{/each}}
 		</div>
 	</div>
+	<div class="hidden-xs hidden-sm">
+	{{#each context.playerContexts}}
+		<div class="col-md-6 pull-right">
+			Next / Deadline <span class="label label-success label-lg">{{formatDate clock.breachTime "%d/%m %H:%M"}}</span> / <span class="label label-warning">{{formatDate clock.deadline "%d/%m %H:%M"}}</span>
+		</div>
+	{{/each}}
+	</div>
+</div>
+<div class="col-md-12 col-xs-12">
 	<div class="col-md-12">
 		<h4><span class="fa fa-trophy"></span> {{goal}}</h4>
-		<span class="label label-xs label-material-cyan">Status</span> {{status}}<br/>
+		<h4>{{status}}</h4>
 	</div>
-	{{#if supporters}}
-	<div class="col-md-12">
-		<b>Supporters:</b>
-			{{template "supporters"}}
-	</div>
-	{{/if}}
-{{/state}}
 </div>
+<div class="col-md-12 col-xs-12">
+	<div class="col-md-12">
+		{{#if supporters}}
+			{{template "supporters"}}
+		{{/if}}
+	</div>
+</div>
+{{/state}}
+
