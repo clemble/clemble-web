@@ -11,6 +11,11 @@
 			accountShow = new PlayerAccountShowNavigation
 				model: account
 			region.show accountShow
+		showNavMobile: (player, region) ->
+			account = App.request "player:account:entities:get", player
+			accountShow = new PlayerAccountShowNavigationMobile
+				model: account
+			region.show accountShow
 
 	class PlayerAccountShow extends Marionette.ItemView
 		template: require './templates/account'
@@ -24,6 +29,13 @@
 			'sync'    : 'render'
 			'change'  : 'render'
 
+	class PlayerAccountShowNavigationMobile extends Marionette.ItemView
+		template: require './templates/account_nav_mobile'
+		modelEvents:
+			'sync'    : 'render'
+			'change'  : 'render'
+
 	App.reqres.setHandler "player:account:show", (player, region) -> Controller.show(player, region)
 	App.reqres.setHandler "player:account:show:my", (region) -> Controller.show('my', region)
 	App.reqres.setHandler "player:account:show:my:nav", (region) -> Controller.showNav('my', region)
+	App.reqres.setHandler "player:account:show:my:nav:mobile", (region) -> Controller.showNavMobile('my', region)

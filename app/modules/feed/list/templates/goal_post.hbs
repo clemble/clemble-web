@@ -6,7 +6,7 @@
 			{{profileImageOfSize player 40}}
 		</div>
 		<div class="col-md-4 col-xs-8">
-		<h4>Bank: {{bank.total.interest.amount}} / {{#if myBet}}<small>{{myBet.interest.amount}}</small></h4>{{else}}{{#is phase "started"}}<a id="bet" >bet</a>{{/is}}{{#is phase "betOff"}}Bets are Off{{/is}}{{#is phase "finished"}}finish{{/is}}{{/if}}
+		<h4>Bank: {{bank.total.interest.amount}} / {{#if myBet}}<small><b>my:</b> {{myBet.interest.amount}}</small></h4>{{else}}{{#is phase "started"}}<a id="bet" >bet</a>{{/is}}{{#is phase "betOff"}}Bets are Off{{/is}}{{#is phase "finished"}}finish{{/is}}{{/if}}
 		</div>
 		<div class="hidden-xs hidden-sm">
 		{{#each context.playerContexts}}
