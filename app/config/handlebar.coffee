@@ -16,12 +16,8 @@ do(Handlebars, Swag, _) ->
 		toMoney:(money) ->
 			if (!money?)
 				"--"
-			else if (money.currency == "FakeMoney")
+			else if (money.currency == "point")
 				"<span class='fa fa-usd'></span> #{money.amount}"
-			else if (money.currency == "Victory")
-				"<span class='fa fa-trophy'></span> #{money.amount}"
-			else if (money.currency == "Supporter")
-				"<span class='fa fa-support'></span> #{money.amount}"
 			else
 				"<span class='fa fa-euro'></span> #{money.amount}"
 		humanTime: (obj) ->

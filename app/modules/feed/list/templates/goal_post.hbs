@@ -1,9 +1,9 @@
 <hr/>
 <div class="col-md-12 row">
 {{#state}}
-	<div class="col-md-12">
+	<div class="col-md-12 row">
 		<div class="col-md-2 col-xs-4">
-			{{microProfileImage player}}
+			{{profileImageOfSize player 40}}
 		</div>
 		<div class="col-md-4 col-xs-8">
 		<h4>Bank: {{bank.total.interest.amount}} / {{#if myBet}}<small>{{myBet.interest.amount}}</small></h4>{{else}}{{#is phase "started"}}<a id="bet" >bet</a>{{/is}}{{#is phase "betOff"}}Bets are Off{{/is}}{{#is phase "finished"}}finish{{/is}}{{/if}}

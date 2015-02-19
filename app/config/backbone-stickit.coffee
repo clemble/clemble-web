@@ -1,27 +1,21 @@
-Backbone.Stickit.addHandler({
-	selector: '.slider',
-	events: ['change', 'stop'],
-
-	initialize: ($el, model, options) ->
-		sliderOptions = _.extend({
-			value: model.get(options.observe),
-			slide: () ->
-				# Defer since the `slide` event is triggered
-				# before the actual $el.slide('value') is updated.
-				_.defer(() -> $el.trigger('change'))
-			stop: () ->
-				console.log('stop');
-				_.defer(() -> $el.trigger('stop'))
-		}, options.sliderOptions )
-
-		$el.slider(sliderOptions)
-
-	update: ($el, val, model, options) ->
-		console.log('updating val')
-		_.defer(() -> $el.slider('value', model.get(options.observe)))
-
-	getVal: ($el) ->
-		console.log('getting val')
-		$el.slider('value')
-
+Backbone.Stickit.addHandler(  {
+  selector: '.slider',
+  events: ['change'],
+  initialize: ($el, model, options) ->
+    options.sliderOptions ||= {}
+    if typeof options.sliderOptions is 'function'
+      options.sliderOptions = options.sliderOptions model
+    $el.noUiSlider _.extend {
+      range: [0, 100]
+      start: model.get(options.observe)
+      step: 1
+      handles: 1
+      connect: 'lower'
+      slide: -> _.defer -> $el.trigger('change')
+    }, options.sliderOptions
+  update: ($el, val, model, options) ->
+    _.defer ->
+      $el.val model.get(options.observe)
+      $el.change()
+  getVal: ($el, event, options) -> $el.val()
 })

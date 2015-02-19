@@ -16,7 +16,7 @@
 			StickIt: {}
 		bindings:
 			'#bet': {
-				observe: 'bet',
+				observe: 'bet'
 			}
 		modelEvents:
 			'change'  : 'render'
@@ -28,6 +28,15 @@
 		bindings:
 			'#bet': {
 				observe: 'bet',
+				sliderOptions: (model) ->
+					start = model.get("basePrice")
+					range = { min: start, max: model.get("maxPrice") }
+					options = {
+						start: start,
+						connect: "lower",
+						range: range
+					}
+					options
 			}
 		modelEvents:
 			'change'  : 'render'

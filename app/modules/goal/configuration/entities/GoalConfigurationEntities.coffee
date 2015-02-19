@@ -32,6 +32,7 @@
 		defaults:
 			base            : null
 			basePrice       : 0
+			maxPrice        : 0
 			baseInterval    : 0
 			basePercentage  : 0
 			intervalRules   : []
@@ -42,24 +43,25 @@
 				bet = model.get('bet') - (model.get('baseInterval') + model.get('basePrice'))
 				intervalRules = model.get('intervalRules')
 				rate = model.get('basePercentage')
-				configuration = _.clone(model.get('base'))
-				for intervalRule in intervalRules
-					if (bet > 0)
-						bet -= intervalRule.interval
-						rate += intervalRule.percentage
-						if (intervalRule.rule.type == "rule:privacy")
-							configuration.privacyRule = intervalRule.rule
-						else if (intervalRule.rule.type == "rule:share")
-							newShareRule = _.clone(intervalRule.rule)
-							newShareRule.providers = _.uniq(_.union(configuration.shareRule.providers, intervalRule.rule.providers))
-							configuration.shareRule = newShareRule
-						else if (intervalRule.rule.type == "rule:timeout")
-							configuration.moveTimeoutRule = intervalRule.rule
-						else
-							throw "unknown rule #{JSON.stringify(intervalRule)} #{intervalRule.rule.type}"
-				configuration.bet.amount.amount = model.get('bet')
-				configuration.bet.interest.amount = Math.round((model.get('bet') * (100 + rate)) / 100)
-				model.set('configuration', configuration)
+				if (model.get('base')?)
+					configuration = _.clone(model.get('base'))
+					for intervalRule in intervalRules
+						if (bet > 0)
+							bet -= intervalRule.interval
+							rate += intervalRule.percentage
+							if (intervalRule.rule.type == "rule:privacy")
+								configuration.privacyRule = intervalRule.rule
+							else if (intervalRule.rule.type == "rule:share")
+								newShareRule = _.clone(intervalRule.rule)
+								newShareRule.providers = _.uniq(_.union(configuration.shareRule.providers, intervalRule.rule.providers))
+								configuration.shareRule = newShareRule
+							else if (intervalRule.rule.type == "rule:timeout")
+								configuration.moveTimeoutRule = intervalRule.rule
+							else
+								throw "unknown rule #{JSON.stringify(intervalRule)} #{intervalRule.rule.type}"
+					configuration.bet.amount.amount = Math.round(model.get('bet'))
+					configuration.bet.interest.amount = Math.round((model.get('bet') * (100 + rate)) / 100)
+					model.set('configuration', configuration)
 
 		parse: (res) ->
 			maxPrice = res.basePrice + res.baseInterval

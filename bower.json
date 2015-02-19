@@ -22,7 +22,8 @@
     "jquery.countdown": "~2.0.4",
     "intl-tel-input": "~3.7.1",
     "bootstrap-material-design": "~0.2.2",
-    "bootstrap-tour": "~0.10.2"
+    "bootstrap-tour": "~0.10.2",
+    "nouislider": "~7.0.10"
   },
   "overrides": {
     "underscore": {
@@ -58,6 +59,12 @@
       "main": [
         "build/css/bootstrap-tour.min.css",
         "build/js/bootstrap-tour.min.js"
+      ]
+    },
+    "nouislider": {
+      "main": [
+        "distribute/jquery.nouislider.js",
+        "distribute/jquery.nouislider.min.css"
       ]
     }
   },

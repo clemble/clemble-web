@@ -1,9 +1,9 @@
 {{#configuration}}
-	<div class="col-md-12">
-		<h3>Bet {{bet.amount.amount}} Win {{bet.interest.amount}}</h3>
-	</div>
+	<h3>Bet {{bet.amount.amount}} Win {{bet.interest.amount}}</h3>
 {{/configuration}}
-<input id="bet" type="range" min="{{basePrice}}" max="{{maxPrice}}"/>
+	<div class="sample1">
+		<div id="bet" class="slider slider-material-blue"></div>
+	</div>
 {{#configuration}}
 	<div class="col-md-3 col-xs-6">
 	<h4><small>Show to</small><br/> {{privacyRule privacyRule.name}}</h4>
