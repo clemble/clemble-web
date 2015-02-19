@@ -9,11 +9,13 @@
 
 	class GoalActive extends Marionette.ItemView
 		template: require './templates/goal_active'
-		className: 'row'
+		className: 'row success'
 		events:
 			"click #update" : () -> App.request "goal:active:action:new:modal", @model.url()
 			"click #surrender": () -> App.request "goal:active:action:surrender", @model.url()
 			"click #reached": () -> App.request "goal:active:action:reached", @model.url()
+#		updateAction: () ->
+#			updateAction = App.request "goal:active:action:entities:new", @model.url
 		modelEvents:
 			"change" : "render"
 		behaviors:

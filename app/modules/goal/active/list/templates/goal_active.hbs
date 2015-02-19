@@ -1,49 +1,51 @@
 <hr/>
 <div class="col-md-12">
-	<div class="col-md-4 col-xs-12">
-		<h4>{{money myBet.interest}} <small>{{phase}}</small></h4>
-	</div>
-	<div class="hidden-xs hidde-sm">
-	{{#each context.playerContexts}}
-		<div class="col-md-4 col-xs-6">
-			Update: <span class="label label-success label-lg">{{formatDate clock.breachTime "%d/%m %H:%M"}}</span>
+	<div class="hidden-xs hidden-sm">
+		<div class="col-md-5">
+			<b>{{money myBet.interest}}</b> <small>{{phase}}</small>
 		</div>
-		<div class="col-md-4 col-xs-6">
-			Deadline: <span class="label label-warning">{{formatDate clock.deadline "%d/%m %H:%M"}}</span>
+	{{#each context.playerContexts}}
+		<div class="col-md-6 pull-right">
+			Next / Deadline <span class="label label-success label-lg">{{formatDate clock.breachTime "%d/%m %H:%M"}}</span> / <span class="label label-warning">{{formatDate clock.deadline "%d/%m %H:%M"}}</span>
 		</div>
 	{{/each}}
 	</div>
 	<div class="hidden-md hidden-lg">
+		<div class="col-xs-4">
+			<b>{{money myBet.interest}}</b>
+		</div>
 	{{#each context.playerContexts}}
-		<div class="col-xs-12">
+		<div class="col-xs-8 pull-right">
 			<span class="label label-success label-lg">{{formatDate clock.breachTime "%d/%m %H:%M"}}</span>
 			<span class="label label-warning">{{formatDate clock.deadline "%d/%m %H:%M"}}</span>
-			<br/>
-			<br/>
 		</div>
 	{{/each}}
 	</div>
 </div>
 <div class="col-md-12">
-	<h4><span class="fa fa-trophy"></span> {{goal}}</h4>
-	<span class="label label-xs label-material-cyan">Status</span> {{status}}<br/>
-</div>
-<div class="col-md-12 hidden-sm hidden-xs">
-	<div class="btn-group-flat pull-right">
-		<button id="update" class="btn btn-xs btn-material-blue-500"><span class="fa fa-circle-thin"></span> Update</button>
-		<button class="btn btn-success" id="reached"><span class="fa fa-check-circle-o"></span> Score</button>
-		<button id="surrender" class="btn btn-xs btn-danger"><span class="fa fa-remove"></span> Give Up</button>
+	<div class="col-md-12">
+		<h4><span class="fa fa-trophy"></span> {{goal}}</h4>
 	</div>
 </div>
-<div class="col-md-12 hidden-lg hidden-md">
-	<div class="btn-group-flat ">
-		<button id="update" class="btn btn-xs btn-material-blue-500"><span class="fa fa-circle-thin"></span></button>
-		<button class="btn btn-success" id="reached"><span class="fa fa-check-circle-o"></span> </button>
-		<button id="surrender" class="btn btn-xs btn-danger"><span class="fa fa-remove"></span></button>
-	</div>
-</div>
-{{#if supporters}}
 <div class="col-md-12">
-	{{template "supporters"}}
+	<div class="col-md-8 col-xs-5 col-sm-5">
+		<h4>{{status}}</h4>
+	</div>
+	<div class="col-md-4 col-xs-7 col-sm-6">
+		<button id="update" class="btn btn-material-blue-500"><span class="fa fa-circle-thin"></span> Update</button>
+	</div>
 </div>
-{{/if}}
+<div class="col-md-12">
+	<div class="col-md-6 col-xs-12 btn-group-flat pull-right col-md-6">
+		<div class="btn-group-flat ">
+			<button id="reached" class="btn btn-success"><span class="fa fa-check-circle-o"></span> I Won</button>
+			<button id="surrender" class="btn btn-danger"><span class="fa fa-remove"></span> I Lost</button>
+		</div>
+	</div>
+	{{#if supporters}}
+	<div class="col-md-6">
+		<b>Supporters:</b><br/>
+		{{template "supporters"}}
+	</div>
+	{{/if}}
+</div>

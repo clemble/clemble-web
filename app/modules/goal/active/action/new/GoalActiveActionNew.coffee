@@ -3,11 +3,20 @@
 	Controller =
 		newModal: (url) ->
 			newActionEntities = App.request "goal:active:action:entities:new", url
-			newAction = new GoalActiveAction
+			newAction = new GoalActiveActionModal
 				model: newActionEntities
 			App.modal.show newAction
 
 	class GoalActiveAction extends Marionette.ItemView
+		template: require "./templates/goal_active_new"
+		behaviors:
+			StickIt: {}
+		bindings:
+			'#status'  : 'status'
+		events:
+			"click #update": () -> @model.save()
+
+	class GoalActiveActionModal extends Marionette.ItemView
 		template: require "./templates/goal_active_new_modal"
 		behaviors:
 			StickIt: {}
