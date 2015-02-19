@@ -1,12 +1,12 @@
 <hr/>
 <div class="col-md-12">
 	<div class="hidden-xs hidden-sm">
-		<div class="col-md-5">
+		<div class="col-md-7">
 			<b>{{money myBet.interest}}</b> <small>{{phase}}</small>
 		</div>
 	{{#each context.playerContexts}}
-		<div class="col-md-6 pull-right">
-			Next / Deadline <span class="label label-success label-lg">{{formatDate clock.breachTime "%d/%m %H:%M"}}</span> / <span class="label label-warning">{{formatDate clock.deadline "%d/%m %H:%M"}}</span>
+		<div class="col-md-5">
+			<span class="label label-warning pull-right">Deadline: {{formatDate clock.deadline "%d/%m"}}</span> <span class="label label-success label-lg pull-right">Update: {{formatDate clock.breachTime "%d/%m"}}</span>
 		</div>
 	{{/each}}
 	</div>
@@ -16,18 +16,18 @@
 		</div>
 	{{#each context.playerContexts}}
 		<div class="col-xs-8 pull-right">
-			<span class="label label-success label-lg">{{formatDate clock.breachTime "%d/%m %H:%M"}}</span>
-			<span class="label label-warning">{{formatDate clock.deadline "%d/%m %H:%M"}}</span>
+			<span class="label label-warning pull-right">{{formatDate clock.deadline "%d/%m"}}</span>
+			<span class="label label-success pull-right">{{formatDate clock.breachTime "%d/%m"}}</span>
 		</div>
 	{{/each}}
 	</div>
 </div>
-<div class="col-md-12">
+<div class="col-md-12 col-xs-12">
 	<div class="col-md-12">
 		<h4><span class="fa fa-trophy"></span> {{goal}}</h4>
 	</div>
 </div>
-<div class="col-md-12">
+<div class="col-md-12 col-xs-12">
 	<div class="col-md-8 col-xs-5 col-sm-5">
 		<h4>{{status}}</h4>
 	</div>
