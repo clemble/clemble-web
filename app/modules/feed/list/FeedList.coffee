@@ -117,10 +117,26 @@
 #		else
 #			Post
 
+	class GoalPostItem extends Marionette.ItemView
+		template: require './templates/goal_post_list'
+		className: 'row'
+		modelEvents:
+			"sync"    : "render"
+		behaviors:
+			SocialShare: {}
+			BetBehavior: {}
+
+	class PostList extends Marionette.CollectionView
+		className : "list-group"
+		childView : GoalPostItem
+		childViewContainer : "#caption"
+		modelEvents:
+			"sync"  : "render"
+
 	Controller =
 		listMy: (region) ->
 			myPosts = App.request "feed:entities:my"
-			myPostsView = new Posts
+			myPostsView = new PostList
 				collection: myPosts
 			region.show myPostsView
 		listPlayerInModal: (player) ->

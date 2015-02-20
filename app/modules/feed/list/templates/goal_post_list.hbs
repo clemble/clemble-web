@@ -1,0 +1,23 @@
+<hr/>
+{{#state}}
+	<div class="list-group-item">
+		<div class="row-picture">
+			{{profileImageOfSize player 40}}
+			{{bank.total.interest.amount}} {{#if myBet}}my {{myBet.interest.amount}}{{else}}{{#is phase "started"}}<a id="bet" >bet</a>{{/is}}{{#is phase "betOff"}}Bets are Off{{/is}}{{#is phase "finished"}}finish{{/is}}{{/if}}
+		</div>
+		<div class="row-content">
+			<h4 class="list-group-item-heading"><span class="fa fa-trophy"></span> {{goal}}</h4>
+			<p class="list-group-item-text">
+				{{status}}
+				<div class="col-md-12">
+				</div>
+			</p>
+			{{#if supporters}}
+				{{template "supporters"}}
+			{{/if}}
+		</div>
+	</div>
+{{/state}}
+
+
+
