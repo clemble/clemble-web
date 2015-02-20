@@ -9,7 +9,7 @@
 				model: suggestionRequest
 
 			layout.on "show", () ->
-				App.request "goal:configuration:interval", configurations, layout.configurationRegion
+				App.request "goal:configuration:interval:short", configurations, layout.configurationRegion
 
 				goal = new GoalSuggestionNew
 					model: suggestionRequest
@@ -24,7 +24,6 @@
 			StickIt: {}
 		bindings: {
 			'#goal'       : 'goal'
-			'#reward'     : 'reward'
 		}
 
 	class GoalSuggestionNewModal extends Marionette.LayoutView

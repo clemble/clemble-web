@@ -28,19 +28,24 @@
 	</div>
 </div>
 <div class="col-md-12 col-xs-12">
-	<div class="col-md-8 col-xs-5 col-sm-5">
+	<div class="col-md-8 col-xs-12">
 		<h4>{{status}}</h4>
 	</div>
-	<div class="col-md-4 col-xs-7 col-sm-6">
+	<div class="col-md-4 hidden-xs hidden-sm">
 		<button id="update" class="btn btn-material-blue-500"><span class="fa fa-circle-thin"></span> Update</button>
 	</div>
 </div>
 <div class="col-md-12">
-	<div class="col-md-6 col-xs-12 btn-group-flat pull-right col-md-6">
-		<div class="btn-group-flat ">
+	<div class="hidden-xs hidden-sm">
+		<div class="btn-group-flat">
 			<button id="reached" class="btn btn-success"><span class="fa fa-check-circle-o"></span> I Won</button>
 			<button id="surrender" class="btn btn-danger"><span class="fa fa-remove"></span> I Lost</button>
 		</div>
+	</div>
+	<div class="hidden-md hidden-lg btn-group">
+		<button id="update" class="btn btn-xs btn-material-blue-500"><span class="fa fa-circle-thin"></span></button>
+		<button id="reached" class="btn btn-xs btn-success"><span class="fa fa-check-circle-o"></span></button>
+		<button id="surrender" class="btn btn-xs btn-danger"><span class="fa fa-remove"></span></button>
 	</div>
 	{{#if supporters}}
 	<div class="col-md-6">

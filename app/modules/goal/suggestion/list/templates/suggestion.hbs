@@ -1,18 +1,24 @@
 <hr/>
-<div class="container-fluid">
-	<div class="col-md-2">
-		<div>
-			{{smallProfileImage suggester}}
+<div class="list-group-item">
+	<div class="row-picture">
+		{{profileImageOfSize suggester 40}}
+	</div>
+	<div class="row-content">
+		<h5>Suggestion</h5>
+		<h4 class="list-group-item-heading"><span class="fa fa-trophy"></span> {{goal}}</h4>
+		{{#if supporters}}
+			{{template "supporters"}}
+		{{/if}}
+		<div class="btn-group-flat hidden-xs hidden-sm">
+			<button class="btn btn-success" id="accept"><span class="fa fa-check-circle-o"></span> Yes</button>
+			<button class="btn btn-info" id="decline"><span class="fa fa-circle-o"></span> No</button>
 		</div>
-	</div>
-	<div class="col-md-10">
-		<b>{{timeoutRule configuration.totalTimeoutRule}}</b> {{bet configuration.bid}}<br/>
-		<h5>{{goal}}</h5>
-	</div>
-	<div class="col-md-12 row">
-		<div class="btn-group">
-			<button class="btn btn-success" id="accept"><span class="fa fa-check-circle-o"></span> Go</button>
-			<button class="btn btn-info" id="decline"><span class="fa fa-circle-o"></span> Nah</button>
+		<div class="btn-group-flat hidden-lg hidden-md">
+			<button class="btn btn-success" id="accept"><span class="fa fa-check-circle-o"></span></button>
+			<button class="btn btn-info" id="decline"><span class="fa fa-circle-o"></span></button>
 		</div>
 	</div>
 </div>
+
+
+

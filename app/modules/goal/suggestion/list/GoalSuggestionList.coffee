@@ -30,8 +30,8 @@
 				dataType: 'json'
 			})
 
-	class Suggestions extends Marionette.CompositeView
-		template: require './templates/suggestions'
+	class Suggestions extends Marionette.CollectionView
+		className: 'list-group'
 		childView : Suggestion
 		childViewContainer : "#caption"
 		emptyView: SuggestionEmpty
@@ -53,15 +53,18 @@
 			suggestionLayout = new SuggestionLayout
 			suggestionLayout.on "show", () ->
 
-				suggestions = App.request "goal:suggestion:entities:list:my"
-				suggestionsView = new Suggestions
-					collection: suggestions
-				suggestionLayout.suggestionApp.show suggestionsView
+				Controller.listMySuggestions(suggestionLayout.suggestionApp)
 
 				suggested = App.request "goal:suggestion:entities:suggested:my"
 				suggestedView = new Suggesteds
 					collection: suggested
 				suggestionLayout.suggestedApp.show suggestedView
 			region.show suggestionLayout
+		listMySuggestions: (region) ->
+			suggestions = App.request "goal:suggestion:entities:list:my"
+			suggestionsView = new Suggestions
+				collection: suggestions
+			region.show suggestionsView
 
 	App.reqres.setHandler "goal:suggestion:list:my", (region) -> Controller.listMy(region)
+	App.reqres.setHandler "goal:suggestion:list:my:suggestions", (region) -> Controller.listMySuggestions(region)

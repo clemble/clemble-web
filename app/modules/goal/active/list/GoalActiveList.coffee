@@ -18,6 +18,7 @@
 #			updateAction = App.request "goal:active:action:entities:new", @model.url
 		modelEvents:
 			"change" : "render"
+			"sync" : "render"
 		behaviors:
 			Countdown: {}
 

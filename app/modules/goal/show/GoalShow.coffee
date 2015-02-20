@@ -6,6 +6,7 @@
 			layout.on "show", () ->
 				App.request "goal:construction:my:new", layout.newGoalApp
 				App.request "goal:active:list:my", layout.mainApp
+				App.request "goal:suggestion:list:my:suggestions", layout.suggestionApp
 				App.request "player:connection:show:my", layout.connectionApp
 				App.request "feed:list:my", layout.feedApp
 			region.show layout
@@ -16,6 +17,7 @@
 		regions:
 			newGoalApp      : "#newGoalApp"
 			mainApp         : "#mainApp"
+			suggestionApp   : "#suggestionApp"
 			profileApp      : "#profileApp"
 			accountApp      : "#accountApp"
 			feedApp         : "#feedApp"
