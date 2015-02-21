@@ -21,6 +21,8 @@
 		modelEvents:
 			'change'  : 'render'
 
+	RULE_ICON_TEMPLATE = require './templates/interval_rule_label'
+
 	class GoalIntervalShort extends Marionette.ItemView
 		template: require "./templates/configuration_interval_short"
 		behaviors:
@@ -39,9 +41,14 @@
 					options
 				pips: (model) ->
 					start = model.get("basePrice")
-					pips = _.map(model.get('intervalRules'), (rule) ->
-						start = start + rule.interval
-						start
+					pips = _.map(model.get('intervalRules'), (intervalRule) ->
+						start = intervalRule.value
+						label = RULE_ICON_TEMPLATE(intervalRule)
+						pip = {
+							value : start
+							label : label
+						}
+						pip
 					)
 					pips
 			}

@@ -17,11 +17,17 @@ Backbone.Stickit.addHandler(  {
       if typeof options.pips is 'function'
         options.pips = options.pips model
 
+      values = _.map(options.pips, (pip) -> pip.value)
+
       $el.noUiSlider_pips({
         mode: 'values',
-        values: options.pips,
-        density: 7
+        values: values,
+        density: 10
       })
+
+      for el, i in $el.find('.noUi-value.noUi-value-horizontal.noUi-value-large')
+        label = options.pips[i].label
+        $(el).html("#{label}")
 
   update: ($el, val, model, options) ->
     _.defer ->
@@ -29,14 +35,4 @@ Backbone.Stickit.addHandler(  {
       $el.change()
   getVal: ($el, event, options) -> $el.val()
 })
-#  $('#slider-tooltip').noUiSlider_pips({
-#      mode: 'values',
-#      values: [500000,1000000,3000000,5000000,10000000],
-#      density: 4
-#  });
-#
-#  $('.noUi-value.noUi-value-horizontal.noUi-value-large').each(function(){
-#      var val = $(this).html();
-#      val = recountVal(parseInt(val));
-#      $(this).html(val);
-#  });
+

@@ -38,6 +38,37 @@ do(Handlebars, Swag, _) ->
 				"loose"
 			else
 				"unknown"
+		socialIcon: (social) ->
+			console.log("#{social}")
+			if (social == "facebook")
+				'fa fa-facebook'
+			else if (social == "twitter")
+				'fa fa-twitter'
+			else if (social == "vkontakte")
+				'fa fa-vk'
+			else if (social == "google")
+				'fa fa-google-plus'
+			else if (social == "phone")
+				'fa fa-phone'
+			else if (social == "email")
+				'fa fa-send-o'
+			else
+				'fa fa-ban'
+		ruleToIcon: (rule) ->
+			if (rule.type == "rule:privacy")
+				if (rule.name == "me")
+					'fa fa-user'
+				else if (rule.name == "world")
+					'fa fa-globe'
+				else if (rule.name == "friends")
+					'fa fa-users'
+			else if(rule.type = "rule:share")
+				if (rule.providers? && rule.providers[0]?)
+					@socialIcon(rule.providers[0])
+				else
+					"fa fa-ban"
+			else
+				"fa fa-ban"
 	}
 
 #	TODO remove after proper refactoring
@@ -163,23 +194,8 @@ do(Handlebars, Swag, _) ->
 			new Handlebars.SafeString("<span class='fa fa-circle-thin'></span> #{rule.bid.amount.amount}/#{rule.bid.interest.amount}")
 
 	Handlebars.registerHelper "socialIcon", (social) ->
-		if(social == "facebook")
-			new Handlebars.SafeString('fa fa-facebook')
-		else if(social == "twitter")
-			new Handlebars.SafeString('fa fa-twitter')
-		else if(social == "vkontakte")
-			new Handlebars.SafeString('fa fa-vk')
-		else if(social == "google")
-			new Handlebars.SafeString('fa fa-google-plus')
-		else if(social == "phone")
-			new Handlebars.SafeString('fa fa-phone')
-		else if(social == "email")
-			new Handlebars.SafeString('fa fa-send-o')
-		else if(social == "none")
-			new Handlebars.SafeString('fa fa-ban')
-		else
-			console.error("Unknown social reference #{social}")
-
+		icon = Utils.socialIcon(social)
+		new Handlebars.SafeString(icon)
 
 	Handlebars.registerHelper "socialShare", () ->
 		new Handlebars.SafeString("<div class='pull-rigth'>
@@ -191,3 +207,8 @@ do(Handlebars, Swag, _) ->
 		template = require "/templates/#{t}"
 		rendered = template(this)
 		new Handlebars.SafeString(rendered)
+
+	Handlebars.registerHelper 'ruleIcon', (rule) ->
+		ruleIcon = Utils.ruleToIcon(rule)
+		console.log("#{ruleIcon}")
+		new Handlebars.SafeString("<span class='#{ruleIcon}'></span>")
