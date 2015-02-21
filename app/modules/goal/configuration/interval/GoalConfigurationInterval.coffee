@@ -37,6 +37,13 @@
 						range: range
 					}
 					options
+				pips: (model) ->
+					start = model.get("basePrice")
+					pips = _.map(model.get('intervalRules'), (rule) ->
+						start = start + rule.interval
+						start
+					)
+					pips
 			}
 		modelEvents:
 			'change'  : 'render'

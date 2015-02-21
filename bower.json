@@ -63,8 +63,9 @@
     },
     "nouislider": {
       "main": [
-        "distribute/jquery.nouislider.js",
-        "distribute/jquery.nouislider.min.css"
+        "distribute/jquery.nouislider.all.js",
+        "distribute/jquery.nouislider.min.css",
+        "distribute/jquery.nouislider.pips.min.css"
       ]
     }
   },
