@@ -13,7 +13,7 @@
 	<h4><small>Show to</small><br/> {{privacyRule privacyRule.name}}</h4>
 	</div>
 	<div class="col-md-3 col-xs-6">
-	<h4><small>Update</small><br/> {{timeoutRule moveTimeoutRule}}</h4>
+	<h4><small>Update</small><br/> {{ruleIcon moveTimeoutRule}} {{timeoutRule moveTimeoutRule}}</h4>
 	</div>
 	<div class="col-md-3 col-xs-6">
 		<h4><small>Share on</small><br/> {{#if shareRule.providers}}{{#each shareRule.providers}}<span class="{{socialIcon this}}"></span>{{/each}}{{else}}<span class="fa fa-ban"></span>{{/if}}</h4>

@@ -39,7 +39,6 @@ do(Handlebars, Swag, _) ->
 			else
 				"unknown"
 		socialIcon: (social) ->
-			console.log("#{social}")
 			if (social == "facebook")
 				'fa fa-facebook'
 			else if (social == "twitter")
@@ -53,8 +52,9 @@ do(Handlebars, Swag, _) ->
 			else if (social == "email")
 				'fa fa-send-o'
 			else
-				'fa fa-ban'
+				'fa fa-exclamation'
 		ruleToIcon: (rule) ->
+			console.log("Rule > #{rule.type}")
 			if (rule.type == "rule:privacy")
 				if (rule.name == "me")
 					'fa fa-user'
@@ -62,13 +62,26 @@ do(Handlebars, Swag, _) ->
 					'fa fa-globe'
 				else if (rule.name == "friends")
 					'fa fa-users'
-			else if(rule.type = "rule:share")
+			else if (rule.type == "rule:timeout")
+				console.log("TOR > #{rule.timeoutCalculator.type}")
+				if (rule.timeoutCalculator.type == "eod")
+					ruleDay = rule.timeoutCalculator.days
+					console.log("TOR > #{ruleDay}")
+					if (ruleDay == 1)
+						'fa fa-circle'
+					else if (ruleDay == 2)
+						'fa fa-adjust'
+					else
+						'fa fa-circle-thin'
+				else
+				 'fa fa-ban'
+			else if (rule.type = "rule:share")
 				if (rule.providers? && rule.providers[0]?)
 					@socialIcon(rule.providers[0])
 				else
-					"fa fa-ban"
+					'fa fa-exclamation'
 			else
-				"fa fa-ban"
+				'fa fa-exclamation'
 	}
 
 #	TODO remove after proper refactoring
