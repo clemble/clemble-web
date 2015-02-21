@@ -12,7 +12,7 @@
 
 	class Suggestion extends Marionette.ItemView
 		template: require './templates/suggestion'
-		className: 'row'
+		className: 'row list-group-item-danger'
 		events:
 			'click #accept'  : 'accept'
 			'click #decline' : 'decline'

@@ -9,13 +9,11 @@
 
 	class GoalActive extends Marionette.ItemView
 		template: require './templates/goal_active'
-		className: 'row success'
+		className: 'row list-group-item-success'
 		events:
 			"click #update" : () -> App.request "goal:active:action:new:modal", @model.url()
 			"click #surrender": () -> App.request "goal:active:action:surrender", @model.url()
 			"click #reached": () -> App.request "goal:active:action:reached", @model.url()
-#		updateAction: () ->
-#			updateAction = App.request "goal:active:action:entities:new", @model.url
 		modelEvents:
 			"change" : "render"
 			"sync" : "render"
@@ -24,6 +22,7 @@
 
 	class GoalActives extends Marionette.CollectionView
 #		template : require './templates/goal_actives'
+		className : "list-group"
 		modelEvents:
 			"sync"    : "render"
 		childView: GoalActive

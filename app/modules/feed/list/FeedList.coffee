@@ -119,7 +119,7 @@
 
 	class GoalPostItem extends Marionette.ItemView
 		template: require './templates/goal_post_list'
-		className: 'row'
+		className: 'row list-group-item-info'
 		modelEvents:
 			"sync"    : "render"
 		behaviors:
