@@ -66,9 +66,12 @@
 		parse: (res) ->
 			maxPrice = res.basePrice + res.baseInterval
 			price = res.basePrice
+			percentage = 100 + res.basePercentage
 			_.forEach(res.intervalRules, (rule) ->
 				price = rule.interval + price
 				rule.value = price
+				percentage = rule.percentage + percentage
+				rule.totalPercentage = percentage
 				maxPrice += rule.interval
 			)
 			res.bet = res.basePrice
