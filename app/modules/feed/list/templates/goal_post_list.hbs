@@ -1,6 +1,6 @@
-<hr/>
 {{#state}}
 	<div class="list-group-item">
+		<br/>
 		<div class="row-picture">
 			{{profileImageOfSize player 40}}
 			{{bank.total.interest.amount}} {{#if myBet}}my {{myBet.interest.amount}}{{else}}{{#is phase "started"}}<a id="bet" >bet</a>{{/is}}{{#is phase "betOff"}}Bets are Off{{/is}}{{#is phase "finished"}}finish{{/is}}{{/if}}<br/>
@@ -13,6 +13,9 @@
 			{{#if supporters}}
 				{{template "supporters"}}
 			{{/if}}
+		</div>
+		<div class="row">
+			<br/>
 		</div>
 	</div>
 {{/state}}
