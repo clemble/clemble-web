@@ -16,6 +16,15 @@
 	class Posts extends Backbone.Collection
 		model: Post
 
+	MY = new Posts()
+	MY.url = App.Utils.toUrl("/feed/my")
+	App.on "post", (t) ->
+		post = new Post(API.getId(t))
+		MY.remove(post.get("key"))
+		MY.add(post, {at : 0})
+	MY.fetch()
+	App.once "registered", () -> MY.fetch()
+
 	API=
 		getId: (res) ->
 			if (res.state.bank?)
@@ -24,25 +33,12 @@
 					res.state.myBet = myBet.bet
 			res
 		listMy: () ->
-			feed = new Posts()
-			feed.url = App.Utils.toUrl("/feed/my")
-			App.on "post", (t) ->
-				console.log("My feed event POST")
-				post = new Post(API.getId(t))
-				feed.remove(post.get("key"))
-				feed.add(post, {at : 0})
-			feed.on "all", (event) -> console.log("My feed event #{event}")
-			feed.fetch()
-			feed
+			MY
 		listByPlayer: (player) ->
+			if (player == 'my')
+				API.listMy()
 			feed = new Posts()
 			feed.url = App.Utils.toUrl("/feed/#{player}")
-			App.on "post", (t) ->
-				if (t.player == player)
-					post = new Post(API.getId(t))
-					feed.remove(post.get("id"))
-					feed.add(post, {at : 0})
-			feed.fetch()
 			feed
 
 	App.reqres.setHandler "feed:entities:my", () -> API.listMy()
