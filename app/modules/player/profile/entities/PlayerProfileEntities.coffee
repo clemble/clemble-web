@@ -44,7 +44,20 @@
 			res.missing = missing
 			res
 
+	class SocialConnection extends Backbone.Model
+		default:
+			providerId: null
+			providerUserId: null
+		idAttribute: 'providerId'
+
+	class SocialConnections extends Backbone.Collection
+		model: SocialConnection
+
+	MY_CONNECTIONS = new SocialConnections()
+
 	MY = new PlayerProfile({ player: 'my' })
+	MY.on "change:socialConnections", (model) ->
+		MY_CONNECTIONS.add(model.get('socialConnections'))
 	MY.fetch()
 	App.once "registered", () -> MY.fetch()
 
@@ -66,4 +79,5 @@
 	App.reqres.setHandler 'player:profile:entities:my', () -> API.get('my')
 	App.reqres.setHandler 'player:profile:entities:get', (player) -> API.get(player)
 	App.reqres.setHandler 'player:profile:entities:my:social': () -> MY.get('socialConnections')
+	App.reqres.setHandler 'player:profile:entities:connections:my', () -> MY_CONNECTIONS
 

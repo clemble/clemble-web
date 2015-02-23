@@ -28,6 +28,8 @@
 			@selected
 
 
+	MY_CONNECTIONS = App.request 'player:profile:entities:connections:my'
+
 	class IntervalGoalConfigurationBuilder extends Backbone.Model
 		defaults:
 			base            : null
@@ -67,6 +69,14 @@
 			maxPrice = res.basePrice + res.baseInterval
 			price = res.basePrice
 			percentage = 100 + res.basePercentage
+			res.intervalRules = _.filter(res.intervalRules, (intervalRule) ->
+				if (intervalRule.rule.type == "rule:share")
+					# Check all providers exist in connections
+					allExist = !(_.find(intervalRule.rule.providers, (provider) -> !MY_CONNECTIONS.get(provider)?))
+					allExist
+				else
+					true
+			)
 			_.forEach(res.intervalRules, (rule) ->
 				price = rule.interval + price
 				rule.value = price

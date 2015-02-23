@@ -64,7 +64,6 @@ do(Handlebars, Swag, _) ->
 			else if (rule.type == "rule:timeout")
 				if (rule.timeoutCalculator.type == "eod")
 					ruleDay = rule.timeoutCalculator.days
-					console.log("TOR > #{ruleDay}")
 					if (ruleDay == 1)
 						'fa fa-circle'
 					else if (ruleDay == 2)
@@ -221,5 +220,4 @@ do(Handlebars, Swag, _) ->
 
 	Handlebars.registerHelper 'ruleIcon', (rule) ->
 		ruleIcon = Utils.ruleToIcon(rule)
-		console.log("#{ruleIcon}")
 		new Handlebars.SafeString("<span class='#{ruleIcon}'></span>")
