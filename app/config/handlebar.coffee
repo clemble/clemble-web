@@ -54,7 +54,6 @@ do(Handlebars, Swag, _) ->
 			else
 				'fa fa-exclamation'
 		ruleToIcon: (rule) ->
-			console.log("Rule > #{rule.type}")
 			if (rule.type == "rule:privacy")
 				if (rule.name == "me")
 					'fa fa-user'
@@ -63,7 +62,6 @@ do(Handlebars, Swag, _) ->
 				else if (rule.name == "friends")
 					'fa fa-users'
 			else if (rule.type == "rule:timeout")
-				console.log("TOR > #{rule.timeoutCalculator.type}")
 				if (rule.timeoutCalculator.type == "eod")
 					ruleDay = rule.timeoutCalculator.days
 					console.log("TOR > #{ruleDay}")

@@ -1,5 +1,5 @@
-<hr/>
 <div class="list-group-item list-group-item-success">
+	<br/>
 	<div class="row-picture">
 		{{profileImageOfSize player 40}}
 		{{bank.total.interest.amount}} {{#if myBet}}my {{myBet.interest.amount}}{{else}}{{#is phase "started"}}<a id="bet" >bet</a>{{/is}}{{#is phase "betOff"}}Bets are Off{{/is}}{{#is phase "finished"}}finish{{/is}}{{/if}}<br/>
@@ -29,5 +29,8 @@
 		<button id="update" class="btn btn-xs btn-material-blue-500"><span class="fa fa-circle-thin"></span></button>
 		<button id="reached" class="btn btn-xs btn-success"><span class="fa fa-check-circle-o"></span></button>
 		<button id="surrender" class="btn btn-xs btn-danger"><span class="fa fa-remove"></span></button>
+	</div>
+	<div class="row">
+		<br/>
 	</div>
 </div>

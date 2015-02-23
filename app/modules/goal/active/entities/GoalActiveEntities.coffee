@@ -25,7 +25,9 @@
 
 	MY = new GoalStates()
 	MY.url  = App.Utils.toUrl('/management/player/active/my')
-	App.request "listener:subscribe:my", "goal:management", MY, (body) -> new GoalState(API.getId(body)
+	App.request("listener:subscribe:my", "goal:management", MY, (body) ->
+		new GoalState(API.getId(body))
+	)
 	MY.fetch()
 	App.once "registered", () -> MY.fetch()
 
@@ -41,12 +43,6 @@
 					res.myBet = myBet.bet
 			res
 		myActive: () ->
-			active = new GoalStates()
-			active.url  = App.Utils.toUrl('/management/player/active/my')
-			App.request("listener:subscribe:my", "goal:management", active, (body) ->
-				new GoalState(API.getId(body))
-			)
-			active.fetch()
-			active
+			MY
 
 	App.reqres.setHandler "goal:active:entities:my", () -> API.myActive()

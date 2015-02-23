@@ -8,7 +8,10 @@
 		model: PlayerConnection
 
 	MY = new PlayerConnections()
-	MY.url = App.Utils.toUrl("/connection/#{player}")
+	MY.url = App.Utils.toUrl("/connection/my")
+	App.on "player:connection:add:my", (event) ->
+		connection = new PlayerConnection({ player : event.connection })
+		MY.add(connection)
 	MY.fetch()
 	App.once "registered", () -> MY.fetch()
 
