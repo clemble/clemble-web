@@ -3,14 +3,14 @@
 		<br/>
 		<div class="row-picture">
 			{{profileImageOfSize player 40}}
-			{{#if myBet}}+ {{money myBet.interest}}{{/if}}
+			{{#if myBet}}- {{money myBet.interest}}{{/if}}
 		</div>
 		<div class="row-content">
 			<div class="col-md-2">
-				<span class="fa fa-4x fa-trophy"></span>
+				<span class="fa fa-4x fa-remove"></span>
 			</div>
 			<div class="col-md-10">
-				<h4 class="list-group-item-heading"><b>Won</b> <span class="fa fa-trophy"></span> {{goal}}</h4>
+				<h4 class="list-group-item-heading"><b>Lost</b> <span class="fa fa-trophy"></span> {{goal}}</h4>
 				<p class="list-group-item-text">
 					{{status}}
 				</p>
@@ -21,8 +21,3 @@
 		</div>
 	</div>
 {{/state}}
-
-
-
-
-

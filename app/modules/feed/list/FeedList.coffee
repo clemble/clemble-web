@@ -119,8 +119,10 @@
 
 	childViewToTemplate = (item) ->
 		if (item.get("type").indexOf("post:goal") != -1)
-			if (item.get("state").phase == "finished")
+			if (item.get("type") == "post:goal:reached")
 				GoalPostFinishedItem
+			else if (item.get("type") == "post:goal:missed")
+				GoalPostMissedItem
 			else
 				GoalPostItem
 		else
@@ -138,6 +140,14 @@
 	class GoalPostFinishedItem extends Marionette.ItemView
 		template: require './templates/goal_post_list_finished'
 		className: 'row list-group-item-warning'
+		modelEvents:
+			"sync"    : "render"
+		behaviors:
+			SocialShare: {}
+
+	class GoalPostMissedItem extends Marionette.ItemView
+		template: require './templates/goal_post_list_missed'
+		className: 'row list-group-item-danger'
 		modelEvents:
 			"sync"    : "render"
 		behaviors:
