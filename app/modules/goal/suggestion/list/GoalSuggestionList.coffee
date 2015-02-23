@@ -10,6 +10,9 @@
 		childViewContainer : "#caption"
 		emptyView: SuggestionEmpty
 
+	class SuggestionDetails extends Marionette.ItemView
+		template: require './templates/suggestion_details'
+
 	class Suggestion extends Marionette.ItemView
 		template: require './templates/suggestion'
 		className: 'row list-group-item-danger'
@@ -17,16 +20,25 @@
 			'click #accept'  : 'accept'
 			'click #decline' : 'decline'
 		accept: () ->
-			url = App.Utils.toUrl("/suggestion/player/my/#{@model.get('goalKey')}")
-			suggestion = App.request "goal:suggestion:entities:response", url
+			self = @
+			suggestion = App.request "goal:suggestion:entities:response", @model
+			suggestion.set('accepted', true)
+
+			interval = App.request "goal:configuration:entities:interval"
+			interval.linkTo(suggestion)
+
 			approveModal = new SuggestionModalLayout
+				model: suggestion
+
 			approveModal.on "show", () ->
-				interval = App.request "goal:configuration:entities:interval"
 				App.request "goal:configuration:interval:short", interval, approveModal.configurationRegion
+				detailsView = new SuggestionDetails
+					model: self.model
+
+				approveModal.goalRegion.show detailsView
 			App.modal.show approveModal
 		decline: () ->
-			url = App.Utils.toUrl("/suggestion/player/my/#{@model.get('goalKey')}")
-			suggestion = App.request "goal:suggestion:entities:response", url
+			suggestion = App.request "goal:suggestion:entities:response", @model
 			suggestion.set('accepted', false)
 			suggestion.save()
 
@@ -35,6 +47,8 @@
 		regions:
 			goalRegion          : "#goalRegion"
 			configurationRegion : "#configurationRegion"
+		behaviors:
+			MarionetteModal: {}
 
 	class Suggestions extends Marionette.CollectionView
 		className: 'list-group'

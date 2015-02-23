@@ -19,27 +19,15 @@
 	API=
 		new: (configurations) ->
 			constructionRequest = new GoalConstructionRequest()
-
-			constructionRequest.set("configuration", configurations.getSelected())
-			constructionRequest.listenTo configurations, "selected", (model) ->
-				constructionRequest.set('configuration', model.attributes)
-
+			configurations.linkTo(constructionRequest)
 			constructionRequest
 		newByChoice: (choice) ->
 			constructionRequest = new GoalConstructionRequest()
-
-			constructionRequest.set("configuration", choice.configuration.attributes)
-			constructionRequest.listenTo choice.configuration, "change", (model) ->
-				constructionRequest.set('configuration', model.attributes)
-
+			choice.linkTo(constructionRequest)
 			constructionRequest
 		newByInterval: (interval) ->
 			constructionRequest = new GoalConstructionRequest()
-
-			constructionRequest.set("configuration", interval.get('configuration'))
-			constructionRequest.listenTo interval, "change:configuration", (model) ->
-				constructionRequest.set('configuration', model.get('configuration'))
-
+			interval.linkTo(constructionRequest)
 			constructionRequest
 
 	App.reqres.setHandler "goal:construction:entities:new", (configurations) -> API.new(configurations)

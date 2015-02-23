@@ -46,9 +46,9 @@
 			suggestionRequest.url = url
 			suggestionRequest
 
-		newResponse: (url) ->
+		newResponse: (model) ->
 			suggestionResponse = new GoalSuggestionResponse()
-			suggestionResponse.url = url
+			suggestionResponse.url = App.Utils.toUrl("/suggestion/player/my/#{model.get('goalKey')}")
 			suggestionResponse
 
 		listMy : () ->
@@ -61,7 +61,7 @@
 			playerSuggested
 
 	App.reqres.setHandler "goal:suggestion:entities:new", (url, configurations) -> API.newRequest(url, configurations)
-	App.reqres.setHandler "goal:suggestion:entities:response", (url) -> API.newResponse(url)
+	App.reqres.setHandler "goal:suggestion:entities:response", (model) -> API.newResponse(model)
 
 	App.reqres.setHandler "goal:suggestion:entities:list:my", () -> API.listMy()
 

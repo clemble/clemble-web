@@ -65,6 +65,11 @@
 					configuration.bet.interest.amount = Math.round((model.get('bet') * (100 + rate)) / 100)
 					model.set('configuration', configuration)
 
+		linkTo: (construction) =>
+			construction.listenTo @, "change:configuration", (interval) ->
+				construction.set('configuration', interval.get('configuration'))
+			construction.set("configuration", @get('configuration'))
+
 		parse: (res) ->
 			maxPrice = res.basePrice + res.baseInterval
 			price = res.basePrice
@@ -125,6 +130,11 @@
 			link('supporterConfiguration', @)
 			link('shareRule', @)
 
+		linkTo: (construction) =>
+			construction.listenTo @configuration, "change", (model) ->
+				construction.set('configuration', model.attributes)
+			construction.set("configuration", @configuration.attributes)
+
 		calculateBid: () =>
 			if (@totalTimeoutRule.getSelected()? &&
 					@emailReminderRule.getSelected()? &&
@@ -167,6 +177,10 @@
 				@setSelected(self.find((el) -> true))
 		url:
 			App.Utils.toUrl('/configuration/my')
+		linkTo: (construction) =>
+			construction.set("configuration", @getSelected())
+			construction.listenTo @, "selected", (model) ->
+				construction.set('configuration', model.attributes)
 		setSelected: (model) =>
 			# Notifying of changed selection
 			if (@selected?)
@@ -179,6 +193,7 @@
 			@trigger("selected", @selected)
 		getSelected: () =>
 			@selected
+
 
 	API =
 		getConfigurations: () ->
