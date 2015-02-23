@@ -2,37 +2,19 @@
 
 	Controller =
 		newModal: (url) ->
-			configurations = App.request "goal:configuration:entities:interval"
-			suggestionRequest = App.request "goal:suggestion:entities:new:interval", url, configurations
+			suggestionRequest = App.request "goal:suggestion:entities:new", url
 
-			layout = new GoalSuggestionNewModal
+			suggestionView = new GoalSuggestionModal
 				model: suggestionRequest
 
-			layout.on "show", () ->
-				App.request "goal:configuration:interval:short", configurations, layout.configurationRegion
+			App.modal.show suggestionView
 
-				goal = new GoalSuggestionNew
-					model: suggestionRequest
-
-				layout.goalRegion.show goal
-
-			App.modal.show layout
-
-	class GoalSuggestionNew extends Marionette.ItemView
-		template: require './templates/goal_suggestion'
+	class GoalSuggestionModal extends Marionette.ItemView
+		template: require './templates/goal_suggestion_modal'
 		behaviors:
 			StickIt: {}
-		bindings: {
-			'#goal'       : 'goal'
-		}
-
-	class GoalSuggestionNewModal extends Marionette.LayoutView
-		template: require "./templates/goal_suggest_new_modal"
-		regions:
-			goalRegion          : "#goalRegion"
-			configurationRegion : "#configurationRegion"
-		behaviors: {
 			MarionetteModal: {}
-		}
+		bindings:
+			'#goal'       : 'goal'
 
 	App.reqres.setHandler "goal:suggestion:new:modal", (url) -> Controller.newModal(url)

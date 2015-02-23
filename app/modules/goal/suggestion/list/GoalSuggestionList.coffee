@@ -17,18 +17,24 @@
 			'click #accept'  : 'accept'
 			'click #decline' : 'decline'
 		accept: () ->
-			@process(true)
-		decline: () ->
-			@process(false)
-		process: (accept) ->
 			url = App.Utils.toUrl("/suggestion/player/my/#{@model.get('goalKey')}")
-			$.ajax({
-				type: 'POST',
-				url: url,
-				data: JSON.stringify(accept),
-				contentType: "application/json",
-				dataType: 'json'
-			})
+			suggestion = App.request "goal:suggestion:entities:response", url
+			approveModal = new SuggestionModalLayout
+			approveModal.on "show", () ->
+				interval = App.request "goal:configuration:entities:interval"
+				App.request "goal:configuration:interval:short", interval, approveModal.configurationRegion
+			App.modal.show approveModal
+		decline: () ->
+			url = App.Utils.toUrl("/suggestion/player/my/#{@model.get('goalKey')}")
+			suggestion = App.request "goal:suggestion:entities:response", url
+			suggestion.set('accepted', false)
+			suggestion.save()
+
+	class SuggestionModalLayout extends Marionette.LayoutView
+		template: require './templates/suggestion_modal_layout'
+		regions:
+			goalRegion          : "#goalRegion"
+			configurationRegion : "#configurationRegion"
 
 	class Suggestions extends Marionette.CollectionView
 		className: 'list-group'
