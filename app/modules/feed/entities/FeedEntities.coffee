@@ -37,9 +37,11 @@
 		listByPlayer: (player) ->
 			if (player == 'my')
 				API.listMy()
-			feed = new Posts()
-			feed.url = App.Utils.toUrl("/feed/#{player}")
-			feed
+			else
+				feed = new Posts()
+				feed.url = App.Utils.toUrl("/feed/#{player}")
+				feed.fetch()
+				feed
 
 	App.reqres.setHandler "feed:entities:my", () -> API.listMy()
 	App.reqres.setHandler "feed:entities:player", (player) -> API.listByPlayer(player)
