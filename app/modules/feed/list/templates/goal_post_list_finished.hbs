@@ -3,7 +3,7 @@
 		<br/>
 		<div class="row-picture">
 			{{profileImageOfSize player 40}}
-			{{#if myBet}}<span class="label label-success">+ {{money myBet.interest}}</span>{{/if}}
+			<span class="label label-success">{{bank.total.interest.amount}}</span>{{#if myBet}}<span class="label label-success">+ {{myBet.interest.amount}}</span>{{/if}}
 		</div>
 		<div class="row-content">
 			<div class="col-md-2">
