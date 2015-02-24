@@ -70,6 +70,8 @@ do(Handlebars, Swag, _) ->
 						'fa fa-adjust'
 					else
 						'fa fa-circle-thin'
+				else if (rule.timeoutCalculator.type == "move")
+					'fa fa-clock-o'
 				else
 				 'fa fa-ban'
 			else if (rule.type = "rule:share")
@@ -188,6 +190,8 @@ do(Handlebars, Swag, _) ->
 
 			punishment = Utils.punishment(rule.punishment)
 			new Handlebars.SafeString("#{dayPresentation}<br/> <small>penalty #{punishment}</small>")
+		else if (rule.timeoutCalculator.type == "move")
+			new Handlebars.SafeString(Utils.humanTime(rule.timeoutCalculator.limit))
 		else
 			new Handlebars.SafeString("Timeout rule")
 

@@ -3,7 +3,9 @@
 		<br/>
 		<div class="row-picture">
 			{{profileImageOfSize player 40}}
-			{{bank.total.interest.amount}} {{#if myBet}}my {{myBet.interest.amount}}{{else}}{{#is phase "started"}}<a id="bet" >bet</a>{{/is}}{{#is phase "betOff"}}Bets are Off{{/is}}{{#is phase "finished"}}finish{{/is}}{{/if}}<br/>
+			<span class="badge">{{truncate phase 1}}</span> <span class="label label-success">{{bank.total.interest.amount}}</span><br/>
+			{{#if myBet}}<span class="label label-success">{{myBet.interest.amount}}</span>{{else}}{{#is phase "started"}}<a id="bet" ><b>bet</b></a>{{/is}}{{#is phase "betOff"}}Bets are Off{{/is}}{{#is phase "finished"}}finish{{/is}}{{/if}}
+			{{#is lastAction.type "timeout:punishment:action"}}<span class="label label-danger">- {{lastAction.amount.amount}}</span>{{/is}}<br/>
 		</div>
 		<div class="row-content">
 			<h4 class="list-group-item-heading"><span class="fa fa-trophy"></span> {{goal}}</h4>

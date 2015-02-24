@@ -2,7 +2,7 @@
 	<br/>
 	<div class="row-picture">
 		{{profileImageOfSize player 40}}
-		{{bank.total.interest.amount}} {{#if myBet}}my {{myBet.interest.amount}}{{else}}{{#is phase "started"}}<a id="bet" >bet</a>{{/is}}{{#is phase "betOff"}}Bets are Off{{/is}}{{#is phase "finished"}}finish{{/is}}{{/if}}<br/>
+		<span class="label label-success">{{myBet.interest.amount}}</span> {{#is lastAction.type "timeout:punishment:action"}}<span class="label label-danger">- {{lastAction.amount.amount}}</span>{{/is}}<br/>
 		<span class="label">{{phase}}</span><br/>
 		{{#each context.playerContexts}}
 			<small>update</small> {{formatDate clock.breachTime "%d/%m"}}<br/>
