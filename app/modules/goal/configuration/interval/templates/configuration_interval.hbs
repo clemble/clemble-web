@@ -16,11 +16,11 @@
 	<input id="bet" type="range" min="{{basePrice}}" max="{{maxPrice}}"/>
 	<div class="col-md-12">
 	{{#each intervalRules}}
-		<!--{{#is rule.type "rule:privacy"}}-->
-			<!--<div class="col-md-2">-->
-				<!--{{privacyRuleIcon rule.name}} <br/> <small>+ {{percentage}}% ({{interval}})</small>-->
-			<!--</div>-->
-		<!--{{/is}}-->
+		{{#is rule.type "rule:privacy"}}
+			<div class="col-md-2">
+				{{privacyRuleIcon rule.name}} <br/> <small>+ {{percentage}}% ({{interval}})</small>
+			</div>
+		{{/is}}
 		{{#is rule.type "rule:timeout"}}
 			<div class="col-md-2">
 				{{timeoutRule rule}} <br/> <small>+ {{percentage}}% ({{interval}})</small>

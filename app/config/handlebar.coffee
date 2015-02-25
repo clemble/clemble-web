@@ -74,7 +74,7 @@ do(Handlebars, Swag, _) ->
 					'fa fa-clock-o'
 				else
 				 'fa fa-ban'
-			else if (rule.type = "rule:share")
+			else if (rule.type == "rule:share")
 				if (rule.providers? && rule.providers[0]?)
 					@socialIcon(rule.providers[0])
 				else

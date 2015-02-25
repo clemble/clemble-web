@@ -41,6 +41,8 @@
 		url:
 			App.Utils.toUrl('/configuration/my/interval')
 		initialize: () ->
+			@on "change:intervalRules", (event) ->
+				console.log("event #{JSON.stringify(event.get('intervalRules'))}")
 			@on "change:bet", (model, value, options) ->
 				bet = model.get('bet') - (model.get('baseInterval') + model.get('basePrice'))
 				intervalRules = model.get('intervalRules')
@@ -59,6 +61,8 @@
 								configuration.shareRule = newShareRule
 							else if (intervalRule.rule.type == "rule:timeout")
 								configuration.moveTimeoutRule = intervalRule.rule
+							else if (intervalRule.rule.type.indexOf("rule:bet") != -1)
+								configuration.betRule = intervalRule.rule
 							else
 								throw "unknown rule #{JSON.stringify(intervalRule)} #{intervalRule.rule.type}"
 					configuration.bet.amount.amount = Math.round(model.get('bet'))
