@@ -63,6 +63,8 @@
 								configuration.moveTimeoutRule = intervalRule.rule
 							else if (intervalRule.rule.type.indexOf("rule:bet") != -1)
 								configuration.betRule = intervalRule.rule
+							else if (intervalRule.rule.type == "rule:role:configuration")
+								configuration.supporterConfiguration = intervalRule.rule
 							else
 								throw "unknown rule #{JSON.stringify(intervalRule)} #{intervalRule.rule.type}"
 					configuration.bet.amount.amount = Math.round(model.get('bet'))

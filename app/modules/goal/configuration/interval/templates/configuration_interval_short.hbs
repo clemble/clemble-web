@@ -10,11 +10,13 @@
 	</div>
 {{#configuration}}
 	<div class="col-md-3 col-xs-6">
-		<h4><small><b>Friend's bet</b></small><br/> {{betRule.minBet}} <small><b>to</b></small> {{betRule.maxBet}}</h4>
-	</div>
-	<div class="col-md-3 col-xs-6">
 	<h4><small><b>Update every</b></small><br/> {{ruleIcon moveTimeoutRule}} {{timeoutRule moveTimeoutRule}}</h4>
 	</div>
+	{{#supporterConfiguration}}
+	<div class="col-md-3 col-xs-6">
+		<h4><small><b>Friend's bet</b></small><br/>{{betRule.minBet}} {{betRule.maxBet}} <small><small>1{{percentage}}%</small></small></h4>
+	</div>
+	{{/supporterConfiguration}}
 	<div class="col-md-3 col-xs-6">
 		<h4><small><b>Share on</b></small><br/> {{#if shareRule.providers}}{{#each shareRule.providers}}<span class="{{socialIcon this}}"></span>{{/each}}{{else}}<span class="fa fa-ban"></span>{{/if}}</h4>
 	</div>

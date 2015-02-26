@@ -61,6 +61,8 @@ do(Handlebars, Swag, _) ->
 					'fa fa-globe'
 				else if (rule.name == "friends")
 					'fa fa-users'
+			else if (rule.type == "rule:role:configuration")
+				'fa fa-ticket'
 			else if (rule.type == "rule:timeout")
 				if (rule.timeoutCalculator.type == "eod")
 					ruleDay = rule.timeoutCalculator.days
