@@ -30,7 +30,12 @@
 				'click #support': 'support'
 				'click #observe': 'observe'
 			bet: () ->
-				App.request "goal:active:action:bid", @view.model.get('key')
+				if (@view.model.get('configuraion')?)
+					App.request "goal:active:action:bet:modal", @view.model.get('key'), @view.model.get('configuration')
+				else if (@view.model.get('state')?)
+					App.request "goal:active:action:bet:modal", @view.model.get('key'), @view.model.get('state').configuration
+				else
+					App.request "goal:active:action:bet:modal", @view.model.get('key')
 			support: () ->
 				App.request "goal:active:action:support:modal", @view.model
 			observe: () ->

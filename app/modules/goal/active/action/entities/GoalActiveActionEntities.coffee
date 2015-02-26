@@ -22,6 +22,15 @@
 			amount    : {}
 			interest  : {}
 
+	class BetAction extends Backbone.Model
+		default:
+			bet : 0
+		toJSON: () ->
+			json = super
+			json.bet = Math.round(json.bet)
+			json.type = "player:bet:action"
+			json
+
 	class GiveUpAction extends Backbone.Model
 		defaults:
 			type: "player:action:surrender"
@@ -39,6 +48,10 @@
 			newBid = new BidAction()
 			newBid.url = url
 			newBid
+		newBet: (url) ->
+			newBet = new BetAction()
+			newBet.url = url
+			newBet
 		newSurrender: (url) ->
 			giveUpAction = new GiveUpAction()
 			giveUpAction.url = "#{url}/action"
@@ -48,4 +61,5 @@
 	App.reqres.setHandler "goal:active:action:entities:new", (url) -> API.newAction(url)
 	App.reqres.setHandler "goal:active:action:entities:surrender", (url) -> API.newSurrender(url)
 	App.reqres.setHandler "goal:active:action:entities:bid", (url) -> API.newBid(url)
+	App.reqres.setHandler "goal:active:action:entities:bet", (url) -> API.newBet(url)
 	App.reqres.setHandler "goal:active:action:entities:reached", (url) -> API.newReached(url)

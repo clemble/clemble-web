@@ -126,7 +126,7 @@ do(Handlebars, Swag, _) ->
 	Handlebars.registerHelper 'money', (money) ->
 		new Handlebars.SafeString(Utils.toMoney(money))
 
-	Handlebars.registerHelper 'bet', (bet, icon) ->
+	Handlebars.registerHelper 'showBet', (bet, icon) ->
 		if(bet?)
 			if (icon? && icon)
 				new Handlebars.SafeString("<span class='fa fa-credit-card'></span> #{Utils.toMoney(bet.interest)}/<small>#{Utils.toMoney(bet.amount)}</small>")
