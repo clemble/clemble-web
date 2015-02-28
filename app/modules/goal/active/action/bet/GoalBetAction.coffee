@@ -14,6 +14,12 @@
 				min: betRule.minBet,
 				max: betRule.maxBet
 			}
+
+			percentage = 100 + configuration.supporterConfiguration.percentage
+
+			bet.on "change:bet", (model) ->
+				model.set('win', Math.round(model.get('bet') * percentage / 100))
+
 			App.modal.show betModal
 
 	class GoalBetAction extends Marionette.ItemView
