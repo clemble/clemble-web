@@ -1,0 +1,27 @@
+{{#state}}
+	<br/>
+	<div class="col-xs-6">
+		{{profileImageOfSize player 50}}<br/>
+		{{#each context.playerContexts}}
+			<span class="label label-success"><b>Ended</b> {{formatDate clock.deadline "%d/%m"}}</span>
+		{{/each}}
+	</div>
+	<div class="col-xs-6">
+		<span class="fa fa-remove"> Lost</span><br/>
+		<b>My:</b> <span class="label label-danger">{{#if myBet}}{{myBet.amount.amount}}{{else}}0{{/if}}</span><br/>
+		<b>Bank:</b> <span class="label label-danger">-{{bank.total.amount.amount}}</span><br/>
+		<b>Penalty:</b> <span class="label label-danger">{{bank.penalty.amount}}</span>
+	</div>
+	<div class="col-xs-12">
+		<h4 class="list-group-item-heading"><span class="fa fa-trophy"></span> {{goal}}</h4>
+		<p class="list-group-item-text">
+			{{status}}
+		</p>
+		{{#if supporters}}
+			{{template "supporters"}}
+		{{/if}}
+	</div>
+	<div class="col-xs-12">
+		<br/>
+	</div>
+{{/state}}
