@@ -8,7 +8,11 @@
 			region.show activeView
 
 	class GoalActive extends Marionette.ItemView
-		template: require './templates/goal_active'
+		template: (m) ->
+			if (window.mobile)
+				require('./templates/goal_active_sm')(m)
+			else
+				require('./templates/goal_active')(m)
 		className: 'row list-group-item-success'
 		events:
 			"click #update" : () -> App.request "goal:active:action:new:modal", @model.url()

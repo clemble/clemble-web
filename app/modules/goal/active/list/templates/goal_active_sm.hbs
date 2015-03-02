@@ -1,0 +1,36 @@
+<div class="list-group-item list-group-item-success">
+	<br/>
+	<div class="row-picture">
+		{{profileImageOfSize player 40}}
+		<span class="label label-success">{{myBet.interest.amount}}</span> {{#is lastAction.type "timeout:punishment:action"}}<span class="label label-danger">- {{lastAction.amount.amount}}</span>{{/is}}<br/>
+		<span class="label">{{phase}}</span><br/>
+		{{#each context.playerContexts}}
+			<small>update</small> {{formatDate clock.breachTime "%d/%m"}}<br/>
+			<small>until</small> {{formatDate clock.deadline "%d/%m"}}
+		{{/each}}
+	</div>
+	<div class="row-content">
+		<h4 class="list-group-item-heading"><span class="fa fa-trophy"></span> {{goal}}</h4>
+		<p class="list-group-item-text">
+			{{status}}
+		</p>
+		<div class="hidden-xs hidden-sm">
+			<div class="btn-group-flat">
+				<button id="update" class="btn btn-material-blue-500"><span class="fa fa-circle-thin"></span> Update</button>
+				<button id="reached" class="btn btn-success"><span class="fa fa-check-circle-o"></span> I Won</button>
+				<button id="surrender" class="btn btn-danger"><span class="fa fa-remove"></span> I Lost</button>
+			</div>
+		</div>
+		{{#if supporters}}
+			{{template "supporters"}}
+		{{/if}}
+	</div>
+	<div class="hidden-md hidden-lg btn-group row">
+		<button id="update" class="btn btn-xs btn-material-blue-500"><span class="fa fa-circle-thin"></span></button>
+		<button id="reached" class="btn btn-xs btn-success"><span class="fa fa-check-circle-o"></span></button>
+		<button id="surrender" class="btn btn-xs btn-danger"><span class="fa fa-remove"></span></button>
+	</div>
+	<div class="row">
+		<br/>
+	</div>
+</div>

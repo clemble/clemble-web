@@ -129,7 +129,11 @@
 			Post
 
 	class GoalPostItem extends Marionette.ItemView
-		template: require './templates/goal_post_list'
+		template: (m) ->
+			if (window.mobile)
+				require('./templates/goal_post_list_sm')(m)
+			else
+				require('./templates/goal_post_list')(m)
 		className: 'row list-group-item-info'
 		modelEvents:
 			"sync"    : "render"
@@ -138,7 +142,11 @@
 			BetBehavior: {}
 
 	class GoalPostFinishedItem extends Marionette.ItemView
-		template: require './templates/goal_post_list_finished'
+		template: (m) ->
+			if (window.mobile)
+				require('./templates/goal_post_list_finished_sm')(m)
+			else
+				require('./templates/goal_post_list_finished')(m)
 		className: 'row list-group-item-warning'
 		modelEvents:
 			"sync"    : "render"
@@ -146,7 +154,11 @@
 			SocialShare: {}
 
 	class GoalPostMissedItem extends Marionette.ItemView
-		template: require './templates/goal_post_list_missed'
+		template: (m) ->
+			if (window.mobile)
+				require('./templates/goal_post_list_missed_sm')(m)
+			else
+				require('./templates/goal_post_list_missed')(m)
 		className: 'row list-group-item-danger'
 		modelEvents:
 			"sync"    : "render"

@@ -2,15 +2,20 @@
 	<div class="list-group-item">
 		<br/>
 		<div class="row-picture">
-			{{profileImageOfSize player 40}}
-			<span class="label label-danger">{{bank.total.amount.amount}}</span> {{#if myBet}}<span class="label label-danger">- {{myBet.amount.amount}}</span>{{/if}}
+			{{profileImageOfSize player 60}}
+			{{#each context.playerContexts}}
+				<span class="label label-success"><b>Ended</b> {{formatDate clock.deadline "%d/%m"}}</span>
+			{{/each}}
 		</div>
 		<div class="row-content">
-			<div class="col-md-2">
-				<span class="fa fa-4x fa-remove"></span>
+			<div class="col-md-3">
+				<span class="fa fa-remove"> <b>Lost</b></span><br/>
+				<b>My:</b> <span class="label label-danger">{{#if myBet}}-{{myBet.amount.amount}}{{else}}0{{/if}}</span><br/>
+				<b>Bank:</b> <span class="label label-danger">-{{bank.total.amount.amount}}</span><br/>
+				<b>Penalty:</b> <span class="label label-danger">{{bank.penalty.amount}}</span>
 			</div>
-			<div class="col-md-10">
-				<h4 class="list-group-item-heading"><b>Lost</b> <span class="fa fa-trophy"></span> {{goal}}</h4>
+			<div class="col-md-9 col-xs-12 col-sm-12">
+				<h4 class="list-group-item-heading"><span class="fa fa-trophy"></span> {{goal}}</h4>
 				<p class="list-group-item-text">
 					{{status}}
 				</p>
@@ -18,6 +23,9 @@
 					{{template "supporters"}}
 				{{/if}}
 			</div>
+		</div>
+		<div class="col-md-12 row">
+			<br/>
 		</div>
 	</div>
 {{/state}}
