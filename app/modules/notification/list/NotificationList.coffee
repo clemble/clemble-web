@@ -75,9 +75,6 @@
 			"sync"    : "render"
 			"change"  : "render"
 		getChildView: (item) -> childView(item)
-		attachHtml: (collectionView, childView, index) ->
-			super
-			collectionView.$el.append("<div class='list-group-separator'></div>")
 
 	class NotificationEmpty extends Marionette.ItemView
 		template: require './templates/empty_notification'
