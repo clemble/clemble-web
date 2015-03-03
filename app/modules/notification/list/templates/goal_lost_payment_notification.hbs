@@ -1,11 +1,8 @@
-<hr/>
-<div class="container-fluid">
-	<div class="col-md-2 col-xs-4">
-		{{profileImageOfSize source.player 60}}
-	</div>
-	<div class="col-md-10 col-xs-8">
-		<i id="delete" class="fa fa-times-circle-o pull-right"></i>
-		<h4><span class="label label-danger">-{{amount.amount}}</span> Lost</h4>
-		<h5>{{source.goal}}</h5>
-	</div>
+<div class="row-picture">
+	{{profileImageOfSize source.player 60}}
+</div>
+<div class="row-content">
+	<i id="delete" class="fa fa-times-circle-o pull-right"></i>
+	<h4><span class="label label-danger">-{{amount.amount}}</span> Lost</h4>
+	<h5>{{source.goal}}</h5>
 </div>

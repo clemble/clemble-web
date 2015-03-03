@@ -3,43 +3,43 @@
 
 	class Notification extends Marionette.ItemView
 		template: require './templates/player_notification'
-		className: 'row'
+		className: 'list-group-item'
 		behaviors:
 			Delete: {}
 
 	class PaymentNotification extends Marionette.ItemView
 		template: require './templates/payment_notification'
-		className: 'row'
+		className: 'list-group-item'
 		behaviors:
 			Delete: {}
 
 	class GoalWonPaymentNotification extends Marionette.ItemView
 		template: require './templates/goal_won_payment_notification'
-		className: 'row'
+		className: 'list-group-item'
 		behaviors:
 			Delete: {}
 
 	class GoalLostPaymentNotification extends Marionette.ItemView
 		template: require './templates/goal_lost_payment_notification'
-		className: 'row'
+		className: 'list-group-item'
 		behaviors:
 			Delete: {}
 
 	class PlayerConnectedNotification extends Marionette.ItemView
 		template: require './templates/player_connected'
-		className: 'row'
+		className: 'list-group-item'
 		behaviors:
 			Delete: {}
 
 	class PlayerDiscoveredNotification extends Marionette.ItemView
 		template: require './templates/player_discovered'
-		className: 'row'
+		className: 'list-group-item'
 		behaviors:
 			Delete: {}
 
 	class PlayerInvitedNotification extends Marionette.ItemView
 		template: require './templates/player_invited'
-		className: 'row'
+		className: 'list-group-item'
 		events:
 			'click #accept'  : 'accept'
 			'click #decline' : 'decline'
@@ -59,6 +59,7 @@
 
 	class Notifications extends Marionette.CompositeView
 		template: require './templates/player_notifications'
+		className : "list-group"
 		emptyView: NotificationEmpty
 		childView : Notification
 		childViewContainer : "#caption"
