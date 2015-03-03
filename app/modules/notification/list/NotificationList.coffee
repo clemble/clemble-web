@@ -37,6 +37,12 @@
 		behaviors:
 			Delete: {}
 
+	class GoalSuggestionNotification extends Marionette.ItemView
+		template: require './templates/goal_suggestion_notification'
+		className: 'list-group-item'
+		behaviors:
+			Delete: {}
+
 	class PlayerInvitedNotification extends Marionette.ItemView
 		template: require './templates/player_invited'
 		className: 'list-group-item'
@@ -103,6 +109,8 @@
 			PlayerConnectedNotification
 		else if (item.get('type') == "notification:player:discovered")
 			PlayerDiscoveredNotification
+		else if (item.get('type') == "notification:goal:suggestion")
+			GoalSuggestionNotification
 		else
 			Notification
 
