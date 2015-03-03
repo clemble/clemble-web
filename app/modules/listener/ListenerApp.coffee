@@ -26,14 +26,14 @@
 							channel = channel.substring(0, channel.lastIndexOf(":"))
 							App.trigger "#{channel}:my", messageJSON
 							console.log ("Notifying my #{channel}")
-					else
+
+					App.trigger channel, messageJSON
+					console.log ("Notifying #{channel}")
+					while channel.lastIndexOf(":") != -1
+						channel = channel.substring(0, channel.lastIndexOf(":"))
+						console.log "Triggering event on #{channel}"
 						App.trigger channel, messageJSON
 						console.log ("Notifying #{channel}")
-						while channel.lastIndexOf(":") != -1
-							channel = channel.substring(0, channel.lastIndexOf(":"))
-							console.log "Triggering event on #{channel}"
-							App.trigger channel, messageJSON
-							console.log ("Notifying #{channel}")
 				)
 
 			on_error = () ->
