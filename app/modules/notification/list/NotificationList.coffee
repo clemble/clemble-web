@@ -57,9 +57,9 @@
 				dataType: 'json'
 			})
 
-	class Notifications extends Marionette.CompositeView
+	class Notifications extends Marionette.CollectionView
 		template: require './templates/player_notifications'
-		className : "list-group"
+		className : "list-group col-md-offset-3 col-md-6 col-xs-12"
 		emptyView: NotificationEmpty
 		childView : Notification
 		childViewContainer : "#caption"
@@ -69,6 +69,9 @@
 			"sync"    : "render"
 			"change"  : "render"
 		getChildView: (item) -> childView(item)
+		attachHtml: (collectionView, childView, index) ->
+			super
+			collectionView.$el.append("<div class='list-group-separator'></div>")
 
 	class NotificationEmpty extends Marionette.ItemView
 		template: require './templates/empty_notification'
