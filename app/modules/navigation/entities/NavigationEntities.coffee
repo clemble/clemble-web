@@ -21,16 +21,6 @@
 		nav.listenTo collection, "remove", () -> nav.set('count', collection.length)
 		nav.listenTo collection, "reset", () -> nav.set('count', collection.length)
 
-	SUGGESTION = new Navigation({
-		name: 'Suggestions',
-		icon: 'fa fa-lightbulb-o',
-		url: 'suggestion',
-		active: false
-	})
-	SUGGESTIONS = App.request("goal:suggestion:entities:list:my")
-	NAVIGATIONS.add(SUGGESTION)
-	associateCollection(SUGGESTIONS, SUGGESTION)
-
 	NOTIFICATION = new Navigation({
 		name: 'Notifications',
 		icon: 'fa fa-bell',
