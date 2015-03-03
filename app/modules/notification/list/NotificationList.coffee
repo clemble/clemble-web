@@ -65,7 +65,7 @@
 
 	class Notifications extends Marionette.CollectionView
 		template: require './templates/player_notifications'
-		className : "list-group col-md-offset-3 col-md-6 col-xs-12"
+		className : "list-group col-md-offset-3 col-md-6 col-xs-12 thumbnail"
 		emptyView: NotificationEmpty
 		childView : Notification
 		childViewContainer : "#caption"
