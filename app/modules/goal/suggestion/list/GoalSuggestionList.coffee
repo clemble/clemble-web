@@ -4,11 +4,15 @@
 		template: require './templates/suggested'
 		className: 'row'
 
-	class Suggesteds extends Marionette.CompositeView
-		template: require './templates/suggested_all'
+	class Suggesteds extends Marionette.CollectionView
+		className: 'thumbnail container-fluid'
 		childView : Suggested
 		childViewContainer : "#caption"
 		emptyView: SuggestionEmpty
+		attachHtml: (collectionView, childView, index) ->
+			super
+			collectionView.$el.append("<hr/>")
+
 
 	class SuggestionDetails extends Marionette.ItemView
 		template: require './templates/suggestion_details'
