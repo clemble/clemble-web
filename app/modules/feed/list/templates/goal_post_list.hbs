@@ -20,13 +20,15 @@
 					{{#is lastAction.type "timeout:punishment:action"}}<span class="label label-danger">Missed update</span>{{/is}}
 					{{status}}
 				</p>
-				<div class="row">
-					<div class="col-md-12">
-						{{#if supporters}}
-							{{template "supporters"}}
-						{{/if}}
-					</div>
-				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				{{#if supporters}}
+					{{template "supporters"}}
+				{{/if}}
+				<br/>
+				<br/>
 			</div>
 		</div>
 		<div class="col-md-12 row">
