@@ -1,6 +1,6 @@
 <hr/>
 <div class="container-fluid">
-	<div class="col-md-6">
+	<div class="col-md-2 col-xs-4">
 		{{#is source.type "payment:bonus:social:discovery"}}
 			{{smallProfileImage source.discovered}}
 		{{else}}
@@ -20,7 +20,7 @@
 		{{/is}}
 	</div>
 
-	<div class="col-md-6">
+	<div class="col-md-10 col-xs-8">
 		<i id="delete" class="fa fa-times-circle-o pull-right"></i>
 		<h4>{{#is operation "Credit"}}-{{else}}+{{/is}}{{money amount}}</h4>
 		{{#is source.type "payment:bonus:registration"}}registration{{/is}}

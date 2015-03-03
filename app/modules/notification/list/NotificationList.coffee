@@ -13,6 +13,18 @@
 		behaviors:
 			Delete: {}
 
+	class GoalWonPaymentNotification extends Marionette.ItemView
+		template: require './templates/goal_won_payment_notification'
+		className: 'row'
+		behaviors:
+			Delete: {}
+
+	class GoalLostPaymentNotification extends Marionette.ItemView
+		template: require './templates/goal_lost_payment_notification'
+		className: 'row'
+		behaviors:
+			Delete: {}
+
 	class PlayerConnectedNotification extends Marionette.ItemView
 		template: require './templates/player_connected'
 		className: 'row'
@@ -55,17 +67,7 @@
 		modelEvents:
 			"sync"    : "render"
 			"change"  : "render"
-		getChildView: (item) ->
-			if (item.get('type') == "notification:player:invited")
-				PlayerInvitedNotification
-			else if (item.get('type') == "notification:payment")
-				PaymentNotification
-			else if (item.get('type') == "notification:player:connected")
-				PlayerConnectedNotification
-			else if (item.get('type') == "notification:player:discovered")
-				PlayerDiscoveredNotification
-			else
-				Notification
+		getChildView: (item) -> childView(item)
 
 	class NotificationEmpty extends Marionette.ItemView
 		template: require './templates/empty_notification'
@@ -79,17 +81,26 @@
 			"change"  : "render"
 		behaviors:
 			CollectionCountSpan: {}
-		getChildView: (item) ->
-			if (item.get('type') == "notification:player:invited")
-				PlayerInvitedNotification
-			else if (item.get('type') == "notification:payment")
-				PaymentNotification
-			else if (item.get('type') == "notification:player:connected")
-				PlayerConnectedNotification
-			else if (item.get('type') == "notification:player:discovered")
-				PlayerDiscoveredNotification
+		getChildView: (item) -> childView(item)
+
+	childView = (item) ->
+		if (item.get('type') == "notification:player:invited")
+			PlayerInvitedNotification
+		else if (item.get('type') == "notification:payment")
+			source = item.get('source')
+			if (source.type == "payment:goal")
+				if (item.get('operation') == "Debit")
+					GoalWonPaymentNotification
+				else
+					GoalLostPaymentNotification
 			else
-				Notification
+				PaymentNotification
+		else if (item.get('type') == "notification:player:connected")
+			PlayerConnectedNotification
+		else if (item.get('type') == "notification:player:discovered")
+			PlayerDiscoveredNotification
+		else
+			Notification
 
 	Controller =
 		listMy: (region) ->
