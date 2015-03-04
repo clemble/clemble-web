@@ -6,14 +6,17 @@
 				@view.stickit()
 			onDestroy: () ->
 				@view.unstickit()
+
 		StickValidation: Marionette.Behavior.extend
 			onRender: () ->
 				Backbone.Validation.bind(@view);
 			onDestroy: () ->
 				Backbone.Validation.unbind(@view);
+
 		BootstrapTooltip: Marionette.Behavior.extend
 			onRender: () ->
 				@$('[data-toggle="tooltip"]').tooltip()
+
 		Delete: Marionette.Behavior.extend
 			events:
 				'click #delete' : 'delete'
@@ -24,6 +27,7 @@
 					model.destroy()
 				if (collection?)
 					collection.remove(model)
+
 		BetBehavior: Marionette.Behavior.extend
 			events:
 				'click #bet'    : "bet"
@@ -65,6 +69,7 @@
 							$this.html("#{hourMinutes}");
 					)
 				)
+
 		SaveOnTextEnter: Marionette.Behavior.extend
 			events:
 				'keypress input[type=text]': 'filterOnEnter'
@@ -72,6 +77,7 @@
 			filterOnEnter: (e) ->
 				if (e.keyCode == 13)
 					@view.model.save()
+
 		MarionetteModal: Marionette.Behavior.extend
 			events:
 				'click #save'               : "save"
@@ -96,12 +102,14 @@
 				@closeModal()
 			closeModal: () ->
 				@$el.parent().parent().parent().parent().modal("hide")
+
 		DisplayError: Marionette.Behavior.extend
 			modelEvents:
 				'error'             : "showError"
 			showError: (model, resp, options) ->
 				#TODO make this more sophisticated
 				@view.$('.help-block:first').html(resp.responseJSON[0].error.description).removeClass('hidden')
+
 		SocialShare: Marionette.Behavior.extend
 			events:
 				'click [share]'  : "share"
@@ -115,6 +123,7 @@
 					contentType: "application/json",
 					dataType: 'json'
 				})
+
 		CollectionCountSpan: Marionette.Behavior.extend
 			collectionEvents:
 				'sync'    : 'updateCount'
@@ -124,5 +133,12 @@
 			updateCount: () ->
 				console.log("Update count")
 				@view.$('.count_span').html(@view.collection.length)
+
+		ClickPlayer: Marionette.Behavior.extend
+			events:
+				'click [player]' : 'showPlayer'
+			showPlayer: (evt) ->
+				player = evt.currentTarget.getAttribute("player")
+				App.request "feed:list:player:modal", player
 
 	Marionette.Behaviors.behaviorsLookup = () -> Behaviors

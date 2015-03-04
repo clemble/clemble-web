@@ -1,7 +1,7 @@
 {{#state}}
 	<div class="list-group-item">
 		<br/>
-		<div class="row-picture">
+		<div player="{{player}}" class="row-picture">
 			{{profileImageOfSize player 40}}
 			{{#each context.playerContexts}}
 				<span class="label label-success"><b>Ends</b> {{formatDate clock.deadline "%d/%m"}}</span>

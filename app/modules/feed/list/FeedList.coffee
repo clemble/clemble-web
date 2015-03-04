@@ -1,82 +1,22 @@
 @App.module "FeedApp.List", (List, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
 
-	class Post extends Marionette.ItemView
+	class PlayerPost extends Marionette.ItemView
+		behaviors:
+			ClickPlayer: {}
+			SocialShare: {}
+			BetBehavior: {}
+			BootstrapTooltip: {}
+
+	class Post extends PlayerPost
 		template: require './templates/player_post'
 		className: 'row'
-		behaviors:
-			SocialShare: {}
-			BetBehavior: {}
-			BootstrapTooltip: {}
 
-	class GoalStartedPost extends Marionette.ItemView
-		template: require './templates/goal_started'
-		className: 'row'
-		behaviors:
-			SocialShare: {}
-			BetBehavior: {}
-			BootstrapTooltip: {}
-
-	class GoalCreatedPost extends Marionette.ItemView
-		template: require './templates/goal_created'
-		className: 'row'
-		behaviors:
-			SocialShare: {}
-			BetBehavior: {}
-			BootstrapTooltip: {}
-
-	class GoalBetOffPost extends Marionette.ItemView
-		template: require './templates/goal_bet_off'
-		className: 'row'
-
-	class GoalBetChangedPost extends Marionette.ItemView
-		template: require './templates/goal_bid'
-		className: 'row'
-		behaviors:
-			SocialShare: {}
-			BetBehavior: {}
-			BootstrapTooltip: {}
-
-	class GoalUpdatedPost extends Marionette.ItemView
-		template: require './templates/goal_update'
-		className: 'row'
-		behaviors:
-			SocialShare: {}
-			BetBehavior: {}
-			BootstrapTooltip: {}
-
-	class GoalReachedPost extends Marionette.ItemView
-		template: require './templates/goal_reached'
-		className: 'row'
-		behaviors:
-			SocialShare: {}
-			BetBehavior: {}
-			BootstrapTooltip: {}
-
-	class GoalMissedPost extends Marionette.ItemView
-		template: require './templates/goal_missed'
-		className: 'row'
-		behaviors:
-			SocialShare: {}
-			BetBehavior: {}
-			BootstrapTooltip: {}
-
-	class GoalUpdateMissed extends Marionette.ItemView
-		template: require './templates/goal_update_missed'
-		className: 'row'
-		behaviors:
-			SocialShare: {}
-			BetBehavior: {}
-			BootstrapTooltip: {}
-
-	class GoalPost extends Marionette.ItemView
+	class GoalPost extends PlayerPost
 		template: require './templates/goal_post'
 		className: 'row'
 		modelEvents:
 			"sync"    : "render"
-		behaviors:
-			SocialShare: {}
-			BetBehavior: {}
 
 	class Posts extends Marionette.CollectionView
 		childView : Post
@@ -128,7 +68,7 @@
 		else
 			Post
 
-	class GoalPostItem extends Marionette.ItemView
+	class GoalPostItem extends PlayerPost
 		template: (m) ->
 			if (window.mobile)
 				require('./templates/goal_post_list_sm')(m)
@@ -137,11 +77,8 @@
 		className: 'row list-group-item-info'
 		modelEvents:
 			"sync"    : "render"
-		behaviors:
-			SocialShare: {}
-			BetBehavior: {}
 
-	class GoalPostFinishedItem extends Marionette.ItemView
+	class GoalPostFinishedItem extends PlayerPost
 		template: (m) ->
 			if (window.mobile)
 				require('./templates/goal_post_list_finished_sm')(m)
@@ -150,10 +87,8 @@
 		className: 'row list-group-item-warning'
 		modelEvents:
 			"sync"    : "render"
-		behaviors:
-			SocialShare: {}
 
-	class GoalPostMissedItem extends Marionette.ItemView
+	class GoalPostMissedItem extends PlayerPost
 		template: (m) ->
 			if (window.mobile)
 				require('./templates/goal_post_list_missed_sm')(m)
@@ -162,8 +97,6 @@
 		className: 'row list-group-item-danger'
 		modelEvents:
 			"sync"    : "render"
-		behaviors:
-			SocialShare: {}
 
 	class PostList extends Marionette.CollectionView
 		className : "list-group"
