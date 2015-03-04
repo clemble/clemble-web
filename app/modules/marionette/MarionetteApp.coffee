@@ -139,6 +139,6 @@
 				'click [player]' : 'showPlayer'
 			showPlayer: (evt) ->
 				player = evt.currentTarget.getAttribute("player")
-				App.request "feed:list:player:modal", player
+				App.request "player:show:modal", player
 
 	Marionette.Behaviors.behaviorsLookup = () -> Behaviors

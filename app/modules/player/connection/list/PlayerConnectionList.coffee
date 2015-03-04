@@ -21,7 +21,7 @@
 			url = App.Utils.toUrl("/suggestion/player/#{@model.get('player')}")
 			App.request "goal:suggestion:new:modal", url
 		playerModal: () ->
-			App.request "feed:list:player:modal", @model.get('player')
+			App.request "player:show:modal", @model.get('player')
 
 	class PlayerConnections extends Marionette.CompositeView
 		template: require './templates/connections'
