@@ -19,17 +19,18 @@
 			<p class="list-group-item-text">
 				<h4>{{status}}</h4>
 			</p>
+			<div class="btn-group-sm">
+				<button id="update" class="btn btn-sm btn-material-blue-500"><span class="fa fa-circle-thin"></span> Update</button>
+				<button id="reached" class="btn btn-sm btn-success"><span class="fa fa-check-circle-o"></span> Won</button>
+				<button id="surrender" class="btn btn-sm  btn-danger"><span class="fa fa-remove"></span> Lost</button>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
 			{{#if supporters}}
 				{{template "supporters"}}
 			{{/if}}
 		</div>
-	</div>
-	<div class="row">
-		<div class="btn-group-flat">
-			<button id="update" class="btn btn-material-blue-500"><span class="fa fa-circle-thin"></span> Update</button>
-			<button id="reached" class="btn btn-success"><span class="fa fa-check-circle-o"></span> I Won</button>
-			<button id="surrender" class="btn btn-danger"><span class="fa fa-remove"></span> I Lost</button>
-		</div>
-		<br/>
 	</div>
 </div>

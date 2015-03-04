@@ -1,4 +1,4 @@
-Backbone.Stickit.addHandler(  {
+Backbone.Stickit.addHandler({
   selector: '.slider',
   events: ['change'],
   initialize: ($el, model, options) ->

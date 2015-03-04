@@ -1,5 +1,5 @@
 require './entities/PlayerConnectionEntities'
-require './show/PlayerConnectionShow'
+require './list/PlayerConnectionList'
 
 require './invitation/PlayerConnectionInvitationApp'
 
