@@ -1,14 +1,10 @@
-<div class="container-fluid thumbnail">
-	<div class="caption">
-        <h5>Profile <small>{{player}}</small></h5>
-		<p>
-			{{myImage}}
-			{{#if nickName}}<h4><small>@{{nickName}}</small></h4>{{/if}}
-			{{#if firstName}}<h4>{{firstName}} {{lastName}}</h4>{{/if}}
-		</p>
-		{{#each socialConnections}}
-			<span class="success {{socialIcon providerId}}"></span>
-		{{/each}}
-	</div>
-</div>
+<h5>Profile <small>{{player}}</small></h5>
+<p>
+	{{profileImageOfSize player 100}}
+	{{#if nickName}}<h4><small>@{{nickName}}</small></h4>{{/if}}
+	{{#if firstName}}<h4>{{firstName}} {{lastName}}</h4>{{/if}}
+</p>
+{{#each socialConnections}}
+	<span class="success {{socialIcon providerId}}"></span>
+{{/each}}
 

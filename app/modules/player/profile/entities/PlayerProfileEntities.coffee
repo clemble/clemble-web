@@ -68,12 +68,10 @@
 		get: (player) ->
 			if (player == "my")
 				MY
-			profile = new PlayerProfile(player: player)
-			profile.url = App.Utils.toUrl("/profile/#{player}")
-			App.on "player:profile:changed:my", (event) ->
-				profile.set(event.playerProfile)
-			profile.fetch()
-			profile
+			else
+				profile = new PlayerProfile(player: player)
+				profile.url = App.Utils.toUrl("/profile/#{player}")
+				profile
 
 	App.reqres.setHandler 'player:profile:entities:new', () -> API.new()
 	App.reqres.setHandler 'player:profile:entities:my', () -> API.get('my')

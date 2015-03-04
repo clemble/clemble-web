@@ -8,6 +8,17 @@
 				model: suggestionRequest
 
 			App.modal.show suggestionView
+		newButton: (player, region) ->
+			suggestionButton = new GoalSuggestionButton()
+			suggestionButton.suggestionUrl = App.Utils.toUrl("/suggestion/player/#{player}")
+			region.show suggestionButton
+
+
+	class GoalSuggestionButton extends Marionette.ItemView
+		template: require './templates/goal_suggestion_button'
+		events:
+			'click #suggest': () -> App.request "goal:suggestion:new:modal", @suggestionUrl
+
 
 	class GoalSuggestionModal extends Marionette.ItemView
 		template: require './templates/goal_suggestion_modal'
@@ -18,3 +29,4 @@
 			'#goal'       : 'goal'
 
 	App.reqres.setHandler "goal:suggestion:new:modal", (url) -> Controller.newModal(url)
+	App.reqres.setHandler "goal:suggestion:new:button", (player, region) -> Controller.newButton(player, region)
