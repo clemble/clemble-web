@@ -34,6 +34,8 @@
 	App.on "notification:my", (t) ->
 		NOTIFICATION.add(new Notification(t), {at : 0})
 
+	App.once "registered", () -> NOTIFICATION.fetch()
+
 	API=
 		listMy: () ->
 			NOTIFICATION.fetchIfNeeded()
