@@ -14,6 +14,7 @@
 			sync    : 'render'
 		behaviors:
 			BootstrapTooltip: {}
+			ClickPlayer: {}
 		events    :
 			'click #suggest' : 'suggest'
 			'click #player'  : 'playerModal'
