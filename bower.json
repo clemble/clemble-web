@@ -3,24 +3,24 @@
   "version": "0.10.0",
   "main": "public/javascripts/app.js",
   "dependencies": {
-    "underscore": "~1.7.0",
-    "underscore.string": "~2.4.0",
-    "console-polyfill": "~0.1.0",
+    "underscore": "~1.8.1",
+    "underscore.string": "~3.0.3",
+    "console-polyfill": "~0.2.0",
     "jquery": "~2.1.1",
     "normalize-css": "~3.0.1",
-    "marionette": "~2.3.0",
+    "marionette": "~2.4.0",
     "bootstrap": "~3.3.1",
-    "font-awesome": "~4.2.0",
-    "moment": "~2.7.0",
+    "font-awesome": "~4.3.0",
+    "moment": "~2.9.0",
     "swag": "~0.7.0",
     "backbone.stickit": "~0.8.0",
     "bootstrap-social": "~4.8.0",
-    "backbone-validation": "~0.9.1",
+    "backbone-validation": "~0.11.3",
     "sockjs-client": "~0.3.4",
     "stomp-websocket": "~2.3.3",
     "jquery.cookie": "~1.4.1",
     "jquery.countdown": "~2.0.4",
-    "intl-tel-input": "~3.7.1",
+    "intl-tel-input": "~5.4.0",
     "bootstrap-material-design": "~0.2.2",
     "bootstrap-tour": "~0.10.2",
     "nouislider": "~7.0.10"
@@ -33,7 +33,7 @@
       "dependencies": {
         "underscore": "*"
       },
-      "main": "lib/underscore.string.js"
+      "main": "dist/underscore.string.js"
     },
     "backbone.stickit": {
       "main": "backbone.stickit.js"

@@ -38,8 +38,9 @@
 		getNavigations: ->
 			NAVIGATIONS
 		updateActive: (url) ->
-			NAVIGATIONS.forEach (header) ->
-				header.set('active', _.str.startsWith(url.substring(1), header.get('url')))
+			if (url.length != 0)
+				NAVIGATIONS.forEach (header) ->
+					header.set('active', s.startsWith(url.substring(1), header.get('url')))
 
 	App.vent.on("hash:change", (location) ->
 		API.updateActive(window.location.hash)
