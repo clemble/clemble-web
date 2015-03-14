@@ -10,10 +10,8 @@
 		model:
 			Navigation
 
-	NAVIGATIONS = new Navigations([
-		{name: 'Home', icon: 'fa fa-home', url: 'goal', active: false},
-#		{name: 'Portfolio', icon: 'fa fa-briefcase', url: 'portfolio', active: false}
-	])
+	NAVIGATIONS = new Navigations([ {name: 'Home', icon: 'fa fa-home', url: 'goal', active: false} ])
+	NAVIGATIONS.add(new Navigation({name: 'Victories', icon: 'fa fa-trophy', url: 'victory', active: false}))
 
 	associateCollection = (collection, nav) ->
 		nav.listenTo collection, "sync", () -> nav.set('count', collection.length)
@@ -32,7 +30,7 @@
 	associateCollection(NOTIFICATIONS, NOTIFICATION)
 
 	NAVIGATIONS.add(new Navigation({name: 'Settings', icon: 'fa fa-cogs', url: 'settings', active: false}))
-	NAVIGATIONS.add(new Navigation({name: 'Help', icon: 'fa fa-question', url: 'help', active: false}))
+
 
 	API =
 		getNavigations: ->
