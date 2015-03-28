@@ -39,7 +39,7 @@
 			on_error = () ->
 				console.log('error')
 
-			client.connect('any', 'anypassword', on_connect, on_error, "/")
+			client.connect('clemble', 'clemble', on_connect, on_error, "/")
 
 		subscribe: (channel, postfix, collection, constuctor) ->
 			App.on "#{channel}:created#{postfix}", (event) ->
