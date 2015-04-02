@@ -10,12 +10,27 @@ app = express()
 app.use (err, req, res, next) ->
 	res.send(501, 'EXPRESS SAYS Something broke!')
 
+PROXY_REGISTRY = {}
 
-proxy = new httpProxy.createProxyServer(target: 'http://localhost:8080')
-proxy.on 'error', (err, req, res) ->
-	console.log err.stack
-	res.send(500, 'PROXY SAYS Something broke!')
+registerProxy = (subdomain, port) ->
+	proxy = new httpProxy.createProxyServer(target: "http://127.0.0.1:#{port}")
+	proxy.on 'error', (err, req, res) ->
+		console.log err.stack
+		res.send(500, "#{port} & #{subdomain} Do not work")
 
+	proxy.tryProxyRequest = (req, res) ->
+			console.log "relaying #{subdomain} #{req.method}:#{req.url} through internal proxy"
+			try
+				proxy.proxyRequest(req, res);
+				console.log "finish relaying #{subdomain} #{req.method}:#{req.url} through internal proxy"
+			catch error
+				console.log "error relaying #{subdomain} #{req.method}:#{req.url} through internal proxy"
+				res.send(500, error)
+
+	PROXY_REGISTRY[subdomain] = proxy
+
+
+registerProxy('registration', 8080)
 
 app.use('/fonts/', express.static __dirname + '/public/fonts')
 app.use('/images/', express.static __dirname + '/public/images')
@@ -37,15 +52,9 @@ exports.startServer = (port, path, callback) ->
 	app.get '/', (req, res) ->
 		res.sendfile './public/index.html'
 
-
 	app.all '/*', (req, res)->
-		console.log "relaying #{req.method}:#{req.url} through internal proxy"
-		try
-			proxy.proxyRequest(req, res);
-			console.log "finish relaying #{req.method}:#{req.url} through internal proxy"
-		catch error
-			console.log "error relaying #{req.method}:#{req.url} through internal proxy"
-			res.send(500, error)
+		subdomain = req.headers.host.substring(0, req.headers.host.indexOf("."))
+		proxy = PROXY_REGISTRY[subdomain].tryProxyRequest(req, res)
 
 
 	app.listen port
