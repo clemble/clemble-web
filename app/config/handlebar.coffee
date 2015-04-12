@@ -86,8 +86,8 @@ do(Handlebars, Swag, _) ->
 	}
 
 #	TODO remove after proper refactoring
-	Handlebars.registerHelper "hostUrl", (path) ->
-		hostUrl = "http://api.#{window.location.host}#{path}"
+	Handlebars.registerHelper "hostUrl", (domain, path) ->
+		hostUrl = "http://#{domain}.#{window.location.host}/#{path}"
 		new Handlebars.SafeString(hostUrl)
 
 	Handlebars.registerHelper 'toURL', (url) ->
@@ -148,19 +148,19 @@ do(Handlebars, Swag, _) ->
 
 
 	Handlebars.registerHelper 'profileImage', (player) ->
-		new Handlebars.SafeString("<image player='#{player}' src='http://api.#{window.location.host}/profile/#{player}/image' class='img-circle' height='100' width='100'></image>")
+		new Handlebars.SafeString("<image player='#{player}' src='http://profile.#{window.location.host}/#{player}/image' class='img-circle' height='100' width='100'></image>")
 
 	Handlebars.registerHelper 'smallProfileImage', (player) ->
-		new Handlebars.SafeString("<image player='#{player}' src='http://api.#{window.location.host}/profile/#{player}/image/small' class='img-circle' height='50' width='50'></image>")
+		new Handlebars.SafeString("<image player='#{player}' src='http://profile.#{window.location.host}/#{player}/image/small' class='img-circle' height='50' width='50'></image>")
 
 	Handlebars.registerHelper 'microProfileImage', (player) ->
-		new Handlebars.SafeString("<image player='#{player}' src='http://api.#{window.location.host}/profile/#{player}/image/small' class='img-circle' height='30' width='30'></image>")
+		new Handlebars.SafeString("<image player='#{player}' src='http://profile.#{window.location.host}/#{player}/image/small' class='img-circle' height='30' width='30'></image>")
 
 	Handlebars.registerHelper 'profileImageOfSize', (player, size) ->
-		new Handlebars.SafeString("<image player='#{player}' src='http://api.#{window.location.host}/profile/#{player}/image' class='img-circle' height='#{size}' width='#{size}'></image>")
+		new Handlebars.SafeString("<image player='#{player}' src='http://profile.#{window.location.host}/#{player}/image' class='img-circle' height='#{size}' width='#{size}'></image>")
 
 	Handlebars.registerHelper 'myImage', () ->
-		new Handlebars.SafeString("<image src='http://api.#{window.location.host}/profile/my/image' class='img-circle' height='100' width='100'></image>")
+		new Handlebars.SafeString("<image src='http://profile.#{window.location.host}/my/image' class='img-circle' height='100' width='100'></image>")
 
 	Handlebars.registerHelper 'privacyRule', (rule) ->
 		if (rule == "me")

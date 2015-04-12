@@ -10,7 +10,7 @@
 			App.modal.show suggestionView
 		newButton: (player, region) ->
 			suggestionButton = new GoalSuggestionButton()
-			suggestionButton.suggestionUrl = App.Utils.toUrl("/suggestion/player/#{player}")
+			suggestionButton.suggestionUrl = App.Utils.toUrl("suggestion", "player/#{player}")
 			region.show suggestionButton
 
 

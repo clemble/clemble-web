@@ -19,7 +19,7 @@
 			'click #suggest' : 'suggest'
 			'click #player'  : 'playerModal'
 		suggest: () ->
-			url = App.Utils.toUrl("/suggestion/player/#{@model.get('player')}")
+			url = App.Utils.toUrl("suggestion", "player/#{@model.get('player')}")
 			App.request "goal:suggestion:new:modal", url
 		playerModal: () ->
 			App.request "player:show:modal", @model.get('player')

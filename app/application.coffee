@@ -5,8 +5,7 @@
 	App.player = $.cookie("player")
 
 	App.Utils =
-		toUrl: (url) -> "http://api.#{window.location.host}#{url}"
-		toSubdomainUrl: (sub, url) ->"http://#{sub}.#{window.location.host}#{url}"
+		toUrl: (sub, url) -> "http://#{sub}.#{window.location.host}/#{url}"
 
 	App.addRegions
 		contentRegion : "#contentRegion"

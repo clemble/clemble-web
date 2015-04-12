@@ -14,7 +14,7 @@
 	class RegistrationRestore extends Backbone.Model
 		default:
 			email : null
-		url : () -> App.Utils.toUrl "/registration/restore"
+		url : () -> App.Utils.toUrl "registration", "restore"
 
 	class RegistrationRestoreView extends Marionette.ItemView
 		template: require './templates/registration_restore'

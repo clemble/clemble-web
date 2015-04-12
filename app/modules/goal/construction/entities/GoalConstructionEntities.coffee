@@ -11,7 +11,7 @@
 		initialize: () ->
 			@set("timezone", moment().format('Z'))
 		url:
-			App.Utils.toUrl("/construction/construction")
+			App.Utils.toUrl("construction", "construction")
 		validate: (attributes, options) ->
 			if (attributes.goal == undefined)
 				"Goal must be specified" #TODO use generic error code base with multi language support

@@ -17,7 +17,7 @@
 		model: Post
 
 	MY = new Posts()
-	MY.url = App.Utils.toUrl("/feed/my")
+	MY.url = App.Utils.toUrl("feed", "my")
 	App.on "post", (t) ->
 		post = new Post(API.getId(t))
 		MY.remove(post.get("key"))
@@ -39,7 +39,7 @@
 				API.listMy()
 			else
 				feed = new Posts()
-				feed.url = App.Utils.toUrl("/feed/#{player}")
+				feed.url = App.Utils.toUrl("feed", "#{player}")
 				feed.fetch()
 				feed
 

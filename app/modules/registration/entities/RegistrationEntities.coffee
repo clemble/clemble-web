@@ -13,7 +13,7 @@
 			emailOrNickName: ''
 			password: ''
 		url:
-			App.Utils.toSubdomainUrl "registration", "/login"
+			App.Utils.toUrl "registration", "login"
 		validation:
 			password: {
 				required: true
@@ -49,7 +49,7 @@
 			gender            : null
 			birthDate         : ''
 		url: () ->
-			App.Utils.toSubdomainUrl "registration", "/signin"
+			App.Utils.toUrl "registration", "signin"
 		validation:
 			password: {
 				required: true

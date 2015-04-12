@@ -17,7 +17,7 @@
 		default:
 			token     : null
 			password  : null
-		url : () -> App.Utils.toUrl "/registration/reset"
+		url : () -> App.Utils.toUrl "registration", "reset"
 
 	class RegistrationResetView extends Marionette.ItemView
 		template: require './templates/registration_reset'

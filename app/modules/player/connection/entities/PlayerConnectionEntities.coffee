@@ -8,7 +8,7 @@
 		model: PlayerConnection
 
 	MY = new PlayerConnections()
-	MY.url = App.Utils.toUrl("/connection/my")
+	MY.url = App.Utils.toUrl("connection", "my")
 	App.on "player:connection:add:my", (event) ->
 		connection = new PlayerConnection({ player : event.connection })
 		MY.add(connection)
@@ -22,7 +22,7 @@
 				MY
 			else
 				connection = new PlayerConnections()
-				connection.url = App.Utils.toUrl("/connection/#{player}")
+				connection.url = App.Utils.toUrl("connection", "#{player}")
 				connection.fetch()
 				connection
 

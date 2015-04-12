@@ -21,7 +21,7 @@
 
 			App.modal.show roleModal
 		bid: (goalKey) ->
-			url = App.Utils.toUrl("/management/active/#{goalKey}/action")
+			url = App.Utils.toUrl("management", "active/#{goalKey}/action")
 			$.ajax({
 				type: 'POST',
 				url: url,
@@ -57,7 +57,7 @@
 		go: () =>
 			self = @
 			model = @collection.getSelected()
-			url = App.Utils.toUrl("/management/active/#{model.get('goalKey')}/bet")
+			url = App.Utils.toUrl("management", "active/#{model.get('goalKey')}/bet")
 			role = model.get('role')
 			$.ajax({
 				type: 'POST',

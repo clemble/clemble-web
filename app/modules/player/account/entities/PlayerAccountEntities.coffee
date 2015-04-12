@@ -7,7 +7,7 @@
 		idAttribute:
 			'player'
 		urlRoot:
-			App.Utils.toUrl("/payment/account/")
+			App.Utils.toUrl("payment", "account/")
 
 	MY = new PlayerAccount({player: 'my'})
 	App.on "payment:complete:my", (t) ->

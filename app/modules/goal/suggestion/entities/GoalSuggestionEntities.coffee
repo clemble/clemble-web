@@ -23,7 +23,7 @@
 
 	class GoalSuggestions extends Backbone.Collection
 		model : GoalSuggestion
-		url   : App.Utils.toUrl("/suggestion/player/my")
+		url   : App.Utils.toUrl("suggestion", "player/my")
 		fetchIfNeeded: () ->
 			if (!@fetched)
 				@fetched = true
@@ -48,7 +48,7 @@
 
 		newResponse: (model) ->
 			suggestionResponse = new GoalSuggestionResponse()
-			suggestionResponse.url = App.Utils.toUrl("/suggestion/player/my/#{model.get('goalKey')}")
+			suggestionResponse.url = App.Utils.toUrl("suggestion", "player/my/#{model.get('goalKey')}")
 			suggestionResponse
 
 		listMy : () ->
@@ -56,7 +56,7 @@
 
 		listSuggested: (player) ->
 			playerSuggested = new GoalSuggestions()
-			playerSuggested.url = App.Utils.toUrl("/suggestion/suggested/#{player}")
+			playerSuggested.url = App.Utils.toUrl("suggestion", "suggested/#{player}")
 			playerSuggested.fetch()
 			playerSuggested
 

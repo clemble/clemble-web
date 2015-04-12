@@ -13,7 +13,7 @@
 	API =
 		myTags: () ->
 			myTags = new ClembleTags()
-			myTags.url = App.Utils.toUrl("/tag/my")
+			myTags.url = App.Utils.toUrl("tag", "my")
 			myTags.fetch()
 			App.on "tag:added", (event) ->
 				clembleTag = myTags.get(event.tag)
@@ -25,7 +25,7 @@
 
 		getTags: (player) ->
 			playerTags = new ClembleTags()
-			playerTags.url = App.Utils.toUrl("/tag/#{player}")
+			playerTags.url = App.Utils.toUrl("tag", player)
 			playerTags.fetch()
 			playerTags
 

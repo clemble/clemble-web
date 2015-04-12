@@ -22,7 +22,7 @@
 
 	class Notifications extends Backbone.Collection
 		model: Notification
-		url: App.Utils.toUrl("/notification/my")
+		url: App.Utils.toUrl("notification", "my")
 		fetchIfNeeded: () ->
 			if (!@fetched)
 				@fetched = true

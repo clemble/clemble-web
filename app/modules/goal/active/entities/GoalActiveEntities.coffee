@@ -11,7 +11,7 @@
 			context       : null
 		idAttribute: 'goalKey'
 		urlRoot:
-			App.Utils.toUrl('/management/active/')
+			App.Utils.toUrl('management', 'active')
 		parse: (res) ->
 			if (res.bank?)
 				myBet = _.find(res.bank.bets, (bet) -> bet.player == App.player)
@@ -24,7 +24,7 @@
 		model: GoalState
 
 	MY = new GoalStates()
-	MY.url  = App.Utils.toUrl('/management/player/active/my')
+	MY.url  = App.Utils.toUrl('management', 'player/active/my')
 	App.request("listener:subscribe:my", "goal:management", MY, (body) ->
 		new GoalState(API.getId(body))
 	)

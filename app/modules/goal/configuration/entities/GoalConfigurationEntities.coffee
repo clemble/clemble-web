@@ -39,7 +39,7 @@
 			basePercentage  : 0
 			intervalRules   : []
 		url:
-			App.Utils.toUrl('/configuration/my/interval')
+			App.Utils.toUrl('configuration', 'my/interval')
 		initialize: () ->
 			@on "change:intervalRules", (event) ->
 				console.log("event #{JSON.stringify(event.get('intervalRules'))}")
@@ -112,7 +112,7 @@
 			supporterConfiguration: []
 			shareRule: []
 		url:
-			App.Utils.toUrl('/configuration/my/choice')
+			App.Utils.toUrl('configuration', 'my/choice')
 		initialize: () =>
 			self = @
 
@@ -182,7 +182,7 @@
 			@once "sync", () ->
 				@setSelected(self.find((el) -> true))
 		url:
-			App.Utils.toUrl('/configuration/my')
+			App.Utils.toUrl('configuration', 'my')
 		linkTo: (construction) =>
 			construction.set("configuration", @getSelected())
 			construction.listenTo @, "selected", (model) ->

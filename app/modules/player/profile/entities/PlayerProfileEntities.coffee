@@ -11,7 +11,7 @@
 			socialConnections : []   #TODO check that it can't be assigned manually
 		idAttribute: 'player'
 		urlRoot: () ->
-			App.Utils.toUrl("/profile/")
+			App.Utils.toUrl("profile", "")
 		validation: {
 			nickName: {
 				maxLength: 64
@@ -70,7 +70,7 @@
 				MY
 			else
 				profile = new PlayerProfile(player: player)
-				profile.url = App.Utils.toUrl("/profile/#{player}")
+				profile.url = App.Utils.toUrl("profile", player)
 				profile
 
 	App.reqres.setHandler 'player:profile:entities:new', () -> API.new()
