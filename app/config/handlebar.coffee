@@ -90,8 +90,8 @@ do(Handlebars, Swag, _) ->
 		hostUrl = "http://#{domain}.#{window.location.host}/#{path}"
 		new Handlebars.SafeString(hostUrl)
 
-	Handlebars.registerHelper 'toURL', (url) ->
-		new Handlebars.SafeString("http://api.#{window.location.host}#{url}")
+	Handlebars.registerHelper 'toURL', (subdomain, url) ->
+		new Handlebars.SafeString("http://#{subdomain}.#{window.location.host}/#{url}")
 
 	Handlebars.registerHelper 'showReminders', (o) ->
 		reminder = ""
