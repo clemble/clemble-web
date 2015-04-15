@@ -6,18 +6,18 @@
 	<button type="button" class="btn btn-lg btn-material-blue" signin="google"><i class="fa fa-1x fa-google-plus-square"></i></button>
 </div>
 
-<form id="facebook" action='{{toURL "/social/signin/facebook"}}' method='post'>
+<form id="facebook" action='{{toURL "social" "signin/facebook"}}' method='post'>
 	<input type='hidden' name='scope' value='public_profile, email, user_friends, publish_stream, publish_actions' />
 </form>
 
-<form id="twitter" action='{{toURL "/social/signin/twitter"}}' method='post'>
+<form id="twitter" action='{{toURL "social" "signin/twitter"}}' method='post'>
 </form>
 
-<form id="vkontakte" action='{{toURL "/social/signin/vkontakte"}}' method='post'>
+<form id="vkontakte" action='{{toURL "social" "signin/vkontakte"}}' method='post'>
 	<input type='hidden' name='scope' value='notify,notifications,email,offline'/>
 </form>
 
-<form id="google" action='{{toURL "/social/signin/google"}}' method='post'>
+<form id="google" action='{{toURL "social" "signin/google"}}' method='post'>
 	<input type='hidden' name='scope' value='email https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.me https://www.googleapis.com/auth/tasks https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/latitude.all.best https://www.googleapis.com/auth/plus.circles.read' />
 	<input type='hidden' name='request_visible_actions' value='http://schemas.google.com/AddActivity http://schemas.google.com/BuyActivity http://schemas.google.com/CheckInActivity http://schemas.google.com/CommentActivity http://schemas.google.com/CreateActivity http://schemas.google.com/DiscoverActivity http://schemas.google.com/ListenActivity http://schemas.google.com/ReserveActivity http://schemas.google.com/ReviewActivity http://schemas.google.com/WantActivity'/>
 	<input type='hidden' name='access_type' value='offline'/>
