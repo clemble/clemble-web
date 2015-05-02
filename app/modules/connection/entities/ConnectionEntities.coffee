@@ -1,4 +1,4 @@
-@App.module "PlayerConnectionApp.Entities", (Entities, App, Backbone, Marionette, $, _) ->
+@App.module "ConnectionApp.Entities", (Entities, App, Backbone, Marionette, $, _) ->
 
 	class PlayerConnection extends Backbone.Model
 		parse: (res) ->

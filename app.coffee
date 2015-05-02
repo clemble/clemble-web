@@ -77,5 +77,5 @@ exports.startServer = (port, path, callback) ->
 		proxy = PROXY_REGISTRY[subdomain].tryProxyRequest(req, res)
 
 
-	app.listen port
 	console.log "Listening on port: #{port}"
+	app.listen port, callback

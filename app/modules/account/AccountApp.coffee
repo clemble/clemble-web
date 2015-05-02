@@ -1,7 +1,7 @@
 require './entities/AccountEntities'
 require './show/AccountShow'
 
-@App.module "AccountApp", (PlayerAccountApp, App, Backbone, Marionette, $, _) ->
+@App.module "AccountApp", (AccountApp, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
 
 	API =

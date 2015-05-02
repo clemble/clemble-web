@@ -1,4 +1,4 @@
-@App.module "PlayerConnectionApp.List", (List, App, Backbone, Marionette, $, _) ->
+@App.module "ConnectionApp.List", (List, App, Backbone, Marionette, $, _) ->
 
 	Controller =
 		showMy: (region) ->

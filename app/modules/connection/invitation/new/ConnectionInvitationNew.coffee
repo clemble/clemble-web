@@ -1,4 +1,4 @@
-@App.module "PlayerConnectionInvitationApp.New", (New, App, Backbone, Marionette, $, _) ->
+@App.module "ConnectionInvitationApp.New", (New, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
 
 	Controller =

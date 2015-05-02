@@ -1,4 +1,4 @@
-@App.module "PlayerConnectionInvitationApp.Entities", (Entities, App, Backbone, Marionette, $, _) ->
+@App.module "ConnectionInvitationApp.Entities", (Entities, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
 
 	class Invitation extends Backbone.Model
