@@ -1,4 +1,4 @@
-@App.module "PlayerProfileApp.New", (New, App, Backbone, Marionette, $, _) ->
+@App.module "ProfileApp.New", (New, App, Backbone, Marionette, $, _) ->
 
 	Controller =
 		new: (region, profile) ->

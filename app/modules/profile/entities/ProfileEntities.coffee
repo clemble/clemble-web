@@ -1,4 +1,4 @@
-@App.module "PlayerProfileApp.Entities", (Entities, App, Backbone, Marionette, $, _) ->
+@App.module "ProfileApp.Entities", (Entities, App, Backbone, Marionette, $, _) ->
 
 	class PlayerProfile extends Backbone.Model
 		defaults:

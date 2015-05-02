@@ -1,8 +1,8 @@
-require './entities/PlayerProfileEntities'
-require './new/PlayerProfileNew'
-require './show/PlayerProfileShow'
+require './entities/ProfileEntities'
+require './new/ProfileNew'
+require './show/ProfileShow'
 
-@App.module "PlayerApp.PlayerProfileApp", (PlayerProfileApp, App, Backbone, Marionette, $, _) ->
+@App.module "ProfileApp", (PlayerProfileApp, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
 
 	API =

@@ -1,4 +1,4 @@
-@App.module "PlayerProfileApp.Show", (Show, App, Backbone, Marionette, $, _) ->
+@App.module "ProfileApp.Show", (Show, App, Backbone, Marionette, $, _) ->
 
 	Controller =
 		show: (player, region) ->

@@ -1,5 +1,5 @@
-require "./entities/PlayerPhoneEntities"
-require "./new/PlayerPhoneNew"
+require "./entities/SettingsPhoneEntities"
+require "./new/SettingsPhoneNew"
 
 @App.module "PlayerPhoneApp", (PlayerPhoneApp, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false

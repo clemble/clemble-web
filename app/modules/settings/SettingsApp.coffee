@@ -1,4 +1,5 @@
 require './show/SettingsShow'
+require './phone/SettingsPhoneApp'
 
 @App.module "SettingsApp", (SettingsApp, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
