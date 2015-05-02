@@ -50,6 +50,8 @@
 			birthDate         : ''
 		url: () ->
 			App.Utils.toUrl "registration", "signin"
+		initialize: () ->
+			@set("timezone", moment().format('Z'))
 		validation:
 			password: {
 				required: true
@@ -81,6 +83,7 @@
 			credentials
 		newRegistration: () ->
 			registration = new PlayerRegistrationRequest()
+			registration.set("timezone", moment().format('Z'))
 			registration
 
 	App.reqres.setHandler 'registration:entities:login:new', () -> API.newLogin()

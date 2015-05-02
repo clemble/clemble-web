@@ -16,7 +16,7 @@
 			playerModal.on "show", () ->
 				App.request "feed:list", player, playerModal.postRegion
 				App.request "player:profile:show", player, playerModal.profileRegion
-				App.request "player:account:show", player, playerModal.accountRegion
+				App.request "account:show", player, playerModal.accountRegion
 				App.request "goal:suggestion:new:button", player, playerModal.suggestButtonRegion
 			App.modal.show playerModal
 

@@ -1,6 +1,6 @@
-@App.module "PlayerAccountApp", (PlayerAccountApp, App, Backbone, Marionette, $, _) ->
+@App.module "AccountApp", (AccountApp, App, Backbone, Marionette, $, _) ->
 
-	class PlayerAccount extends Backbone.Model
+	class Account extends Backbone.Model
 		defaults:
 			player: null,
 			cash: null
@@ -9,7 +9,7 @@
 		urlRoot:
 			App.Utils.toUrl("payment", "account/")
 
-	MY = new PlayerAccount({player: 'my'})
+	MY = new Account({player: 'my'})
 	App.on "payment:complete:my", (t) ->
 		# Copying account
 		MY.set(t.account)
@@ -33,10 +33,10 @@
 			if (player == 'my')
 				MY
 			else
-				account = new PlayerAccount(player: player)
+				account = new Account(player: player)
 				account.on "all", (evt) -> console.log("account > #{evt}")
 				account.fetch()
 				account
 
-	App.reqres.setHandler "player:account:entities:my", () -> API.get('my')
-	App.reqres.setHandler "player:account:entities:get", (player) -> API.get(player)
+	App.reqres.setHandler "account:entities:my", () -> API.get('my')
+	App.reqres.setHandler "account:entities:get", (player) -> API.get(player)

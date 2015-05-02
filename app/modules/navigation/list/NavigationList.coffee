@@ -32,8 +32,8 @@
 					collection: navs
 				layout.menuApp.show goalList
 
-				App.request "player:account:show:my:nav", layout.accountApp
-				App.request "player:account:show:my:nav:mobile", layout.mAccountApp
+				App.request "account:show:my:nav", layout.accountApp
+				App.request "account:show:my:nav:mobile", layout.mAccountApp
 			region.show layout
 
 	class RegistrationNavigation extends Marionette.ItemView
