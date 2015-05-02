@@ -2,7 +2,7 @@
 
 	Controller =
 		show: (player, region) ->
-			player = App.request "player:profile:entities:get", player
+			player = App.request "profile:entities:get", player
 			playerView = new Player
 				model: player
 			region.show playerView
@@ -14,7 +14,6 @@
 			'change' : 'render'
 		events:
 			'click #phone' : () -> App.request "player:phone:new:modal"
-			'click #email' : () -> App.request "player:email:new:modal"
 
-	App.reqres.setHandler "player:profile:show", (player, region) -> Controller.show(player, region)
-	App.reqres.setHandler "player:profile:show:my", (region) -> Controller.show('my', region)
+	App.reqres.setHandler "profile:show", (player, region) -> Controller.show(player, region)
+	App.reqres.setHandler "profile:show:my", (region) -> Controller.show('my', region)

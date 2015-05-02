@@ -73,9 +73,9 @@
 				profile.url = App.Utils.toUrl("profile", player)
 				profile
 
-	App.reqres.setHandler 'player:profile:entities:new', () -> API.new()
-	App.reqres.setHandler 'player:profile:entities:my', () -> API.get('my')
-	App.reqres.setHandler 'player:profile:entities:get', (player) -> API.get(player)
-	App.reqres.setHandler 'player:profile:entities:my:social': () -> MY.get('socialConnections')
-	App.reqres.setHandler 'player:profile:entities:connections:my', () -> MY_CONNECTIONS
+	App.reqres.setHandler 'profile:entities:new', () -> API.new()
+	App.reqres.setHandler 'profile:entities:my', () -> API.get('my')
+	App.reqres.setHandler 'profile:entities:get', (player) -> API.get(player)
+	App.reqres.setHandler 'profile:entities:my:social': () -> MY.get('socialConnections')
+	App.reqres.setHandler 'profile:entities:social:connections:my', () -> MY_CONNECTIONS
 

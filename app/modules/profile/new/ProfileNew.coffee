@@ -28,4 +28,4 @@
 		}
 
 
-	App.reqres.setHandler 'player:profile:new', (region, profile) -> Controller.new(region, profile)
+	App.reqres.setHandler 'profile:new', (region, profile) -> Controller.new(region, profile)

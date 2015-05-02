@@ -1,4 +1,4 @@
-@App.module "PlayerSocialApp.List", (List, App, Backbone, Marionette, $, _) ->
+@App.module "SettingsSocialApp.List", (List, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
 
 	class SocialConnections extends Marionette.ItemView
@@ -8,16 +8,15 @@
 		events:
 			"click [signin]" : "socialLogin"
 			'click #phone' : () -> App.request "player:phone:new:modal"
-			'click #email' : () -> App.request "player:email:new:modal"
 		socialLogin: (evt) =>
 			signin = evt.currentTarget.getAttribute("signin")
 			@$("##{signin}").submit()
 
 	Controller =
 		listMy: (region) ->
-			profile = App.request("player:profile:entities:my")
+			profile = App.request("profile:entities:my")
 			socialConnections = new SocialConnections
 				model: profile
 			region.show socialConnections
 
-	App.reqres.setHandler "player:social:list:my", (region) -> Controller.listMy(region)
+	App.reqres.setHandler "settings:social:list:my", (region) -> Controller.listMy(region)

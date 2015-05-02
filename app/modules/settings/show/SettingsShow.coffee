@@ -7,13 +7,15 @@
 		regions:
 			socialConnectApp  : "#socialConnectApp"
 			tagApp            : "#tagApp"
+			passwordApp       : "#passwordApp"
 
 	Controller =
 		show: (region) ->
 			layout = new SettingsShowLayout()
 			layout.on "show", () ->
-				App.request "player:social:list:my", layout.socialConnectApp
+				App.request "settings:social:list:my", layout.socialConnectApp
 				App.request "tag:show:my", layout.tagApp
+				App.request "settings:password", layout.passwordApp
 				console.log("Showing layout")
 			region.show layout
 

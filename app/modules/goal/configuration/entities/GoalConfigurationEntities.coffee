@@ -28,7 +28,7 @@
 			@selected
 
 
-	MY_CONNECTIONS = App.request 'player:profile:entities:connections:my'
+	MY_CONNECTIONS = App.request 'profile:entities:social:connections:my'
 
 	class IntervalGoalConfigurationBuilder extends Backbone.Model
 		defaults:
