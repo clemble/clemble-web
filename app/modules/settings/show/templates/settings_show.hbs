@@ -1,14 +1,36 @@
 <div class="col-md-offset-3 col-md-6">
 	<div id="socialConnectApp"></div>
 	<div id="tagApp"></div>
-	<div id="passwordApp" ng-app="password">
-		{{password}}
-		<div class="thumbnail container-fluid" ng-controller="SettingsPassword as p">
-			<div class="caption">
-				<h5>Password</h5>
-				<div id="caption"></div>
-				\{{text}}
-			</div>
+	<div id="passwordApp" ng-app="settings.password">
+		<div class="thumbnail">
+			<h4>Password</h4>
+			<form name="passwordForm" ng-controller="SettingsPasswordController as password" novalidate>
+				<div class="form-group" >
+					<input class="form-control"
+						name="oldPassword"
+						placeholder="Old Password"
+						ng-model="m.oldPassword"
+						type="password" integer>
+				</div>
+				<div class="form-group" >
+					<input class="form-control"
+						name="newPassword"
+						placeholder="New Password"
+						ng-model="m.password"
+						required
+						type="password">
+				</div>
+				<div class="form-group" >
+					<input class="form-control"
+						name="newPasswordRepeat"
+						ng-model="newPasswordRepeat"
+						placeholder="Repeat New Password"
+						type="password"
+						match="m.password">
+					<span ng-show="passwordForm.newPasswordRepeat.$error.match">Do not match</span>
+				</div>
+				<button class="btn btn-lg" ng-click="changePassword()">\{{saveButton}}</button>
+			</form>
 		</div>
 	</div>
 </div>
