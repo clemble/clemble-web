@@ -3,7 +3,6 @@ match = ($parse) ->
 		require: '?ngModel',
 		restrict: 'A',
 		link: (scope, elem, attrs, ctrl) ->
-			console.log("Match called")
 			if(!ctrl)
 				console.warn('Match validation requires ngModel to be on the element')
 
