@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "brunch watch --server",
-    "test": "karma start karma.conf.js"
+    "test": "karma start karma.conf.js --single-run"
   },
   "dependencies": {
     "auto-reload-brunch": ">= 1.0 < 1.8",
