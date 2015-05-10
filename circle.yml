@@ -10,12 +10,12 @@ dependencies:
     - npm install -g bower
     - npm install
     - bower -F install
+    - brunch build # --production
 
 deployment:
   hub:
     branch: master
     commands:
-      - brunch build # --production
       - docker info
       - docker build -t clemble/web .
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
