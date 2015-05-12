@@ -13,7 +13,7 @@
 			Controller.listWithHash(window.location.hash, region)
 
 		listWithHash: (hash, region) ->
-			if (hash.indexOf("#registration") != -1)
+			if (hash.indexOf("registration") != -1)
 				console.log("Drawing registration")
 				Controller.listRegistration(region)
 			else

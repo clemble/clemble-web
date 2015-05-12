@@ -1,22 +1,19 @@
-<h4><small>Login</small></h4>
-<span class="help-block hidden"></span>
-<div class="inputs">
-	<div class="form-control-wrapper">
-		<input id="emailOrNickName" type="text" class="form-control" placeholder="email or nickname">
-		<span class="material-input"></span>
-	</div>
-	<div class="form-control-wrapper">
-		<input id="password" type="password" class="form-control" placeholder="password">
-		<span class="material-input"></span>
-	</div>
-	<a href="#registration/restore" class="pull-right">Forgot Password</a>
-</div>
-<br/>
-<br/>
-<div class="col-md-12">
-	<div class="btn-group-justified">
-		<a id="signIn" class="btn btn-material-blue">Sign In</a>
-		<a href="#registration/signUp" class="btn btn-material-orange">Join</a>
-	</div>
+<div id="passwordApp" ng-app="registration.login">
+	<form name="form" ng-controller="RegistrationLoginController as login" novalidate>
+		<md-content>
+			<md-input-container>
+				<label>Email</label>
+				<input ng-model="login.model.emailOrNickName" type="email" required>
+			</md-input-container>
+			<md-input-container>
+				<label>Password</label>
+				<input ng-model="login.model.password" type="password" required>
+			</md-input-container>
+		</md-content>
+		<section layout="row" layout-sm="column" layout-align="center center">
+			<md-button class="md-raised md-primary" ng-click="login.save(model)">Sign In</md-button>
+			<md-button class="md-primary" ng-href="#registration/signUp">Join</md-button>
+		</section>
+	</form>
 </div>
 

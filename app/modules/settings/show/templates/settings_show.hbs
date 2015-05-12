@@ -5,37 +5,31 @@
 		<div class="thumbnail">
 			<h4>Password</h4>
 			<form name="passwordForm" ng-controller="SettingsPasswordController as password" novalidate>
-				<div class="form-group" >
-					<input class="form-control"
-						name="oldPassword"
-						placeholder="Old Password"
-						ng-model="password.m.oldPassword"
-						type="password">
-				</div>
-				<div class="form-group" >
-					<input class="form-control"
-						name="newPassword"
-						placeholder="New Password"
-						type="password"
-						ng-model="password.m.password"
-						required>
-					<div ng-show="passwordForm.$submitted">
-						<span ng-show="passwordForm.newPassword.$error.required" class="error">Specify new password</span>
+				<md-input-container>
+					<label>Old Password</label>
+					<input name="oldPassword" type="password" ng-model="password.m.oldPassword">
+				</md-input-container>
+				<md-input-container>
+					<label>New Password</label>
+					<input name="newPassword" type="password" ng-model="password.m.password" required>
+					<div ng-messages="passwordForm.newPassword.$error">
+						<span ng-message="required" class="error">Specify new password</span>
 					</div>
-				</div>
-				<div class="form-group" >
+				</md-input-container>
+				<md-input-container>
+					<label>Repeat New Password</label>
 					<input class="form-control"
 						name="newPasswordRepeat"
 						ng-model="password.newPasswordRepeat"
-						match="password.m.password"
+
 						required
 						placeholder="Repeat New Password"
 						type="password">
-					<div ng-show="passwordForm.$submitted">
-						<span ng-show="passwordForm.newPasswordRepeat.$error.required">Repeat password please</span>
-						<span ng-show="passwordForm.newPasswordRepeat.$error.match">Do not match</span>
+					<div ng-messages="passwordForm.newPasswordRepeat.$error">
+						<span ng-message="required">Repeat password please</span>
+						<span ng-message="match">Do not match</span>
 					</div>
-				</div>
+				</md-input-container>
 				<button class="btn btn-lg" ng-click="password.changePassword()">\{{password.saveButton}}</button>
 			</form>
 		</div>

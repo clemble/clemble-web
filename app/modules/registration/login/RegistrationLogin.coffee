@@ -1,3 +1,7 @@
+require "./RegistrationLogin.module"
+require "./RegistrationLogin.service"
+require "./RegistrationLogin.controller"
+
 @App.module "RegistrationApp.Login", (Login, App, Backbone, Marionette, $, _) ->
 
 	Controller =
@@ -10,15 +14,7 @@
 
 	class LoginSignIn extends Marionette.ItemView
 		template: require './templates/login'
-		bindings:
-			'#emailOrNickName'  : 'emailOrNickName',
-			'#password'         : 'password'
-		behaviors:
-			StickIt         : {}
-			StickValidation : {}
-			DisplayError    : {}
-			SaveOnTextEnter: {}
-		events:
-			'click #signIn': () -> @model.save()
+		onShow: () ->
+			angular.bootstrap(@el, ['ngMessages', 'registration.login'])
 
 	App.reqres.setHandler 'registration:login:show:signIn', (region) -> Controller.signIn(region)

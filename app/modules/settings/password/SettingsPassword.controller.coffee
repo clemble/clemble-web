@@ -9,6 +9,7 @@ SettingsPasswordController = ($scope, password) ->
 			vm.saveButton = "Saving ..."
 			password.save(vm.m, () ->
 				vm.m = {}
+				vm.newPasswordRepeat=undefined
 				vm.saveButton = "Done"
 			, () ->
 				vm.saveButton = "Invalid"
