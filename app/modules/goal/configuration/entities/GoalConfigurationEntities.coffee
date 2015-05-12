@@ -59,7 +59,7 @@
 								newShareRule = _.clone(intervalRule.rule)
 								newShareRule.providers = _.uniq(_.union(configuration.shareRule.providers, intervalRule.rule.providers))
 								configuration.shareRule = newShareRule
-							else if (intervalRule.rule.type == "rule:timeout")
+							else if (intervalRule.rule.type == "rule:timeout:move")
 								configuration.moveTimeoutRule = intervalRule.rule
 							else if (intervalRule.rule.type.indexOf("rule:bet") != -1)
 								configuration.betRule = intervalRule.rule

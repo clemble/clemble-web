@@ -18,6 +18,8 @@ do(Handlebars, Swag, _) ->
 				"--"
 			else if (money.currency == "point")
 				"<span class='fa fa-usd'></span> #{money.amount}"
+			else if (money.currency == "inspiration")
+				"<span class='fa fa-bolt'></span> #{money.amount}"
 			else
 				"<span class='fa fa-euro'></span> #{money.amount}"
 		humanTime: (obj) ->
@@ -63,7 +65,7 @@ do(Handlebars, Swag, _) ->
 					'fa fa-users'
 			else if (rule.type == "rule:role:configuration")
 				'fa fa-ticket'
-			else if (rule.type == "rule:timeout")
+			else if (rule.type == "rule:timeout:move")
 				if (rule.timeoutCalculator.type == "eod")
 					ruleDay = rule.timeoutCalculator.days
 					if (ruleDay == 1)
@@ -72,7 +74,7 @@ do(Handlebars, Swag, _) ->
 						'fa fa-adjust'
 					else
 						'fa fa-circle-thin'
-				else if (rule.timeoutCalculator.type == "move")
+				else if (rule.timeoutCalculator.type == "limit")
 					'fa fa-clock-o'
 				else
 				 'fa fa-ban'

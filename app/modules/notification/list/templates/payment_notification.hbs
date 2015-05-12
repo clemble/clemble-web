@@ -1,20 +1,20 @@
 <div class="row-picture">
 	{{#is source.type "payment:bonus:social:discovery"}}
 		{{smallProfileImage source.discovered}}
+	{{else}}{{#is source.type "payment:bonus:social:add"}}
+		<i class="{{socialIcon source.provider}} fa-3x"></i>
+	{{else}}{{#is source.type "payment:bonus:email:verified"}}
+		<i class="{{socialIcon "email"}} fa-3x"></i>
+	{{else}}{{#is source.type "payment:bonus:phone:verified"}}
+		<i class="{{socialIcon "phone"}} fa-3x"/>
+	{{else}}{{#is source.type "payment:bonus:goal:reached"}}
+		<i class="fa fa-3x fa-bolt"/>
 	{{else}}
-		{{#is source.type "payment:bonus:social:add"}}
-			<i class="{{socialIcon source.provider}} fa-3x"></i>
-		{{else}}
-			{{#is source.type "payment:bonus:email:verified"}}
-				<i class="{{socialIcon "email"}} fa-3x"></i>
-			{{else}}
-				{{#is source.type "payment:bonus:phone:verified"}}
-					<i class="{{socialIcon "phone"}} fa-3x"/>
-				{{else}}
-					<i class="fa fa-3x fa-bitcoin"/>
-				{{/is}}
-			{{/is}}
-		{{/is}}
+		<i class="fa fa-3x fa-bitcoin"/>
+	{{/is}}
+	{{/is}}
+	{{/is}}
+	{{/is}}
 	{{/is}}
 </div>
 <div class="row-content">
