@@ -3,15 +3,15 @@
 		<md-content>
 			<md-input-container>
 				<label>Email</label>
-				<input ng-model="login.model.emailOrNickName" type="email" required>
+				<input name="email" ng-model="login.model.email" type="email" required>
 			</md-input-container>
 			<md-input-container>
 				<label>Password</label>
-				<input ng-model="login.model.password" type="password" required>
+				<input name="password" ng-model="login.model.password" type="password" required>
 			</md-input-container>
 		</md-content>
 		<section layout="row" layout-sm="column" layout-align="center center">
-			<md-button class="md-raised md-primary" ng-click="login.save(model)">Sign In</md-button>
+			<md-button class="md-raised md-primary" ng-click="login.save(login, model)">Sign In</md-button>
 			<md-button class="md-primary" ng-href="#registration/signUp">Join</md-button>
 		</section>
 	</form>
