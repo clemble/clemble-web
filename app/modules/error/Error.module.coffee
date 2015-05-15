@@ -1,3 +1,3 @@
 angular.
-	module('registration.login', ['ngMaterial', 'ngMessages', 'ngResource']).
+	module('clemble.error', ['ngResource']).
 	config(($httpProvider) -> $httpProvider.defaults.withCredentials = true)

@@ -51,6 +51,8 @@ registerProxy('profile', 10012)
 registerProxy('social', 10014)
 registerProxy('tag', 10016)
 
+registerProxy('log', 10017)
+
 
 app.use('/fonts/', express.static __dirname + '/public/fonts')
 app.use('/images/', express.static __dirname + '/public/images')

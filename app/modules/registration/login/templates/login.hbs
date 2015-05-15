@@ -1,13 +1,30 @@
 <div id="passwordApp" ng-app="registration.login">
 	<form name="form" ng-controller="RegistrationLoginController as login" novalidate>
 		<md-content>
+			<div ng-show="form.$submitted" ng-messages="form.$error">
+				<div ng-message="server">
+					<h1 class="error">We have technical Problem.</h1>
+					<h1 class="error">Come later.</h1>
+				</div>
+			</div>
 			<md-input-container>
 				<label>Email</label>
-				<input name="email" ng-model="login.model.email" type="email" required>
+				<input name="email" ng-model="login.model.email" type="email" required unknown>
+				<div ng-show="form.$submitted || form.email.$dirty" ng-messages="form.email.$error">
+					<div ng-message="required">Email is required.</div>
+					<div ng-message="unknown">No user with this email exists.</div>
+				</div>
 			</md-input-container>
 			<md-input-container>
 				<label>Password</label>
-				<input name="password" ng-model="login.model.password" type="password" required>
+				<input name="password" ng-model="login.model.password" type="password" required ng-minlength="6" ng-maxlength="64" weak incorrect>
+				<div ng-show="form.$submitted || form.password.$dirty" ng-messages="form.password.$error">
+					<div ng-message="required">Password is required.</div>
+					<div ng-message="minlength">Minimum password is 6 symbol.</div>
+					<div ng-message="maxlength">Maximum password is 64 symbol.</div>
+					<div ng-message="weak">Password is too weak.</div>
+					<div ng-message="incorrect">Password is wrong.</div>
+				</div>
 			</md-input-container>
 		</md-content>
 		<section layout="row" layout-sm="column" layout-align="center center">

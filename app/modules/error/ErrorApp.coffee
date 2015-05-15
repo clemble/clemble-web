@@ -1,3 +1,5 @@
+require './Error.module'
+require './Error.service'
 require './show/ErrorShow'
 
 @App.module "ErrorApp", (ErrorApp, App, Backbone, Marionette, $, _) ->
