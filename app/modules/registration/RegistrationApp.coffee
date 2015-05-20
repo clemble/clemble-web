@@ -1,7 +1,7 @@
 require './entities/RegistrationEntities'
 require './login/RegistrationLogin'
 require './signUp/RegistrationSignUp'
-require './social/RegistrationSocialApp'
+require './social/RegistrationSocial'
 require './show/RegistrationShow'
 require './restore/RegistrationRestore'
 require './reset/RegistrationReset'

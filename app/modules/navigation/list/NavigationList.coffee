@@ -22,7 +22,7 @@
 
 		listRegistration: (region) ->
 			registrationList = new RegistrationNavigation()
-			region.show(registrationList)
+			region.clean
 
 		listGoal: (region) ->
 			layout = new NavigationLayout()

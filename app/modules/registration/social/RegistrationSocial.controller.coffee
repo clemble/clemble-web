@@ -1,39 +1,42 @@
-RegistrationLoginController = ($scope, $location, login, ClembleError) ->
-	self = @
+RegistrationSocialController = ($scope, $http) ->
 
-	self.model = new login
-	self.save = () ->
-		console.log("Save Pressed")
-		if (!$scope.form.$valid)
-			console.log("Invalid")
-		else
-			console.log("Saving #{JSON.stringify(self.model)}")
-			self.model.$save(
-				() -> window.location = '#goal',
-				(error) ->
-					if (error.data?)
-						_.each(error.data.fields, (e) ->
-							if($scope.form[e.field].$validators[e.code]?)
-								$scope.form[e.field].$dirty = true
-								$scope.form[e.field].$setValidity(e.code, false)
-							else
-								console.error("#{e.code} validator is missing")
-								new ClembleError({
-									location  : window.location.toString()
-									module    : 'registration'
-									field     : e.field
-									code      : e.code
-									error     : "Validator #{e.code} for #{e.field} is missing"
-								}).$save()
-						)
-					else
-						$scope.form.$setValidity("server", false)
-			)
+	signIn = (url, data) ->
+		form = document.createElement("form")
+		form.setAttribute("action", url)
+		form.setAttribute("method", "post")
+		for name, value of data
+			hiddenField = document.createElement("input")
+			hiddenField.setAttribute("name", name);
+			hiddenField.setAttribute("value", value)
+			form.appendChild(hiddenField)
+			console.log("Appending #{name} with #{value}")
+		form.submit()
 
-RegistrationLoginController.$inject = ['$scope', '$location', 'RegistrationLogin', 'ClembleError']
+	$scope.loginFacebook = () ->
+		url = App.Utils.toUrl("social", "signin/facebook")
+		signIn(url, { scope: "public_profile, email, user_friends, publish_stream, publish_actions" })
+	$scope.loginTwitter = () ->
+		url = App.Utils.toUrl("social", "signin/twitter")
+		signIn(url, {})
+	$scope.loginVK = () ->
+		url = App.Utils.toUrl("social", "signin/vkontakte")
+		signIn(url, { scope: "notify,notifications,email,offline" })
+	$scope.loginGoogle = () ->
+		url = App.Utils.toUrl("social", "signin/google")
+		console.log("Login Google called #{url}")
+		signIn(url, {
+			scope: "email https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/plus.me https://www.googleapis.com/auth/tasks https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/latitude.all.best https://www.googleapis.com/auth/plus.circles.read"
+			request_visible_actions: "http://schemas.google.com/AddActivity http://schemas.google.com/BuyActivity http://schemas.google.com/CheckInActivity http://schemas.google.com/CommentActivity http://schemas.google.com/CreateActivity http://schemas.google.com/DiscoverActivity http://schemas.google.com/ListenActivity http://schemas.google.com/ReserveActivity http://schemas.google.com/ReviewActivity http://schemas.google.com/WantActivity"
+			access_type: "offline"
+		})
+	$scope.loginLinkedIn = () ->
+		url = App.Utils.toUrl("social", "signin/linkedin")
+		console.log("Login LinkedIn called #{url}")
+
+RegistrationSocialController.$inject = ['$scope', '$http']
 
 angular.
-	module('registration.login').
-	controller('RegistrationLoginController', RegistrationLoginController)
+	module('registration.social').
+	controller('RegistrationSocialController', RegistrationSocialController)
 
 

@@ -5,7 +5,6 @@ Controller =
 			template: template
 			model: model
 		region.show loginView
-		login
 
 class AngularContainer extends Marionette.ItemView
 	onShow: () =>
