@@ -1,4 +1,4 @@
-@App.module "RegistrationApp.RegistrationSocialApp.Facebook", (Facebook, App, Backbone, Marionette, $, _) ->
+@App.module "RegistrationApp.Facebook", (Facebook, App, Backbone, Marionette, $, _) ->
 
 	Controller =
 		socialRegistration: (region) ->
