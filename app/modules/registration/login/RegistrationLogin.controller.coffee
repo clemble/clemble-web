@@ -17,6 +17,7 @@ RegistrationLoginController = ($scope, $location, login, ClembleError) ->
 								$scope.form[e.field].$dirty = true
 								$scope.form[e.field].$setValidity(e.code, false)
 							else
+								console.error("#{e.code} validator is missing")
 								new ClembleError({
 									location  : window.location.toString()
 									module    : 'registration'
