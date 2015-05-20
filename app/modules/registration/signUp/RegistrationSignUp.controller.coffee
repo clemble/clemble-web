@@ -1,5 +1,5 @@
-RegistrationLoginController = ($scope, login, ClembleError) ->
-	$scope.model = new login
+RegistrationSignUpController = ($scope, signUp, ClembleError) ->
+	$scope.model = new signUp
 	$scope.save = () ->
 		if ($scope.form.$valid)
 			$scope.model.$save(
@@ -23,13 +23,11 @@ RegistrationLoginController = ($scope, login, ClembleError) ->
 					else
 						$scope.form.$setValidity("server", false)
 			)
-		else
-			console.log("Invalid form")
 
-RegistrationLoginController.$inject = ['$scope', 'RegistrationLogin', 'ClembleError']
+RegistrationSignUpController.$inject = ['$scope', 'RegistrationSignUp', 'ClembleError']
 
 angular.
-	module('registration.login').
-	controller('RegistrationLoginController', RegistrationLoginController)
+	module('registration.signUp').
+	controller('RegistrationSignUpController', RegistrationSignUpController)
 
 

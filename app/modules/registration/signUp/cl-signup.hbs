@@ -1,6 +1,6 @@
-<form name="form" novalidate>
+<form name="signup" novalidate>
 	<md-content>
-		<div ng-show="form.$submitted" ng-messages="form.$error">
+		<div ng-show="signup.$submitted" ng-messages="signup.$error">
 			<div ng-message="server">
 				<h1 class="error">Technical Problems.</h1>
 			</div>
@@ -8,12 +8,11 @@
 		<md-input-container>
 			<label>Email</label>
 			<input name="email" ng-model="model.email" type="email"
-				required server_email_not_registered server_email_missing>
-			<div ng-show="form.$submitted || form.email.$dirty" ng-messages="form.email.$error">
+				required server_email_missing>
+			<div ng-show="signup.$submitted || signup.email.$dirty" ng-messages="signup.email.$error">
 				<div ng-message="email">Wrong email format</div>
 				<div ng-message="required">Email required</div>
 				<div ng-message="server_email_missing">Email required</div>
-				<div ng-message="server_email_not_registered">No user with this email exists</div>
 			</div>
 		</md-input-container>
 		<md-input-container>
@@ -21,7 +20,7 @@
 			<input name="password" ng-model="model.password" type="password"
 				required ng-minlength="6" ng-maxlength="64"
 				server_password_incorrect server_password_too_weak server_password_too_short server_password_missing server_password_too_long>
-			<div ng-show="form.$submitted || form.password.$dirty" ng-messages="form.password.$error">
+			<div ng-show="signup.$submitted || signup.password.$dirty" ng-messages="signup.password.$error">
 				<div ng-message="required">Password required</div>
 				<div ng-message="minlength">Minimum password is 6 symbol</div>
 				<div ng-message="maxlength">Maximum password is 64 symbol</div>
@@ -32,12 +31,20 @@
 				<div ng-message="server_password_too_long">Password too long</div>
 			</div>
 		</md-input-container>
+		<md-input-container>
+			<md-input-container>
+				<label>Repeat Password</label>
+				<input name="passwordRepeat" type="password"
+				       required match="model.password">
+				<div ng-show="signup.$submitted || signup.password.$dirty" ng-messages="signup.passwordRepeat.$error">
+					<span ng-message="required">Repeat password please</span>
+					<span ng-message="match">Do not match</span>
+				</div>
+			</md-input-container>
+		</md-input-container>
 	</md-content>
 	<section layout="row" layout-align="center center">
-		<md-button class="md-raised md-primary" ng-click="save()">Log In</md-button>
-	</section>
-	<section layout="row" layout-align="center center">
-		<a href="#registration/restore">Forgot Password</a>
+		<md-button class="md-raised md-primary" ng-click="save()">Sign Up</md-button>
 	</section>
 </form>
 
