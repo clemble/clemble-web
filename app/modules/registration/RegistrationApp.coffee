@@ -12,8 +12,6 @@ require './reset/RegistrationReset'
 	API =
 		registration: ->
 			App.request 'registration:show', App.contentRegion
-		signUp: ->
-			App.request 'registration:signUp:show', App.contentRegion
 		restore: ->
 			App.request 'registration:restore:show', App.contentRegion
 		restoreSuccess: ->
@@ -26,7 +24,6 @@ require './reset/RegistrationReset'
 	class RegistrationApp.Router extends Marionette.AppRouter
 		appRoutes:
 			'registration'                : 'registration'
-			'registration/signUp'         : 'signUp'
 			'registration/restore'        : 'restore'
 			'registration/restore/success': 'restoreSuccess'
 			'registration/reset/success'  : 'resetSuccess'

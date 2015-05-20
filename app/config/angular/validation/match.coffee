@@ -10,7 +10,9 @@ match = ($parse) ->
 
 			scope.$watch(getMatchValue, () -> ctrl.$$parseAndValidate())
 
-			ctrl.$validators.match = () -> ctrl.$viewValue == getMatchValue()
+			ctrl.$validators.match = () ->
+				console.log("Match called")
+				ctrl.$viewValue == getMatchValue()
 
 			getMatchValue = () ->
 				match = matchGetter(scope)

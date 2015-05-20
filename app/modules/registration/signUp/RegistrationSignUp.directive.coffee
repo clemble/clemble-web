@@ -1,8 +1,9 @@
 angular.
 	module('registration.signUp').
-	directive 'clSignUp', () ->
+	directive 'clSignup', () ->
 		{
 			restrict: 'E'
 			templateUrl: 'registration/signup/cl-signup.html'
-			controller: 'RegistrationLoginController'
+			scope: {}
+			controller: 'RegistrationSignUpController'
 		}

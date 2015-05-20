@@ -4,5 +4,3 @@ require "./RegistrationLogin.controller"
 require "./RegistrationLogin.directive"
 
 @App.module "RegistrationApp.Login", (Login, App, Backbone, Marionette, $, _) ->
-
-	App.reqres.setHandler 'registration:login:show:signIn', (region) -> AngularStarter.start(region, 'registration.login', require './templates/login')

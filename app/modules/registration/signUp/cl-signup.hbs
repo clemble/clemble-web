@@ -1,15 +1,24 @@
-<form name="signup" novalidate>
+<form name="form" novalidate>
 	<md-content>
-		<div ng-show="signup.$submitted" ng-messages="signup.$error">
+		<div ng-show="form.$submitted" ng-messages="form.$error">
 			<div ng-message="server">
 				<h1 class="error">Technical Problems.</h1>
 			</div>
 		</div>
 		<md-input-container>
+			<label>Nick</label>
+			<input name="nickName" type="text" ng-model="model.nickName"
+				required server_nick_occupied>
+			<div ng-show="form.$submitted || form.nickName.$dirty" ng-messages="form.nickName.$error">
+				<span ng-message="required">Repeat password please</span>
+				<span ng-message="server_nick_occupied">Nick already occupied</span>
+			</div>
+		</md-input-container>
+		<md-input-container>
 			<label>Email</label>
 			<input name="email" ng-model="model.email" type="email"
 				required server_email_missing>
-			<div ng-show="signup.$submitted || signup.email.$dirty" ng-messages="signup.email.$error">
+			<div ng-show="form.$submitted || form.email.$dirty" ng-messages="form.email.$error">
 				<div ng-message="email">Wrong email format</div>
 				<div ng-message="required">Email required</div>
 				<div ng-message="server_email_missing">Email required</div>
@@ -20,7 +29,7 @@
 			<input name="password" ng-model="model.password" type="password"
 				required ng-minlength="6" ng-maxlength="64"
 				server_password_incorrect server_password_too_weak server_password_too_short server_password_missing server_password_too_long>
-			<div ng-show="signup.$submitted || signup.password.$dirty" ng-messages="signup.password.$error">
+			<div ng-show="form.$submitted || form.password.$dirty" ng-messages="form.password.$error">
 				<div ng-message="required">Password required</div>
 				<div ng-message="minlength">Minimum password is 6 symbol</div>
 				<div ng-message="maxlength">Maximum password is 64 symbol</div>
@@ -32,20 +41,42 @@
 			</div>
 		</md-input-container>
 		<md-input-container>
-			<md-input-container>
-				<label>Repeat Password</label>
-				<input name="passwordRepeat" type="password"
-				       required match="model.password">
-				<div ng-show="signup.$submitted || signup.password.$dirty" ng-messages="signup.passwordRepeat.$error">
-					<span ng-message="required">Repeat password please</span>
-					<span ng-message="match">Do not match</span>
-				</div>
-			</md-input-container>
+			<label>Repeat Password</label>
+			<input name="passwordRepeat" type="password" ng-model="passwordRepeat"
+				required match="model.password">
+			<div ng-show="form.$submitted || form.password.$dirty" ng-messages="form.passwordRepeat.$error">
+				<span ng-message="required">Repeat password please</span>
+				<span ng-message="match">Do not match</span>
+			</div>
 		</md-input-container>
 	</md-content>
 	<section layout="row" layout-align="center center">
 		<md-button class="md-raised md-primary" ng-click="save()">Sign Up</md-button>
 	</section>
 </form>
+<!--<div class="form-control-wrapper">-->
+	<!--<input id="nickName" type="text" class="form-control" placeholder="username">-->
+	<!--<span class="material-input"></span>-->
+	<!--<span class="help-block hidden"/>-->
+<!--</div>-->
+<!--<div class="form-control-wrapper">-->
+	<!--<input id="fullName" type="text" class="form-control" placeholder="full name">-->
+	<!--<span class="material-input"></span>-->
+	<!--<span class="help-block hidden"/>-->
+<!--</div>-->
+<!--<div class="form-control-wrapper">-->
+	<!--<span class="help-block hidden"/>-->
+	<!--<div class="btn-group-flatten" data-toggle="buttons">-->
+		<!--<label class="btn btn-primary">-->
+			<!--<input type="radio" name="gender" value="M" autocomplete="off" checked> <span class="fa fa-male"></span>-->
+		<!--</label>-->
+		<!--<label class="btn btn-primary">-->
+			<!--<input type="radio" name="gender" value="F" autocomplete="off"> <span class="fa fa-female"></span>-->
+		<!--</label>-->
+	<!--</div>-->
+	<!--<span class="help-block hidden"/>-->
+<!--</div>-->
+<!--<button id="signUp" class="btn btn-material-amber form-control">Register</button>-->
+
 
 
