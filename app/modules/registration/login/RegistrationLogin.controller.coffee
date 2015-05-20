@@ -1,11 +1,9 @@
 RegistrationLoginController = ($scope, $location, login, ClembleError) ->
-	self = @
-
-	self.model = new login
-	self.save = () ->
+	$scope.model = new login
+	$scope.save = () ->
 		if ($scope.form.$valid)
 			console.log("Saving #{JSON.stringify(self.model)}")
-			self.model.$save(
+			$scope.model.$save(
 				() -> window.location = '#goal',
 				(error) ->
 					if (error.data?)

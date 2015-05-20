@@ -1,43 +1,4 @@
 <div id="passwordApp" ng-app="registration.login">
-	<form name="form" ng-controller="RegistrationLoginController as login" novalidate>
-		<md-content>
-			<div ng-show="form.$submitted" ng-messages="form.$error">
-				<div ng-message="server">
-					<h1 class="error">Technical Problems.</h1>
-				</div>
-			</div>
-			<md-input-container>
-				<label>Email</label>
-				<input name="email" ng-model="login.model.email" type="email"
-					required server_email_not_registered server_email_missing>
-				<div ng-show="form.$submitted || form.email.$dirty" ng-messages="form.email.$error">
-					<div ng-message="required">Email required.</div>
-					<div ng-message="server_email_missing">Email required.</div>
-					<div ng-message="server_email_not_registered">No user with this email exists.</div>
-				</div>
-			</md-input-container>
-			<md-input-container>
-				<label>Password</label>
-				<input name="password" ng-model="login.model.password" type="password"
-					required ng-minlength="6" ng-maxlength="64"
-					server_password_incorrect server_password_too_weak server_password_too_short server_password_missing server_password_too_long>
-				<div ng-show="form.$submitted || form.password.$dirty" ng-messages="form.password.$error">
-					<div ng-message="required">Password required.</div>
-					<div ng-message="minlength">Minimum password is 6 symbol.</div>
-					<div ng-message="maxlength">Maximum password is 64 symbol.</div>
-					<div ng-message="server_password_missing">Password required.</div>
-					<div ng-message="server_password_too_short">Too short</div>
-					<div ng-message="server_password_too_weak">Too weak</div>
-					<div ng-message="server_password_incorrect">Wrong password</div>
-					<div ng-message="server_password_too_long">Password too long</div>
-				</div>
-			</md-input-container>
-			<a href="#registration/restore">Forgot Password</a>
-		</md-content>
-		<section layout="row" layout-align="center center">
-			<md-button class="md-raised md-primary" ng-click="login.save(login, model)">Log In</md-button>
-			<md-button class="md-raised md-primary" ng-href="#registration/signUp">Sign up</md-button>
-		</section>
-	</form>
+	<cl-login/>
 </div>
 
