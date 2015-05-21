@@ -1,4 +1,4 @@
-app = angular.module('registration.signUp', ['validation.match','ngMaterial', 'ngMessages', 'ngResource'])
+app = angular.module('registration.signUp', ['validation.match','ngMaterial', 'ngMessages', 'ngResource', 'clemble.error'])
 
 app.config ($httpProvider) ->
 	$httpProvider.defaults.withCredentials = true

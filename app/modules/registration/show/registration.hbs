@@ -1,7 +1,4 @@
 <div id="passwordApp" ng-app="registration">
-	<div>
-	</div>
-
 	<div layout="row" layout-margin>
 		<div flex flex-order="3" hide-sm>
 		</div>
@@ -12,16 +9,12 @@
 						<md-content class="md-padding">
 							<cl-social-login></cl-social-login>
 							<div layout-aling="center center" class="small" style="text-align: center;">
-								<h2 class="md-subhead">or continue with email</h2>
+								<h2 class="md-subhead">or</h2>
 							</div>
 							<cl-login></cl-login>
-							<div layout-aling="center center" class="small" style="text-align: center;">
-								Creating an account means you’re okay with</br>
-								Clemble's Terms of Service and Privacy Policy.
-							</div>
 						</md-content>
 					</md-tab>
-					<md-tab label="signin">
+					<md-tab label="register">
 						<md-content class="md-padding">
 							<cl-social-login></cl-social-login>
 							<div layout-aling="center center" class="small" style="text-align: center;">
@@ -32,6 +25,10 @@
 					</md-tab>
 				</md-tabs>
 			</md-content>
+			<div layout-aling="center center" class="small" style="text-align: center;">
+				Creating an account means you’re okay with</br>
+				Clemble's Terms of Service and Privacy Policy.
+			</div>
 			<div layout="column" layout-marin></div>
 		</div>
 		<div flex flex-order="1" hide-sm>

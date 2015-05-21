@@ -6,15 +6,6 @@
 			</div>
 		</div>
 		<md-input-container>
-			<label>Nick</label>
-			<input name="nickName" type="text" ng-model="model.nickName"
-				required server_nick_occupied>
-			<div ng-show="form.$submitted || form.nickName.$dirty" ng-messages="form.nickName.$error">
-				<span ng-message="required">Repeat password please</span>
-				<span ng-message="server_nick_occupied">Nick already occupied</span>
-			</div>
-		</md-input-container>
-		<md-input-container>
 			<label>Email</label>
 			<input name="email" ng-model="model.email" type="email"
 				required server_email_missing>
@@ -41,24 +32,46 @@
 			</div>
 		</md-input-container>
 		<md-input-container>
-			<label>Repeat Password</label>
-			<input name="passwordRepeat" type="password" ng-model="passwordRepeat"
-				required match="model.password">
-			<div ng-show="form.$submitted || form.password.$dirty" ng-messages="form.passwordRepeat.$error">
+			<label>Nick</label>
+			<input name="nickName" type="text" ng-model="model.nickName"
+				required server_nick_occupied>
+			<div ng-show="form.$submitted || form.nickName.$dirty" ng-messages="form.nickName.$error">
 				<span ng-message="required">Repeat password please</span>
-				<span ng-message="match">Do not match</span>
+				<span ng-message="server_nick_occupied">Nick already occupied</span>
 			</div>
 		</md-input-container>
+		<!-- TODO finish this -->
+		<!--<md-input-container>-->
+				<!--<p class="md-caption">Date of Birth</p>-->
+			<!--<div layout="row" layout-margin layout-allign="center center">-->
+			<!--&lt;!&ndash;<label>Date of Birth</label>&ndash;&gt;-->
+				<!--&lt;!&ndash;<p>Option groups can help provide contextual groupings about the options provided:</p>&ndash;&gt;-->
+				<!--<md-select placeholder="Day" ng-model="day">-->
+					<!--<md-optgroup label="Day">-->
+						<!--<ng-repeat ></ng-repeat>-->
+						<!--<md-option value="1">One</md-option>-->
+						<!--<md-option value="2">Two</md-option>-->
+					<!--</md-optgroup>-->
+				<!--</md-select>-->
+				<!--<md-select placeholder="Month" ng-model="month">-->
+					<!--<md-optgroup label="Month">-->
+						<!--<md-option value="1">One</md-option>-->
+						<!--<md-option value="2">Two</md-option>-->
+					<!--</md-optgroup>-->
+				<!--</md-select>-->
+				<!--<md-select placeholder="Year" ng-model="year">-->
+					<!--<md-optgroup label="Year">-->
+						<!--<md-option value="1">One</md-option>-->
+						<!--<md-option value="2">Two</md-option>-->
+					<!--</md-optgroup>-->
+				<!--</md-select>-->
+			<!--</div>-->
+		<!--</md-input-container>-->
 	</md-content>
 	<section layout="row" layout-align="center center">
-		<md-button class="md-raised md-primary" ng-click="save()">Sign Up</md-button>
+		<md-button class="md-raised md-primary" ng-click="save()">Register</md-button>
 	</section>
 </form>
-<!--<div class="form-control-wrapper">-->
-	<!--<input id="nickName" type="text" class="form-control" placeholder="username">-->
-	<!--<span class="material-input"></span>-->
-	<!--<span class="help-block hidden"/>-->
-<!--</div>-->
 <!--<div class="form-control-wrapper">-->
 	<!--<input id="fullName" type="text" class="form-control" placeholder="full name">-->
 	<!--<span class="material-input"></span>-->

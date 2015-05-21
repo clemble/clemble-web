@@ -1,0 +1,23 @@
+<form name="form" novalidate>
+	<md-content>
+		<div ng-show="form.$submitted" ng-messages="form.$error">
+			<div ng-message="server">
+				<h1 class="error">Technical Problems.</h1>
+			</div>
+		</div>
+		<md-input-container>
+			<label>Email</label>
+			<input name="email" ng-model="model.email" type="email"
+				required server_email_missing server_email_invalid>
+			<div ng-show="form.$submitted || form.email.$dirty" ng-messages="form.email.$error">
+				<div ng-message="email">Wrong email format</div>
+				<div ng-message="required">Email required</div>
+				<div ng-message="server_email_missing">Email required</div>
+				<div ng-message="server_email_invalid">We can't find user with this email</div>
+			</div>
+		</md-input-container>
+	</md-content>
+	<section layout="row" layout-align="center center">
+		<md-button class="md-raised md-primary" ng-click="save()">Restore</md-button>
+	</section>
+</form>
