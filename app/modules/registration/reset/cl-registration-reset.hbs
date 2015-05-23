@@ -1,0 +1,28 @@
+<form name="form" novalidate>
+	<md-content>
+		<div ng-show="form.$submitted" ng-messages="form.$error">
+			<div ng-message="server">
+				<h1 class="error">Technical Problems.</h1>
+			</div>
+		</div>
+		<md-input-container>
+			<label>Password</label>
+			<input name="password" ng-model="model.password" type="password"
+				required ng-minlength="6" ng-maxlength="64"
+				server_password_incorrect server_password_too_weak server_password_too_short server_password_missing server_password_too_long>
+			<div ng-show="form.$submitted || form.password.$dirty" ng-messages="form.password.$error">
+				<div ng-message="required">Password required</div>
+				<div ng-message="minlength">Minimum password is 6 symbol</div>
+				<div ng-message="maxlength">Maximum password is 64 symbol</div>
+				<div ng-message="server_password_missing">Password required</div>
+				<div ng-message="server_password_too_short">Too short</div>
+				<div ng-message="server_password_too_weak">Too weak</div>
+				<div ng-message="server_password_incorrect">Wrong password</div>
+				<div ng-message="server_password_too_long">Password too long</div>
+			</div>
+		</md-input-container>
+	</md-content>
+	<section layout="row" layout-align="center center">
+		<md-button class="md-raised md-primary" ng-click="save()">Reset</md-button>
+	</section>
+</form>
