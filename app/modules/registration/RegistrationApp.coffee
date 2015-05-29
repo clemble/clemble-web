@@ -1,4 +1,3 @@
-require './entities/RegistrationEntities'
 require './login/RegistrationLogin'
 require './signUp/RegistrationSignUp'
 require './social/RegistrationSocial'
@@ -12,6 +11,8 @@ require './reset/RegistrationReset'
 	API =
 		registration: ->
 			App.request 'registration:show', App.contentRegion
+		registrationManual: ->
+			App.request 'registration:show:manual', App.contentRegion
 		restore: ->
 			App.request 'registration:restore:show', App.contentRegion
 		restoreSuccess: ->
@@ -24,6 +25,7 @@ require './reset/RegistrationReset'
 	class RegistrationApp.Router extends Marionette.AppRouter
 		appRoutes:
 			'registration'                : 'registration'
+			'registration/manual'         : 'registrationManual'
 			'registration/restore'        : 'restore'
 			'registration/restore/success': 'restoreSuccess'
 			'registration/reset/success'  : 'resetSuccess'
