@@ -1,4 +1,4 @@
-require "./RegistrationLogin.module"
+require './RegistrationLogin.module'
 require "./RegistrationLogin.service"
 require "./RegistrationLogin.controller"
 require "./RegistrationLogin.directive"

@@ -1,9 +1,9 @@
-require './login/RegistrationLogin'
-require './signUp/RegistrationSignUp'
+require './manual/login/RegistrationLogin'
+require './manual/signUp/RegistrationSignUp'
+require './manual/restore/RegistrationRestore'
+require './manual/reset/RegistrationReset'
+
 require './social/RegistrationSocial'
-require './show/RegistrationShow'
-require './restore/RegistrationRestore'
-require './reset/RegistrationReset'
 
 @App.module "RegistrationApp", (RegistrationApp, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
@@ -34,3 +34,11 @@ require './reset/RegistrationReset'
 	App.addInitializer ->
 		new RegistrationApp.Router
 			controller: API
+
+	app = angular.module('registration.signIn', ['registration.social', 'registration.login', 'registration.signUp', 'ngMaterial', 'ngMessages'])
+
+	app.config ($httpProvider) ->
+		$httpProvider.defaults.withCredentials = true
+
+	App.reqres.setHandler 'registration:show', (region) -> AngularStarter.start(region, 'registration.signIn', require './registration')
+	App.reqres.setHandler 'registration:show:manual', (region) -> AngularStarter.start(region, 'registration.signIn', require './registration_manual')
