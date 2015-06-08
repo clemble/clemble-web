@@ -36,9 +36,11 @@ registerProxy('email', 10001)
 registerProxy('notification', 10002)
 registerProxy('phone', 10003)
 
-registerProxy('configuration', 10004)
-registerProxy('construction', 10005)
-registerProxy('management', 10006)
+#registerProxy('configuration', 10004)
+#registerProxy('construction', 10005)
+#registerProxy('management', 10006)
+
+registerProxy('goal', 10006)
 registerProxy('suggestion', 10007)
 
 registerProxy('bonus', 10008)

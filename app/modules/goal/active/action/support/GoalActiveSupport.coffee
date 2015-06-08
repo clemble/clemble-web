@@ -19,7 +19,7 @@
 			'click #go' : 'go'
 		go: () =>
 			self = @
-			url = App.Utils.toUrl("management", "active/#{@model.get('goalKey')}/action")
+			url = App.Utils.toUrl("goal", "active/#{@model.get('goalKey')}/action")
 			$.ajax({
 				type: 'POST',
 				url: url,

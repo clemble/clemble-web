@@ -3,7 +3,7 @@
 
 	Controller =
 		newBet: (goalKey, configuration) ->
-			bet = App.request "goal:active:action:entities:bet", App.Utils.toUrl("management", "active/#{goalKey}/action")
+			bet = App.request "goal:active:action:entities:bet", App.Utils.toUrl("goal", "active/#{goalKey}/action")
 
 			betModal = new GoalBetAction({
 				model: bet

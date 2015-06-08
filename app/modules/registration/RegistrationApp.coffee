@@ -14,7 +14,7 @@ require './social/RegistrationSocial'
 		$httpProvider.defaults.withCredentials = true
 
 	API =
-		registration: ->
+		registration: () ->
 			AngularStarter.start(App.contentRegion, 'registration.signIn', require './registration')
 		registrationManual: ->
 			AngularStarter.start(App.contentRegion, 'registration.signIn', require './registration_manual')
@@ -26,6 +26,8 @@ require './social/RegistrationSocial'
 			AngularStarter.start(App.contentRegion, 'registration.reset', require './registration_reset')
 		resetSuccess: () ->
 			AngularStarter.start(App.contentRegion, 'registration.reset', require './registration_reset_success')
+		signOut: () ->
+			window.location.href = App.Utils.toUrl("registration", "signout")
 
 	class RegistrationApp.Router extends Marionette.AppRouter
 		appRoutes:
@@ -35,6 +37,7 @@ require './social/RegistrationSocial'
 			'registration/restore/success': 'restoreSuccess'
 			'registration/reset/success'  : 'resetSuccess'
 			'registration/reset/:token'   : 'reset'
+			'signout'                     : 'signOut'
 
 	App.addInitializer ->
 		new RegistrationApp.Router

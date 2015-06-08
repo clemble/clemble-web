@@ -16,7 +16,7 @@
 	API =
 		list: (player) ->
 			victories = new Victories()
-			victories.url = App.Utils.toUrl("management", "player/victory/#{player}")
+			victories.url = App.Utils.toUrl("goal", "player/victory/#{player}")
 			victories.fetch()
 			victories
 

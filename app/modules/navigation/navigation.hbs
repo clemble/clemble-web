@@ -1,0 +1,55 @@
+<div ng-app="navigation" ng-controller="SideNavigationContoller">
+	<md-sidenav md-component-id="left" class="md-sidenav-left">
+		<md-toolbar class="md-theme-light">
+			 <h1 class="md-toolbar-tools"></h1>
+		</md-toolbar>
+		<md-content layout-padding>
+			<md-list>
+				<md-list-item ng-click="goTo('/goal')">
+					<md-button>
+						<md-icon class="material-icons">home</md-icon>
+						Home
+					</md-button>
+				</md-list-item>
+				<md-list-item ng-click="goTo('/victory')">
+					<md-button>
+						<md-icon class="material-icons">history</md-icon>
+						History
+					</md-button>
+				</md-list-item>
+				<md-list-item ng-click="goTo('/notification')">
+					<md-button>
+						<md-icon class="material-icons">notifications</md-icon>
+						Notifications
+					</md-button>
+				</md-list-item>
+				<md-list-item ng-click="goTo('/settings')">
+					<md-button>
+						<md-icon class="material-icons">settings</md-icon>
+						Settings
+					</md-button>
+				</md-list-item>
+				<md-list-item ng-click="goTo('/signout')">
+					<md-button>
+						<md-icon class="material-icons">exit_to_app</md-icon>
+						Sign Out
+					</md-button>
+				</md-list-item>
+			</md-list>
+		</md-content>
+	</md-sidenav>
+	<md-content>
+		<md-toolbar layout="row">
+			<div class="md-toolbar-tools">
+				<md-button class="md-icon-button" aria-label="Settings" ng-click="openLeftMenu()">
+					<md-icon class="material-icons">menu</md-icon>
+				</md-button>
+				<h2>
+					<span>Clemble</span>
+				</h2>
+				<!-- fill up the space between left and right area -->
+				<span flex></span>
+			</div>
+		</md-toolbar>
+	</md-content>
+</div>
