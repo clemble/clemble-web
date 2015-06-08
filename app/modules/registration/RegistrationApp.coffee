@@ -8,19 +8,24 @@ require './social/RegistrationSocial'
 @App.module "RegistrationApp", (RegistrationApp, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
 
+	app = angular.module('registration.signIn', ['registration.social', 'registration.login', 'registration.signUp', 'ngMaterial', 'ngMessages'])
+
+	app.config ($httpProvider) ->
+		$httpProvider.defaults.withCredentials = true
+
 	API =
 		registration: ->
-			App.request 'registration:show', App.contentRegion
+			AngularStarter.start(App.contentRegion, 'registration.signIn', require './registration')
 		registrationManual: ->
-			App.request 'registration:show:manual', App.contentRegion
+			AngularStarter.start(App.contentRegion, 'registration.signIn', require './registration_manual')
 		restore: ->
-			App.request 'registration:restore:show', App.contentRegion
+			AngularStarter.start(App.contentRegion, 'registration.restore', require './registration_restore')
 		restoreSuccess: ->
-			App.request 'registration:restore:show:success', App.contentRegion
+			AngularStarter.start(App.contentRegion, 'registration.restore', require './registration_restore_success')
 		reset: (token) ->
-			App.request 'registration:reset:show', App.contentRegion, token
+			AngularStarter.start(App.contentRegion, 'registration.reset', require './registration_reset')
 		resetSuccess: () ->
-			App.request 'registration:reset:show:success', App.contentRegion
+			AngularStarter.start(App.contentRegion, 'registration.reset', require './registration_reset_success')
 
 	class RegistrationApp.Router extends Marionette.AppRouter
 		appRoutes:
@@ -35,10 +40,3 @@ require './social/RegistrationSocial'
 		new RegistrationApp.Router
 			controller: API
 
-	app = angular.module('registration.signIn', ['registration.social', 'registration.login', 'registration.signUp', 'ngMaterial', 'ngMessages'])
-
-	app.config ($httpProvider) ->
-		$httpProvider.defaults.withCredentials = true
-
-	App.reqres.setHandler 'registration:show', (region) -> AngularStarter.start(region, 'registration.signIn', require './registration')
-	App.reqres.setHandler 'registration:show:manual', (region) -> AngularStarter.start(region, 'registration.signIn', require './registration_manual')
