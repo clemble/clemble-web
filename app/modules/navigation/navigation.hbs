@@ -1,39 +1,39 @@
 <div ng-app="navigation" ng-controller="SideNavigationContoller">
 	<md-sidenav md-component-id="left" class="md-sidenav-left">
 		<md-toolbar class="md-theme-light">
-			 <h1 class="md-toolbar-tools"></h1>
+			 <h1 class="md-toolbar-tools">Menu</h1>
 		</md-toolbar>
 		<md-content layout-padding>
 			<md-list>
 				<md-list-item ng-click="goTo('/goal')">
-					<md-button>
+					<p>
 						<md-icon class="material-icons">home</md-icon>
 						Home
-					</md-button>
+					</p>
 				</md-list-item>
 				<md-list-item ng-click="goTo('/victory')">
-					<md-button>
+					<p>
 						<md-icon class="material-icons">history</md-icon>
 						History
-					</md-button>
+					</p>
 				</md-list-item>
 				<md-list-item ng-click="goTo('/notification')">
-					<md-button>
+					<p>
 						<md-icon class="material-icons">notifications</md-icon>
 						Notifications
-					</md-button>
+					</p>
 				</md-list-item>
 				<md-list-item ng-click="goTo('/settings')">
-					<md-button>
+					<p>
 						<md-icon class="material-icons">settings</md-icon>
 						Settings
-					</md-button>
+					</p>
 				</md-list-item>
 				<md-list-item ng-click="goTo('/signout')">
-					<md-button>
+					<p>
 						<md-icon class="material-icons">exit_to_app</md-icon>
 						Sign Out
-					</md-button>
+					</p>
 				</md-list-item>
 			</md-list>
 		</md-content>
@@ -49,7 +49,18 @@
 				</h2>
 				<!-- fill up the space between left and right area -->
 				<span flex></span>
+				<md-button class="md-icon-button" aria-label="Settings" ng-click="toggleRight()">
+					<md-icon class="material-icons">face</md-icon>
+				</md-button>
 			</div>
 		</md-toolbar>
 	</md-content>
+	<md-sidenav class="md-sidenav-right" md-component-id="right">
+		<md-toolbar class="md-theme-light">
+			<h1 class="md-toolbar-tools">Connections</h1>
+		</md-toolbar>
+		<md-content layout-padding>
+			<cl-search-player></cl-search-player>
+		</md-content>
+	</md-sidenav>
 </div>

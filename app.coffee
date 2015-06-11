@@ -55,6 +55,8 @@ registerProxy('tag', 10016)
 
 registerProxy('log', 10017)
 
+registerProxy('search', 10018)
+
 
 app.use('/fonts/', express.static __dirname + '/public/fonts')
 app.use('/images/', express.static __dirname + '/public/images')

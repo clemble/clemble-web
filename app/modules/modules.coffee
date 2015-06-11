@@ -1,4 +1,5 @@
 require './listener/ListenerApp'
+require './search/SearchApp'
 require './marionette/MarionetteApp'
 require './account/AccountApp'
 require './registration/RegistrationApp'
@@ -13,3 +14,4 @@ require './tag/TagApp'
 require './navigation/NavigationApp'
 require './settings/SettingsApp'
 require './victory/VictoryApp'
+

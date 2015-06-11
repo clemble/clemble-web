@@ -34,11 +34,20 @@
 		<md-input-container>
 			<label>Nick</label>
 			<input name="nickName" type="text" ng-model="model.nickName"
-				required server_nick_occupied>
+				required server_nick_occupied server_nick_too_short>
 			<div ng-show="form.$submitted || form.nickName.$dirty" ng-messages="form.nickName.$error">
 				<span ng-message="required">Repeat password please</span>
 				<span ng-message="server_nick_occupied">Nick already occupied</span>
+				<span ng-message="server_nick_too_short">Nick too short</span>
 			</div>
+		</md-input-container>
+		<md-input-container>
+			<label>First Name</label>
+			<input name="firstName" type="text" ng-model="model.firstName">
+		</md-input-container>
+		<md-input-container>
+			<label>Last Name</label>
+			<input name="lastName" type="text" ng-model="model.lastName">
 		</md-input-container>
 		<!-- TODO finish this -->
 		<!--<md-input-container>-->

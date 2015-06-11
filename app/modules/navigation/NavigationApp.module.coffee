@@ -1,4 +1,7 @@
-app = angular.module('navigation', ['ngMaterial'])
+app = angular.module('navigation', ['ngMaterial', 'search.player'])
+
+app.config ($httpProvider) ->
+	$httpProvider.defaults.withCredentials = true
 
 app.run ($templateCache) ->
 	navigationHtml = require('./navigation')()
