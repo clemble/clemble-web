@@ -13,9 +13,10 @@
           md-min-length="0"
           placeholder="Find a friend">
 
-          <md-item-template>
-            <strong>\{{item.fullName}}</strong>
-          </md-item-template>
+        <md-item-template>
+			<cl-player-image player="\{{item.player}}" size="small"></cl-player-image>
+          <strong>\{{item.fullName}}</strong>
+        </md-item-template>
       </md-autocomplete>
     </form>
   </md-content>

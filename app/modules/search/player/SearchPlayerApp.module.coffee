@@ -1,4 +1,4 @@
-app = angular.module('search.player', ['ngMaterial'])
+app = angular.module('search.player', ['ngMaterial', 'clemble.directive'])
 
 app.config ($httpProvider) ->
 	$httpProvider.defaults.withCredentials = true

@@ -3,6 +3,10 @@ angular.
 	directive 'clPlayerImage', () ->
 		{
 			restrict: 'E'
-			scope: {}
+			scope: {
+				player: "@player"
+				size: "@size"
+			}
 			templateUrl: 'directive/cl-player-image.html'
+			controller: "clPlayerImageCtrl"
 		}
