@@ -3,7 +3,9 @@ RegistrationSignUpController = ($scope, signUp, ClembleError) ->
 	$scope.save = () ->
 		if ($scope.form.$valid)
 			$scope.model.$save(
-				() -> window.location = '#goal',
+				() ->
+					App.trigger("registered")
+				,
 				(error) ->
 					if (error.data?)
 						_.each(error.data.fields, (e) ->

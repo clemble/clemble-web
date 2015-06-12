@@ -1,0 +1,6 @@
+Search Patient
+1. Allign image with text on cl-player-image
+
+Start page
+1. Don't use explicit styles
+2. Add legal link

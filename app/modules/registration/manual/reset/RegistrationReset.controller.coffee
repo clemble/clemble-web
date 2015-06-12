@@ -1,5 +1,5 @@
-RegistrationResetController = ($scope, restore, ClembleError) ->
-	$scope.model = new restore
+RegistrationResetController = ($scope, reset, ClembleError) ->
+	$scope.model = new reset
 	$scope.save = () ->
 		if ($scope.form.$valid)
 			$scope.model.$save(
