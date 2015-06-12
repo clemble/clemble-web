@@ -1,6 +1,6 @@
 <div ng-app="navigation" ng-controller="SideNavigationContoller">
 	<md-sidenav md-component-id="left" class="md-sidenav-left">
-		<md-toolbar class="md-theme-light">
+		<md-toolbar class="md-theme-light" hd-large>
 			 <h1 class="md-toolbar-tools">Menu</h1>
 		</md-toolbar>
 		<md-content layout-padding>
@@ -42,8 +42,20 @@
 	<md-content>
 		<md-toolbar layout="row">
 			<div class="md-toolbar-tools">
-				<md-button class="md-icon-button" aria-label="Settings" ng-click="openLeftMenu()">
+				<md-button class="md-icon-button" aria-label="Settings" ng-click="openLeftMenu()" hide-md>
 					<md-icon class="material-icons">menu</md-icon>
+				</md-button>
+				<md-button class="md-icon-button" aria-label="Settings" ng-click="goTo('/goal')">
+					<md-icon class="material-icons">home</md-icon>
+				</md-button>
+				<md-button class="md-icon-button" aria-label="Settings" ng-click="goTo('/victory')">
+					<md-icon class="material-icons">history</md-icon>
+				</md-button>
+				<md-button class="md-icon-button" aria-label="Settings" ng-click="goTo('/notification')">
+					<md-icon class="material-icons">notifications</md-icon>
+				</md-button>
+				<md-button class="md-icon-button" aria-label="Settings" ng-click="goTo('/settings')" hide-sm>
+					<md-icon class="material-icons">settings</md-icon>
 				</md-button>
 				<!-- fill up the space between left and right area -->
 				<span flex></span>
