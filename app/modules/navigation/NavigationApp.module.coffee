@@ -1,4 +1,4 @@
-app = angular.module('navigation', ['ngMaterial', 'search.player'])
+app = angular.module('navigation', ['ngMaterial', 'cl.account', 'search.player'])
 
 app.config ($httpProvider) ->
 	$httpProvider.defaults.withCredentials = true

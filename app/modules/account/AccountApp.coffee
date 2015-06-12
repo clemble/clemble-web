@@ -1,5 +1,7 @@
-require './entities/AccountEntities'
-require './show/AccountShow'
+require './account.module'
+require './account.service'
+require './account.controller'
+require './account.directive'
 
 @App.module "AccountApp", (AccountApp, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
