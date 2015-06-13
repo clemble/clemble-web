@@ -1,7 +1,6 @@
-console.log("Creating connection invitation service")
+ConnectionInvitation = ($resource) ->
+	$resource(App.Utils.toUrl("connection", "my/invitation"))
 
 angular.
-	module('cl.invitation.connection').
-	factory('ConnectionInvitation', ['$resource', ($resource) ->
-		$resource(App.Utils.toUrl("connection", "my/invitation"))
-	])
+	module('cl.connection.invitation').
+	factory('ConnectionInvitation', ['$resource', ConnectionInvitation])

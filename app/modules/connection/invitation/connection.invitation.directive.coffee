@@ -1,14 +1,17 @@
-console.log("Creating connection invitation directive")
-
 angular.
-	module('cl.invitation.connection').
-	directive 'clConnectionInvitation',  () ->
+	module('cl.connection.invitation').
+	directive('clConnectionInvitations',  () ->
 		{
 			restrict: 'E'
-			scope: {
-				player: "@player"
-				size: "@size"
-			}
-			templateUrl: 'connection/invitation/cl-player-invitation.html'
-			controller: "ConnectionInvitationCtrl"
+			scope: {}
+			templateUrl: 'connection/invitation/cl-connection-invitations.html'
+			controller: "ConnectionInvitationsController"
 		}
+	).
+	directive('clConnectionInvitation',  () ->
+		{
+			restrict: 'E'
+			templateUrl: 'connection/invitation/cl-connection-invitation.html'
+			controller: "ConnectionInvitationController"
+		}
+	)

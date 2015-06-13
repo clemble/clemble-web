@@ -6,4 +6,6 @@ require './connection.invitation.directive'
 @App.module "ConnectionInvitationApp", (PlayerConnectionInvitationApp, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
 
-	console.log("Creating connection invitation service")
+	App.reqres.setHandler "connection:invitation:show", (region) ->
+
+		AngularStarter.start(region, 'cl.connection.invitation', require './invitation')

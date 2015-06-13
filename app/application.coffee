@@ -9,6 +9,7 @@
 
 	App.addRegions
 		contentRegion : "#contentRegion"
+		experimentRegion: "#experimentRegion"
 		navigationRegion : "#navigationRegion"
 
 		modal         : Marionette.ModalRegion
@@ -26,7 +27,7 @@
 			window.location = '#registration'
 
 	App.on "registered", () ->
-		console.log("Registered")
+		App.request "connection:invitation:show", App.experimentRegion
 		window.location = '#goal'
 		App.request "navigation:list", App.navigationRegion
 

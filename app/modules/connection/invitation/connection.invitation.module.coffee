@@ -1,10 +1,15 @@
-console.log("Creating connection invitation module")
-
-app = angular.module('cl.invitation.connection', ['ngMaterial'])
+app = angular.module('cl.connection.invitation', [
+	'ngMaterial',
+	'ngResource',
+	'clemble.directive'
+])
 
 app.config ($httpProvider) ->
 	$httpProvider.defaults.withCredentials = true
 
 app.run ($templateCache) ->
-	playerInvitation = require('./cl-player-invitations')()
-	$templateCache.put('connection/invitation/cl-player-invitations.html', playerInvitation);
+	connectionInvitations = require('./cl-connection-invitation')()
+	$templateCache.put('connection/invitation/cl-connection-invitation.html', connectionInvitations);
+
+	connectionInvitations = require('./cl-connection-invitations')()
+	$templateCache.put('connection/invitation/cl-connection-invitations.html', connectionInvitations);
