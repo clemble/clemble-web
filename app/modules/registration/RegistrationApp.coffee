@@ -1,9 +1,9 @@
-require './manual/login/RegistrationLogin'
-require './manual/signUp/RegistrationSignUp'
-require './manual/restore/RegistrationRestore'
-require './manual/reset/RegistrationReset'
+require './manual/login/registration.login'
+require './manual/signUp/registration.signup'
+require './manual/restore/registration.restore'
+require './manual/reset/registration.reset'
 
-require './social/RegistrationSocial'
+require './social/registration.social'
 
 @App.module "RegistrationApp", (RegistrationApp, App, Backbone, Marionette, $, _) ->
 	@startWithParent = false
