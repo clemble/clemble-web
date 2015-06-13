@@ -1,7 +1,7 @@
-SearchPlayerController = ($http, $q) ->
+SearchPlayerAutocompleteController = ($scope, $http, $q) ->
 
-	selectedItemChange = (text) ->
-		console.log('Text changed to ' + text)
+	selectedItemChange = (item) ->
+		$scope.selectedPlayer = item.player
 
 	searchTextChange = (item) ->
 		console.log('Item changed to ' + JSON.stringify(item));
@@ -20,7 +20,15 @@ SearchPlayerController = ($http, $q) ->
 	self.querySearch = querySearch
 	self
 
+SearchPlayerController = ($scope, $http) ->
+
+	console.log("PlayerController > #{JSON.stringify($scope.item)}")
+
+	self = @
+	@
+
 angular.
 	module('cl.search.player').
+	controller('SearchPlayerAutocompleteController', SearchPlayerAutocompleteController).
 	controller('SearchPlayerController', SearchPlayerController);
 

@@ -7,5 +7,4 @@ require './connection.invitation.directive'
 	@startWithParent = false
 
 	App.reqres.setHandler "connection:invitation:show", (region) ->
-
 		AngularStarter.start(region, 'cl.connection.invitation', require './invitation')

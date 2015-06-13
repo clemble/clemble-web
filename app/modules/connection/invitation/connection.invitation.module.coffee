@@ -1,7 +1,7 @@
 app = angular.module('cl.connection.invitation', [
 	'ngMaterial',
 	'ngResource',
-	'clemble.directive'
+	'cl.directive'
 ])
 
 app.config ($httpProvider) ->

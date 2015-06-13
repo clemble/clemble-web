@@ -12,5 +12,5 @@ clPlayerImageCtrl = ($scope) ->
 	@
 
 angular.
-	module('clemble.directive').
+	module('cl.directive').
 	controller 'clPlayerImageCtrl', clPlayerImageCtrl

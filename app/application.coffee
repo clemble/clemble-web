@@ -27,7 +27,7 @@
 			window.location = '#registration'
 
 	App.on "registered", () ->
-		App.request "connection:invitation:show", App.experimentRegion
+#		App.request "experimental:show", App.experimentRegion
 		window.location = '#goal'
 		App.request "navigation:list", App.navigationRegion
 

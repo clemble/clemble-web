@@ -1,4 +1,4 @@
-app = angular.module('clemble.directive', ['ngMaterial'])
+app = angular.module('cl.directive', ['ngMaterial'])
 
 app.config ($httpProvider) ->
 	$httpProvider.defaults.withCredentials = true

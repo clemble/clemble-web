@@ -1,5 +1,5 @@
 angular.
-	module('clemble.directive').
+	module('cl.directive').
 	directive 'clPlayerImage', () ->
 		{
 			restrict: 'E'

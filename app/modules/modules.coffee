@@ -14,4 +14,4 @@ require './tag/TagApp'
 require './navigation/NavigationApp'
 require './settings/SettingsApp'
 require './victory/VictoryApp'
-
+require './experimental/experimental.module'

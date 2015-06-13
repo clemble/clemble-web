@@ -21,3 +21,4 @@
 			App.modal.show playerModal
 
 	App.reqres.setHandler "player:show:modal", (player) -> Controller.showModal(player)
+	App.reqres.setHandler "player:show:modal", (player) -> Controller.showModal(player)
