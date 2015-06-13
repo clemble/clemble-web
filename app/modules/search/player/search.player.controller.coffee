@@ -21,6 +21,6 @@ SearchPlayerController = ($http, $q) ->
 	self
 
 angular.
-	module('search.player').
+	module('cl.search.player').
 	controller('SearchPlayerController', SearchPlayerController);
 

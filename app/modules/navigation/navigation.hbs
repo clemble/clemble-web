@@ -45,6 +45,8 @@
 				<md-button class="md-icon-button" aria-label="Settings" ng-click="openLeftMenu()" hide-md>
 					<md-icon class="material-icons">menu</md-icon>
 				</md-button>
+				<div hide-sm>
+
 				<md-button class="md-icon-button" aria-label="Settings" ng-click="goTo('/goal')">
 					<md-icon class="material-icons">home</md-icon>
 				</md-button>
@@ -54,10 +56,11 @@
 				<md-button class="md-icon-button" aria-label="Settings" ng-click="goTo('/notification')">
 					<md-icon class="material-icons">notifications</md-icon>
 				</md-button>
-				<md-button class="md-icon-button" aria-label="Settings" ng-click="goTo('/settings')" hide-sm>
+				<md-button class="md-icon-button" aria-label="Settings" ng-click="goTo('/settings')">
 					<md-icon class="material-icons">settings</md-icon>
 				</md-button>
 				<!-- fill up the space between left and right area -->
+				</div>
 				<span flex></span>
 				<cl-account player="my"></cl-account>
 				<md-button class="md-icon-button" aria-label="Settings" ng-click="toggleRight()">

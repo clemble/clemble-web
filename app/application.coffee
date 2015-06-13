@@ -26,6 +26,7 @@
 			window.location = '#registration'
 
 	App.on "registered", () ->
+		console.log("Registered")
 		window.location = '#goal'
 		App.request "navigation:list", App.navigationRegion
 

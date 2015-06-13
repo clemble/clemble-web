@@ -1,4 +1,6 @@
-app = angular.module('clemble.invitation', ['ngMaterial'])
+console.log("Creating connection invitation module")
+
+app = angular.module('cl.invitation.connection', ['ngMaterial'])
 
 app.config ($httpProvider) ->
 	$httpProvider.defaults.withCredentials = true

@@ -1,5 +1,5 @@
 angular.
-	module('search.player').
+	module('cl.search.player').
 	directive 'clSearchPlayer', () ->
 		{
 			restrict: 'E'

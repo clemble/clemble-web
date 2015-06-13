@@ -1,5 +1,7 @@
+console.log("Creating connection invitation service")
+
 angular.
-	module('clemble.invitation').
+	module('cl.invitation.connection').
 	factory('ConnectionInvitation', ['$resource', ($resource) ->
 		$resource(App.Utils.toUrl("connection", "my/invitation"))
 	])

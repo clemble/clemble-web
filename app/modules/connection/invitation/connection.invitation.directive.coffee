@@ -1,5 +1,7 @@
+console.log("Creating connection invitation directive")
+
 angular.
-	module('clemble.invitation').
+	module('cl.invitation.connection').
 	directive 'clConnectionInvitation',  () ->
 		{
 			restrict: 'E'

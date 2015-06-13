@@ -3,5 +3,5 @@ ConnectionInvitationCtrl = ($scope, ConnectionInvitation) ->
 	@
 
 angular.
-	module('clemble.invitation').
+	module('cl.invitation.connection').
 	controller('ConnectionInvitationCtrl', ConnectionInvitationCtrl)

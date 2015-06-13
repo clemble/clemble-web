@@ -1,4 +1,4 @@
-app = angular.module('navigation')
+app = angular.module('cl.navigation')
 app.controller('SideNavigationContoller', ($scope, $mdSidenav, $mdUtil, $log, $location) ->
 
 	$scope.openLeftMenu = () ->
