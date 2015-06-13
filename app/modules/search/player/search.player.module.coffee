@@ -1,4 +1,8 @@
-app = angular.module('cl.search.player', ['ngMaterial', 'cl.directive'])
+app = angular.module('cl.search.player', [
+	'ngMaterial',
+	'cl.directive',
+	'cl.image.player'
+])
 
 app.config ($httpProvider) ->
 	$httpProvider.defaults.withCredentials = true

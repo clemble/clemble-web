@@ -1,6 +1,7 @@
 app = angular.module('cl.connection.invitation', [
 	'ngMaterial',
 	'ngResource',
+	'cl.image.player',
 	'cl.directive'
 ])
 

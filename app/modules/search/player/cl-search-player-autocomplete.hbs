@@ -10,11 +10,10 @@
 				md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
 				md-item-text="item.fullName"
 				md-items="item in ctrl.querySearch(ctrl.searchText)"
-				ng-model="model.search"
 				placeholder="Search people">
 
 				<md-item-template>
-					<cl-player-image player="\{{item.player}}" size="small"></cl-player-image>
+					<cl-image-player player="\{{item.player}}" size="small"></cl-image-player>
 					<span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">\{{item.fullName}}</span>
 				</md-item-template>
 			</md-autocomplete>

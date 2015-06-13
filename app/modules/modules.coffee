@@ -1,3 +1,4 @@
+require './image/ImageApp'
 require './listener/ListenerApp'
 require './search/SearchApp'
 require './marionette/MarionetteApp'
@@ -15,3 +16,4 @@ require './navigation/NavigationApp'
 require './settings/SettingsApp'
 require './victory/VictoryApp'
 require './experimental/experimental.module'
+

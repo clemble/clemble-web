@@ -11,10 +11,10 @@ app.controller('SideNavigationContoller', ($scope, $mdSidenav, $mdUtil, $log, $l
 		$mdSidenav('left').close()
 		$location.path(link)
 
-	$scope.$watch('selectedPlayer', (player) ->
-		$mdSidenav('right').close()
-		window.location = "#player/#{player}"
-	)
+	$scope.$watch 'selectedPlayer', () =>
+		if ($scope.selectedPlayer?)
+			$mdSidenav('right').close()
+			window.location = "#player/#{$scope.selectedPlayer}"
 
 	buildToggler = (navID) ->
 		debounceFn =  $mdUtil.debounce(() ->

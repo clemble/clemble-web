@@ -1,4 +1,4 @@
-clPlayerImageCtrl = ($scope) ->
+ImagePlayerController = ($scope) ->
 
 	$scope.playerImage = (player, size) ->
 		if (size?)
@@ -12,5 +12,5 @@ clPlayerImageCtrl = ($scope) ->
 	@
 
 angular.
-	module('cl.directive').
-	controller 'clPlayerImageCtrl', clPlayerImageCtrl
+	module('cl.image.player').
+	controller 'ImagePlayerController', ImagePlayerController
