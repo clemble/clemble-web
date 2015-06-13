@@ -28,7 +28,7 @@
 
 	App.on "registered", () ->
 #		App.request "experimental:show", App.experimentRegion
-		window.location = '#goal'
+#		window.location = '#goal'
 		App.request "navigation:list", App.navigationRegion
 
 	$(window).bind('hashchange', () ->
