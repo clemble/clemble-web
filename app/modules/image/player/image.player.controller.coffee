@@ -1,10 +1,7 @@
 ImagePlayerController = ($scope) ->
 
-	$scope.playerImage = (player, size) ->
-		if (size?)
-			App.Utils.toUrl("profile", "#{player}/image/#{size}")
-		else
-			App.Utils.toUrl("profile", "#{player}/image")
+	$scope.playerImage = (player, height, width) ->
+		App.Utils.toUrl("profile", "#{player}/image?height=#{height}&width=#{width}")
 
 	$scope.playerSmallImage = (player) ->
 		imageUrl = App.Utils.toUrl("profile", "#{player}/image/small")

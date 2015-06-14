@@ -5,7 +5,8 @@ angular.
 			restrict: 'E'
 			scope: {
 				player: "@player"
-				size: "@size"
+				height: "@height"
+				width : "@width"
 			}
 			templateUrl: 'image/player/cl-image-player.html'
 			controller: "ImagePlayerController"

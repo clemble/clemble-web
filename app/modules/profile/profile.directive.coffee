@@ -4,7 +4,7 @@ angular.
 		{
 			restrict: 'E'
 			scope: {
-				player: "@player"
+				"player" : "@player"
 			}
 			templateUrl: 'profile/cl-profile.html'
 			controller: "ProfileController"

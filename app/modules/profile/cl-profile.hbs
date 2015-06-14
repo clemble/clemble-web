@@ -1,2 +1,23 @@
-<h5>Profile <small>\{{profile.player}}</small></h5>
+<div flex="33">
+	<cl-image-player player="my" height="150" width="150"></cl-image-player>
+</div>
+<div flex="67">
+	<h3>\{{profile.firstName}} \{{profile.lastName}}</h3>
+	<h5>@\{{profile.nickName}}</h5>
+	<p>\{{profile.location}}</p>
+	<div layout="row">
+		<div flex="25">
+		<h4>Bank</h4>
+		<h3><cl-account player="\{{player}}"></cl-account></h3>
+		</div>
+		<div flex="25">
+		<h4>Friends</h4>
+		</div>
+		<div flex="25">
+		<h4>Wins</h4>
+		</div>
+	</div>
+</div>
+
+
 
