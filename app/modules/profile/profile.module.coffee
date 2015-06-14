@@ -2,7 +2,8 @@ app = angular.module('cl.profile', [
 	'ngMaterial',
 	'ngResource',
 	'cl.image.player',
-	'cl.account'
+	'cl.account',
+	'cl.connection.count'
 ])
 
 app.config ($httpProvider) ->
