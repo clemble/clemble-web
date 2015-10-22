@@ -17,6 +17,7 @@ before_script:
 script:
 #  Remove production build for now
   - brunch build
-  - mkdir -p ./shippable/buildoutput
-  - cp ./public ./shippable/buildoutput/public
+  - mkdir -p shippable/buildoutput
+  - ls -lta
+  - cp -R public shippable/buildoutput/public
 
