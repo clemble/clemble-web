@@ -14,7 +14,7 @@ RegistrationSocialController = ($scope, $http) ->
 
 	$scope.loginFacebook = () ->
 		url = App.Utils.toUrl("social", "signin/facebook")
-		signIn(url, { scope: "public_profile, email, user_friends, publish_stream, publish_actions" })
+		signIn(url, { scope: "public_profile, email, user_friends, publish_actions" })
 	$scope.loginTwitter = () ->
 		url = App.Utils.toUrl("social", "signin/twitter")
 		signIn(url, {})
