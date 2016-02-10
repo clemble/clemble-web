@@ -7,7 +7,7 @@ node_js:
 
 # Create directories for test and coverage reports
 before_script:
-  - npm install -g brunch
+  - npm install -g brunch@1.8
   - npm install -g bower
   - npm install
   - bower -F install
